@@ -1,0 +1,934 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Brasserie des Nations - Une odyssée culinaire luxembourgeoise depuis 1956">
+    <title>Brasserie des Nations</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@300;400;500;600;700&family=Montserrat:wght@200;300;400;500&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --green: #1a3d0f;
+            --cream: #f5f3ef;
+            --gold: #c9a961;
+            --text: #2c2c2c;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: 'Montserrat', sans-serif;
+            background: var(--cream);
+            color: var(--text);
+            overflow-x: hidden;
+        }
+
+        /* Navigation */
+        nav {
+            position: fixed;
+            top: 0;
+            width: 100%;
+            z-index: 1000;
+            background: rgba(245, 243, 239, 0.95);
+            backdrop-filter: blur(10px);
+            padding: 25px 60px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            border-bottom: 1px solid rgba(0,0,0,0.05);
+        }
+
+        .logo {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 1.3rem;
+            font-weight: 600;
+            letter-spacing: 2px;
+            color: var(--green);
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 50px;
+            list-style: none;
+        }
+
+        .nav-links a {
+            color: var(--text);
+            text-decoration: none;
+            font-size: 0.85rem;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+            font-weight: 300;
+            transition: color 0.3s ease;
+        }
+
+        .nav-links a:hover {
+            color: var(--gold);
+        }
+
+        /* Hero Video */
+        .hero-video {
+            position: relative;
+            width: 100%;
+            height: 100vh;
+            overflow: hidden;
+        }
+
+        .hero-video video {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            min-width: 100%;
+            min-height: 100%;
+            width: auto;
+            height: auto;
+            transform: translate(-50%, -50%);
+            object-fit: cover;
+            filter: brightness(0.7);
+        }
+
+        .hero-overlay {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            background: rgba(0,0,0,0.2);
+        }
+
+        .hero-title {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 7rem;
+            font-weight: 300;
+            color: white;
+            letter-spacing: 8px;
+            margin-bottom: 30px;
+            line-height: 1.1;
+        }
+
+        .hero-subtitle {
+            font-size: 1.1rem;
+            color: white;
+            letter-spacing: 5px;
+            text-transform: uppercase;
+            font-weight: 300;
+            margin-bottom: 60px;
+        }
+
+        .scroll-indicator {
+            position: absolute;
+            bottom: 50px;
+            left: 50%;
+            transform: translateX(-50%);
+            color: white;
+            font-size: 0.8rem;
+            letter-spacing: 3px;
+            text-transform: uppercase;
+            animation: float 2s ease-in-out infinite;
+        }
+
+        @keyframes float {
+            0%, 100% { transform: translateX(-50%) translateY(0); }
+            50% { transform: translateX(-50%) translateY(-10px); }
+        }
+
+        /* Section Manifesto */
+        .manifesto {
+            padding: 180px 60px;
+            max-width: 1400px;
+            margin: 0 auto;
+        }
+
+        .manifesto-content {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 100px;
+            align-items: center;
+        }
+
+        .manifesto-text h2 {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 4.5rem;
+            font-weight: 300;
+            line-height: 1.2;
+            margin-bottom: 50px;
+            color: var(--green);
+        }
+
+        .manifesto-text p {
+            font-size: 1.1rem;
+            line-height: 2;
+            font-weight: 300;
+            margin-bottom: 30px;
+            color: var(--text);
+        }
+
+        /* Gallery Full */
+        .gallery-full {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 0;
+        }
+
+        .gallery-item-full {
+            position: relative;
+            height: 100vh;
+            overflow: hidden;
+        }
+
+        .gallery-item-full img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.5s ease;
+        }
+
+        .gallery-item-full:hover img {
+            transform: scale(1.05);
+        }
+
+        .image-caption {
+            position: absolute;
+            bottom: 60px;
+            left: 60px;
+            color: white;
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 2.5rem;
+            font-weight: 300;
+            text-shadow: 2px 2px 20px rgba(0,0,0,0.5);
+            letter-spacing: 3px;
+        }
+
+        /* Heritage Section */
+        .heritage {
+            background: var(--green);
+            color: white;
+            padding: 180px 60px;
+        }
+
+        .heritage-content {
+            max-width: 1200px;
+            margin: 0 auto;
+            text-align: center;
+        }
+
+        .heritage h2 {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 6rem;
+            font-weight: 300;
+            margin-bottom: 80px;
+            letter-spacing: 5px;
+        }
+
+        .year {
+            font-size: 8rem;
+            font-family: 'Cormorant Garamond', serif;
+            font-weight: 700;
+            color: var(--gold);
+            margin-bottom: 40px;
+        }
+
+        .heritage p {
+            font-size: 1.2rem;
+            line-height: 2.2;
+            font-weight: 300;
+            max-width: 900px;
+            margin: 0 auto 40px;
+        }
+
+        /* Menu Section */
+        .menu-section {
+            padding: 180px 60px;
+            background: var(--cream);
+        }
+
+        .menu-header {
+            text-align: center;
+            margin-bottom: 80px;
+        }
+
+        .menu-header h2 {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 5.5rem;
+            font-weight: 300;
+            color: var(--green);
+            margin-bottom: 20px;
+            letter-spacing: 4px;
+        }
+
+        .menu-header .subtitle {
+            font-size: 1rem;
+            letter-spacing: 3px;
+            text-transform: uppercase;
+            color: var(--gold);
+            font-weight: 400;
+        }
+
+        /* Category Title */
+        .menu-category {
+            margin-bottom: 80px;
+        }
+
+        .category-title {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 3.5rem;
+            font-weight: 400;
+            color: var(--green);
+            text-align: center;
+            margin-bottom: 60px;
+            letter-spacing: 3px;
+            position: relative;
+        }
+
+        .category-title::after {
+            content: '';
+            display: block;
+            width: 100px;
+            height: 2px;
+            background: var(--gold);
+            margin: 20px auto 0;
+        }
+
+        .menu-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 50px;
+            max-width: 1400px;
+            margin: 0 auto 80px;
+        }
+
+        /* Menu Items with Images (Spécialités) */
+        .menu-item {
+            position: relative;
+            text-align: center;
+            padding: 0;
+            background: white;
+            border: 2px solid rgba(0,0,0,0.08);
+            transition: all 0.4s ease;
+            overflow: hidden;
+        }
+
+        .menu-item:hover {
+            transform: translateY(-15px);
+            box-shadow: 0 30px 80px rgba(0,0,0,0.15);
+            border-color: var(--gold);
+        }
+
+        .menu-item-image {
+            width: 100%;
+            height: 280px;
+            object-fit: cover;
+            transition: transform 0.4s ease;
+        }
+
+        .menu-item:hover .menu-item-image {
+            transform: scale(1.08);
+        }
+
+        .menu-item-content {
+            padding: 45px 35px;
+        }
+
+        .menu-item h3 {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 2.4rem;
+            font-weight: 600;
+            margin-bottom: 20px;
+            color: var(--green);
+            letter-spacing: 2px;
+            line-height: 1.3;
+        }
+
+        .menu-item p {
+            font-size: 0.95rem;
+            line-height: 1.8;
+            color: #666;
+            margin-bottom: 30px;
+            font-weight: 300;
+            min-height: 90px;
+        }
+
+        .price {
+            font-size: 2.2rem;
+            font-family: 'Cormorant Garamond', serif;
+            color: var(--gold);
+            font-weight: 700;
+            margin-bottom: 15px;
+        }
+
+        .signature-icon {
+            color: var(--gold);
+            font-size: 1.5rem;
+            margin-bottom: 15px;
+        }
+
+        /* Simple Menu Items (no images) */
+        .simple-menu-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 40px;
+            max-width: 1200px;
+            margin: 0 auto 80px;
+        }
+
+        .simple-menu-item {
+            background: white;
+            padding: 35px 40px;
+            border: 1px solid rgba(0,0,0,0.08);
+            transition: all 0.3s ease;
+        }
+
+        .simple-menu-item:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 15px 40px rgba(0,0,0,0.1);
+        }
+
+        .simple-menu-item h4 {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 1.8rem;
+            font-weight: 600;
+            color: var(--green);
+            margin-bottom: 12px;
+            letter-spacing: 1px;
+        }
+
+        .simple-menu-item p {
+            font-size: 0.9rem;
+            line-height: 1.7;
+            color: #666;
+            margin-bottom: 15px;
+            font-weight: 300;
+        }
+
+        .simple-menu-item .price {
+            font-size: 1.6rem;
+            margin-bottom: 0;
+        }
+
+        /* Location */
+        .location {
+            position: relative;
+            height: 80vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background-image: url('626226185_17849609148670666_5785286338868968839_n.jpg');
+            background-size: cover;
+            background-position: center;
+            background-attachment: fixed;
+        }
+
+        .location-overlay {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(26, 61, 15, 0.85);
+        }
+
+        .location-content {
+            position: relative;
+            z-index: 2;
+            text-align: center;
+            color: white;
+            padding: 60px;
+        }
+
+        .location-content h2 {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 5rem;
+            font-weight: 300;
+            margin-bottom: 60px;
+            letter-spacing: 4px;
+        }
+
+        .contact-info {
+            display: flex;
+            justify-content: center;
+            gap: 100px;
+            flex-wrap: wrap;
+        }
+
+        .contact-block {
+            text-align: left;
+        }
+
+        .contact-block h4 {
+            font-size: 0.8rem;
+            letter-spacing: 3px;
+            text-transform: uppercase;
+            margin-bottom: 15px;
+            color: var(--gold);
+            font-weight: 400;
+        }
+
+        .contact-block p {
+            font-size: 1.1rem;
+            line-height: 1.8;
+            font-weight: 300;
+        }
+
+        /* Footer */
+        footer {
+            background: var(--green);
+            color: white;
+            padding: 80px 60px 40px;
+            text-align: center;
+        }
+
+        .footer-content {
+            max-width: 1400px;
+            margin: 0 auto;
+        }
+
+        .footer-logo {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 2.5rem;
+            font-weight: 600;
+            letter-spacing: 4px;
+            margin-bottom: 40px;
+        }
+
+        .footer-links {
+            display: flex;
+            justify-content: center;
+            gap: 50px;
+            margin-bottom: 40px;
+            flex-wrap: wrap;
+        }
+
+        .footer-links a {
+            color: white;
+            text-decoration: none;
+            font-size: 0.85rem;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+            font-weight: 300;
+            transition: color 0.3s ease;
+        }
+
+        .footer-links a:hover {
+            color: var(--gold);
+        }
+
+        .footer-bottom {
+            margin-top: 60px;
+            padding-top: 40px;
+            border-top: 1px solid rgba(255,255,255,0.1);
+            font-size: 0.8rem;
+            letter-spacing: 2px;
+            font-weight: 300;
+        }
+
+        /* Responsive */
+        @media (max-width: 1024px) {
+            .hero-title {
+                font-size: 4rem;
+            }
+
+            .manifesto-content {
+                grid-template-columns: 1fr;
+                gap: 60px;
+            }
+
+            .menu-grid {
+                grid-template-columns: 1fr;
+                gap: 40px;
+            }
+
+            .simple-menu-grid {
+                grid-template-columns: 1fr;
+            }
+
+            nav {
+                padding: 20px 30px;
+            }
+
+            .nav-links {
+                gap: 25px;
+            }
+
+            .heritage h2 {
+                font-size: 3.5rem;
+            }
+
+            .year {
+                font-size: 5rem;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .hero-title {
+                font-size: 2.5rem;
+                letter-spacing: 4px;
+            }
+
+            .hero-subtitle {
+                font-size: 0.9rem;
+            }
+
+            .manifesto-text h2 {
+                font-size: 2.5rem;
+            }
+
+            .location-content h2 {
+                font-size: 3rem;
+            }
+
+            .contact-info {
+                flex-direction: column;
+                gap: 40px;
+            }
+
+            .nav-links {
+                display: none;
+            }
+
+            .menu-item h3 {
+                font-size: 2rem;
+            }
+
+            .category-title {
+                font-size: 2.5rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Navigation -->
+    <nav>
+        <div class="logo">BRASSERIE DES NATIONS</div>
+        <ul class="nav-links">
+            <li><a href="#histoire">Histoire</a></li>
+            <li><a href="#menu">Menu</a></li>
+            <li><a href="#galerie">Galerie</a></li>
+            <li><a href="#contact">Contact</a></li>
+        </ul>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="hero-video">
+        <video autoplay muted loop playsinline>
+            <source src="video-bg.mp4" type="video/mp4">
+        </video>
+        <div class="hero-overlay">
+            <h1 class="hero-title">BRASSERIE<br>DES NATIONS</h1>
+            <p class="hero-subtitle">Depuis 1956</p>
+        </div>
+        <div class="scroll-indicator">Découvrir ↓</div>
+    </section>
+
+    <!-- Manifesto -->
+    <section class="manifesto" id="histoire">
+        <div class="manifesto-content">
+            <div class="manifesto-text">
+                <h2>Une tradition<br>qui traverse<br>le temps</h2>
+                <p>Au cœur de Luxembourg-Ville, la Brasserie des Nations perpétue depuis 1956 la tradition culinaire luxembourgeoise avec des recettes transmises de génération en génération.</p>
+                <p>Notre cordon bleu maison, véritable signature de l'établissement, est devenu une légende locale. Croustillant à l'extérieur, fondant à l'intérieur, il incarne à lui seul notre passion pour l'excellence et l'authenticité.</p>
+            </div>
+            <div class="manifesto-image">
+                <img src="615844265_17844469170670666_5461536459451792004_n.jpg" style="width: 100%; height: 600px; object-fit: cover; box-shadow: 0 30px 80px rgba(0,0,0,0.15);" alt="Brasserie des Nations">
+            </div>
+        </div>
+    </section>
+
+    <!-- Menu Complete -->
+    <section class="menu-section" id="menu">
+        <div class="menu-header">
+            <h2>Notre carte</h2>
+            <p class="subtitle">Tradition & Authenticité depuis 1956</p>
+        </div>
+
+        <!-- Spécialités de la Maison -->
+        <div class="menu-category">
+            <h3 class="category-title">Spécialités de la Maison</h3>
+            <div class="menu-grid">
+                <div class="menu-item">
+                    <img src="616236754_17845109154670666_6126207275337013230_n.jpg" alt="Cordon Bleu Maison" class="menu-item-image">
+                    <div class="menu-item-content">
+                        <div class="signature-icon">★★★</div>
+                        <h3>Cordon Bleu<br>Maison</h3>
+                        <p>Escalope de veau panée, farcie au jambon luxembourgeois et fromage fondu, servie avec frites maison et salade fraîche</p>
+                        <div class="price">24,50 €</div>
+                    </div>
+                </div>
+                <div class="menu-item">
+                    <img src="587783468_17844470559670666_4807125560706233796_n.jpg" alt="Judd mat Gaardebounen" class="menu-item-image">
+                    <div class="menu-item-content">
+                        <div class="signature-icon">★★★</div>
+                        <h3>Judd mat<br>Gaardebounen</h3>
+                        <p>Plat national luxembourgeois : collier de porc fumé aux fèves, accompagné de pommes de terre vapeur et sauce crémeuse</p>
+                        <div class="price">22,90 €</div>
+                    </div>
+                </div>
+                <div class="menu-item">
+                    <img src="616471078_17844469158670666_855615018801434383_n.jpg" alt="Bouneschlupp" class="menu-item-image">
+                    <div class="menu-item-content">
+                        <div class="signature-icon">★★★</div>
+                        <h3>Bouneschlupp</h3>
+                        <p>Soupe traditionnelle luxembourgeoise aux haricots verts, pommes de terre et lardons, servie avec pain de campagne grillé</p>
+                        <div class="price">18,90 €</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Entrées -->
+        <div class="menu-category">
+            <h3 class="category-title">Entrées</h3>
+            <div class="simple-menu-grid">
+                <div class="simple-menu-item">
+                    <h4>Terrine Maison</h4>
+                    <p>Terrine de campagne aux herbes, cornichons et pain toasté</p>
+                    <div class="price">12,50 €</div>
+                </div>
+                <div class="simple-menu-item">
+                    <h4>Tartare de Bœuf</h4>
+                    <p>Tartare de bœuf frais, câpres, oignons rouges et jaune d'œuf</p>
+                    <div class="price">16,90 €</div>
+                </div>
+                <div class="simple-menu-item">
+                    <h4>Salade de Chèvre Chaud</h4>
+                    <p>Salade verte, toast au chèvre chaud, miel et noix</p>
+                    <div class="price">13,90 €</div>
+                </div>
+                <div class="simple-menu-item">
+                    <h4>Carpaccio de Saumon</h4>
+                    <p>Saumon fumé, huile d'olive citronnée et câpres</p>
+                    <div class="price">15,50 €</div>
+                </div>
+                <div class="simple-menu-item">
+                    <h4>Soupe à l'Oignon</h4>
+                    <p>Gratinée au fromage, tradition française</p>
+                    <div class="price">11,90 €</div>
+                </div>
+                <div class="simple-menu-item">
+                    <h4>Escargots de Bourgogne</h4>
+                    <p>6 escargots au beurre d'ail persillé</p>
+                    <div class="price">14,50 €</div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Viandes -->
+        <div class="menu-category">
+            <h3 class="category-title">Viandes</h3>
+            <div class="simple-menu-grid">
+                <div class="simple-menu-item">
+                    <h4>Entrecôte de Bœuf</h4>
+                    <p>300g, sauce au poivre ou béarnaise, frites maison</p>
+                    <div class="price">28,90 €</div>
+                </div>
+                <div class="simple-menu-item">
+                    <h4>Filet de Bœuf</h4>
+                    <p>250g, sauce forestière, légumes de saison</p>
+                    <div class="price">32,50 €</div>
+                </div>
+                <div class="simple-menu-item">
+                    <h4>Rognons de Veau</h4>
+                    <p>Sauce moutarde à l'ancienne, tagliatelles fraîches</p>
+                    <div class="price">24,90 €</div>
+                </div>
+                <div class="simple-menu-item">
+                    <h4>Filet Mignon de Porc</h4>
+                    <p>Sauce champignons, gratin dauphinois</p>
+                    <div class="price">23,50 €</div>
+                </div>
+                <div class="simple-menu-item">
+                    <h4>Magret de Canard</h4>
+                    <p>Miel et vinaigre balsamique, pommes sautées</p>
+                    <div class="price">26,90 €</div>
+                </div>
+                <div class="simple-menu-item">
+                    <h4>Foie de Veau</h4>
+                    <p>Poêlé, échalotes confites et purée maison</p>
+                    <div class="price">25,50 €</div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Poissons -->
+        <div class="menu-category">
+            <h3 class="category-title">Poissons</h3>
+            <div class="simple-menu-grid">
+                <div class="simple-menu-item">
+                    <h4>Filet de Saumon</h4>
+                    <p>Grillé, sauce hollandaise et légumes vapeur</p>
+                    <div class="price">24,90 €</div>
+                </div>
+                <div class="simple-menu-item">
+                    <h4>Pavé de Cabillaud</h4>
+                    <p>Croûte d'herbes, ratatouille provençale</p>
+                    <div class="price">23,50 €</div>
+                </div>
+                <div class="simple-menu-item">
+                    <h4>Moules Marinières</h4>
+                    <p>1kg de moules, frites maison</p>
+                    <div class="price">19,90 €</div>
+                </div>
+                <div class="simple-menu-item">
+                    <h4>Truite Meunière</h4>
+                    <p>Truite entière, beurre noisette et amandes</p>
+                    <div class="price">22,50 €</div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Salades & Plats Légers -->
+        <div class="menu-category">
+            <h3 class="category-title">Salades & Plats Légers</h3>
+            <div class="simple-menu-grid">
+                <div class="simple-menu-item">
+                    <h4>Salade Caesar</h4>
+                    <p>Poulet grillé, croûtons, parmesan et sauce Caesar</p>
+                    <div class="price">16,50 €</div>
+                </div>
+                <div class="simple-menu-item">
+                    <h4>Salade Niçoise</h4>
+                    <p>Thon, œufs, tomates, olives et anchois</p>
+                    <div class="price">15,90 €</div>
+                </div>
+                <div class="simple-menu-item">
+                    <h4>Omelette Nature</h4>
+                    <p>3 œufs, salade verte et frites</p>
+                    <div class="price">13,50 €</div>
+                </div>
+                <div class="simple-menu-item">
+                    <h4>Croque Monsieur</h4>
+                    <p>Jambon, fromage et béchamel, salade verte</p>
+                    <div class="price">14,90 €</div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Desserts -->
+        <div class="menu-category">
+            <h3 class="category-title">Desserts</h3>
+            <div class="simple-menu-grid">
+                <div class="simple-menu-item">
+                    <h4>Quetschentaart</h4>
+                    <p>Tarte aux quetsches luxembourgeoise traditionnelle</p>
+                    <div class="price">8,50 €</div>
+                </div>
+                <div class="simple-menu-item">
+                    <h4>Crème Brûlée</h4>
+                    <p>Vanille de Madagascar caramélisée</p>
+                    <div class="price">8,90 €</div>
+                </div>
+                <div class="simple-menu-item">
+                    <h4>Mousse au Chocolat</h4>
+                    <p>Chocolat noir 70%, chantilly maison</p>
+                    <div class="price">7,90 €</div>
+                </div>
+                <div class="simple-menu-item">
+                    <h4>Tarte Tatin</h4>
+                    <p>Pommes caramélisées, glace vanille</p>
+                    <div class="price">9,50 €</div>
+                </div>
+                <div class="simple-menu-item">
+                    <h4>Profiteroles</h4>
+                    <p>Choux glacés, sauce chocolat chaud</p>
+                    <div class="price">9,90 €</div>
+                </div>
+                <div class="simple-menu-item">
+                    <h4>Café Gourmand</h4>
+                    <p>Café expresso et trio de mini-desserts</p>
+                    <div class="price">11,50 €</div>
+                </div>
+            </div>
+        </div>
+
+    </section>
+
+    <!-- Gallery Full Screen -->
+    <section class="gallery-full" id="galerie">
+        <div class="gallery-item-full">
+            <img src="587783468_17844470559670666_4807125560706233796_n.jpg" alt="Cuisine raffinée">
+            <div class="image-caption">L'art de la cuisine</div>
+        </div>
+        <div class="gallery-item-full">
+            <img src="616471078_17844469158670666_855615018801434383_n.jpg" alt="Tartare de boeuf">
+            <div class="image-caption">Fraîcheur & Précision</div>
+        </div>
+        <div class="gallery-item-full">
+            <img src="616236754_17845109154670666_6126207275337013230_n.jpg" alt="Plats signature">
+            <div class="image-caption">Saveurs authentiques</div>
+        </div>
+        <div class="gallery-item-full">
+            <img src="616410916_17844468672670666_8397494027471955385_n.jpg" alt="Notre terrasse">
+            <div class="image-caption">Moments de convivialité</div>
+        </div>
+        <div class="gallery-item-full">
+            <img src="618294173_17845110465670666_4509824993684248679_n.jpg" alt="Ambiance">
+            <div class="image-caption">Une expérience unique</div>
+        </div>
+    </section>
+
+    <!-- Heritage -->
+    <section class="heritage">
+        <div class="heritage-content">
+            <div class="year">1956</div>
+            <h2>Sept décennies<br>d'excellence</h2>
+            <p>Depuis 1956, la Brasserie des Nations est bien plus qu'un restaurant : c'est un lieu de mémoire, de partage et de convivialité au cœur de la capitale.</p>
+            <p>Des générations de Luxembourgeois et de visiteurs sont venus savourer nos spécialités dans une ambiance chaleureuse et authentique.</p>
+            <p>Notre terrasse mythique, notre cordon bleu légendaire et notre engagement pour la qualité ont fait de nous une référence incontournable de la gastronomie luxembourgeoise.</p>
+        </div>
+    </section>
+
+    <!-- Location -->
+    <section class="location" id="contact">
+        <div class="location-overlay"></div>
+        <div class="location-content">
+            <h2>Nous trouver</h2>
+            <div class="contact-info">
+                <div class="contact-block">
+                    <h4>Adresse</h4>
+                    <p>12 Place des Nations<br>L-1234 Luxembourg</p>
+                </div>
+                <div class="contact-block">
+                    <h4>Contact</h4>
+                    <p>+352 22 45 67<br>contact@brasserie-nations.lu</p>
+                </div>
+                <div class="contact-block">
+                    <h4>Horaires</h4>
+                    <p>Lun-Ven : 11h30-14h30 · 18h-22h30<br>
+                    Sam : 11h30-23h00<br>
+                    Dim : 12h00-22h00</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="footer-content">
+            <div class="footer-logo">BRASSERIE DES NATIONS</div>
+            <div class="footer-links">
+                <a href="#histoire">Histoire</a>
+                <a href="#menu">Menu</a>
+                <a href="#galerie">Galerie</a>
+                <a href="#contact">Contact</a>
+            </div>
+            <div class="footer-bottom">
+                © 2026 Brasserie des Nations — Tradition luxembourgeoise depuis 1956
+            </div>
+        </div>
+    </footer>
+</body>
+</html>
