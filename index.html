@@ -776,10 +776,10 @@
         .hero-facade { opacity:0; }
         .hero-facade path,.hero-facade line,.hero-facade rect,.hero-facade circle,.hero-facade ellipse { stroke-dasharray:2000; stroke-dashoffset:2000; }
         .scroll-indicator { opacity:0 !important; } .hero-overlay { will-change:transform,opacity; }
-        .go .hero-title { animation:hTitle 1.6s 0.3s cubic-bezier(.16,1,.3,1) forwards; }
+        .go .hero-title { animation:hTitle 0.8s 0s cubic-bezier(.16,1,.3,1) forwards; }
         @keyframes hTitle { from { opacity:0; clip-path:inset(100% 0 0 0); } to { opacity:1; clip-path:inset(0 0 0 0); } }
-        .go .hero-divider { animation:hFade 1s 1.3s ease forwards; }
-        .go .hero-subtitle { animation:hSubIn 1.2s 1.5s ease forwards; }
+        .go .hero-divider { animation:hFade 0.5s 0.2s ease forwards; }
+        .go .hero-subtitle { animation:hSubIn 0.6s 0.3s ease forwards; }
         @keyframes hSubIn { from { opacity:0; letter-spacing:15px; } to { opacity:1; letter-spacing:5px; } }
         .go .hero-facade { animation:hFade 2s 1.8s ease forwards; }
         .go .hero-facade path,.go .hero-facade line,.go .hero-facade rect,.go .hero-facade circle,.go .hero-facade ellipse { animation:hDraw 3s 1.8s ease forwards; }
@@ -1146,7 +1146,7 @@
     <div class="grain"></div>
     <div class="cursor-glow" id="cursorGlow"></div>
     <!-- Navigation -->
-    <nav role="navigation" aria-label="Menu principal">
+    <nav role="navigation" aria-label="Menu principal" class="show">
         <div class="nav-inner">
             <a href="#histoire" class="nav-link">Histoire</a>
             <span class="nav-dot">·</span>
@@ -1165,7 +1165,7 @@
         <video autoplay muted loop playsinline poster="615844265_17844469170670666_5461536459451792004_n.jpg" preload="metadata" aria-hidden="true">
             <source src="video-bg.mp4" type="video/mp4">
         </video>
-        <div class="hero-overlay">
+        <div class="hero-overlay go">
             
 
             <h1 class="hero-title">BRASSERIE<br>DES NATIONS</h1>
