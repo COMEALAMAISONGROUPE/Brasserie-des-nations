@@ -2,7 +2,7 @@ User-agent: *
 Allow: /
 Disallow: /cdn-cgi/
 
-Sitemap: https://brasseriedesnations.lu/sitemap.xml
+Sitemap: https://comealamaisongroupe.github.io/Brasserie-des-nations/sitemap.xml
 
 User-agent: Googlebot
 Allow: /
