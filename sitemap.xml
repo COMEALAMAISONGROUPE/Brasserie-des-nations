@@ -2,30 +2,30 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
         xmlns:image="http://www.google.com/schemas/sitemap-image/1.1"
         xmlns:video="http://www.google.com/schemas/sitemap-video/1.1">
-  <url>
-    <loc>https://brasseriedesnations.lu/</loc>
-    <lastmod>2026-02-11</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>1.0</priority>
-    <image:image>
-      <image:loc>https://brasseriedesnations.lu/og-image.jpg</image:loc>
-      <image:title>Brasserie des Nations Luxembourg</image:title>
-    </image:image>
-    <video:video>
-      <video:thumbnail_loc>https://brasseriedesnations.lu/og-image.jpg</video:thumbnail_loc>
-      <video:title>Brasserie des Nations — Ambiance</video:title>
-      <video:description>Ambiance de la Brasserie des Nations, restaurant luxembourgeois depuis 1956</video:description>
-      <video:content_loc>https://brasseriedesnations.lu/video-bg.mp4</video:content_loc>
-    </video:video>
-  </url>
-  <url><loc>https://brasseriedesnations.lu/cordon-bleu-luxembourg/</loc><lastmod>2026-02-11</lastmod><changefreq>monthly</changefreq><priority>0.9</priority></url>
-  <url><loc>https://brasseriedesnations.lu/brasserie-luxembourg/</loc><lastmod>2026-02-11</lastmod><changefreq>monthly</changefreq><priority>0.8</priority></url>
-  <url><loc>https://brasseriedesnations.lu/brasserie-des-nations-luxembourg/</loc><lastmod>2026-02-11</lastmod><changefreq>monthly</changefreq><priority>0.8</priority></url>
-  <url><loc>https://brasseriedesnations.lu/restaurant-centre-ville-luxembourg/</loc><lastmod>2026-02-11</lastmod><changefreq>monthly</changefreq><priority>0.7</priority></url>
-  <url><loc>https://brasseriedesnations.lu/restaurant-typique-luxembourg/</loc><lastmod>2026-02-11</lastmod><changefreq>monthly</changefreq><priority>0.7</priority></url>
-  <url><loc>https://brasseriedesnations.lu/menu-du-jour-luxembourg/</loc><lastmod>2026-02-11</lastmod><changefreq>daily</changefreq><priority>0.8</priority></url>
-  <url><loc>https://brasseriedesnations.lu/dejeuner-rapide-luxembourg/</loc><lastmod>2026-02-11</lastmod><changefreq>monthly</changefreq><priority>0.6</priority></url>
-  <url><loc>https://brasseriedesnations.lu/brasserie-ville-haute-luxembourg/</loc><lastmod>2026-02-11</lastmod><changefreq>monthly</changefreq><priority>0.6</priority></url>
-  <url><loc>https://brasseriedesnations.lu/restaurant-rue-philippe-ii-luxembourg/</loc><lastmod>2026-02-11</lastmod><changefreq>monthly</changefreq><priority>0.6</priority></url>
-  <url><loc>https://brasseriedesnations.lu/avis-brasserie-luxembourg/</loc><lastmod>2026-02-11</lastmod><changefreq>weekly</changefreq><priority>0.7</priority></url>
+    <url>
+        <loc>https://comealamaisongroupe.github.io/Brasserie-des-nations/</loc>
+        <lastmod>2026-02-11</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>1.0</priority>
+        <image:image>
+            <image:loc>https://comealamaisongroupe.github.io/Brasserie-des-nations/618294173_17845110465670066_5765565595498498498_n.jpg</image:loc>
+            <image:title>Brasserie des Nations Luxembourg</image:title>
+        </image:image>
+        <video:video>
+            <video:thumbnail_loc>https://comealamaisongroupe.github.io/Brasserie-des-nations/618294173_17845110465670066_5765565595498498498_n.jpg</video:thumbnail_loc>
+            <video:title>Brasserie des Nations — Ambiance</video:title>
+            <video:description>Ambiance de la Brasserie des Nations, restaurant luxembourgeois depuis 1956</video:description>
+            <video:content_loc>https://comealamaisongroupe.github.io/Brasserie-des-nations/video-bg.mp4</video:content_loc>
+        </video:video>
+    </url>
+    <url><loc>https://comealamaisongroupe.github.io/Brasserie-des-nations/cordon-bleu-luxembourg/</loc><lastmod>2026-02-11</lastmod><changefreq>monthly</changefreq><priority>0.9</priority></url>
+    <url><loc>https://comealamaisongroupe.github.io/Brasserie-des-nations/brasserie-luxembourg/</loc><lastmod>2026-02-11</lastmod><changefreq>monthly</changefreq><priority>0.8</priority></url>
+    <url><loc>https://comealamaisongroupe.github.io/Brasserie-des-nations/brasserie-des-nations-luxembourg/</loc><lastmod>2026-02-11</lastmod><changefreq>monthly</changefreq><priority>0.8</priority></url>
+    <url><loc>https://comealamaisongroupe.github.io/Brasserie-des-nations/restaurant-centre-ville-luxembourg/</loc><lastmod>2026-02-11</lastmod><changefreq>monthly</changefreq><priority>0.7</priority></url>
+    <url><loc>https://comealamaisongroupe.github.io/Brasserie-des-nations/restaurant-typique-luxembourg/</loc><lastmod>2026-02-11</lastmod><changefreq>monthly</changefreq><priority>0.7</priority></url>
+    <url><loc>https://comealamaisongroupe.github.io/Brasserie-des-nations/menu-du-jour-luxembourg/</loc><lastmod>2026-02-11</lastmod><changefreq>daily</changefreq><priority>0.8</priority></url>
+    <url><loc>https://comealamaisongroupe.github.io/Brasserie-des-nations/dejeuner-rapide-luxembourg/</loc><lastmod>2026-02-11</lastmod><changefreq>monthly</changefreq><priority>0.6</priority></url>
+    <url><loc>https://comealamaisongroupe.github.io/Brasserie-des-nations/brasserie-ville-haute-luxembourg/</loc><lastmod>2026-02-11</lastmod><changefreq>monthly</changefreq><priority>0.6</priority></url>
+    <url><loc>https://comealamaisongroupe.github.io/Brasserie-des-nations/restaurant-rue-philippe-ii-luxembourg/</loc><lastmod>2026-02-11</lastmod><changefreq>monthly</changefreq><priority>0.6</priority></url>
+    <url><loc>https://comealamaisongroupe.github.io/Brasserie-des-nations/avis-brasserie-luxembourg/</loc><lastmod>2026-02-11</lastmod><changefreq>weekly</changefreq><priority>0.7</priority></url>
 </urlset>
