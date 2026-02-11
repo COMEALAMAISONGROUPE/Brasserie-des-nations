@@ -727,7 +727,7 @@
     
         .signature-ornament { margin-bottom:15px; text-align:center; }
         .signature-ornament svg { width:120px; height:auto; opacity:0.7; }
-        .site-wrap { opacity:1; transition:opacity 1s ease; position:relative; }
+        .site-wrap { opacity:0; transition:opacity 1s ease; position:relative; }
         .site-wrap.show { opacity:1; }
 
         /* SECTION STAR – inherits parent alignment */
@@ -1687,10 +1687,10 @@
 
     (()=>{
         const loader=document.getElementById('loader'),lYear=document.getElementById('lYear'),
-              sw=document.querySelector('.site-wrap'),ho=document.querySelector('.hero-overlay');sw.style.opacity='0',nav=document.querySelector('nav');
+              sw=document.querySelector('.site-wrap'),ho=document.querySelector('.hero-overlay'),nav=document.querySelector('nav');
         let cnt=1956;
         setTimeout(()=>{const iv=setInterval(()=>{cnt++;lYear.textContent=cnt;
-            if(cnt>=2026){clearInterval(iv);setTimeout(()=>{loader.classList.add('done');sw.style.opacity='';sw.classList.add('show');
+            if(cnt>=2026){clearInterval(iv);setTimeout(()=>{loader.classList.add('done');sw.classList.add('show');
                 setTimeout(()=>nav.classList.add('show'),200);
                 setTimeout(()=>ho.classList.add('go'),400);
                 setTimeout(initStars,600);
