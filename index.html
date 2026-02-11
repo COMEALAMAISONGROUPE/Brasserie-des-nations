@@ -1680,7 +1680,7 @@
     <div class="scroll-bar"></div>
     <div class="loader" id="loader">
         <div class="loader-rings"><div class="loader-ring"></div><div class="loader-ring"></div><div class="loader-ring"></div></div>
-        <div class="loader-center"><span class="loader-year" id="lYear">1956</span><div class="loader-name">Brasserie des Nations</div><div class="loader-line"></div></div>
+        <div class="loader-center"><span class="loader-year" id="lYear">2026</span><div class="loader-name">Brasserie des Nations</div><div class="loader-line"></div></div>
     </div>
     <script>
     "use strict";
@@ -1688,7 +1688,7 @@
     (()=>{
         const loader=document.getElementById('loader'),lYear=document.getElementById('lYear'),
               sw=document.querySelector('.site-wrap'),ho=document.querySelector('.hero-overlay'),nav=document.querySelector('nav');
-        let cnt=1956;
+        let cnt=2026;lYear.textContent='2026';
         setTimeout(()=>{const iv=setInterval(()=>{cnt++;lYear.textContent=cnt;
             if(cnt>=2026){clearInterval(iv);setTimeout(()=>{loader.classList.add('done');sw.classList.add('show');
                                 setTimeout(()=>nav.classList.add('show'),50);
