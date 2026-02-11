@@ -1163,7 +1163,7 @@
 
     <!-- Hero Section -->
     <section class="hero-video">
-        <video autoplay muted loop playsinline poster="615844265_17844469170670666_5461536459451792004_n.jpg" preload="auto" fetchpriority="high" aria-hidden="true">
+        <video id="heroVid" muted loop playsinline poster="615844265_17844469170670666_5461536459451792004_n.jpg" preload="none" fetchpriority="high" aria-hidden="true">
             <source src="video-bg.mp4" type="video/mp4">
         </video>
         <div class="hero-overlay go">
@@ -1689,7 +1689,7 @@
     (()=>{
         const loader=document.getElementById('loader'),lYear=document.getElementById('lYear'),
               sw=document.querySelector('.site-wrap'),ho=document.querySelector('.hero-overlay'),nav=document.querySelector('nav');
-        loader.classList.add('done');sw.classList.add('show');nav.classList.add('show');ho.classList.add('go');setTimeout(initStars,50);
+        loader.classList.add('done');sw.classList.add('show');nav.classList.add('show');ho.classList.add('go');setTimeout(initStars,50);var hv=document.getElementById('heroVid');if(hv){hv.play().catch(function(){});}
         if(false){setTimeout(()=>{const iv=setInterval(()=>{var cnt=0;lYear.textContent=cnt;
             if(cnt>=2026){clearInterval(iv);setTimeout(()=>{loader.classList.add('done');sw.classList.add('show');
                                 setTimeout(()=>nav.classList.add('show'),50);
