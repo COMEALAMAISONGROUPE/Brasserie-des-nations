@@ -745,7 +745,7 @@
         .section-star--light svg circle { fill:rgba(245,243,239,0.45) !important; stroke:rgba(245,243,239,0.15) !important; }
 
         /* LOADER */
-        .loader { position:fixed; inset:0; z-index:10000; background:var(--green); display:flex; align-items:center; justify-content:center; transition:opacity 0.8s ease,visibility 0.8s ease; }
+        .loader { position:fixed; inset:0; z-index:10000; background:var(--green); display:flex; align-items:center; justify-content:center; transition:opacity 0.3s ease,visibility 0.3s ease; }
         .loader.done { opacity:0; visibility:hidden; }
         .loader-rings { position:absolute; width:280px; height:280px; }
         .loader-ring { position:absolute; inset:0; border:1px solid rgba(201,169,97,0.12); border-radius:50%; animation:ringRot 8s linear infinite; }
@@ -1691,10 +1691,10 @@
         let cnt=1956;
         setTimeout(()=>{const iv=setInterval(()=>{cnt++;lYear.textContent=cnt;
             if(cnt>=2026){clearInterval(iv);setTimeout(()=>{loader.classList.add('done');sw.classList.add('show');
-                setTimeout(()=>nav.classList.add('show'),200);
-                setTimeout(()=>ho.classList.add('go'),400);
-                setTimeout(initStars,600);
-            },500);}},22);},1000);
+                                setTimeout(()=>nav.classList.add('show'),50);
+                                setTimeout(()=>ho.classList.add('go'),50);
+                                setTimeout(initStars,200);
+                        },100);;}},8);},200);
 
         function initStars(){
             const cv=document.createElement('canvas');cv.id='stars-canvas';sw.appendChild(cv);
