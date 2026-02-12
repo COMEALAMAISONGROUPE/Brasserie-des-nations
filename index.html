@@ -542,7 +542,7 @@
             background-image: url('626226185_17849609148670666_5785286338868968839_n.jpg');
             background-size: cover;
             background-position: center;
-            background-attachment: fixed;
+            background-attachment: scroll;
         }
 
         .location-overlay {
@@ -872,7 +872,7 @@
     background-image: url('626226185_17849609148670666_5785286338868968839_n.jpg');
     background-size: cover;
     background-position: center;
-    background-attachment: fixed;
+    background-attachment: scroll;
     overflow:hidden;
 }
 .location-overlay {
@@ -1069,7 +1069,7 @@
 </head>
 <body>
 <div class="site-wrap">
-    <div class="golden-thread" id="goldenThread"></div>
+    <div class="golden-thread" style="display:none" id="goldenThread"></div>
         <script type="application/ld+json">
     {
       "@context": "https://schema.org",
@@ -1142,10 +1142,10 @@
     </head>
 <body>
     <div class="site-wrap">
-    <div class="golden-thread" id="goldenThread"></div>
+    <div class="golden-thread" style="display:none" id="goldenThread"></div>
     |
-    <div class="grain"></div>
-    <div class="cursor-glow" id="cursorGlow"></div>
+    <div class="grain" style="display:none"></div>
+    <div class="cursor-glow" style="display:none" id="cursorGlow"></div>
     <!-- Navigation -->
     <nav role="navigation" aria-label="Menu principal" class="show">
         <div class="nav-inner">
@@ -1678,7 +1678,7 @@
     </footer>
 </div>
 
-    <div class="scroll-bar"></div>
+    <div class="scroll-bar" style="display:none"></div>
     <div class="loader" id="loader">
         <div class="loader-rings"><div class="loader-ring"></div><div class="loader-ring"></div><div class="loader-ring"></div></div>
         <div class="loader-center"><span class="loader-year" id="lYear">2026</span><div class="loader-name">Brasserie des Nations</div><div class="loader-line"></div></div>
@@ -1689,7 +1689,7 @@
     (()=>{
         const loader=document.getElementById('loader'),lYear=document.getElementById('lYear'),
               sw=document.querySelector('.site-wrap'),ho=document.querySelector('.hero-overlay'),nav=document.querySelector('nav');
-        loader.classList.add('done');sw.classList.add('show');nav.classList.add('show');ho.classList.add('go');setTimeout(initStars,50);var hv=document.getElementById('heroVid');if(hv){hv.play().catch(function(){});}
+        loader.classList.add('done');sw.classList.add('show');nav.classList.add('show');ho.classList.add('go');/* DISABLED: setTimeout(initStars,50) */;var hv=document.getElementById('heroVid');/* DISABLED: if(hv){hv.play().catch(function(){});} */
         if(false){setTimeout(()=>{const iv=setInterval(()=>{var cnt=0;lYear.textContent=cnt;
             if(cnt>=2026){clearInterval(iv);setTimeout(()=>{loader.classList.add('done');sw.classList.add('show');
                                 setTimeout(()=>nav.classList.add('show'),50);
