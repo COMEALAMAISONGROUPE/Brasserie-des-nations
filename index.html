@@ -1743,7 +1743,7 @@
             e.target.classList.add('on');galObs.unobserve(e.target);
         }});},{threshold:0.05});
         galItems.forEach(g=>galObs.observe(g));
-        if(galLine){const lo=new IntersectionObserver(es=>{es.forEach(e=>{if(e.isIntersecting){e.target.classList.add('on');lo.unobserve(e.target);}});},{threshold:0.5});lo.observe(galLine);}
+        if(galLine&&matchMedia('(pointer:fine)').matches){const lo=new IntersectionObserver(es=>{es.forEach(e=>{if(e.isIntersecting){e.target.classList.add('on');lo.unobserve(e.target);}});},{threshold:0.5});lo.observe(galLine);}
         galItems.forEach(gi=>{
             const inner=gi.querySelector('.gi-inner'),glow=gi.querySelector('.gi-glow');
             inner.addEventListener('mousemove',e=>{
