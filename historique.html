@@ -1,0 +1,277 @@
+<!DOCTYPE html>
+<html lang="fr" dir="ltr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Historique et Convertisseur - Brasserie des Nations</title>
+    <meta name="description" content="L'histoire de la Brasserie des Nations depuis 1956 et convertisseur de devises historiques">
+    <link rel="stylesheet" href="style.css">
+    <style>
+        .historique-section {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 80px 20px;
+        }
+        .historique-content {
+            display: grid;
+            gap: 40px;
+        }
+        .historique-block {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 30px;
+            align-items: center;
+        }
+        .historique-block:nth-child(even) {
+            direction: rtl;
+        }
+        .historique-block:nth-child(even) > * {
+            direction: ltr;
+        }
+        .historique-image {
+            width: 100%;
+            border-radius: 8px;
+            box-shadow: 0 4px 20px rgba(0,0,0,0.1);
+        }
+        .historique-text {
+            font-size: 1.1rem;
+            line-height: 1.8;
+            color: #333;
+        }
+        .historique-text h2 {
+            color: #1a3d0f;
+            margin-bottom: 20px;
+        }
+        @media (max-width: 768px) {
+            .historique-block {
+                grid-template-columns: 1fr;
+            }
+            .historique-block:nth-child(even) {
+                direction: ltr;
+            }
+        }
+        /* Convertisseur styles */
+        .convertisseur-section {
+            background: #f5f5f0;
+            padding: 60px 20px;
+        }
+        .convertisseur-container {
+            max-width: 900px;
+            margin: 0 auto;
+            text-align: center;
+        }
+        .convertisseur-intro {
+            margin-bottom: 30px;
+        }
+        .convertisseur-intro h2 {
+            color: #1a3d0f;
+            margin-bottom: 15px;
+        }
+        .convertisseur-table {
+            width: 100%;
+            border-collapse: collapse;
+            background: white;
+            border-radius: 8px;
+            overflow: hidden;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+        }
+        .convertisseur-table th,
+        .convertisseur-table td {
+            padding: 15px;
+            border: 1px solid #ddd;
+        }
+        .convertisseur-table th {
+            background: #1a3d0f;
+            color: white;
+        }
+        .convertisseur-table td:first-child {
+            background: #1a3d0f;
+            color: white;
+            font-weight: bold;
+        }
+        .convertisseur-table input {
+            width: 100%;
+            padding: 10px;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+            text-align: center;
+            font-size: 1rem;
+        }
+        .convert-btn {
+            margin-top: 20px;
+            padding: 15px 40px;
+            background: #c9a227;
+            color: white;
+            border: none;
+            border-radius: 4px;
+            font-size: 1.1rem;
+            cursor: pointer;
+            transition: background 0.3s;
+        }
+        .convert-btn:hover {
+            background: #b8911f;
+        }
+    </style>
+</head>
+<body>
+    <!-- Navigation -->
+    <nav role="navigation" aria-label="Menu principal" class="show">
+        <div class="nav-inner">
+            <a href="index.html" class="nav-link">Accueil</a>
+            <span class="nav-dot">·</span>
+            <a href="index.html#menu" class="nav-link">Menu</a>
+            <span class="nav-dot">·</span>
+            <a href="index.html#galerie" class="nav-link">Galerie</a>
+            <span class="nav-dot">·</span>
+            <a href="index.html#contact" class="nav-link">Contact</a>
+        </div>
+    </nav>
+
+    <main>
+        <!-- Section Historique -->
+        <section class="historique-section" id="historique">
+            <div class="historique-content">
+                <div class="historique-block">
+                    <img src="http://www.nations.lu/images/01.jpg" alt="Ancienne synagogue et café Chambord" class="historique-image">
+                    <div class="historique-text">
+                        <h2>L'Histoire du Lieu</h2>
+                        <p>A la place de l'ancienne synagogue et du café Chambord a été construit au début des années cinquante un nouvel immeuble pour la CECA (Communauté Européenne du Charbon et de l'Acier).</p>
+                    </div>
+                </div>
+
+                <div class="historique-block">
+                    <img src="http://www.nations.lu/images/02.jpg" alt="Immeuble CECA" class="historique-image">
+                    <div class="historique-text">
+                        <h2>La Naissance de la Brasserie</h2>
+                        <p>Avec ce nouvel immeuble, et la disparition du café Chambord, la Brasserie des Nations est venue s'installer à l'angle de la rue Philippe II et de la rue Notre Dame.</p>
+                    </div>
+                </div>
+
+                <div class="historique-block">
+                    <img src="http://www.nations.lu/images/03.jpg" alt="Brasserie des Nations années 50" class="historique-image">
+                    <div class="historique-text">
+                        <h2>Un Style des Années 50</h2>
+                        <p>Construite dans le style typique des années 50, la Brasserie des Nations s'est faite au fil des années surtout un nom pour la bonne qualité de sa viande.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Section Convertisseur -->
+        <section class="convertisseur-section" id="convertisseur">
+            <div class="convertisseur-container">
+                <div class="convertisseur-intro">
+                    <h2>Convertisseur de Devises Historiques</h2>
+                    <p>Au 20ième siècle, il y avait le Franc Luxembourgeois et Belge, le Franc Français et le Deutsch Mark.</p>
+                    <p><strong>Amusez-vous à convertir les différentes devises.</strong></p>
+                    <p>Pour convertir vos devises, inscrivez le montant dans la cellule de gauche, puis appuyez sur le bouton</p>
+                </div>
+
+                <table class="convertisseur-table">
+                    <thead>
+                        <tr>
+                            <th>Devises</th>
+                            <th>LUF</th>
+                            <th>€URO</th>
+                            <th>FF</th>
+                            <th>DM</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>LUF</td>
+                            <td><input type="number" id="luf-luf" step="0.01"></td>
+                            <td><input type="number" id="luf-eur" readonly></td>
+                            <td><input type="number" id="luf-ff" readonly></td>
+                            <td><input type="number" id="luf-dm" readonly></td>
+                        </tr>
+                        <tr>
+                            <td>€URO</td>
+                            <td><input type="number" id="eur-luf" readonly></td>
+                            <td><input type="number" id="eur-eur" step="0.01"></td>
+                            <td><input type="number" id="eur-ff" readonly></td>
+                            <td><input type="number" id="eur-dm" readonly></td>
+                        </tr>
+                        <tr>
+                            <td>FF</td>
+                            <td><input type="number" id="ff-luf" readonly></td>
+                            <td><input type="number" id="ff-eur" readonly></td>
+                            <td><input type="number" id="ff-ff" step="0.01"></td>
+                            <td><input type="number" id="ff-dm" readonly></td>
+                        </tr>
+                        <tr>
+                            <td>DM</td>
+                            <td><input type="number" id="dm-luf" readonly></td>
+                            <td><input type="number" id="dm-eur" readonly></td>
+                            <td><input type="number" id="dm-ff" readonly></td>
+                            <td><input type="number" id="dm-dm" step="0.01"></td>
+                        </tr>
+                    </tbody>
+                </table>
+
+                <button class="convert-btn" onclick="convertir()">Convertire</button>
+            </div>
+        </section>
+    </main>
+
+    <!-- Footer -->
+    <footer role="contentinfo" aria-label="Pied de page">
+        <div class="footer-content">
+            <div class="footer-logo">BRASSERIE DES NATIONS</div>
+            <div class="footer-links">
+                <a href="index.html">Accueil</a>
+                <a href="index.html#menu">Menu</a>
+                <a href="index.html#contact">Contact</a>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Taux de conversion historiques
+        const TAUX = {
+            LUF_EUR: 0.0247894,  // 1 LUF = 0.0247894 EUR (40.3399 LUF = 1 EUR)
+            FF_EUR: 0.152449,   // 1 FF = 0.152449 EUR (6.55957 FF = 1 EUR)
+            DM_EUR: 0.511292    // 1 DM = 0.511292 EUR (1.95583 DM = 1 EUR)
+        };
+
+        function convertir() {
+            // Récupérer les valeurs saisies
+            const lufVal = parseFloat(document.getElementById('luf-luf').value) || 0;
+            const eurVal = parseFloat(document.getElementById('eur-eur').value) || 0;
+            const ffVal = parseFloat(document.getElementById('ff-ff').value) || 0;
+            const dmVal = parseFloat(document.getElementById('dm-dm').value) || 0;
+
+            // Conversion depuis LUF
+            if (lufVal > 0) {
+                const eurFromLuf = lufVal * TAUX.LUF_EUR;
+                document.getElementById('luf-eur').value = eurFromLuf.toFixed(2);
+                document.getElementById('luf-ff').value = (eurFromLuf / TAUX.FF_EUR).toFixed(2);
+                document.getElementById('luf-dm').value = (eurFromLuf / TAUX.DM_EUR).toFixed(2);
+            }
+
+            // Conversion depuis EUR
+            if (eurVal > 0) {
+                document.getElementById('eur-luf').value = (eurVal / TAUX.LUF_EUR).toFixed(2);
+                document.getElementById('eur-ff').value = (eurVal / TAUX.FF_EUR).toFixed(2);
+                document.getElementById('eur-dm').value = (eurVal / TAUX.DM_EUR).toFixed(2);
+            }
+
+            // Conversion depuis FF
+            if (ffVal > 0) {
+                const eurFromFf = ffVal * TAUX.FF_EUR;
+                document.getElementById('ff-eur').value = eurFromFf.toFixed(2);
+                document.getElementById('ff-luf').value = (eurFromFf / TAUX.LUF_EUR).toFixed(2);
+                document.getElementById('ff-dm').value = (eurFromFf / TAUX.DM_EUR).toFixed(2);
+            }
+
+            // Conversion depuis DM
+            if (dmVal > 0) {
+                const eurFromDm = dmVal * TAUX.DM_EUR;
+                document.getElementById('dm-eur').value = eurFromDm.toFixed(2);
+                document.getElementById('dm-luf').value = (eurFromDm / TAUX.LUF_EUR).toFixed(2);
+                document.getElementById('dm-ff').value = (eurFromDm / TAUX.FF_EUR).toFixed(2);
+            }
+        }
+    </script>
+</body>
+</html>
