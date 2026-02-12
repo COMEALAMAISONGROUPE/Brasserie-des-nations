@@ -1744,7 +1744,7 @@
         }});},{threshold:0.05});
         galItems.forEach(g=>galObs.observe(g));
         if(galLine&&matchMedia('(pointer:fine)').matches){const lo=new IntersectionObserver(es=>{es.forEach(e=>{if(e.isIntersecting){e.target.classList.add('on');lo.unobserve(e.target);}});},{threshold:0.5});lo.observe(galLine);}
-        galItems.forEach(gi=>{
+        if(matchMedia('(pointer:fine)').matches)galItems.forEach(gi=>{
             const inner=gi.querySelector('.gi-inner'),glow=gi.querySelector('.gi-glow');
             inner.addEventListener('mousemove',e=>{
                 const r=inner.getBoundingClientRect(),x=e.clientX-r.left,y=e.clientY-r.top,nx=x/r.width-0.5,ny=y/r.height-0.5;
