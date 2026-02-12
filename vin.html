@@ -1,0 +1,207 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dictionnaire des Vins — Brasserie des Nations Luxembourg</title>
+    <meta name="description" content="Découvrez notre guide complet des vins de Bordeaux. Histoire, géographie, appellations et cépages - Brasserie des Nations Luxembourg.">
+    <link rel="canonical" href="https://comealamaisongroupe.github.io/Brasserie-des-nations/vin.html">
+    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@300;400;600;700&family=Montserrat:wght@300;400;500;600&display=swap" rel="stylesheet">
+    <style>
+        :root { --green: #1a3d0f; --cream: #f5f3ef; --gold: #c9a961; --text: #2c2c2c; --wine: #722F37; }
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        html { scroll-behavior: smooth; }
+        body { font-family: 'Montserrat', sans-serif; background: var(--cream); color: var(--text); }
+        
+        nav { position: fixed; top: 0; width: 100%; z-index: 1000; background: rgba(245,243,239,0.98); backdrop-filter: blur(10px); padding: 20px 40px; display: flex; justify-content: center; align-items: center; border-bottom: 1px solid rgba(0,0,0,0.05); }
+        .nav-inner { display: flex; align-items: center; gap: 8px; }
+        .nav-link { font-family: 'Cormorant Garamond', serif; font-size: 1.1rem; font-weight: 400; letter-spacing: 2px; text-transform: uppercase; color: var(--green); text-decoration: none; padding: 8px 18px; transition: opacity 0.3s; }
+        .nav-link:hover { opacity: 0.6; }
+        .nav-dot { color: var(--green); opacity: 0.2; font-size: 0.8rem; }
+        
+        .hero { background: var(--wine); min-height: 50vh; display: flex; flex-direction: column; justify-content: center; align-items: center; text-align: center; padding: 120px 40px 80px; }
+        .hero h1 { font-family: 'Cormorant Garamond', serif; font-size: 4rem; font-weight: 300; color: white; letter-spacing: 4px; margin-bottom: 20px; }
+        .hero p { font-size: 1.1rem; color: rgba(255,255,255,0.7); letter-spacing: 3px; text-transform: uppercase; }
+        
+        .content { max-width: 1100px; margin: 0 auto; padding: 80px 40px; }
+        .section { margin-bottom: 80px; }
+        .section h2 { font-family: 'Cormorant Garamond', serif; font-size: 3rem; font-weight: 400; color: var(--green); margin-bottom: 40px; text-align: center; letter-spacing: 2px; }
+        .section h2::after { content: ''; display: block; width: 80px; height: 2px; background: var(--gold); margin: 20px auto 0; }
+        .section h3 { font-family: 'Cormorant Garamond', serif; font-size: 2rem; font-weight: 500; color: var(--wine); margin: 40px 0 20px; }
+        .section p { font-size: 1.05rem; line-height: 2; color: #555; margin-bottom: 20px; }
+        
+        .appellations { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 30px; margin-top: 40px; }
+        .appellation-card { background: white; padding: 30px; border: 1px solid rgba(0,0,0,0.08); transition: all 0.3s; }
+        .appellation-card:hover { transform: translateY(-5px); box-shadow: 0 15px 40px rgba(0,0,0,0.1); border-color: var(--gold); }
+        .appellation-card h4 { font-family: 'Cormorant Garamond', serif; font-size: 1.5rem; color: var(--green); margin-bottom: 15px; }
+        .appellation-card ul { list-style: none; }
+        .appellation-card li { font-size: 0.95rem; color: #666; padding: 6px 0; border-bottom: 1px solid rgba(0,0,0,0.05); }
+        .appellation-card li:last-child { border-bottom: none; }
+        
+        footer { background: var(--green); color: white; padding: 40px; text-align: center; }
+        .footer-logo { font-family: 'Cormorant Garamond', serif; font-size: 1.3rem; letter-spacing: 3px; margin-bottom: 15px; }
+        .footer-links { display: flex; justify-content: center; gap: 25px; flex-wrap: wrap; }
+        .footer-links a { color: white; text-decoration: none; font-size: 0.75rem; letter-spacing: 2px; text-transform: uppercase; opacity: 0.7; transition: opacity 0.3s; }
+        .footer-links a:hover { opacity: 1; color: var(--gold); }
+        
+        @media (max-width: 768px) {
+            .hero h1 { font-size: 2.5rem; }
+            .section h2 { font-size: 2rem; }
+            .nav-inner { flex-wrap: wrap; justify-content: center; }
+            .nav-link { font-size: 0.9rem; padding: 6px 12px; }
+            .nav-dot { display: none; }
+        }
+    </style>
+</head>
+<body>
+
+    <nav>
+        <div class="nav-inner">
+            <a href="/Brasserie-des-nations/" class="nav-link">Brasserie des Nations</a>
+            <span class="nav-dot">·</span>
+            <a href="/Brasserie-des-nations/#histoire" class="nav-link">Histoire</a>
+            <span class="nav-dot">·</span>
+            <a href="/Brasserie-des-nations/#menu" class="nav-link">Menu</a>
+            <span class="nav-dot">·</span>
+            <a href="/Brasserie-des-nations/#galerie" class="nav-link">Galerie</a>
+            <span class="nav-dot">·</span>
+            <a href="/Brasserie-des-nations/#contact" class="nav-link">Contact</a>
+            <span class="nav-dot">·</span>
+            <a href="tel:+352473645" class="nav-link">Réserver</a>
+        </div>
+    </nav>
+
+    <section class="hero">
+        <h1>Dictionnaire des Vins</h1>
+        <p>Guide des vins de Bordeaux</p>
+    </section>
+
+    <div class="content">
+        <section class="section" id="historique">
+            <h2>Historique</h2>
+            <p>La vigne est présente dans la région de Bordeaux depuis l'Antiquité : les notables de Burdigala (Bordeaux) auraient décidé de créer leur propre vignoble en raison du prix élevé des vins en provenance de Narbonne et d'Italie, importés par les négociants romains. La création d'un vignoble au 1er siècle fut favorisée par la relative facilité de commercer avec l'archipel britannique et les régions du nord de l'Europe.</p>
+            <p>Le cépage biturica, que Pline et Columelle décrivent, aurait été adopté par les Bordelais en raison de sa bonne tenue sur les terroirs frais et humides des abords ibériques du golfe de Gascogne.</p>
+            <p>Au XIIe siècle, le commerce vinicole se développe à partir de la région des Graves. Au XIIIe siècle, la prise de La Rochelle, port exportateur des vins bordelais, par le roi de France transforme Bordeaux en port exportateur privilégié des vins à destination du marché anglais.</p>
+            <p>Au XIVe siècle, le nouveau Pape Clément V servait le vin de sa région de Graves, d'Avignon à Oxford. Ce n'est qu'à partir du XVIe siècle qu'apparaissent des exploitations viticoles proches de celles d'aujourd'hui, avec les pieds de vigne plantés en sillons.</p>
+            <p>À partir du XVIIe siècle, l'arrivée des hommes d'affaires néerlandais transforme les méthodes commerciales. Les Hollandais encouragent la production de vins plus à leur goût comme des vins blancs doux et des vins noirs non seulement dans le Bordelais, mais aussi à Cahors.</p>
+            <p>La famille Pontac choisit alors une nouvelle voie pour l'élevage de son vin : le terroir est mis en valeur, la vigne bien soignée, les vins élevés dans des barriques neuves en chêne. Les affaires fleurissent et le vignoble s'étend vers les graves du Médoc et du Sauternais, ainsi que dans les régions de Blaye et Bourg. C'est à cette époque que les grands vignobles du Médoc sont créés. Du même coup naissent les premiers grands crus bordelais.</p>
+            <p>Il faut attendre le Second Empire pour que les grands vins rouges de Saint-Émilion, Fronsac et Pomerol s'installent à leur tour au premier rang de la production viticole bordelaise.</p>
+        </section>
+
+        <section class="section" id="geographie">
+            <h2>Géographie</h2>
+            <p>Les terroirs du vignoble de Bordeaux se distinguent par leur situation géographique vis-à-vis de la Garonne et de la Gironde.</p>
+            <p>Sur la rive gauche de la Garonne et le long de l'estuaire, les alluvions dominent le vignoble sur plus de 150 km. Ce sont essentiellement des graves : galets et graviers roulés en provenance des Pyrénées, où le fleuve prend sa source 600 km en amont. Ces graves sur sable constituent des terrasses bien drainées, chaudes et parfaites pour la vigne et le cabernet-sauvignon en particulier.</p>
+            <p>De l'autre côté du fleuve, les terroirs ont une origine différente, avec des côtes et des collines argilo-calcaires et des sols plus profonds, parfaits pour le merlot.</p>
+        </section>
+
+        <section class="section" id="appellations">
+            <h2>Les Appellations</h2>
+            
+            <div class="appellations">
+                <div class="appellation-card">
+                    <h4>Génériques</h4>
+                    <ul>
+                        <li>Bordeaux AOC</li>
+                        <li>Bordeaux supérieur</li>
+                        <li>Bordeaux clairet</li>
+                        <li>Bordeaux rosé</li>
+                    </ul>
+                </div>
+                
+                <div class="appellation-card">
+                    <h4>Le Médoc</h4>
+                    <ul>
+                        <li>Médoc (AOC)</li>
+                        <li>Haut-Médoc (AOC)</li>
+                        <li>Saint-Estèphe (AOC)</li>
+                        <li>Pauillac (AOC)</li>
+                        <li>Saint-Julien (AOC)</li>
+                        <li>Listrac-Médoc (AOC)</li>
+                        <li>Moulis-en-Médoc (AOC)</li>
+                        <li>Margaux (AOC)</li>
+                    </ul>
+                </div>
+                
+                <div class="appellation-card">
+                    <h4>Les Graves</h4>
+                    <ul>
+                        <li>Pessac-Léognan (AOC)</li>
+                        <li>Cérons (AOC)</li>
+                        <li>Graves (AOC)</li>
+                        <li>Graves supérieurs (AOC)</li>
+                    </ul>
+                </div>
+                
+                <div class="appellation-card">
+                    <h4>Le Sauternais</h4>
+                    <ul>
+                        <li>Barsac (AOC)</li>
+                        <li>Sauternes (AOC)</li>
+                    </ul>
+                </div>
+                
+                <div class="appellation-card">
+                    <h4>Blaye et Bourg</h4>
+                    <ul>
+                        <li>Blaye (AOC)</li>
+                        <li>Côtes-de-Blaye (AOC)</li>
+                        <li>Premières-côtes-de-Blaye (AOC)</li>
+                        <li>Côtes-de-bourg (AOC)</li>
+                    </ul>
+                </div>
+                
+                <div class="appellation-card">
+                    <h4>Saint-Émilion</h4>
+                    <ul>
+                        <li>Saint-Émilion (AOC)</li>
+                        <li>Saint-Émilion Grand Cru (AOC)</li>
+                        <li>Montagne-Saint-Émilion (AOC)</li>
+                        <li>Lussac-Saint-Émilion (AOC)</li>
+                        <li>Puisseguin-Saint-Émilion (AOC)</li>
+                        <li>Saint-Georges-Saint-Émilion (AOC)</li>
+                    </ul>
+                </div>
+                
+                <div class="appellation-card">
+                    <h4>Pomerol & Fronsac</h4>
+                    <ul>
+                        <li>Pomerol (AOC)</li>
+                        <li>Lalande-de-Pomerol (AOC)</li>
+                        <li>Canon-fronsac (AOC)</li>
+                        <li>Fronsac (AOC)</li>
+                        <li>Côtes-de-Castillon (AOC)</li>
+                        <li>Bordeaux - Côtes-de-Franc (AOC)</li>
+                    </ul>
+                </div>
+                
+                <div class="appellation-card">
+                    <h4>L'Entre-Deux-Mers</h4>
+                    <ul>
+                        <li>Entre-Deux-Mers (AOC)</li>
+                        <li>Graves-de-Vayres (AOC)</li>
+                        <li>Premières-côtes-de-Bordeaux (AOC)</li>
+                        <li>Cadillac (AOC)</li>
+                        <li>Loupiac (AOC)</li>
+                        <li>Sainte-Croix-du-Mont (AOC)</li>
+                        <li>Sainte-Foy-Bordeaux (AOC)</li>
+                    </ul>
+                </div>
+            </div>
+        </section>
+    </div>
+
+    <footer>
+        <div class="footer-logo">BRASSERIE DES NATIONS</div>
+        <div class="footer-links">
+            <a href="/Brasserie-des-nations/#histoire">Histoire</a>
+            <a href="/Brasserie-des-nations/#menu">Menu</a>
+            <a href="/Brasserie-des-nations/#galerie">Galerie</a>
+            <a href="/Brasserie-des-nations/#contact">Contact</a>
+            <a href="/Brasserie-des-nations/vin.html">Vins</a>
+        </div>
+        <p style="margin-top:20px;font-size:0.7rem;opacity:0.5;">© 2026 Brasserie des Nations — Tradition luxembourgeoise depuis 1956</p>
+    </footer>
+
+</body>
+</html>
