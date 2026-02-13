@@ -1099,6 +1099,357 @@
         .menu-item .price {
             margin-top: auto;
         }
+
+        /* ========== ANIMATIONS EXCEPTIONNELLES ========== */
+
+/* --- Keyframes Animations --- */
+@keyframes fadeInUp {
+    from { opacity: 0; transform: translateY(40px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes fadeInDown {
+    from { opacity: 0; transform: translateY(-30px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes fadeInLeft {
+    from { opacity: 0; transform: translateX(-40px); }
+    to { opacity: 1; transform: translateX(0); }
+}
+
+@keyframes fadeInRight {
+    from { opacity: 0; transform: translateX(40px); }
+    to { opacity: 1; transform: translateX(0); }
+}
+
+@keyframes scaleIn {
+    from { opacity: 0; transform: scale(0.9); }
+    to { opacity: 1; transform: scale(1); }
+}
+
+@keyframes shimmer {
+    0% { background-position: -200% 0; }
+    100% { background-position: 200% 0; }
+}
+
+@keyframes pulse {
+    0%, 100% { transform: scale(1); }
+    50% { transform: scale(1.05); }
+}
+
+@keyframes float {
+    0%, 100% { transform: translateY(0); }
+    50% { transform: translateY(-10px); }
+}
+
+@keyframes glow {
+    0%, 100% { box-shadow: 0 0 5px rgba(201,162,39,0.5); }
+    50% { box-shadow: 0 0 20px rgba(201,162,39,0.8), 0 0 30px rgba(201,162,39,0.4); }
+}
+
+@keyframes underlineExpand {
+    from { width: 0; left: 50%; }
+    to { width: 100%; left: 0; }
+}
+
+@keyframes rotateIn {
+    from { opacity: 0; transform: rotate(-10deg) scale(0.9); }
+    to { opacity: 1; transform: rotate(0) scale(1); }
+}
+
+/* --- Hero Section Animations --- */
+.hero h1 {
+    animation: fadeInDown 1.2s ease-out forwards;
+    animation-delay: 0.3s;
+    opacity: 0;
+}
+
+.hero .subtitle, .hero p {
+    animation: fadeInUp 1s ease-out forwards;
+    animation-delay: 0.6s;
+    opacity: 0;
+}
+
+.hero .scroll-indicator, .hero a {
+    animation: fadeInUp 1s ease-out forwards, float 3s ease-in-out infinite;
+    animation-delay: 1s, 1.5s;
+    opacity: 0;
+}
+
+/* --- Navigation Animations --- */
+nav a, .nav-link {
+    position: relative;
+    transition: color 0.3s ease, transform 0.3s ease;
+}
+
+nav a::after, .nav-link::after {
+    content: '';
+    position: absolute;
+    bottom: -2px;
+    left: 50%;
+    width: 0;
+    height: 2px;
+    background: linear-gradient(90deg, transparent, #c9a227, transparent);
+    transition: all 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+}
+
+nav a:hover::after, .nav-link:hover::after {
+    width: 100%;
+    left: 0;
+}
+
+nav a:hover, .nav-link:hover {
+    transform: translateY(-2px);
+    color: #c9a227;
+}
+
+/* --- Scroll Reveal Animations --- */
+.reveal {
+    opacity: 0;
+    transform: translateY(50px);
+    transition: all 0.8s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+}
+
+.reveal.active {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+.reveal-left {
+    opacity: 0;
+    transform: translateX(-50px);
+    transition: all 0.8s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+}
+
+.reveal-left.active {
+    opacity: 1;
+    transform: translateX(0);
+}
+
+.reveal-right {
+    opacity: 0;
+    transform: translateX(50px);
+    transition: all 0.8s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+}
+
+.reveal-right.active {
+    opacity: 1;
+    transform: translateX(0);
+}
+
+.reveal-scale {
+    opacity: 0;
+    transform: scale(0.8);
+    transition: all 0.8s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+}
+
+.reveal-scale.active {
+    opacity: 1;
+    transform: scale(1);
+}
+
+/* --- Menu Cards Animations --- */
+.menu-item, .specialite-card, .card {
+    transition: all 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+    transform-origin: center;
+}
+
+.menu-item:hover, .specialite-card:hover, .card:hover {
+    transform: translateY(-10px) scale(1.02);
+    box-shadow: 0 20px 40px rgba(0,0,0,0.15), 0 0 20px rgba(201,162,39,0.1);
+}
+
+.menu-item img, .specialite-card img, .card img {
+    transition: transform 0.6s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+}
+
+.menu-item:hover img, .specialite-card:hover img, .card:hover img {
+    transform: scale(1.08);
+}
+
+/* --- Gallery Image Animations --- */
+.galerie-item, .gallery-item {
+    overflow: hidden;
+    transition: all 0.5s ease;
+}
+
+.galerie-item img, .gallery-item img {
+    transition: transform 0.7s cubic-bezier(0.25, 0.46, 0.45, 0.94), filter 0.5s ease;
+}
+
+.galerie-item:hover img, .gallery-item:hover img {
+    transform: scale(1.1) rotate(1deg);
+    filter: brightness(1.1) contrast(1.05);
+}
+
+.galerie-item::before, .gallery-item::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: linear-gradient(to bottom, transparent 60%, rgba(26,61,15,0.8));
+    opacity: 0;
+    transition: opacity 0.5s ease;
+    z-index: 1;
+    pointer-events: none;
+}
+
+.galerie-item:hover::before, .gallery-item:hover::before {
+    opacity: 1;
+}
+
+/* --- Button Animations --- */
+button, .btn, .cta-button, input[type="submit"] {
+    position: relative;
+    overflow: hidden;
+    transition: all 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+}
+
+button::before, .btn::before, .cta-button::before {
+    content: '';
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 0;
+    height: 0;
+    background: rgba(255,255,255,0.2);
+    border-radius: 50%;
+    transform: translate(-50%, -50%);
+    transition: width 0.6s ease, height 0.6s ease;
+}
+
+button:hover::before, .btn:hover::before, .cta-button:hover::before {
+    width: 300px;
+    height: 300px;
+}
+
+button:hover, .btn:hover, .cta-button:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 10px 25px rgba(201,162,39,0.4);
+}
+
+button:active, .btn:active, .cta-button:active {
+    transform: translateY(-1px);
+}
+
+/* --- Price Tag Animation --- */
+.price, .menu-item .price {
+    transition: all 0.3s ease;
+}
+
+.menu-item:hover .price {
+    transform: scale(1.1);
+    color: #c9a227;
+    text-shadow: 0 0 10px rgba(201,162,39,0.5);
+}
+
+/* --- Section Headers Animation --- */
+section h2, .section-title {
+    position: relative;
+    display: inline-block;
+}
+
+section h2::after, .section-title::after {
+    content: '';
+    position: absolute;
+    bottom: -10px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 0;
+    height: 3px;
+    background: linear-gradient(90deg, transparent, #c9a227, #1a3d0f, #c9a227, transparent);
+    transition: width 0.8s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+}
+
+section h2.active::after, .section-title.active::after {
+    width: 80%;
+}
+
+/* --- Staggered Animation Delays --- */
+.menu-item:nth-child(1), .card:nth-child(1) { transition-delay: 0.1s; }
+.menu-item:nth-child(2), .card:nth-child(2) { transition-delay: 0.2s; }
+.menu-item:nth-child(3), .card:nth-child(3) { transition-delay: 0.3s; }
+.menu-item:nth-child(4), .card:nth-child(4) { transition-delay: 0.4s; }
+.menu-item:nth-child(5), .card:nth-child(5) { transition-delay: 0.5s; }
+.menu-item:nth-child(6), .card:nth-child(6) { transition-delay: 0.6s; }
+
+/* --- Smooth Scroll Behavior --- */
+html {
+    scroll-behavior: smooth;
+}
+
+/* --- Image Lazy Load Fade --- */
+img[loading="lazy"] {
+    opacity: 0;
+    transition: opacity 0.5s ease;
+}
+
+img[loading="lazy"].loaded, img[loading="lazy"]:not([src=""]) {
+    opacity: 1;
+}
+
+/* --- Contact Section Special Effects --- */
+.contact-info, .contact a {
+    transition: all 0.3s ease;
+}
+
+.contact a:hover {
+    color: #c9a227;
+    transform: translateX(5px);
+}
+
+/* --- Footer Links Animation --- */
+footer a {
+    transition: all 0.3s ease;
+    position: relative;
+}
+
+footer a:hover {
+    color: #c9a227;
+    transform: translateY(-2px);
+}
+
+/* --- Social Icons Animation --- */
+.social-link, .social-icon {
+    transition: all 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+}
+
+.social-link:hover, .social-icon:hover {
+    transform: translateY(-5px) scale(1.15);
+    filter: drop-shadow(0 5px 15px rgba(201,162,39,0.5));
+}
+
+/* --- Text Shimmer Effect for Special Elements --- */
+.shimmer-text {
+    background: linear-gradient(90deg, #c9a227 0%, #f5e6a3 50%, #c9a227 100%);
+    background-size: 200% auto;
+    -webkit-background-clip: text;
+    background-clip: text;
+    -webkit-text-fill-color: transparent;
+    animation: shimmer 3s linear infinite;
+}
+
+/* --- Parallax Subtle Effect --- */
+@media (prefers-reduced-motion: no-preference) {
+    .parallax-subtle {
+        transform: translateZ(0);
+        will-change: transform;
+    }
+}
+
+/* --- Respect User Motion Preferences --- */
+@media (prefers-reduced-motion: reduce) {
+    *, *::before, *::after {
+        animation-duration: 0.01ms !important;
+        animation-iteration-count: 1 !important;
+        transition-duration: 0.01ms !important;
+    }
+}
+
+/* ========== END ANIMATIONS ========== */
     </style>
 </head>
 <body>
@@ -1979,6 +2330,93 @@
         var grainEl=document.querySelector('.grain');if(grainEl){grainEl.style.opacity='0';setTimeout(function(){grainEl.style.transition='opacity 3s ease';grainEl.style.opacity='.025';},2000);}
         }catch(err){if(window.console&&console.warn)console.warn('Enhanced:',err);}
     })();
+    
+// ========== SCROLL REVEAL ANIMATIONS ==========
+(function() {
+    // Add reveal classes to elements
+    const sections = document.querySelectorAll('section');
+    const menuItems = document.querySelectorAll('.menu-item, .specialite-card, .card');
+    const galerieItems = document.querySelectorAll('.galerie-item, .gallery-item');
+    const headings = document.querySelectorAll('section h2, .section-title');
+    
+    // Add reveal class to sections
+    sections.forEach((section, index) => {
+        if (!section.classList.contains('hero')) {
+            section.classList.add('reveal');
+            section.style.transitionDelay = (index * 0.1) + 's';
+        }
+    });
+    
+    // Add staggered animation to menu items
+    menuItems.forEach((item, index) => {
+        item.classList.add('reveal-scale');
+        item.style.transitionDelay = (index * 0.08) + 's';
+    });
+    
+    // Add position classes for galerie
+    galerieItems.forEach((item, index) => {
+        item.style.position = 'relative';
+    });
+    
+    // Intersection Observer for reveal animations
+    const revealObserver = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+            if (entry.isIntersecting) {
+                entry.target.classList.add('active');
+            }
+        });
+    }, {
+        threshold: 0.15,
+        rootMargin: '0px 0px -50px 0px'
+    });
+    
+    // Observe all reveal elements
+    document.querySelectorAll('.reveal, .reveal-left, .reveal-right, .reveal-scale').forEach(el => {
+        revealObserver.observe(el);
+    });
+    
+    // Observe headings for underline animation
+    const headingObserver = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+            if (entry.isIntersecting) {
+                entry.target.classList.add('active');
+            }
+        });
+    }, {
+        threshold: 0.5
+    });
+    
+    headings.forEach(h => headingObserver.observe(h));
+    
+    // Image load animation
+    document.querySelectorAll('img[loading="lazy"]').forEach(img => {
+        if (img.complete) {
+            img.classList.add('loaded');
+        } else {
+            img.addEventListener('load', () => img.classList.add('loaded'));
+        }
+    });
+    
+    // Smooth parallax effect on scroll (subtle)
+    let ticking = false;
+    window.addEventListener('scroll', () => {
+        if (!ticking) {
+            window.requestAnimationFrame(() => {
+                const scrolled = window.pageYOffset;
+                const hero = document.querySelector('.hero');
+                if (hero && scrolled < window.innerHeight) {
+                    hero.style.transform = 'translateY(' + (scrolled * 0.3) + 'px)';
+                    hero.style.opacity = 1 - (scrolled / window.innerHeight * 0.5);
+                }
+                ticking = false;
+            });
+            ticking = true;
+        }
+    });
+})();
+// ========== END SCROLL REVEAL ==========
+
+    
     </script>
 
 </body>
