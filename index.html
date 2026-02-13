@@ -2342,14 +2342,14 @@ footer a:hover {
     // Add reveal class to sections
     sections.forEach((section, index) => {
         if (!section.classList.contains('hero')) {
-            section.classList.add('reveal');
+            // Désactivé pour garder contenu visible
             section.style.transitionDelay = (index * 0.1) + 's';
         }
     });
     
     // Add staggered animation to menu items
     menuItems.forEach((item, index) => {
-        item.classList.add('reveal-scale');
+        // item.classList.add('reveal-scale'); // Désactivé
         item.style.transitionDelay = (index * 0.08) + 's';
     });
     
