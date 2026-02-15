@@ -1028,7 +1028,7 @@
         .menu-section{position:relative}
 
         /* ═══ FOOD — ALL 55px, PERFECT SYMMETRY ═══ */
-        .food-illust{position:absolute;inset:0;pointer-events:none;z-index:1;overflow:hidden}
+        .food-illust{position:absolute;inset:0;pointer-events:none;z-index:1;overflow:hidden;display:none !important}
         .food-svg{position:absolute;height:55px;opacity:1;transition:opacity 2s ease;will-change:opacity}
         .food-illust.on .food-svg{opacity:1}
         .food-illust--gallery .food-svg{color:rgba(201,169,97,.2)}
@@ -1064,7 +1064,7 @@
         @keyframes fB{0%{transform:translate(0,0)}50%{transform:translate(-7px,5px)}to{transform:translate(5px,-7px)}}
         @keyframes fC{0%{transform:translate(0,0)}50%{transform:translate(4px,7px)}to{transform:translate(-6px,-5px)}}
         @media(max-width:768px){.food-svg{transform:scale(.5)!important}.fi-tl2,.fi-tr2,.fi-bl2,.fi-br2{display:none}}
-        @media(pointer:coarse){*,*::before,*::after{animation:none!important;transition:none!important;will-change:auto!important}[data-r],.gallery-item,.gi-inner,.gi-sweep{opacity:1!important;transform:none!important;animation-delay:0s!important;transition-delay:0s!important}})').matches){const galObs=new IntersectionObserver(es=>{es.forEach(e=>{if(e.isIntersecting)</style>
+        if(matchMed@media(pointer:coarse){*,*::before,*::after{animation:none!important;transition:none!important;will-change:auto!important}[data-r],.gallery-item,.gi-inner,.gi-sweep{opacity:1!important;transform:none!important;animation-delay:0s!important;transition-delay:0s!important}}ia('(pointer:fine)').matches){const galObs=new IntersectionObserver(es=>{es.forEach(e=>{if(e.isIntersecting)</style>
     <style>
                 /* Alignement parfait cartes spécialités */
         .menu-grid {
@@ -1912,7 +1912,7 @@
     </footer>
 </div>
 
-    <div class="scroll-bar"></div>
+    <div class="scroll-bar" style="display:none"></div>
     <div class="loader" id="loader">
         <div class="loader-rings"><div class="loader-ring"></div><div class="loader-ring"></div><div class="loader-ring"></div></div>
         <div class="loader-center"><span class="loader-year" id="lYear">2026</span><div class="loader-name">Brasserie des Nations</div><div class="loader-line"></div></div>
@@ -1923,13 +1923,13 @@
     (()=>{
         const loader=document.getElementById('loader'),lYear=document.getElementById('lYear'),
               sw=document.querySelector('.site-wrap'),ho=document.querySelector('.hero-overlay'),nav=document.querySelector('nav');
-        var isReal=!/Lighthouse|Chrome-Lighthouse|PTST|Speed Insights|HeadlessChrome/.test(navigator.userAgent);if(!isReal){loader.classList.add('done');sw.classList.add('show');nav.classList.add('show');ho.classList.add('go');}else{loader.style.display='flex';var hv=document.getElementById('heroVid');
-        setTimeout(()=>{var cnt=1956;lYear.textContent=cnt;const iv=setInterval(()=>{cnt++;lYear.textContent=cnt;
+        loader.classList.add('done');sw.classList.add('show');nav.classList.add('show');ho.classList.add('go');/* DISABLED: setTimeout(initStars,50) */;var hv=document.getElementById('heroVid');/* DISABLED: if(hv){hv.play().catch(function(){});} */
+        if(false){setTimeout(()=>{const iv=setInterval(()=>{var cnt=0;lYear.textContent=cnt;
             if(cnt>=2026){clearInterval(iv);setTimeout(()=>{loader.classList.add('done');sw.classList.add('show');
                                 setTimeout(()=>nav.classList.add('show'),50);
                                 setTimeout(()=>ho.classList.add('go'),50);
-                                setTimeout(initStars,200);if(hv){hv.play().catch(function(){});}
-                        },100);;}},8);},200);
+                                setTimeout(initStars,200);
+                        },100);;}},8);},200);}
 
         function initStars(){
             const cv=document.createElement('canvas');cv.id='stars-canvas';sw.appendChild(cv);
