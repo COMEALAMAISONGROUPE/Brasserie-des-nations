@@ -1139,7 +1139,11 @@
         .pdj-panel-body{flex:1;overflow-y:auto;padding:20px 24px}
         .pdj-panel-body::-webkit-scrollbar{width:4px}
         .pdj-panel-body::-webkit-scrollbar-thumb{background:var(--gold);border-radius:4px}
-        .pdj-edit-bloc{margin-bottom:20px;padding:16px;background:rgba(0,0,0,.02);border:1px solid rgba(0,0,0,.06);border-radius:8px}
+        .pdj-master-toggle{display:flex;align-items:center;justify-content:space-between;padding:14px 16px;margin-bottom:20px;background:rgba(26,61,15,.06);border:1px solid rgba(26,61,15,.12);border-radius:10px}
+        .pdj-master-toggle span{font-family:'Cormorant Garamond',serif;font-size:1.1rem;font-weight:600;color:var(--green);letter-spacing:1px}
+        .pdj-master-toggle .pdj-toggle{width:48px;height:26px}.pdj-master-toggle .pdj-toggle::after{width:22px;height:22px}.pdj-master-toggle .pdj-toggle.on::after{left:24px}
+        .pdj-edit-bloc{margin-bottom:20px;padding:16px;background:rgba(0,0,0,.02);border:1px solid rgba(0,0,0,.06);border-radius:8px;transition:opacity .3s}
+        .pdj-edit-bloc.disabled{opacity:.4;pointer-events:none}
         .pdj-edit-bloc-head{display:flex;align-items:center;justify-content:space-between;margin-bottom:12px}
         .pdj-edit-bloc-head span{font-size:.7rem;letter-spacing:2px;text-transform:uppercase;font-weight:600;color:var(--green)}
         .pdj-toggle{position:relative;width:40px;height:22px;background:#ccc;border-radius:11px;cursor:pointer;transition:background .3s;flex-shrink:0}
@@ -1286,7 +1290,7 @@
     <!-- Navigation -->
     <nav role="navigation" aria-label="Menu principal" class="show">
         <div class="nav-inner">
-            <a href="#plat-du-jour" class="nav-link pdj-nav-link">Plat du Jour</a>
+            <a href="#plat-du-jour" class="nav-link pdj-nav-link">Menu du Jour</a>
             <span class="nav-dot">·</span>
             <a href="historique.html" class="nav-link">Historique</a>
             <span class="nav-dot">·</span>
@@ -1352,7 +1356,7 @@
 
         <!-- ===== PLAT DU JOUR ===== -->
     <section class="plat-du-jour" id="plat-du-jour">
-        <div class="pdj-main-title">PLAT DU JOUR</div>
+        <div class="pdj-main-title">MENU DU JOUR</div>
         <div class="pdj-date-line" id="pdjDate"></div>
         <div id="pdjBreakfast" class="pdj-bloc" style="display:none">
             <div class="pdj-bloc-header" id="pdjBreakfastHeader"></div>
@@ -1367,7 +1371,7 @@
             <div class="pdj-bloc-header" id="pdjDessertHeader"></div>
             <div class="pdj-bloc-items" id="pdjDessertItems"></div>
         </div>
-        <p class="pdj-empty-msg" id="pdjEmpty">Le plat du jour sera annoncé prochainement.</p>
+        <p class="pdj-empty-msg" id="pdjEmpty">Le menu du jour sera annoncé prochainement.</p>
     </section>
 
     <!-- Bouton Admin (visible uniquement avec ?admin dans l'URL) -->
@@ -1398,7 +1402,11 @@
         <button class="pdj-panel-close" id="pdjPanelClose">&times;</button>
       </div>
       <div class="pdj-panel-body">
-        <div class="pdj-edit-bloc active">
+        <div class="pdj-master-toggle">
+          <span>&#127869; Menu du Jour</span>
+          <div class="pdj-toggle on" id="pdjMasterToggle" data-section="master"></div>
+        </div>
+        <div class="pdj-edit-bloc active" data-bloc="breakfast">
           <div class="pdj-edit-bloc-head"><span>&#9749; Petit-déjeuner</span><div class="pdj-toggle on" data-section="breakfast"></div></div>
           <div class="pdj-edit-bloc-content">
             <label>Titre de section</label>
@@ -1408,17 +1416,17 @@
             <div class="pdj-hint">Un article par ligne, prix en fin de ligne</div>
           </div>
         </div>
-        <div class="pdj-edit-bloc active">
+        <div class="pdj-edit-bloc active" data-bloc="lunch">
           <div class="pdj-edit-bloc-head"><span>&#127860; Plats du jour</span><div class="pdj-toggle on" data-section="lunch"></div></div>
           <div class="pdj-edit-bloc-content">
             <label>Titre de section</label>
-            <input type="text" id="pdjInLunchHeader" placeholder="PLAT DU JOUR-DÉJEUNER À PARTIR DE 11h30:">
+            <input type="text" id="pdjInLunchHeader" placeholder="PLATS DU JOUR-DÉJEUNER À PARTIR DE 11h30:">
             <label>Articles (un par ligne)</label>
             <textarea id="pdjInLunchItems" placeholder="SALTIMBOCCA DE PORC jambon cru, sauge (frite, salade) 21.00 €&#10;BLANQUETTE DE VEAU &amp; RIZ 23.00 €"></textarea>
             <div class="pdj-hint">Un article par ligne, prix en fin de ligne</div>
           </div>
         </div>
-        <div class="pdj-edit-bloc active">
+        <div class="pdj-edit-bloc active" data-bloc="dessert">
           <div class="pdj-edit-bloc-head"><span>&#127856; Dessert</span><div class="pdj-toggle on" data-section="dessert"></div></div>
           <div class="pdj-edit-bloc-content">
             <label>Titre de section</label>
@@ -2219,38 +2227,42 @@
       panel=document.getElementById('pdjPanel'),
       overlay=document.getElementById('pdjPanelOverlay'),
       statusEl=document.getElementById('pdjPanelStatus'),
+      masterToggle=document.getElementById('pdjMasterToggle'),
       fBkH=document.getElementById('pdjInBreakfastHeader'),
       fBkI=document.getElementById('pdjInBreakfastItems'),
       fLuH=document.getElementById('pdjInLunchHeader'),
       fLuI=document.getElementById('pdjInLunchItems'),
       fDeH=document.getElementById('pdjInDessertHeader'),
       fDeI=document.getElementById('pdjInDessertItems'),
-      toggles=document.querySelectorAll('.pdj-toggle'),
+      subToggles=document.querySelectorAll('.pdj-toggle:not(#pdjMasterToggle)'),
+      allBlocs=document.querySelectorAll('.pdj-edit-bloc'),
       pdjNavLink=document.querySelector('.pdj-nav-link'),
-      isAdmin=window.location.search.indexOf('admin')!==-1,
+      isAdmin=location.search.indexOf('admin')!==-1,
       isLoggedIn=false,backupData=null;
-  var DEFAULTS={breakfastHeader:'PETIT D\u00c9JEUNER \u00c0 PARTIR DE 7h00 :',lunchHeader:'PLAT DU JOUR-D\u00c9JEUNER \u00c0 PARTIR DE 11h30:',dessertHeader:'DESSERT :'};
+  var DEFAULTS={breakfastHeader:'PETIT D\u00c9JEUNER \u00c0 PARTIR DE 7h00 :',lunchHeader:'PLATS DU JOUR-D\u00c9JEUNER \u00c0 PARTIR DE 11h30:',dessertHeader:'DESSERT :'};
   if(isAdmin&&adminBtn)adminBtn.style.display='flex';
   function initFirebase(cb){if(!USE_FIREBASE||!FIREBASE_CONFIG.apiKey)return cb();var s=document.createElement('script');s.src='https://www.gstatic.com/firebasejs/9.23.0/firebase-app-compat.js';s.onload=function(){var s2=document.createElement('script');s2.src='https://www.gstatic.com/firebasejs/9.23.0/firebase-database-compat.js';s2.onload=function(){firebase.initializeApp(FIREBASE_CONFIG);db=firebase.database();cb();};document.head.appendChild(s2);};document.head.appendChild(s);}
   if(pdjNavLink){pdjNavLink.addEventListener('click',function(e){e.preventDefault();if(section.classList.contains('pdj-visible')){section.classList.remove('pdj-visible');}else{section.classList.add('pdj-visible');setTimeout(function(){section.scrollIntoView({behavior:'smooth',block:'start'});},50);}});}
   function setDate(){var now=new Date(),jrs=['DIMANCHE','LUNDI','MARDI','MERCREDI','JEUDI','VENDREDI','SAMEDI'],ms=['Janvier','F\u00e9vrier','Mars','Avril','Mai','Juin','Juillet','Ao\u00fbt','Septembre','Octobre','Novembre','D\u00e9cembre'];if(elDate)elDate.textContent='( '+jrs[now.getDay()]+' '+now.getDate()+' '+ms[now.getMonth()]+' '+now.getFullYear()+')';}
-  function renderItems(c,text){c.innerHTML='';if(!text||!text.trim())return;var lines=text.split('\n');for(var i=0;i<lines.length;i++){var l=lines[i].trim();if(l){var d=document.createElement('div');d.className='pdj-bloc-item';d.textContent=l;c.appendChild(d);}}}
-  function renderPdj(data){setDate();if(!data){showEmpty();return;}var hasBk=data.breakfastOn!==false&&data.breakfastItems&&data.breakfastItems.trim(),hasLu=data.lunchOn!==false&&data.lunchItems&&data.lunchItems.trim(),hasDe=data.dessertOn!==false&&data.dessertItems&&data.dessertItems.trim();if(!hasBk&&!hasLu&&!hasDe){showEmpty();return;}elEmpty.style.display='none';if(hasBk){elBk.style.display='';elBkH.textContent=data.breakfastHeader||DEFAULTS.breakfastHeader;renderItems(elBkI,data.breakfastItems);}else{elBk.style.display='none';}elSep.style.display=(hasBk&&(hasLu||hasDe))?'':'none';if(hasLu){elLu.style.display='';elLuH.textContent=data.lunchHeader||DEFAULTS.lunchHeader;renderItems(elLuI,data.lunchItems);}else{elLu.style.display='none';}if(hasDe){elDe.style.display='';elDeH.textContent=data.dessertHeader||DEFAULTS.dessertHeader;renderItems(elDeI,data.dessertItems);}else{elDe.style.display='none';}}
+  function renderItems(c,text){c.innerHTML='';if(!text||!text.trim())return;text.split('\n').forEach(function(l){l=l.trim();if(l){var d=document.createElement('div');d.className='pdj-bloc-item';d.textContent=l;c.appendChild(d);}});}
+  function renderPdj(data){setDate();if(!data||data.masterOn===false){showEmpty();return;}var hasBk=data.breakfastOn!==false&&data.breakfastItems&&data.breakfastItems.trim(),hasLu=data.lunchOn!==false&&data.lunchItems&&data.lunchItems.trim(),hasDe=data.dessertOn!==false&&data.dessertItems&&data.dessertItems.trim();if(!hasBk&&!hasLu&&!hasDe){showEmpty();return;}elEmpty.style.display='none';if(hasBk){elBk.style.display='';elBkH.textContent=data.breakfastHeader||DEFAULTS.breakfastHeader;renderItems(elBkI,data.breakfastItems);}else{elBk.style.display='none';}elSep.style.display=(hasBk&&(hasLu||hasDe))?'':'none';if(hasLu){elLu.style.display='';elLuH.textContent=data.lunchHeader||DEFAULTS.lunchHeader;renderItems(elLuI,data.lunchItems);}else{elLu.style.display='none';}if(hasDe){elDe.style.display='';elDeH.textContent=data.dessertHeader||DEFAULTS.dessertHeader;renderItems(elDeI,data.dessertItems);}else{elDe.style.display='none';}}
   function showEmpty(){elBk.style.display='none';elSep.style.display='none';elLu.style.display='none';elDe.style.display='none';elEmpty.style.display='';}
   function loadPdj(){if(USE_FIREBASE&&db){db.ref('platDuJour').on('value',function(s){renderPdj(s.val());});}else{var d=localStorage.getItem('bdnplatdujour');renderPdj(d?JSON.parse(d):null);}}
   function savePdj(data){if(USE_FIREBASE&&db)db.ref('platDuJour').set(data);else{localStorage.setItem('bdnplatdujour',JSON.stringify(data));renderPdj(data);}}
-  function getDataFromPanel(){return{breakfastOn:document.querySelector('[data-section="breakfast"]').classList.contains('on'),breakfastHeader:fBkH.value.trim()||DEFAULTS.breakfastHeader,breakfastItems:fBkI.value,lunchOn:document.querySelector('[data-section="lunch"]').classList.contains('on'),lunchHeader:fLuH.value.trim()||DEFAULTS.lunchHeader,lunchItems:fLuI.value,dessertOn:document.querySelector('[data-section="dessert"]').classList.contains('on'),dessertHeader:fDeH.value.trim()||DEFAULTS.dessertHeader,dessertItems:fDeI.value,updatedAt:new Date().toISOString()};}
+  function getDataFromPanel(){return{masterOn:masterToggle.classList.contains('on'),breakfastOn:document.querySelector('[data-section="breakfast"]').classList.contains('on'),breakfastHeader:fBkH.value.trim()||DEFAULTS.breakfastHeader,breakfastItems:fBkI.value,lunchOn:document.querySelector('[data-section="lunch"]').classList.contains('on'),lunchHeader:fLuH.value.trim()||DEFAULTS.lunchHeader,lunchItems:fLuI.value,dessertOn:document.querySelector('[data-section="dessert"]').classList.contains('on'),dessertHeader:fDeH.value.trim()||DEFAULTS.dessertHeader,dessertItems:fDeI.value,updatedAt:new Date().toISOString()};}
   function liveUpdate(){renderPdj(getDataFromPanel());}
   [fBkH,fBkI,fLuH,fLuI,fDeH,fDeI].forEach(function(el){el.addEventListener('input',liveUpdate);});
-  toggles.forEach(function(t){t.addEventListener('click',function(){this.classList.toggle('on');var bloc=this.closest('.pdj-edit-bloc');if(this.classList.contains('on'))bloc.classList.add('active');else bloc.classList.remove('active');liveUpdate();});});
-  function fillPanel(d){d=d||{};fBkH.value=d.breakfastHeader||DEFAULTS.breakfastHeader;fBkI.value=d.breakfastItems||'';fLuH.value=d.lunchHeader||DEFAULTS.lunchHeader;fLuI.value=d.lunchItems||'';fDeH.value=d.dessertHeader||DEFAULTS.dessertHeader;fDeI.value=d.dessertItems||'';toggles.forEach(function(t){var sec=t.getAttribute('data-section'),on=d[sec+'On']!==false;t.classList.toggle('on',on);t.closest('.pdj-edit-bloc').classList.toggle('active',on);});}
+  function syncMasterState(){var on=masterToggle.classList.contains('on');allBlocs.forEach(function(b){if(on)b.classList.remove('disabled');else b.classList.add('disabled');});liveUpdate();}
+  masterToggle.addEventListener('click',function(){this.classList.toggle('on');syncMasterState();});
+  subToggles.forEach(function(t){t.addEventListener('click',function(){this.classList.toggle('on');var b=this.closest('.pdj-edit-bloc');if(this.classList.contains('on'))b.classList.add('active');else b.classList.remove('active');liveUpdate();});});
+  function fillPanel(d){d=d||{};masterToggle.classList.toggle('on',d.masterOn!==false);fBkH.value=d.breakfastHeader||DEFAULTS.breakfastHeader;fBkI.value=d.breakfastItems||'';fLuH.value=d.lunchHeader||DEFAULTS.lunchHeader;fLuI.value=d.lunchItems||'';fDeH.value=d.dessertHeader||DEFAULTS.dessertHeader;fDeI.value=d.dessertItems||'';subToggles.forEach(function(t){var sec=t.getAttribute('data-section'),on=d[sec+'On']!==false;t.classList.toggle('on',on);t.closest('.pdj-edit-bloc').classList.toggle('active',on);});syncMasterState();}
   function openPanel(){var raw=localStorage.getItem('bdnplatdujour');backupData=raw?JSON.parse(raw):null;fillPanel(backupData);if(section&&!section.classList.contains('pdj-visible'))section.classList.add('pdj-visible');if(section){section.scrollIntoView({behavior:'smooth',block:'center'});setTimeout(function(){section.classList.add('pdj-editing');},400);}panel.classList.add('open');overlay.classList.add('active');setTimeout(function(){fBkI.focus();},500);}
   function closePanel(restore){panel.classList.remove('open');overlay.classList.remove('active');if(section)section.classList.remove('pdj-editing');statusEl.className='pdj-panel-status';statusEl.style.display='none';if(restore){fillPanel(backupData);renderPdj(backupData);}}
   document.getElementById('pdjPanelClose').addEventListener('click',function(){closePanel(true);});
   document.getElementById('pdjPanelCancel').addEventListener('click',function(){closePanel(true);});
   overlay.addEventListener('click',function(){closePanel(true);});
   document.getElementById('pdjPanelSave').addEventListener('click',function(){savePdj(getDataFromPanel());statusEl.textContent='\u2713 Menu du jour mis \u00e0 jour !';statusEl.className='pdj-panel-status success';statusEl.style.display='block';setTimeout(function(){closePanel(false);},1200);});
-  document.getElementById('pdjPanelClear').addEventListener('click',function(){if(!confirm('Effacer tout le menu du jour ?'))return;fBkI.value='';fLuI.value='';fDeI.value='';liveUpdate();savePdj({breakfastOn:true,breakfastHeader:fBkH.value,breakfastItems:'',lunchOn:true,lunchHeader:fLuH.value,lunchItems:'',dessertOn:true,dessertHeader:fDeH.value,dessertItems:'',updatedAt:new Date().toISOString()});closePanel(false);});
+  document.getElementById('pdjPanelClear').addEventListener('click',function(){if(!confirm('Effacer tout le menu du jour ?'))return;fBkI.value='';fLuI.value='';fDeI.value='';liveUpdate();savePdj({masterOn:masterToggle.classList.contains('on'),breakfastOn:true,breakfastHeader:fBkH.value,breakfastItems:'',lunchOn:true,lunchHeader:fLuH.value,lunchItems:'',dessertOn:true,dessertHeader:fDeH.value,dessertItems:'',updatedAt:new Date().toISOString()});closePanel(false);});
   if(adminBtn){adminBtn.addEventListener('click',function(){if(isLoggedIn){openPanel();}else{loginModal.classList.add('active');document.getElementById('pdjPassword').value='';setTimeout(function(){document.getElementById('pdjPassword').focus();},100);}});}
   window.pdjLogin=function(){var pw=document.getElementById('pdjPassword').value;if(pw===ADMIN_PASSWORD){isLoggedIn=true;closePdjModals();openPanel();}else{document.getElementById('pdjLoginMsg').style.display='block';}};
   window.closePdjModals=function(){loginModal.classList.remove('active');document.getElementById('pdjLoginMsg').style.display='none';};
