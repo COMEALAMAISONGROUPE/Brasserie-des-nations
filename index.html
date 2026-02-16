@@ -1100,7 +1100,7 @@
             margin-top: auto;
         }
     
-        /* ===== PLAT DU JOUR ===== */
+        /* ===== MENU DU JOUR ===== */
         .plat-du-jour{display:none;background:var(--green);color:var(--cream);padding:80px 60px;text-align:center;position:relative;overflow:hidden}
         .plat-du-jour::before{content:'';position:absolute;top:0;left:0;right:0;bottom:0;background:radial-gradient(ellipse at center,rgba(201,169,97,0.08) 0%,transparent 70%);pointer-events:none}
         .plat-du-jour.pdj-visible{display:block}
@@ -1293,7 +1293,7 @@
     <!-- Navigation -->
     <nav role="navigation" aria-label="Menu principal" class="show">
         <div class="nav-inner">
-            <a href="#plat-du-jour" class="nav-link pdj-nav-link">Plat du Jour</a>
+            <a href="#plat-du-jour" class="nav-link pdj-nav-link">Menu du Jour</a>
             <span class="nav-dot">·</span>
             <a href="historique.html" class="nav-link">Historique</a>
             <span class="nav-dot">·</span>
@@ -1359,7 +1359,7 @@
 
         <!-- ===== PLAT DU JOUR ===== -->
     <section class="plat-du-jour" id="plat-du-jour">
-        <div class="pdj-label">✦ Plat du Jour ✦</div>
+        <div class="pdj-label">✦ Menu du Jour ✦</div>
         <div class="pdj-date" id="pdjDate"></div>
         <div class="pdj-divider"></div>
         <div id="pdjBreakfast" class="pdj-bloc" style="display:none">
@@ -1375,7 +1375,7 @@
             <div class="pdj-bloc-header" id="pdjDessertHeader"></div>
             <div class="pdj-bloc-items" id="pdjDessertItems"></div>
         </div>
-        <p class="pdj-empty" id="pdjEmpty">Le plat du jour sera annoncé prochainement.</p>
+        <p class="pdj-empty" id="pdjEmpty">Le menu du jour sera annoncé prochainement.</p>
     </section>
 
     <!-- Bouton Admin (visible uniquement avec ?admin dans l'URL) -->
@@ -1400,7 +1400,7 @@
     <div class="pdj-panel-overlay" id="pdjPanelOverlay"></div>
     <div class="pdj-panel" id="pdjPanel">
       <div class="pdj-panel-head">
-        <h3><span class="pdj-live-dot"></span> Plat du Jour</h3>
+        <h3><span class="pdj-live-dot"></span> Menu du Jour</h3>
         <span class="pdj-live-tag">&#9679; LIVE</span>
         <button class="pdj-panel-close" id="pdjPanelClose">&times;</button>
       </div>
@@ -2207,7 +2207,7 @@
 
     <script>
     /* ═══════════════════════════════════════════════
-       PLAT DU JOUR — Administration (Panel)
+       MENU DU JOUR — Administration (Panel + Live Preview)
        ═══════════════════════════════════════════════ */
     (function(){
         var USE_FIREBASE = false;
@@ -2255,20 +2255,18 @@
 
         /* ── Render ── */
         function renderPdj(data) {
-            var dtEl = document.getElementById('pdjDate');
+            var dtEl    = document.getElementById('pdjDate');
             var emptyEl = document.getElementById('pdjEmpty');
-            var bfBloc = document.getElementById('pdjBreakfast');
-            var luBloc = document.getElementById('pdjLunch');
-            var deBloc = document.getElementById('pdjDessert');
-            var sep1   = document.getElementById('pdjSep1');
+            var bfBloc  = document.getElementById('pdjBreakfast');
+            var luBloc  = document.getElementById('pdjLunch');
+            var deBloc  = document.getElementById('pdjDessert');
+            var sep1    = document.getElementById('pdjSep1');
 
-            // Date
             var now = new Date();
             var jrs = ['Dimanche','Lundi','Mardi','Mercredi','Jeudi','Vendredi','Samedi'];
             var ms  = ['Janvier','Février','Mars','Avril','Mai','Juin','Juillet','Août','Septembre','Octobre','Novembre','Décembre'];
             dtEl.textContent = jrs[now.getDay()] + ' ' + now.getDate() + ' ' + ms[now.getMonth()] + ' ' + now.getFullYear();
 
-            // Reset
             bfBloc.style.display = 'none';
             luBloc.style.display = 'none';
             deBloc.style.display = 'none';
@@ -2282,7 +2280,6 @@
 
             var hasContent = false;
 
-            // Breakfast
             if (data.breakfast && data.breakfast.on !== false && data.breakfast.items && data.breakfast.items.trim()) {
                 document.getElementById('pdjBreakfastHeader').textContent = data.breakfast.header || 'PETIT DÉJEUNER';
                 renderItems('pdjBreakfastItems', data.breakfast.items);
@@ -2290,7 +2287,6 @@
                 hasContent = true;
             }
 
-            // Lunch
             if (data.lunch && data.lunch.on !== false && data.lunch.items && data.lunch.items.trim()) {
                 document.getElementById('pdjLunchHeader').textContent = data.lunch.header || 'PLATS DU JOUR';
                 renderItems('pdjLunchItems', data.lunch.items);
@@ -2299,7 +2295,6 @@
                 hasContent = true;
             }
 
-            // Dessert
             if (data.dessert && data.dessert.on !== false && data.dessert.items && data.dessert.items.trim()) {
                 document.getElementById('pdjDessertHeader').textContent = data.dessert.header || 'DESSERT';
                 renderItems('pdjDessertItems', data.dessert.items);
@@ -2340,13 +2335,62 @@
             }
         }
 
+        /* ── Build data from form (used for both live preview & save) ── */
+        function buildDataFromForm() {
+            return {
+                visible: document.getElementById('pdjMasterToggle').classList.contains('on'),
+                breakfast: {
+                    on: document.querySelector('[data-section="breakfast"]').classList.contains('on'),
+                    header: document.getElementById('pdjInBreakfastHeader').value.trim(),
+                    items:  document.getElementById('pdjInBreakfastItems').value.trim()
+                },
+                lunch: {
+                    on: document.querySelector('[data-section="lunch"]').classList.contains('on'),
+                    header: document.getElementById('pdjInLunchHeader').value.trim(),
+                    items:  document.getElementById('pdjInLunchItems').value.trim()
+                },
+                dessert: {
+                    on: document.querySelector('[data-section="dessert"]').classList.contains('on'),
+                    header: document.getElementById('pdjInDessertHeader').value.trim(),
+                    items:  document.getElementById('pdjInDessertItems').value.trim()
+                },
+                updatedAt: new Date().toISOString()
+            };
+        }
+
+        /* ── LIVE PREVIEW: update the site in real-time as admin types ── */
+        var liveTimer = null;
+        function triggerLivePreview() {
+            clearTimeout(liveTimer);
+            liveTimer = setTimeout(function(){
+                var data = buildDataFromForm();
+                renderPdj(data);
+            }, 150);
+        }
+
+        function attachLivePreview() {
+            var inputs = panel.querySelectorAll('input[type="text"], textarea');
+            for (var i = 0; i < inputs.length; i++) {
+                inputs[i].addEventListener('input', triggerLivePreview);
+            }
+        }
+
         /* ── Close everything ── */
+        var savedDataBeforeEdit = null;
         window.closePdjModals = function() {
             document.getElementById('pdjLoginModal').classList.remove('active');
             panel.classList.remove('open');
             panelOvl.classList.remove('active');
             if (pdjSection) pdjSection.classList.remove('pdj-editing');
         };
+
+        /* ── Cancel: revert to saved data ── */
+        function cancelEdit() {
+            if (savedDataBeforeEdit !== undefined) {
+                renderPdj(savedDataBeforeEdit);
+            }
+            closePdjModals();
+        }
 
         /* ── Login ── */
         window.pdjLogin = function() {
@@ -2362,15 +2406,21 @@
 
         /* ── Open Panel ── */
         function openPanel() {
+            var raw;
             if (USE_FIREBASE && db) {
-                db.ref('menuDuJour').once('value').then(function(snap){ fillForm(snap.val()); });
+                db.ref('menuDuJour').once('value').then(function(snap){
+                    savedDataBeforeEdit = snap.val();
+                    fillForm(savedDataBeforeEdit);
+                });
             } else {
-                var r = localStorage.getItem(STORAGE_KEY);
-                fillForm(r ? JSON.parse(r) : null);
+                raw = localStorage.getItem(STORAGE_KEY);
+                savedDataBeforeEdit = raw ? JSON.parse(raw) : null;
+                fillForm(savedDataBeforeEdit);
             }
             panel.classList.add('open');
             panelOvl.classList.add('active');
             if (pdjSection) pdjSection.classList.add('pdj-editing');
+            pdjSection.scrollIntoView({behavior:'smooth', block:'center'});
         }
 
         function fillForm(data) {
@@ -2398,6 +2448,16 @@
                     if (toggle) toggle.classList.add('on');
                 }
             }
+            updateBlocStates();
+        }
+
+        function updateBlocStates() {
+            var masterOn = document.getElementById('pdjMasterToggle').classList.contains('on');
+            var blocs = document.querySelectorAll('.pdj-edit-bloc');
+            for (var i = 0; i < blocs.length; i++) {
+                if (!masterOn) blocs[i].classList.add('disabled');
+                else blocs[i].classList.remove('disabled');
+            }
         }
 
         /* ── Admin button ── */
@@ -2414,19 +2474,15 @@
         }
 
         /* ── Panel events ── */
-        document.getElementById('pdjPanelClose').addEventListener('click', closePdjModals);
-        document.getElementById('pdjPanelCancel').addEventListener('click', closePdjModals);
-        panelOvl.addEventListener('click', closePdjModals);
+        document.getElementById('pdjPanelClose').addEventListener('click', cancelEdit);
+        document.getElementById('pdjPanelCancel').addEventListener('click', cancelEdit);
+        panelOvl.addEventListener('click', cancelEdit);
 
         /* ── Master toggle ── */
         document.getElementById('pdjMasterToggle').addEventListener('click', function(){
             this.classList.toggle('on');
-            var blocs = document.querySelectorAll('.pdj-edit-bloc');
-            var disabled = !this.classList.contains('on');
-            for (var i = 0; i < blocs.length; i++) {
-                if (disabled) blocs[i].classList.add('disabled');
-                else blocs[i].classList.remove('disabled');
-            }
+            updateBlocStates();
+            triggerLivePreview();
         });
 
         /* ── Section toggles ── */
@@ -2437,6 +2493,7 @@
                 var bloc = this.closest('.pdj-edit-bloc');
                 if (this.classList.contains('on')) bloc.classList.add('active');
                 else bloc.classList.remove('active');
+                triggerLivePreview();
             });
         }
 
@@ -2447,28 +2504,11 @@
 
         /* ── Save ── */
         document.getElementById('pdjPanelSave').addEventListener('click', function(){
-            var data = {
-                visible: document.getElementById('pdjMasterToggle').classList.contains('on'),
-                breakfast: {
-                    on: document.querySelector('[data-section="breakfast"]').classList.contains('on'),
-                    header: document.getElementById('pdjInBreakfastHeader').value.trim(),
-                    items:  document.getElementById('pdjInBreakfastItems').value.trim()
-                },
-                lunch: {
-                    on: document.querySelector('[data-section="lunch"]').classList.contains('on'),
-                    header: document.getElementById('pdjInLunchHeader').value.trim(),
-                    items:  document.getElementById('pdjInLunchItems').value.trim()
-                },
-                dessert: {
-                    on: document.querySelector('[data-section="dessert"]').classList.contains('on'),
-                    header: document.getElementById('pdjInDessertHeader').value.trim(),
-                    items:  document.getElementById('pdjInDessertItems').value.trim()
-                },
-                updatedAt: new Date().toISOString()
-            };
+            var data = buildDataFromForm();
             savePdj(data);
+            savedDataBeforeEdit = data;
             var st = document.getElementById('pdjPanelStatus');
-            st.textContent = '\u2713 Menu du jour mis à jour !';
+            st.textContent = '\u2713 Menu du jour mis \u00e0 jour !';
             st.className = 'pdj-panel-status success';
             setTimeout(function(){ st.style.display = 'none'; st.className = 'pdj-panel-status'; closePdjModals(); }, 1500);
         });
@@ -2476,11 +2516,15 @@
         /* ── Clear ── */
         document.getElementById('pdjPanelClear').addEventListener('click', function(){
             if (confirm('Effacer tout le menu du jour ?')) {
-                savePdj(null);
                 localStorage.removeItem(STORAGE_KEY);
+                savePdj(null);
+                savedDataBeforeEdit = null;
                 closePdjModals();
             }
         });
+
+        /* ── Attach live preview listeners ── */
+        attachLivePreview();
 
         /* ── Init ── */
         initFirebase(loadPdj);
