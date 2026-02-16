@@ -1292,6 +1292,22 @@
     <div class="cursor-glow" style="display:none" id="cursorGlow"></div>
     <!-- Navigation -->
     <nav role="navigation" aria-label="Menu principal" class="show">
+
+        <!-- Burger mobile -->
+        <button class="burger" id="burger" aria-label="Menu" aria-expanded="false">
+            <span></span><span></span><span></span>
+        </button>
+        <!-- Drawer mobile -->
+        <div class="mob-drawer" id="mobDrawer">
+            <a href="javascript:void(0)" class="mob-link pdj-nav-link">Menu du Jour</a>
+            <a href="historique.html" class="mob-link">Historique</a>
+            <a href="#menu" class="mob-link">Menu</a>
+            <a href="#galerie" class="mob-link">Galerie</a>
+            <a href="#contact" class="mob-link">Contact</a>
+            <a href="/Brasserie-des-nations/vin.html" class="mob-link">Vins</a>
+            <a href="tel:+352473645" class="mob-cta">Réserver</a>
+        </div>
+        <div class="mob-overlay" id="mobOverlay"></div>
         <div class="nav-inner">
             <a href="javascript:void(0)" class="nav-link pdj-nav-link">Menu du Jour</a>
             <span class="nav-dot">·</span>
@@ -2044,7 +2060,124 @@
                 </g>
             </svg>
 
-            <style>.location{min-height:auto!important;height:auto!important;overflow:visible!important;align-items:flex-start!important}.location-overlay{position:absolute;top:0;left:0;width:100%;height:100%}.location-content{padding:100px 60px 80px!important;max-width:1200px;width:100%}.map-section{margin:40px auto 0;max-width:600px;position:relative;padding:0 20px}.map-label{font-family:'Cormorant Garamond',serif;font-size:.7rem;letter-spacing:5px;text-transform:uppercase;color:rgba(201,169,97,.5);text-align:center;margin-bottom:15px;font-weight:400}.map-frame{position:relative;border-radius:6px;overflow:hidden;background:rgba(26,61,15,.6)}.map-frame::before{content:'';position:absolute;inset:0;border:1px solid rgba(201,169,97,.2);border-radius:6px;pointer-events:none;z-index:2}.map-frame::after{content:'';position:absolute;inset:0;box-shadow:inset 0 0 60px rgba(26,61,15,.4);pointer-events:none;z-index:2;border-radius:6px;transition:opacity .8s ease}.map-frame:hover::after{opacity:.2}.map-frame iframe{display:block;width:100%;height:200px;border:0;filter:brightness(.7) saturate(.35) sepia(.15) hue-rotate(75deg) contrast(1.1);transition:filter 1.5s cubic-bezier(.16,1,.3,1)}.map-frame:hover iframe{filter:brightness(.9) saturate(.8) sepia(.05) hue-rotate(20deg) contrast(1)}.social-links{margin:30px 0 10px;display:flex;justify-content:center;gap:25px}.social-links a{color:var(--gold);display:inline-flex;padding:12px;border:1px solid rgba(201,169,97,.3);border-radius:50%;transition:all .5s cubic-bezier(.16,1,.3,1);background:rgba(201,169,97,.06)}.social-links a:hover{color:#fff;border-color:var(--gold);transform:translateY(-4px);box-shadow:0 8px 25px rgba(201,169,97,.25);background:rgba(201,169,97,.15)}.social-links svg{width:22px;height:22px}@media(max-width:768px){.location-content{padding:70px 25px 50px!important}.map-section{margin:30px auto 0;padding:0 10px}.map-frame iframe{height:160px}}</style><div class="map-section"><p class="map-label">Notre emplacement</p><div class="map-frame"><iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2585.4!2d6.1319!3d49.6116!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x0!2zNDnCsDM2JzQxLjgiTiA2wrAwNyczMS4yIkU!5e0!3m2!1sfr!2slu!4v1707800000000" width="100%" height="300" style="border:0" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade" title="Localisation Brasserie des Nations Luxembourg"></iframe></div></div><div class="social-links"><a href="https://www.facebook.com/BrasserieDesNations" target="_blank" rel="noopener" aria-label="Facebook"><svg width="22" height="22" viewBox="0 0 24 24" fill="currentColor"><path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z"/></svg></a><a href="https://www.instagram.com/brasserie_des_nations" target="_blank" rel="noopener" aria-label="Instagram"><svg width="22" height="22" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/></svg></a></div></div></section></main>    <!-- Footer -->
+            <style>.location{min-height:auto!important;height:auto!important;overflow:visible!important;align-items:flex-start!important}.location-overlay{position:absolute;top:0;left:0;width:100%;height:100%}.location-content{padding:100px 60px 80px!important;max-width:1200px;width:100%}.map-section{margin:40px auto 0;max-width:600px;position:relative;padding:0 20px}.map-label{font-family:'Cormorant Garamond',serif;font-size:.7rem;letter-spacing:5px;text-transform:uppercase;color:rgba(201,169,97,.5);text-align:center;margin-bottom:15px;font-weight:400}.map-frame{position:relative;border-radius:6px;overflow:hidden;background:rgba(26,61,15,.6)}.map-frame::before{content:'';position:absolute;inset:0;border:1px solid rgba(201,169,97,.2);border-radius:6px;pointer-events:none;z-index:2}.map-frame::after{content:'';position:absolute;inset:0;box-shadow:inset 0 0 60px rgba(26,61,15,.4);pointer-events:none;z-index:2;border-radius:6px;transition:opacity .8s ease}.map-frame:hover::after{opacity:.2}.map-frame iframe{display:block;width:100%;height:200px;border:0;filter:brightness(.7) saturate(.35) sepia(.15) hue-rotate(75deg) contrast(1.1);transition:filter 1.5s cubic-bezier(.16,1,.3,1)}.map-frame:hover iframe{filter:brightness(.9) saturate(.8) sepia(.05) hue-rotate(20deg) contrast(1)}.social-links{margin:30px 0 10px;display:flex;justify-content:center;gap:25px}.social-links a{color:var(--gold);display:inline-flex;padding:12px;border:1px solid rgba(201,169,97,.3);border-radius:50%;transition:all .5s cubic-bezier(.16,1,.3,1);background:rgba(201,169,97,.06)}.social-links a:hover{color:#fff;border-color:var(--gold);transform:translateY(-4px);box-shadow:0 8px 25px rgba(201,169,97,.25);background:rgba(201,169,97,.15)}.social-links svg{width:22px;height:22px}@media(max-width:768px){.location-content{padding:70px 25px 50px!important}.map-section{margin:30px auto 0;padding:0 10px}.map-frame iframe{height:160px}}
+/* ====== BURGER (hidden on desktop) ====== */
+.burger{display:none}.mob-drawer{display:none}.mob-overlay{display:none}
+
+@media(max-width:768px){
+  /* LOADER OFF */
+  .loader{display:none!important}
+  .site-wrap,.site-wrap.show{opacity:1!important}
+  nav,nav.show{opacity:1!important;animation:none!important}
+  .hero-overlay,.hero-overlay.go{opacity:1!important}
+  .hero-overlay.go .hero-title,.hero-overlay.go .hero-subtitle,.hero-overlay.go .hero-divider{animation:none!important;opacity:1!important;clip-path:none!important}
+
+  /* NAV: hide desktop links, show burger */
+  nav{padding:12px 20px!important;justify-content:flex-end!important;background:rgba(245,243,239,0.97)!important}
+  .nav-inner{display:none!important}
+  .burger{display:flex;align-items:center;justify-content:center;width:44px;height:44px;border-radius:50%;background:transparent;border:2px solid var(--gold);cursor:pointer;z-index:10002;position:relative;flex-direction:column;gap:5px;padding:0;transition:all .3s ease}
+  .burger span{display:block;width:20px;height:1.5px;background:var(--gold);border-radius:2px;transition:all .3s ease;transform-origin:center}
+  .burger.open{background:var(--gold)}
+  .burger.open span{background:var(--green)}
+  .burger.open span:nth-child(1){transform:rotate(45deg) translate(4.5px,4.5px)}
+  .burger.open span:nth-child(2){opacity:0}
+  .burger.open span:nth-child(3){transform:rotate(-45deg) translate(4.5px,-4.5px)}
+
+  /* MOBILE DRAWER */
+  .mob-drawer{display:flex;position:fixed;top:0;right:-100%;width:80%;max-width:320px;height:100vh;height:100dvh;background:var(--cream);z-index:10001;flex-direction:column;padding:100px 40px 40px;gap:0;transition:right .4s cubic-bezier(.16,1,.3,1);box-shadow:-8px 0 40px rgba(0,0,0,.15);overflow-y:auto}
+  .mob-drawer.open{right:0}
+  .mob-link{font-family:'Cormorant Garamond',serif;font-size:1.4rem;font-weight:400;color:var(--green);text-decoration:none;padding:16px 0;letter-spacing:2px;text-transform:uppercase;border-bottom:1px solid rgba(0,0,0,.06);transition:color .3s ease}
+  .mob-link:last-of-type{border-bottom:none}
+  .mob-cta{display:block;margin-top:auto;padding:18px;background:var(--green);color:#fff;text-align:center;text-decoration:none;font-family:'Montserrat',sans-serif;font-size:.85rem;font-weight:500;letter-spacing:3px;text-transform:uppercase;border-radius:8px;transition:background .3s ease}
+  .mob-overlay{position:fixed;inset:0;background:rgba(0,0,0,.4);z-index:10000;backdrop-filter:blur(3px);display:none}
+  .mob-overlay.open{display:block}
+
+  /* HERO: image only */
+  .hero-video video{display:none!important}
+  .hero-facade{display:none!important}
+  .scroll-indicator{display:none!important}
+  .hero-video{height:75vh!important}
+  .hero-title{font-size:2.2rem!important;letter-spacing:3px!important;margin-bottom:15px!important}
+  .hero-subtitle{font-size:.85rem!important;letter-spacing:3px!important;margin-bottom:20px!important}
+  .hero-divider{width:80px!important;opacity:1!important}
+
+  /* EFFECTS OFF */
+  #stars-canvas,.golden-thread,.cursor-glow,.grain,.scroll-bar,.gallery-ambiance,.manifesto-illu,.heritage-deco,.loc-ornament,.food-illust{display:none!important}
+  .gi-sweep,.gi-glow,.gi-number,.shine{display:none!important}
+  .hero-overlay,[data-r],.gi-inner img,.gallery-item,.menu-item,.simple-menu-item{will-change:auto!important}
+
+  /* MENU: readable, no giant empty spaces */
+  .menu-section{padding:80px 20px!important}
+  .menu-header{margin-bottom:40px!important}
+  .menu-header h2{font-size:2.8rem!important;letter-spacing:2px!important}
+  .menu-category{margin-bottom:50px!important}
+  .category-title{font-size:2rem!important;margin-bottom:30px!important}
+  .menu-grid{grid-template-columns:1fr!important;gap:30px!important}
+  .menu-item h3{min-height:auto!important;font-size:1.6rem!important}
+  .menu-item p{min-height:auto!important}
+  .menu-item-content{padding:25px 20px!important}
+  .menu-item-image{height:220px!important}
+  .simple-menu-grid{grid-template-columns:1fr!important;gap:20px!important}
+  .simple-menu-item{padding:25px 20px!important}
+  .simple-menu-item h4{font-size:1.3rem!important}
+  .price{font-size:1.6rem!important}
+  .simple-menu-item .price{font-size:1.3rem!important}
+  .ornament-sep{max-width:160px!important}
+  .signature-ornament svg{width:80px!important}
+  .section-star svg{width:30px!important;height:30px!important}
+  .category-icon{height:44px!important}
+
+  /* GALLERY: labels ALWAYS visible (no hover needed) */
+  .gallery-full{padding:60px 15px!important}
+  .gallery-title{font-size:2.2rem!important}
+  .gallery-grid{grid-template-columns:1fr!important;grid-auto-rows:280px!important;gap:15px!important}
+  .gi-tall,.gi-wide{grid-row:span 1!important;grid-column:span 1!important}
+  .gi-overlay{opacity:1!important}
+  .gi-tag{transform:none!important;opacity:1!important}
+  .gi-label{transform:none!important;opacity:1!important}
+  .gi-inner::after{border-color:rgba(201,169,97,.2)!important;inset:12px!important}
+
+  /* MAP: no dark filter */
+  .map-frame iframe{filter:none!important;height:180px!important}
+
+  /* HERITAGE */
+  .heritage{padding:80px 20px!important}
+  .heritage h2{font-size:2.5rem!important;letter-spacing:2px!important;margin-bottom:40px!important}
+  .year{font-size:4rem!important}
+  .heritage p{font-size:1rem!important;margin-bottom:25px!important}
+  .heritage-sep{margin:20px auto!important}
+
+  /* MANIFESTO */
+  .manifesto{padding:80px 20px!important}
+  .manifesto-text h2{font-size:2.2rem!important;margin-bottom:30px!important}
+  .manifesto-text p{font-size:.95rem!important}
+  .manifesto-content{gap:40px!important}
+  .manifesto-image img{max-height:350px!important;object-fit:cover!important}
+
+  /* CONTACT / LOCATION */
+  .location{min-height:auto!important}
+  .location-content{padding:60px 20px!important}
+  .location-content h2{font-size:2.5rem!important;letter-spacing:2px!important;margin-bottom:15px!important}
+  .contact-block{padding:30px 15px!important;min-width:auto!important;max-width:none!important}
+  .contact-info{flex-direction:column!important;gap:10px!important}
+  .contact-block:not(:last-child)::after{display:none!important}
+  .contact-block-icon{height:36px!important}
+  .contact-block h3{font-size:.85rem!important;letter-spacing:3px!important}
+  .loc-sep{margin-bottom:30px!important}
+  .social-links{margin:20px 0 5px!important}
+
+  /* FOOTER: column layout */
+  footer{padding:30px 20px 20px!important}
+  .footer-links{flex-direction:column!important;gap:12px!important;align-items:center!important}
+  .footer-logo{font-size:1.1rem!important;letter-spacing:2px!important;margin-bottom:12px!important}
+  .footer-bottom{font-size:.6rem!important}
+
+  /* PDJ mobile */
+  .plat-du-jour{padding:40px 15px!important}
+  .pdj-label{font-size:1.5rem!important}
+}
+
+</style><div class="map-section"><p class="map-label">Notre emplacement</p><div class="map-frame"><iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2585.4!2d6.1319!3d49.6116!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x0!2zNDnCsDM2JzQxLjgiTiA2wrAwNyczMS4yIkU!5e0!3m2!1sfr!2slu!4v1707800000000" width="100%" height="300" style="border:0" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade" title="Localisation Brasserie des Nations Luxembourg"></iframe></div></div><div class="social-links"><a href="https://www.facebook.com/BrasserieDesNations" target="_blank" rel="noopener" aria-label="Facebook"><svg width="22" height="22" viewBox="0 0 24 24" fill="currentColor"><path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z"/></svg></a><a href="https://www.instagram.com/brasserie_des_nations" target="_blank" rel="noopener" aria-label="Instagram"><svg width="22" height="22" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/></svg></a></div></div></section></main>    <!-- Footer -->
     <footer role="contentinfo" aria-label="Pied de page">
         <div class="footer-content">
             <!-- Ornement footer -->
@@ -2088,6 +2221,22 @@
 
     /* Protection sous-pages : si on arrive via un lien ancre (#section),
        on saute le loader pour ne pas bloquer/bugger les sous-pages */
+    
+    // === Mobile: skip loader entirely ===
+    if(window.innerWidth<=768){
+        loader.style.display='none';loader.classList.add('done');
+        sw.classList.add('show');nav.classList.add('show');ho.classList.add('go');
+    }
+    // === Burger menu toggle ===
+    (function(){
+        var b=document.getElementById('burger'),d=document.getElementById('mobDrawer'),o=document.getElementById('mobOverlay');
+        if(!b||!d)return;
+        function tog(){var isOpen=d.classList.contains('open');b.classList.toggle('open');d.classList.toggle('open');if(o)o.classList.toggle('open');b.setAttribute('aria-expanded',String(!isOpen));document.body.style.overflow=isOpen?'':'hidden';}
+        b.addEventListener('click',tog);
+        if(o)o.addEventListener('click',tog);
+        d.querySelectorAll('a').forEach(function(a){a.addEventListener('click',function(){if(d.classList.contains('open'))tog();});});
+    })();
+
     var _h=window.location.hash;
     if(_h && _h.length>1){
         loader.style.display='none';loader.classList.add('done');
@@ -2102,7 +2251,7 @@
                 setTimeout(initStars,600);
             },500);}},22);},1000);
     }
-        function initStars(){
+        function initStars(){if(window.matchMedia("(pointer:coarse)").matches||window.innerWidth<=768)return;
             const cv=document.createElement('canvas');cv.id='stars-canvas';sw.appendChild(cv);
             const cx=cv.getContext('2d');let W,docH;
             function resize(){W=innerWidth;docH=Math.max(document.documentElement.scrollHeight,sw.scrollHeight);cv.width=W;cv.height=docH;}
