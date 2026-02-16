@@ -818,7 +818,7 @@
         .gallery-title { font-family:'Cormorant Garamond',serif; font-size:4rem; font-weight:300; color:var(--cream); letter-spacing:5px; margin-bottom:0; line-height:1.2; }
         .gallery-line { width:0; height:1px; background:linear-gradient(90deg,transparent,var(--gold),transparent); margin:25px auto; transition:width 1.5s 0.3s cubic-bezier(.16,1,.3,1); }
         .gallery-line.on { width:120px; }
-        .gallery-sub { font-size:0.85rem; color:rgba(245,243,239,0.35); letter-spacing:4px; margin-top:18px; text-transform:uppercase; }
+        .gallery-sub { font-size:0.85rem; color:rgba(245,243,239,0.65); letter-spacing:4px; margin-top:18px; text-transform:uppercase; }
         .gallery-grid { display:grid; grid-template-columns:repeat(3,1fr); grid-auto-rows:320px; gap:22px; max-width:1400px; margin:0 auto; }
         .gi-tall { grid-row:span 2; } .gi-wide { grid-column:span 2; }
         .gallery-item { position:relative; overflow:hidden; border-radius:10px; }
@@ -1136,7 +1136,7 @@
         .pdj-panel-head h3{font-family:'Cormorant Garamond',serif;font-size:1.4rem;color:var(--green);margin:0;display:flex;align-items:center;gap:10px}
         .pdj-live-dot{width:8px;height:8px;border-radius:50%;background:#27ae60;display:inline-block;animation:livePulse 1.5s ease-in-out infinite}
         @keyframes livePulse{0%,100%{opacity:1}50%{opacity:.4}}
-        .pdj-live-tag{font-size:.55rem;letter-spacing:2px;text-transform:uppercase;color:#27ae60;font-weight:600}
+        .pdj-live-tag{font-size:.55rem;letter-spacing:2px;text-transform:uppercase;color:#1a7a3a;font-weight:600}
         .pdj-panel-close{background:none;border:none;font-size:1.6rem;cursor:pointer;color:var(--text);opacity:.5;transition:opacity .3s;padding:0}.pdj-panel-close:hover{opacity:1}
         .pdj-panel-body{flex:1;overflow-y:auto;padding:20px 24px}
         .pdj-panel-body::-webkit-scrollbar{width:4px}
@@ -1154,11 +1154,11 @@
         .pdj-edit-bloc-head span{font-size:.7rem;letter-spacing:2px;text-transform:uppercase;font-weight:600;color:var(--green)}
         .pdj-edit-bloc-content{display:none}
         .pdj-edit-bloc.active .pdj-edit-bloc-content{display:block}
-        .pdj-edit-bloc label{display:block;font-size:.62rem;letter-spacing:1.5px;text-transform:uppercase;color:#888;margin-bottom:4px;font-weight:500}
+        .pdj-edit-bloc label{display:block;font-size:.62rem;letter-spacing:1.5px;text-transform:uppercase;color:#595959;margin-bottom:4px;font-weight:500}
         .pdj-edit-bloc input[type="text"],.pdj-edit-bloc textarea{width:100%;padding:9px 12px;border:1px solid rgba(0,0,0,.1);border-radius:5px;font-family:'Montserrat',sans-serif;font-size:.82rem;background:#fff;color:var(--text);transition:border-color .3s;box-sizing:border-box;margin-bottom:10px}
         .pdj-edit-bloc input:focus,.pdj-edit-bloc textarea:focus{outline:none;border-color:var(--gold)}
         .pdj-edit-bloc textarea{resize:vertical;min-height:90px;line-height:1.8}
-        .pdj-edit-bloc .pdj-hint{font-size:.6rem;color:#999;margin-top:-6px;margin-bottom:8px;font-style:italic}
+        .pdj-edit-bloc .pdj-hint{font-size:.6rem;color:#696969;margin-top:-6px;margin-bottom:8px;font-style:italic}
         .pdj-panel-status{text-align:center;font-size:.75rem;padding:8px;border-radius:4px;margin:0 24px 8px;display:none}
         .pdj-panel-status.success{display:block;background:#d4edda;color:#155724}
         .pdj-panel-footer{padding:14px 24px 18px;border-top:1px solid rgba(0,0,0,.08);display:flex;gap:10px;flex-shrink:0;flex-wrap:wrap}
@@ -1216,7 +1216,7 @@
                 "dayOfWeek": "Saturday",
                 "opens": "11:00",
                 "closes": "14:30"
- "sameAs": ["https://www.facebook.com/BrasserieDesNations", "https://www.instagram.com/brasserie_des_nations"]           },
+            },
             {
                 "@type": "OpeningHoursSpecification",
                 "dayOfWeek": "Saturday",
@@ -1224,6 +1224,7 @@
                 "closes": "22:00"
             }
       ],
+                    "sameAs": ["https://www.facebook.com/BrasserieDesNations", "https://www.instagram.com/brasserie_des_nations"],
       "menu": "https://comealamaisongroupe.github.io/Brasserie-des-nations/#menu",
       "foundingDate": "1956",
       "description": "Restaurant luxembourgeois traditionnel depuis 1956 au coeur de Luxembourg-Ville. Spécialités : Cordon bleu maison, Judd mat Gaardebounen, Bouchée à la Reine.",
@@ -1299,7 +1300,7 @@
         </button>
         <!-- Drawer mobile -->
         <div class="mob-drawer" id="mobDrawer">
-            <a href="javascript:void(0)" class="mob-link pdj-nav-link">Menu du Jour</a>
+            <a href="#menu-du-jour" class="mob-link pdj-nav-link">Menu du Jour</a>
             <a href="historique.html" class="mob-link">Historique</a>
             <a href="#menu" class="mob-link">Menu</a>
             <a href="#galerie" class="mob-link">Galerie</a>
@@ -1309,7 +1310,7 @@
         </div>
         <div class="mob-overlay" id="mobOverlay"></div>
         <div class="nav-inner">
-            <a href="javascript:void(0)" class="nav-link pdj-nav-link">Menu du Jour</a>
+            <a href="#menu-du-jour" class="nav-link pdj-nav-link">Menu du Jour</a>
             <span class="nav-dot">·</span>
             <a href="historique.html" class="nav-link">Historique</a>
             <span class="nav-dot">·</span>
@@ -1374,7 +1375,7 @@
     </section>
 
         <!-- ===== PLAT DU JOUR ===== -->
-    <section class="plat-du-jour" id="plat-du-jour">
+    <section id="menu-du-jour" class="plat-du-jour">
         <div class="pdj-label">✦ Menu du Jour ✦</div>
         <div class="pdj-date" id="pdjDate"></div>
         <div class="pdj-divider"></div>
@@ -1403,7 +1404,7 @@
     <div class="pdj-modal-overlay" id="pdjLoginModal">
         <div class="pdj-modal">
             <button class="pdj-close" onclick="closePdjModals()">&times;</button>
-            <h3>Accès Employé</h3>
+            <div class="pdj-modal-title" style="font-family:'Cormorant Garamond',serif;font-size:1.8rem;color:var(--green);margin-bottom:25px;text-align:center">Accès Employé</div>
             <label for="pdjPassword">Mot de passe</label>
             <input type="password" id="pdjPassword" placeholder="Entrez le mot de passe">
             <p class="pdj-login-msg" id="pdjLoginMsg">Mot de passe incorrect.</p>
@@ -1416,7 +1417,7 @@
     <div class="pdj-panel-overlay" id="pdjPanelOverlay"></div>
     <div class="pdj-panel" id="pdjPanel">
       <div class="pdj-panel-head">
-        <h3><span class="pdj-live-dot"></span> Menu du Jour</h3>
+        <div style="font-family:'Cormorant Garamond',serif;font-size:1.4rem;color:var(--green);margin:0;display:flex;align-items:center;gap:10px"><span class="pdj-live-dot"></span> Menu du Jour</div>
         <span class="pdj-live-tag">&#9679; LIVE</span>
         <button class="pdj-panel-close" id="pdjPanelClose">&times;</button>
       </div>
