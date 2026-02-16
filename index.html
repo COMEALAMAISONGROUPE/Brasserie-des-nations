@@ -2331,7 +2331,7 @@
             const bar=document.querySelector('.scroll-bar');if(bar)bar.style.width=(y/(document.documentElement.scrollHeight-innerHeight)*100)+'%';tick=false;});}
         if(matchMedia('(pointer:fine)').matches)addEventListener('scroll',onScroll,{passive:true});
         document.querySelectorAll('.menu-item').forEach(c=>{const sh=document.createElement('div');sh.className='shine';c.appendChild(sh);c.addEventListener('mousemove',e=>{return;const x=(e.clientX-r.left)/r.width-0.5;const y=(e.clientY-r.top)/r.height-0.5;c.style.transform='translateY(-14px) perspective(700px) rotateY('+x*5+'deg) rotateX('+-y*5+'deg)';});c.addEventListener('mouseleave',()=>c.style.transform='');});
-        document.querySelectorAll('a[href^="#"]').forEach(a=>{a.addEventListener('click',e=>{e.preventDefault();const t=document.querySelector(a.getAttribute('href'));if(t)t.scrollIntoView({behavior:'smooth',block:'start'});});});
+        document.querySelectorAll('a[href^="#"]').forEach(a=>{if(a.classList.contains('pdj-nav-link'))return;a.addEventListener('click',e=>{e.preventDefault();const t=document.querySelector(a.getAttribute('href'));if(t)t.scrollIntoView({behavior:'smooth',block:'start'});});});
     })();
     
 
@@ -2372,14 +2372,14 @@
     var pdjSection=document.querySelector('.plat-du-jour');
     var pdjNavLink=document.querySelector('.pdj-nav-link');
     if(isAdmin&&adminBtn)adminBtn.style.display='flex';
-    if(pdjNavLink){pdjNavLink.addEventListener('click',function(e){
+    document.querySelectorAll('.pdj-nav-link').forEach(function(pdjNavLink){pdjNavLink.addEventListener('click',function(e){
     e.preventDefault();
     if(pdjSection.classList.contains('pdj-visible')){
     pdjSection.classList.remove('pdj-visible');pdjSection.style.display='none';
     }else{
     pdjSection.style.display='';pdjSection.classList.add('pdj-visible');
     pdjSection.scrollIntoView({behavior:'smooth',block:'start'});
-    }});}
+    }});});
     function initFirebase(cb){
     if(!USE_FIREBASE||!FIREBASE_CONFIG.apiKey)return cb();
     var s=document.createElement('script');
