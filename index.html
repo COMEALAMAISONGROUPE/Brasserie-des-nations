@@ -1417,10 +1417,10 @@
           </div>
         </div>
         <div class="pdj-edit-bloc active" data-bloc="lunch">
-          <div class="pdj-edit-bloc-head"><span>&#127860; Menu du jour</span><div class="pdj-toggle on" data-section="lunch"></div></div>
+          <div class="pdj-edit-bloc-head"><span>&#127860; Plats du jour</span><div class="pdj-toggle on" data-section="lunch"></div></div>
           <div class="pdj-edit-bloc-content">
             <label>Titre de section</label>
-            <input type="text" id="pdjInLunchHeader" placeholder="PLATS DU JOUR-DÉJEUNER À PARTIR DE 11h30:">
+            <input type="text" id="pdjInLunchHeader" placeholder="PLATS DU JOUR - DÉJEUNER À PARTIR DE 11h30">
             <label>Articles (un par ligne)</label>
             <textarea id="pdjInLunchItems" placeholder="SALTIMBOCCA DE PORC jambon cru, sauge (frite, salade) 21.00 €&#10;BLANQUETTE DE VEAU &amp; RIZ 23.00 €"></textarea>
             <div class="pdj-hint">Un article par ligne, prix en fin de ligne</div>
@@ -2239,10 +2239,10 @@
       pdjNavLink=document.querySelector('.pdj-nav-link'),
       isAdmin=location.search.indexOf('admin')!==-1,
       isLoggedIn=false,backupData=null;
-  var DEFAULTS={breakfastHeader:'PETIT D\u00c9JEUNER \u00c0 PARTIR DE 7h00',lunchHeader:'PLATS DU JOUR-D\u00c9JEUNER \u00c0 PARTIR DE 11h30',dessertHeader:'DESSERT'};
+  var DEFAULTS={breakfastHeader:'PETIT D\u00c9JEUNER \u00c0 PARTIR DE 7h00',lunchHeader:'PLATS DU JOUR - D\u00c9JEUNER \u00c0 PARTIR DE 11h30',dessertHeader:'DESSERT'};
   if(isAdmin&&adminBtn)adminBtn.style.display='flex';
   function initFirebase(cb){if(!USE_FIREBASE||!FIREBASE_CONFIG.apiKey)return cb();var s=document.createElement('script');s.src='https://www.gstatic.com/firebasejs/9.23.0/firebase-app-compat.js';s.onload=function(){var s2=document.createElement('script');s2.src='https://www.gstatic.com/firebasejs/9.23.0/firebase-database-compat.js';s2.onload=function(){firebase.initializeApp(FIREBASE_CONFIG);db=firebase.database();cb();};document.head.appendChild(s2);};document.head.appendChild(s);}
-  if(pdjNavLink){pdjNavLink.addEventListener('click',function(e){e.preventDefault();section.classList.toggle('pdj-visible');if(section.classList.contains('pdj-visible')){setTimeout(function(){section.scrollIntoView({behavior:'smooth',block:'start'});},50);}});}
+  if(pdjNavLink){pdjNavLink.addEventListener('click',function(e){e.preventDefault();if(section.classList.contains('pdj-visible')){section.classList.remove('pdj-visible');}else{section.classList.add('pdj-visible');setTimeout(function(){section.scrollIntoView({behavior:'smooth',block:'start'});},50);}});}
   function setDate(){var now=new Date(),jrs=['DIMANCHE','LUNDI','MARDI','MERCREDI','JEUDI','VENDREDI','SAMEDI'],ms=['Janvier','F\u00e9vrier','Mars','Avril','Mai','Juin','Juillet','Ao\u00fbt','Septembre','Octobre','Novembre','D\u00e9cembre'];if(elDate)elDate.textContent='( '+jrs[now.getDay()]+' '+now.getDate()+' '+ms[now.getMonth()]+' '+now.getFullYear()+')';}
   function renderItems(c,text){c.innerHTML='';if(!text||!text.trim())return;text.split('\n').forEach(function(l){l=l.trim();if(l){var d=document.createElement('div');d.className='pdj-bloc-item';d.textContent=l;c.appendChild(d);}});}
   function renderPdj(data){setDate();if(!data||data.masterOn===false){showEmpty();return;}var hasBk=data.breakfastOn!==false&&data.breakfastItems&&data.breakfastItems.trim(),hasLu=data.lunchOn!==false&&data.lunchItems&&data.lunchItems.trim(),hasDe=data.dessertOn!==false&&data.dessertItems&&data.dessertItems.trim();if(!hasBk&&!hasLu&&!hasDe){showEmpty();return;}elEmpty.style.display='none';if(hasBk){elBk.style.display='';elBkH.textContent=data.breakfastHeader||DEFAULTS.breakfastHeader;renderItems(elBkI,data.breakfastItems);}else{elBk.style.display='none';}elSep.style.display=(hasBk&&(hasLu||hasDe))?'':'none';if(hasLu){elLu.style.display='';elLuH.textContent=data.lunchHeader||DEFAULTS.lunchHeader;renderItems(elLuI,data.lunchItems);}else{elLu.style.display='none';}if(hasDe){elDe.style.display='';elDeH.textContent=data.dessertHeader||DEFAULTS.dessertHeader;renderItems(elDeI,data.dessertItems);}else{elDe.style.display='none';}}
@@ -2269,11 +2269,11 @@
   var pwField=document.getElementById('pdjPassword');if(pwField)pwField.addEventListener('keydown',function(e){if(e.key==='Enter')pdjLogin();});
   document.addEventListener('keydown',function(e){if(e.key==='Escape'&&panel.classList.contains('open'))closePanel(true);});
   initFirebase(function(){
-  // Migration: fix old cached breakfast headers
   var raw=localStorage.getItem('bdnplatdujour');
-  if(raw){try{var d=JSON.parse(raw);var changed=false;
-    if(d.breakfastHeader&&d.breakfastHeader.toLowerCase().replace(/[^a-z]/g,'')==='petitdejeuner'){d.breakfastHeader=DEFAULTS.breakfastHeader;changed=true;}
-    if(changed)localStorage.setItem('bdnplatdujour',JSON.stringify(d));
+  if(raw){try{var d=JSON.parse(raw);var ch=false;
+    if(d.breakfastHeader&&d.breakfastHeader.toLowerCase().replace(/[^a-z]/g,'')==='petitdejeuner'){d.breakfastHeader=DEFAULTS.breakfastHeader;ch=true;}
+    if(d.lunchHeader&&/^PLAT DU JOUR/i.test(d.lunchHeader)&&!/^PLATS/i.test(d.lunchHeader)){d.lunchHeader=d.lunchHeader.replace(/^PLAT /i,'PLATS ');ch=true;}
+    if(ch)localStorage.setItem('bdnplatdujour',JSON.stringify(d));
   }catch(e){}}
   loadPdj();
 });
