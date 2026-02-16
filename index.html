@@ -1101,14 +1101,73 @@
         }
     
         /* ===== PLAT DU JOUR ===== */
-        .plat-du-jour{background:transparent;color:var(--text);padding:80px 60px;text-align:center;position:relative;max-width:900px;margin:0 auto}
-        .pdj-main-title{font-family:'Cormorant Garamond',serif;font-size:1.6rem;font-weight:700;color:var(--green);text-decoration:underline;text-underline-offset:6px;letter-spacing:2px;margin-bottom:6px;text-transform:uppercase}
-        .pdj-date-line{font-family:Montserrat,sans-serif;font-size:.85rem;color:var(--text);margin-bottom:40px;font-weight:400;letter-spacing:1px}
-        .pdj-bloc{margin-bottom:30px}
-        .pdj-bloc-header{font-family:Montserrat,sans-serif;font-size:.95rem;font-weight:700;color:var(--green);margin-bottom:18px;text-transform:uppercase;text-decoration:underline;text-underline-offset:4px;letter-spacing:.5px}
-        .pdj-bloc-item{font-family:Montserrat,sans-serif;font-size:.92rem;font-weight:700;color:var(--text);margin-bottom:8px;letter-spacing:.3px}
-        .pdj-sep-line{color:var(--text);opacity:.3;margin:28px 0;font-size:.85rem;letter-spacing:3px;user-select:none}
-        .pdj-empty-msg{font-family:Montserrat,sans-serif;font-size:.9rem;font-weight:300;color:rgba(0,0,0,.4);font-style:italic}
+        /* Hidden by default, shown on nav click */
+        .plat-du-jour{
+            display:none;
+            background:var(--cream);
+            color:var(--text);
+            padding:80px 60px;
+            text-align:center;
+            position:relative;
+            max-width:900px;
+            margin:0 auto;
+        }
+        .plat-du-jour.pdj-visible{display:block}
+        .pdj-main-title{
+            font-family:'Cormorant Garamond',serif;
+            font-size:2.8rem;
+            font-weight:300;
+            color:var(--green);
+            text-decoration:underline;
+            text-underline-offset:8px;
+            text-decoration-color:var(--gold);
+            letter-spacing:4px;
+            margin-bottom:8px;
+        }
+        .pdj-date-line{
+            font-family:'Cormorant Garamond',serif;
+            font-size:1.1rem;
+            color:var(--text);
+            margin-bottom:50px;
+            font-weight:300;
+            letter-spacing:2px;
+        }
+        .pdj-bloc{margin-bottom:35px}
+        .pdj-bloc-header{
+            font-family:'Cormorant Garamond',serif;
+            font-size:1.3rem;
+            font-weight:600;
+            color:var(--green);
+            margin-bottom:22px;
+            text-transform:uppercase;
+            text-decoration:underline;
+            text-underline-offset:5px;
+            text-decoration-color:var(--gold);
+            letter-spacing:1.5px;
+        }
+        .pdj-bloc-item{
+            font-family:'Montserrat',sans-serif;
+            font-size:.95rem;
+            font-weight:600;
+            color:var(--text);
+            margin-bottom:10px;
+            letter-spacing:.3px;
+        }
+        .pdj-sep-line{
+            color:var(--text);
+            opacity:.25;
+            margin:30px 0;
+            font-size:.85rem;
+            letter-spacing:3px;
+            user-select:none;
+        }
+        .pdj-empty-msg{
+            font-family:'Cormorant Garamond',serif;
+            font-size:1.1rem;
+            font-weight:300;
+            color:rgba(0,0,0,.4);
+            font-style:italic;
+        }
         .pdj-nav-link{color:var(--gold)!important;font-weight:400!important}
         /* Admin trigger button */
         .pdj-admin-trigger{position:fixed;bottom:20px;left:20px;width:44px;height:44px;background:var(--green);border:1px solid var(--gold);border-radius:50%;cursor:pointer;z-index:9999;display:none;align-items:center;justify-content:center;transition:all .3s ease;box-shadow:0 2px 15px rgba(0,0,0,.2)}
@@ -1173,7 +1232,7 @@
         .plat-du-jour.pdj-editing{outline:2px dashed var(--gold);outline-offset:-2px}
         @media(max-width:768px){
             .plat-du-jour{padding:50px 20px}
-            .pdj-main-title{font-size:1.2rem}
+            .pdj-main-title{font-size:1.8rem}
             .pdj-panel{width:100%;right:-100%}
             .pdj-modal{padding:25px}
         }
@@ -1366,7 +1425,7 @@
 
         <!-- ===== PLAT DU JOUR ===== -->
     <section class="plat-du-jour" id="plat-du-jour">
-        <div class="pdj-main-title" id="pdjMainTitle">PLAT DU JOUR</div>
+        <div class="pdj-main-title">PLAT DU JOUR</div>
         <div class="pdj-date-line" id="pdjDate"></div>
         <div id="pdjBreakfast" class="pdj-bloc" style="display:none">
             <div class="pdj-bloc-header" id="pdjBreakfastHeader"></div>
@@ -1405,7 +1464,6 @@
     </div>
 
     <!-- ══ Panneau d'édition LIVE Plat du Jour ══ -->
-    
     <!-- Panneau edition LIVE Plat du Jour -->
     <div class="pdj-panel-overlay" id="pdjPanelOverlay"></div>
     <div class="pdj-panel" id="pdjPanel">
@@ -1416,36 +1474,27 @@
       </div>
       <div class="pdj-panel-body">
         <div class="pdj-edit-bloc active" id="pdjEditBreakfast">
-          <div class="pdj-edit-bloc-head">
-            <span>&#9749; Petit-déjeuner</span>
-            <div class="pdj-toggle on" data-section="breakfast"></div>
-          </div>
+          <div class="pdj-edit-bloc-head"><span>&#9749; Petit-déjeuner</span><div class="pdj-toggle on" data-section="breakfast"></div></div>
           <div class="pdj-edit-bloc-content">
             <label>Titre de section</label>
             <input type="text" id="pdjInBreakfastHeader" value="PETIT DÉJEUNER À PARTIR DE 7h00 :" placeholder="PETIT DÉJEUNER À PARTIR DE 7h00 :">
             <label>Articles (un par ligne : nom + prix)</label>
             <textarea id="pdjInBreakfastItems" placeholder="croissant : 2€&#10;pain, beurre et confiture : 3.50€&#10;sandwich mixte (jambon, salade, fromage, tomate) : 6.90€"></textarea>
-            <div class="pdj-hint">Tapez un article par ligne, le prix en fin de ligne</div>
+            <div class="pdj-hint">Un article par ligne, prix en fin de ligne</div>
           </div>
         </div>
         <div class="pdj-edit-bloc active" id="pdjEditLunch">
-          <div class="pdj-edit-bloc-head">
-            <span>&#127860; Plats du jour</span>
-            <div class="pdj-toggle on" data-section="lunch"></div>
-          </div>
+          <div class="pdj-edit-bloc-head"><span>&#127860; Plats du jour</span><div class="pdj-toggle on" data-section="lunch"></div></div>
           <div class="pdj-edit-bloc-content">
             <label>Titre de section</label>
             <input type="text" id="pdjInLunchHeader" value="PLAT DU JOUR-DÉJEUNER À PARTIR DE 11h30:" placeholder="PLAT DU JOUR-DÉJEUNER À PARTIR DE 11h30:">
             <label>Articles (un par ligne)</label>
             <textarea id="pdjInLunchItems" placeholder="SALTIMBOCCA DE PORC jambon cru, sauge (frite, salade) 21.00 €&#10;BLANQUETTE DE VEAU &amp; RIZ 23.00 €"></textarea>
-            <div class="pdj-hint">Tapez un article par ligne, le prix en fin de ligne</div>
+            <div class="pdj-hint">Un article par ligne, prix en fin de ligne</div>
           </div>
         </div>
         <div class="pdj-edit-bloc active" id="pdjEditDessert">
-          <div class="pdj-edit-bloc-head">
-            <span>&#127856; Dessert</span>
-            <div class="pdj-toggle on" data-section="dessert"></div>
-          </div>
+          <div class="pdj-edit-bloc-head"><span>&#127856; Dessert</span><div class="pdj-toggle on" data-section="dessert"></div></div>
           <div class="pdj-edit-bloc-content">
             <label>Titre de section</label>
             <input type="text" id="pdjInDessertHeader" value="DESSERT :" placeholder="DESSERT :">
@@ -2255,6 +2304,7 @@
   var fDeH=document.getElementById('pdjInDessertHeader');
   var fDeI=document.getElementById('pdjInDessertItems');
   var toggles=document.querySelectorAll('.pdj-toggle');
+  var pdjNavLink=document.querySelector('.pdj-nav-link');
   var isAdmin=window.location.search.indexOf('admin')!==-1;
   var isLoggedIn=false;
   var backupData=null;
@@ -2265,6 +2315,19 @@
     var s=document.createElement('script');s.src='https://www.gstatic.com/firebasejs/9.23.0/firebase-app-compat.js';
     s.onload=function(){var s2=document.createElement('script');s2.src='https://www.gstatic.com/firebasejs/9.23.0/firebase-database-compat.js';
     s2.onload=function(){firebase.initializeApp(FIREBASE_CONFIG);db=firebase.database();cb();};document.head.appendChild(s2);};document.head.appendChild(s);
+  }
+
+  /* Toggle section visibility on nav click */
+  if(pdjNavLink){
+    pdjNavLink.addEventListener('click',function(e){
+      e.preventDefault();
+      if(section.classList.contains('pdj-visible')){
+        section.classList.remove('pdj-visible');
+      }else{
+        section.classList.add('pdj-visible');
+        setTimeout(function(){section.scrollIntoView({behavior:'smooth',block:'start'});},50);
+      }
+    });
   }
 
   function setDate(){
@@ -2325,17 +2388,28 @@
     });
   });
 
-  function openPanel(){
-    var raw=localStorage.getItem('bdnplatdujour');
-    backupData=raw?JSON.parse(raw):null;
-    var d=backupData||{};
+  function fillPanelFromData(d){
+    d=d||{};
     fBkH.value=d.breakfastHeader||'PETIT DÉJEUNER À PARTIR DE 7h00 :';
     fBkI.value=d.breakfastItems||'';
     fLuH.value=d.lunchHeader||'PLAT DU JOUR-DÉJEUNER À PARTIR DE 11h30:';
     fLuI.value=d.lunchItems||'';
     fDeH.value=d.dessertHeader||'DESSERT :';
     fDeI.value=d.dessertItems||'';
-    toggles.forEach(function(t){var sec=t.getAttribute('data-section');var on=d[sec+'On']!==false;t.classList.toggle('on',on);t.closest('.pdj-edit-bloc').classList.toggle('active',on);});
+    toggles.forEach(function(t){
+      var sec=t.getAttribute('data-section');
+      var on=d[sec+'On']!==false;
+      t.classList.toggle('on',on);
+      t.closest('.pdj-edit-bloc').classList.toggle('active',on);
+    });
+  }
+
+  function openPanel(){
+    var raw=localStorage.getItem('bdnplatdujour');
+    backupData=raw?JSON.parse(raw):null;
+    fillPanelFromData(backupData);
+    /* Ensure section visible for editing */
+    if(section&&!section.classList.contains('pdj-visible'))section.classList.add('pdj-visible');
     if(section){section.scrollIntoView({behavior:'smooth',block:'center'});setTimeout(function(){section.classList.add('pdj-editing');},400);}
     panel.classList.add('open');overlay.classList.add('active');
     setTimeout(function(){fBkI.focus();},500);
@@ -2345,7 +2419,10 @@
     panel.classList.remove('open');overlay.classList.remove('active');
     if(section)section.classList.remove('pdj-editing');
     statusEl.className='pdj-panel-status';statusEl.style.display='none';
-    if(restore)renderPdj(backupData);
+    if(restore){
+      renderPdj(backupData);
+      fillPanelFromData(backupData);
+    }
   }
 
   document.getElementById('pdjPanelClose').addEventListener('click',function(){closePanel(true);});
