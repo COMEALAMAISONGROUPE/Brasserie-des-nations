@@ -1101,199 +1101,74 @@
         }
     
         /* ===== PLAT DU JOUR ===== */
-        .plat-du-jour {
-            background: var(--green);
-            color: var(--cream);
-            padding: 80px 60px;
-            text-align: center;
-            position: relative;
-            overflow: hidden;
-        }
-        .plat-du-jour::before {
-            content: '';
-            position: absolute;
-            top: 0; left: 0; right: 0; bottom: 0;
-            background: radial-gradient(ellipse at center, rgba(201,169,97,0.08) 0%, transparent 70%);
-            pointer-events: none;
-        }
-        .plat-du-jour .pdj-label {
-            font-family: 'Montserrat', sans-serif;
-            font-size: 0.75rem;
-            letter-spacing: 5px;
-            text-transform: uppercase;
-            color: var(--gold);
-            margin-bottom: 10px;
-            font-weight: 400;
-        }
-        .plat-du-jour .pdj-date {
-            font-family: 'Montserrat', sans-serif;
-            font-size: 0.7rem;
-            letter-spacing: 3px;
-            text-transform: uppercase;
-            color: rgba(245,243,239,0.5);
-            margin-bottom: 25px;
-            font-weight: 300;
-        }
-        .plat-du-jour h2 {
-            font-family: 'Cormorant Garamond', serif;
-            font-size: 3.5rem;
-            font-weight: 300;
-            color: white;
-            margin-bottom: 20px;
-            letter-spacing: 2px;
-        }
-        .plat-du-jour .pdj-desc {
-            font-family: 'Montserrat', sans-serif;
-            font-size: 0.95rem;
-            font-weight: 300;
-            color: rgba(245,243,239,0.8);
-            max-width: 600px;
-            margin: 0 auto 25px auto;
-            line-height: 1.8;
-        }
-        .plat-du-jour .pdj-price {
-            font-family: 'Cormorant Garamond', serif;
-            font-size: 2rem;
-            color: var(--gold);
-            font-weight: 600;
-        }
-        .plat-du-jour .pdj-divider {
-            width: 60px;
-            height: 1px;
-            background: var(--gold);
-            margin: 20px auto;
-            opacity: 0.5;
-        }
-        .plat-du-jour .pdj-empty {
-            font-family: 'Montserrat', sans-serif;
-            font-size: 0.9rem;
-            font-weight: 300;
-            color: rgba(245,243,239,0.5);
-            font-style: italic;
-        }
-        .pdj-nav-link {
-            color: var(--gold) !important;
-            font-weight: 400 !important;
-        }
-        /* Admin trigger button */
-        .pdj-admin-trigger {
-            position: fixed;
-            bottom: 20px;
-            left: 20px;
-            width: 44px;
-            height: 44px;
-            background: var(--green);
-            border: 1px solid var(--gold);
-            border-radius: 50%;
-            cursor: pointer;
-            z-index: 9999;
-            display: none;
-            align-items: center;
-            justify-content: center;
-            transition: all 0.3s ease;
-            box-shadow: 0 2px 15px rgba(0,0,0,0.2);
-        }
-        .pdj-admin-trigger:hover {
-            background: var(--gold);
-            transform: scale(1.1);
-        }
-        .pdj-admin-trigger svg {
-            width: 20px;
-            height: 20px;
-            fill: var(--gold);
-            transition: fill 0.3s;
-        }
-        .pdj-admin-trigger:hover svg { fill: var(--green); }
-        /* Admin Modals */
-        .pdj-modal-overlay {
-            display: none;
-            position: fixed;
-            top: 0; left: 0; right: 0; bottom: 0;
-            background: rgba(0,0,0,0.7);
-            z-index: 10000;
-            align-items: center;
-            justify-content: center;
-            backdrop-filter: blur(5px);
-        }
-        .pdj-modal-overlay.active { display: flex; }
-        .pdj-modal {
-            background: var(--cream);
-            border-radius: 12px;
-            padding: 40px;
-            max-width: 500px;
-            width: 90%;
-            position: relative;
-            box-shadow: 0 20px 60px rgba(0,0,0,0.3);
-        }
-        .pdj-modal h3 {
-            font-family: 'Cormorant Garamond', serif;
-            font-size: 1.8rem;
-            color: var(--green);
-            margin-bottom: 25px;
-            text-align: center;
-        }
-        .pdj-modal label {
-            display: block;
-            font-size: 0.75rem;
-            letter-spacing: 2px;
-            text-transform: uppercase;
-            color: var(--text);
-            margin-bottom: 6px;
-            font-weight: 400;
-        }
-        .pdj-modal input,
-        .pdj-modal textarea {
-            width: 100%;
-            padding: 12px 15px;
-            border: 1px solid rgba(0,0,0,0.1);
-            border-radius: 6px;
-            font-family: 'Montserrat', sans-serif;
-            font-size: 0.9rem;
-            margin-bottom: 18px;
-            background: white;
-            color: var(--text);
-            transition: border-color 0.3s;
-        }
-        .pdj-modal input:focus,
-        .pdj-modal textarea:focus {
-            outline: none;
-            border-color: var(--gold);
-        }
-        .pdj-modal textarea { resize: vertical; min-height: 80px; }
-        .pdj-modal-btns { display: flex; gap: 12px; margin-top: 10px; }
-        .pdj-modal-btns button {
-            flex: 1;
-            padding: 12px;
-            border: none;
-            border-radius: 6px;
-            font-family: 'Montserrat', sans-serif;
-            font-size: 0.8rem;
-            letter-spacing: 1px;
-            text-transform: uppercase;
-            cursor: pointer;
-            transition: all 0.3s;
-        }
-        .pdj-btn-save { background: var(--green); color: white; }
-        .pdj-btn-save:hover { background: #2a5e1a; }
-        .pdj-btn-cancel { background: transparent; border: 1px solid rgba(0,0,0,0.15) !important; color: var(--text); }
-        .pdj-btn-cancel:hover { background: rgba(0,0,0,0.05); }
-        .pdj-btn-clear { background: #c0392b; color: white; flex: 0.5; }
-        .pdj-btn-clear:hover { background: #e74c3c; }
-        .pdj-close {
-            position: absolute; top: 15px; right: 20px;
-            background: none; border: none; font-size: 1.5rem;
-            cursor: pointer; color: var(--text); opacity: 0.5; transition: opacity 0.3s;
-        }
-        .pdj-close:hover { opacity: 1; }
-        .pdj-login-msg { text-align: center; font-size: 0.8rem; color: #c0392b; margin-top: -10px; margin-bottom: 15px; display: none; }
-        .pdj-status { text-align: center; font-size: 0.8rem; padding: 8px; border-radius: 4px; margin-top: 10px; display: none; }
-        .pdj-status.success { display: block; background: #d4edda; color: #155724; }
-        .pdj-status.error { display: block; background: #f8d7da; color: #721c24; }
-        @media (max-width: 768px) {
-            .plat-du-jour { padding: 60px 25px; }
-            .plat-du-jour h2 { font-size: 2.2rem; }
-            .pdj-modal { padding: 25px; }
-        }
+        .plat-du-jour{display:none;background:var(--green);color:var(--cream);padding:80px 60px;text-align:center;position:relative;overflow:hidden}
+        .plat-du-jour::before{content:'';position:absolute;top:0;left:0;right:0;bottom:0;background:radial-gradient(ellipse at center,rgba(201,169,97,0.08) 0%,transparent 70%);pointer-events:none}
+        .plat-du-jour.pdj-visible{display:block}
+        .plat-du-jour .pdj-label{font-family:'Montserrat',sans-serif;font-size:0.75rem;letter-spacing:5px;text-transform:uppercase;color:var(--gold);margin-bottom:10px;font-weight:400}
+        .plat-du-jour .pdj-date{font-family:'Montserrat',sans-serif;font-size:0.7rem;letter-spacing:3px;text-transform:uppercase;color:rgba(245,243,239,0.5);margin-bottom:25px;font-weight:300}
+        .plat-du-jour .pdj-divider{width:60px;height:1px;background:var(--gold);margin:20px auto;opacity:0.5}
+        .plat-du-jour .pdj-empty{font-family:'Montserrat',sans-serif;font-size:0.9rem;font-weight:300;color:rgba(245,243,239,0.5);font-style:italic}
+        .pdj-bloc{margin-bottom:35px}
+        .pdj-bloc-header{font-family:'Cormorant Garamond',serif;font-size:1.3rem;font-weight:600;color:var(--gold);margin-bottom:22px;text-transform:uppercase;letter-spacing:1.5px}
+        .pdj-bloc-item{font-family:'Montserrat',sans-serif;font-size:0.95rem;font-weight:300;color:rgba(245,243,239,0.85);margin-bottom:10px;letter-spacing:0.3px}
+        .pdj-sep-line{color:rgba(245,243,239,0.25);opacity:0.25;margin:30px 0;font-size:0.85rem;letter-spacing:3px;user-select:none}
+        .pdj-nav-link{color:var(--gold)!important;font-weight:400!important}
+        .pdj-admin-trigger{position:fixed;bottom:20px;left:20px;width:44px;height:44px;background:var(--green);border:1px solid var(--gold);border-radius:50%;cursor:pointer;z-index:9999;display:none;align-items:center;justify-content:center;transition:all 0.3s ease;box-shadow:0 2px 15px rgba(0,0,0,0.2)}
+        .pdj-admin-trigger:hover{background:var(--gold);transform:scale(1.1)}
+        .pdj-admin-trigger svg{width:20px;height:20px;fill:var(--gold);transition:fill 0.3s}
+        .pdj-admin-trigger:hover svg{fill:var(--green)}
+        .pdj-modal-overlay{display:none;position:fixed;top:0;left:0;right:0;bottom:0;background:rgba(0,0,0,0.7);z-index:10000;align-items:center;justify-content:center;backdrop-filter:blur(5px)}
+        .pdj-modal-overlay.active{display:flex}
+        .pdj-modal{background:var(--cream);border-radius:12px;padding:40px;max-width:500px;width:90%;position:relative;box-shadow:0 20px 60px rgba(0,0,0,0.3)}
+        .pdj-modal h3{font-family:'Cormorant Garamond',serif;font-size:1.8rem;color:var(--green);margin-bottom:25px;text-align:center}
+        .pdj-modal label{display:block;font-size:0.75rem;letter-spacing:2px;text-transform:uppercase;color:var(--text);margin-bottom:6px;font-weight:400}
+        .pdj-modal input{width:100%;padding:12px 15px;border:1px solid rgba(0,0,0,0.1);border-radius:6px;font-family:'Montserrat',sans-serif;font-size:0.9rem;margin-bottom:18px;background:#fff;color:var(--text);transition:border-color 0.3s;box-sizing:border-box}
+        .pdj-modal input:focus{outline:none;border-color:var(--gold)}
+        .pdj-modal-btns{display:flex;gap:12px;margin-top:10px}
+        .pdj-modal-btns button{flex:1;padding:12px;border:none;border-radius:6px;font-family:'Montserrat',sans-serif;font-size:0.8rem;letter-spacing:1px;text-transform:uppercase;cursor:pointer;transition:all 0.3s}
+        .pdj-btn-save{background:var(--green);color:#fff}.pdj-btn-save:hover{background:#2a5e1a}
+        .pdj-btn-cancel{background:transparent;border:1px solid rgba(0,0,0,0.15)!important;color:var(--text)}
+        .pdj-close{position:absolute;top:15px;right:20px;background:none;border:none;font-size:1.5rem;cursor:pointer;color:var(--text);opacity:0.5;transition:opacity 0.3s}.pdj-close:hover{opacity:1}
+        .pdj-login-msg{text-align:center;font-size:0.8rem;color:#c0392b;margin-top:-10px;margin-bottom:15px;display:none}
+        .pdj-panel{position:fixed;top:0;right:-500px;width:480px;height:100vh;background:var(--cream);z-index:10001;box-shadow:-8px 0 40px rgba(0,0,0,.25);transition:right .45s cubic-bezier(.16,1,.3,1);display:flex;flex-direction:column;font-family:'Montserrat',sans-serif}
+        .pdj-panel.open{right:0}
+        .pdj-panel-head{padding:20px 24px 14px;border-bottom:1px solid rgba(0,0,0,.08);display:flex;align-items:center;justify-content:space-between;flex-shrink:0}
+        .pdj-panel-head h3{font-family:'Cormorant Garamond',serif;font-size:1.4rem;color:var(--green);margin:0;display:flex;align-items:center;gap:10px}
+        .pdj-live-dot{width:8px;height:8px;border-radius:50%;background:#27ae60;display:inline-block;animation:livePulse 1.5s ease-in-out infinite}
+        @keyframes livePulse{0%,100%{opacity:1}50%{opacity:.4}}
+        .pdj-live-tag{font-size:.55rem;letter-spacing:2px;text-transform:uppercase;color:#27ae60;font-weight:600}
+        .pdj-panel-close{background:none;border:none;font-size:1.6rem;cursor:pointer;color:var(--text);opacity:.5;transition:opacity .3s;padding:0}.pdj-panel-close:hover{opacity:1}
+        .pdj-panel-body{flex:1;overflow-y:auto;padding:20px 24px}
+        .pdj-panel-body::-webkit-scrollbar{width:4px}
+        .pdj-panel-body::-webkit-scrollbar-thumb{background:var(--gold);border-radius:4px}
+        .pdj-master-toggle{display:flex;align-items:center;justify-content:space-between;padding:14px 16px;margin-bottom:20px;background:rgba(26,61,15,.06);border:1px solid rgba(26,61,15,.12);border-radius:10px}
+        .pdj-master-toggle span{font-family:'Cormorant Garamond',serif;font-size:1.1rem;font-weight:600;color:var(--green);letter-spacing:1px}
+        .pdj-master-toggle .pdj-toggle{width:48px;height:26px}.pdj-master-toggle .pdj-toggle:after{width:22px;height:22px}.pdj-master-toggle .pdj-toggle.on:after{left:24px}
+        .pdj-toggle{position:relative;width:40px;height:22px;background:#ccc;border-radius:11px;cursor:pointer;transition:background .3s;flex-shrink:0}
+        .pdj-toggle.on{background:var(--gold)}
+        .pdj-toggle:after{content:'';position:absolute;top:2px;left:2px;width:18px;height:18px;background:#fff;border-radius:50%;transition:left .3s}
+        .pdj-toggle.on:after{left:20px}
+        .pdj-edit-bloc{margin-bottom:20px;padding:16px;background:rgba(0,0,0,.02);border:1px solid rgba(0,0,0,.06);border-radius:8px;transition:opacity .3s}
+        .pdj-edit-bloc.disabled{opacity:.4;pointer-events:none}
+        .pdj-edit-bloc-head{display:flex;align-items:center;justify-content:space-between;margin-bottom:12px}
+        .pdj-edit-bloc-head span{font-size:.7rem;letter-spacing:2px;text-transform:uppercase;font-weight:600;color:var(--green)}
+        .pdj-edit-bloc-content{display:none}
+        .pdj-edit-bloc.active .pdj-edit-bloc-content{display:block}
+        .pdj-edit-bloc label{display:block;font-size:.62rem;letter-spacing:1.5px;text-transform:uppercase;color:#888;margin-bottom:4px;font-weight:500}
+        .pdj-edit-bloc input[type="text"],.pdj-edit-bloc textarea{width:100%;padding:9px 12px;border:1px solid rgba(0,0,0,.1);border-radius:5px;font-family:'Montserrat',sans-serif;font-size:.82rem;background:#fff;color:var(--text);transition:border-color .3s;box-sizing:border-box;margin-bottom:10px}
+        .pdj-edit-bloc input:focus,.pdj-edit-bloc textarea:focus{outline:none;border-color:var(--gold)}
+        .pdj-edit-bloc textarea{resize:vertical;min-height:90px;line-height:1.8}
+        .pdj-edit-bloc .pdj-hint{font-size:.6rem;color:#999;margin-top:-6px;margin-bottom:8px;font-style:italic}
+        .pdj-panel-status{text-align:center;font-size:.75rem;padding:8px;border-radius:4px;margin:0 24px 8px;display:none}
+        .pdj-panel-status.success{display:block;background:#d4edda;color:#155724}
+        .pdj-panel-footer{padding:14px 24px 18px;border-top:1px solid rgba(0,0,0,.08);display:flex;gap:10px;flex-shrink:0;flex-wrap:wrap}
+        .pdj-panel-footer button{flex:1;padding:11px;border:none;border-radius:6px;font-family:'Montserrat',sans-serif;font-size:.75rem;letter-spacing:1px;text-transform:uppercase;cursor:pointer;transition:all .3s;font-weight:500}
+        .pdj-pbtn-save{background:var(--green);color:#fff}.pdj-pbtn-save:hover{background:#2a5e1a}
+        .pdj-pbtn-cancel{background:transparent;border:1px solid rgba(0,0,0,.15)!important;color:var(--text)}.pdj-pbtn-cancel:hover{background:rgba(0,0,0,.05)}
+        .pdj-pbtn-clear{background:#c0392b;color:#fff;flex:.4!important}.pdj-pbtn-clear:hover{background:#e74c3c}
+        .pdj-panel-overlay{display:none;position:fixed;inset:0;background:rgba(0,0,0,.25);z-index:10000}.pdj-panel-overlay.active{display:block}
+        .plat-du-jour.pdj-editing{outline:2px dashed var(--gold);outline-offset:-2px}
+        @media(max-width:768px){.plat-du-jour{padding:60px 25px}.pdj-modal{padding:25px}.pdj-panel{width:100%;right:-100%}}
 
     </style>
 </head>
@@ -1487,10 +1362,20 @@
         <div class="pdj-label">✦ Plat du Jour ✦</div>
         <div class="pdj-date" id="pdjDate"></div>
         <div class="pdj-divider"></div>
-        <h2 id="pdjTitle">—</h2>
-        <p class="pdj-desc" id="pdjDesc"></p>
-        <div class="pdj-price" id="pdjPrice"></div>
-        <p class="pdj-empty" id="pdjEmpty" style="display:none;">Le plat du jour sera annoncé prochainement.</p>
+        <div id="pdjBreakfast" class="pdj-bloc" style="display:none">
+            <div class="pdj-bloc-header" id="pdjBreakfastHeader"></div>
+            <div class="pdj-bloc-items" id="pdjBreakfastItems"></div>
+        </div>
+        <div class="pdj-sep-line" id="pdjSep1" style="display:none">--------------------------------</div>
+        <div id="pdjLunch" class="pdj-bloc" style="display:none">
+            <div class="pdj-bloc-header" id="pdjLunchHeader"></div>
+            <div class="pdj-bloc-items" id="pdjLunchItems"></div>
+        </div>
+        <div id="pdjDessert" class="pdj-bloc" style="display:none">
+            <div class="pdj-bloc-header" id="pdjDessertHeader"></div>
+            <div class="pdj-bloc-items" id="pdjDessertItems"></div>
+        </div>
+        <p class="pdj-empty" id="pdjEmpty">Le plat du jour sera annoncé prochainement.</p>
     </section>
 
     <!-- Bouton Admin (visible uniquement avec ?admin dans l'URL) -->
@@ -1512,25 +1397,54 @@
             </div>
         </div>
     </div>
-
-    <!-- Modal Édition Plat du Jour -->
-    <div class="pdj-modal-overlay" id="pdjEditModal">
-        <div class="pdj-modal">
-            <button class="pdj-close" onclick="closePdjModals()">&times;</button>
-            <h3>Modifier le Plat du Jour</h3>
-            <label for="pdjEditTitle">Nom du plat</label>
-            <input type="text" id="pdjEditTitle" placeholder="Ex : Bouchée à la Reine">
-            <label for="pdjEditDesc">Description</label>
-            <textarea id="pdjEditDesc" placeholder="Ex : Servie avec riz sauvage et légumes de saison"></textarea>
-            <label for="pdjEditPrice">Prix</label>
-            <input type="text" id="pdjEditPrice" placeholder="Ex : 18,50 €">
-            <div class="pdj-status" id="pdjStatus"></div>
-            <div class="pdj-modal-btns">
-                <button class="pdj-btn-clear" onclick="pdjClear()">Effacer</button>
-                <button class="pdj-btn-cancel" onclick="closePdjModals()">Annuler</button>
-                <button class="pdj-btn-save" onclick="pdjSave()">Enregistrer</button>
-            </div>
+    <div class="pdj-panel-overlay" id="pdjPanelOverlay"></div>
+    <div class="pdj-panel" id="pdjPanel">
+      <div class="pdj-panel-head">
+        <h3><span class="pdj-live-dot"></span> Plat du Jour</h3>
+        <span class="pdj-live-tag">&#9679; LIVE</span>
+        <button class="pdj-panel-close" id="pdjPanelClose">&times;</button>
+      </div>
+      <div class="pdj-panel-body">
+        <div class="pdj-master-toggle">
+          <span>&#127869; Menu du Jour</span>
+          <div class="pdj-toggle on" id="pdjMasterToggle" data-section="master"></div>
         </div>
+        <div class="pdj-edit-bloc active" data-bloc="breakfast">
+          <div class="pdj-edit-bloc-head"><span>&#9749; Petit-déjeuner</span><div class="pdj-toggle on" data-section="breakfast"></div></div>
+          <div class="pdj-edit-bloc-content">
+            <label>Titre de section</label>
+            <input type="text" id="pdjInBreakfastHeader" placeholder="PETIT DÉJEUNER À PARTIR DE 7h00 :">
+            <label>Articles (un par ligne : nom + prix)</label>
+            <textarea id="pdjInBreakfastItems" placeholder="croissant : 2€&#10;pain, beurre et confiture : 3.50€&#10;sandwich mixte (jambon, salade, fromage, tomate) : 6.90 €"></textarea>
+            <div class="pdj-hint">Un article par ligne, prix en fin de ligne</div>
+          </div>
+        </div>
+        <div class="pdj-edit-bloc active" data-bloc="lunch">
+          <div class="pdj-edit-bloc-head"><span>&#127860; Plats du jour</span><div class="pdj-toggle on" data-section="lunch"></div></div>
+          <div class="pdj-edit-bloc-content">
+            <label>Titre de section</label>
+            <input type="text" id="pdjInLunchHeader" placeholder="PLATS DU JOUR - DÉJEUNER À PARTIR DE 11h30">
+            <label>Articles (un par ligne)</label>
+            <textarea id="pdjInLunchItems" placeholder="SALTIMBOCCA DE PORC jambon cru, sauge (frite, salade) 21.00 €&#10;BLANQUETTE DE VEAU &amp; RIZ 23.00 €"></textarea>
+            <div class="pdj-hint">Un article par ligne, prix en fin de ligne</div>
+          </div>
+        </div>
+        <div class="pdj-edit-bloc active" data-bloc="dessert">
+          <div class="pdj-edit-bloc-head"><span>&#127856; Dessert</span><div class="pdj-toggle on" data-section="dessert"></div></div>
+          <div class="pdj-edit-bloc-content">
+            <label>Titre de section</label>
+            <input type="text" id="pdjInDessertHeader" placeholder="DESSERT :">
+            <label>Articles (un par ligne)</label>
+            <textarea id="pdjInDessertItems" placeholder="TIRAMISU : 8.00 €"></textarea>
+          </div>
+        </div>
+      </div>
+      <div class="pdj-panel-status" id="pdjPanelStatus"></div>
+      <div class="pdj-panel-footer">
+        <button class="pdj-pbtn-clear" id="pdjPanelClear">&#128465; Effacer</button>
+        <button class="pdj-pbtn-cancel" id="pdjPanelCancel">Annuler</button>
+        <button class="pdj-pbtn-save" id="pdjPanelSave">&#10003; Sauvegarder</button>
+      </div>
     </div>
 
     <!-- Manifesto -->
@@ -2293,40 +2207,33 @@
 
     <script>
     /* ═══════════════════════════════════════════════
-       PLAT DU JOUR — Administration
+       PLAT DU JOUR — Administration (Panel)
        ═══════════════════════════════════════════════ */
     (function(){
-        /* ── CONFIGURATION ── */
-        var ADMIN_PASSWORD = 'brasserie2026';
-
-        /* ── Firebase (optionnel, multi-appareils) ──
-           Mettez USE_FIREBASE = true et remplissez FIREBASE_CONFIG
-           pour que TOUS les visiteurs voient le plat du jour. */
         var USE_FIREBASE = false;
-        var FIREBASE_CONFIG = {
-            apiKey: "",
-            authDomain: "",
-            databaseURL: "",
-            projectId: ""
-        };
-        /* ════════════════════════════════════════════ */
-
+        var FIREBASE_CONFIG = {apiKey:'',authDomain:'',databaseURL:'',projectId:''};
+        var ADMIN_PASSWORD = 'brasserie2026';
         var db = null;
         var isAdmin = window.location.search.indexOf('admin') !== -1;
         var isLoggedIn = false;
+        var STORAGE_KEY = 'bdn_menu_du_jour';
 
-        var adminBtn = document.getElementById('pdjAdminBtn');
+        var adminBtn    = document.getElementById('pdjAdminBtn');
+        var panel       = document.getElementById('pdjPanel');
+        var panelOvl    = document.getElementById('pdjPanelOverlay');
+        var pdjSection  = document.querySelector('.plat-du-jour');
+
         if (isAdmin && adminBtn) adminBtn.style.display = 'flex';
 
-        /* Firebase init */
+        /* ── Firebase ── */
         function initFirebase(cb) {
             if (!USE_FIREBASE || !FIREBASE_CONFIG.apiKey) return cb();
             var s = document.createElement('script');
             s.src = 'https://www.gstatic.com/firebasejs/9.23.0/firebase-app-compat.js';
-            s.onload = function() {
+            s.onload = function(){
                 var s2 = document.createElement('script');
                 s2.src = 'https://www.gstatic.com/firebasejs/9.23.0/firebase-database-compat.js';
-                s2.onload = function() {
+                s2.onload = function(){
                     firebase.initializeApp(FIREBASE_CONFIG);
                     db = firebase.database();
                     cb();
@@ -2336,131 +2243,246 @@
             document.head.appendChild(s);
         }
 
-        /* Charger le plat du jour */
+        /* ── Load ── */
         function loadPdj() {
             if (USE_FIREBASE && db) {
-                db.ref('platDuJour').on('value', function(snap) { renderPdj(snap.val()); });
+                db.ref('menuDuJour').on('value', function(snap){ renderPdj(snap.val()); });
             } else {
-                var d = localStorage.getItem('bdn_plat_du_jour');
+                var d = localStorage.getItem(STORAGE_KEY);
                 renderPdj(d ? JSON.parse(d) : null);
             }
         }
 
-        /* Afficher */
+        /* ── Render ── */
         function renderPdj(data) {
-            var tEl = document.getElementById('pdjTitle');
-            var dEl = document.getElementById('pdjDesc');
-            var pEl = document.getElementById('pdjPrice');
             var dtEl = document.getElementById('pdjDate');
-            var eEl = document.getElementById('pdjEmpty');
+            var emptyEl = document.getElementById('pdjEmpty');
+            var bfBloc = document.getElementById('pdjBreakfast');
+            var luBloc = document.getElementById('pdjLunch');
+            var deBloc = document.getElementById('pdjDessert');
+            var sep1   = document.getElementById('pdjSep1');
 
+            // Date
             var now = new Date();
             var jrs = ['Dimanche','Lundi','Mardi','Mercredi','Jeudi','Vendredi','Samedi'];
-            var ms  = ['janvier','février','mars','avril','mai','juin','juillet','août','septembre','octobre','novembre','décembre'];
+            var ms  = ['Janvier','Février','Mars','Avril','Mai','Juin','Juillet','Août','Septembre','Octobre','Novembre','Décembre'];
             dtEl.textContent = jrs[now.getDay()] + ' ' + now.getDate() + ' ' + ms[now.getMonth()] + ' ' + now.getFullYear();
 
-            if (data && data.title && data.title.trim()) {
-                tEl.textContent = data.title;
-                dEl.textContent = data.description || '';
-                pEl.textContent = data.price || '';
-                tEl.style.display = '';
-                dEl.style.display = data.description ? '' : 'none';
-                pEl.style.display = data.price ? '' : 'none';
-                eEl.style.display = 'none';
+            // Reset
+            bfBloc.style.display = 'none';
+            luBloc.style.display = 'none';
+            deBloc.style.display = 'none';
+            sep1.style.display   = 'none';
+
+            if (!data || data.visible === false) {
+                pdjSection.classList.remove('pdj-visible');
+                emptyEl.style.display = '';
+                return;
+            }
+
+            var hasContent = false;
+
+            // Breakfast
+            if (data.breakfast && data.breakfast.on !== false && data.breakfast.items && data.breakfast.items.trim()) {
+                document.getElementById('pdjBreakfastHeader').textContent = data.breakfast.header || 'PETIT DÉJEUNER';
+                renderItems('pdjBreakfastItems', data.breakfast.items);
+                bfBloc.style.display = '';
+                hasContent = true;
+            }
+
+            // Lunch
+            if (data.lunch && data.lunch.on !== false && data.lunch.items && data.lunch.items.trim()) {
+                document.getElementById('pdjLunchHeader').textContent = data.lunch.header || 'PLATS DU JOUR';
+                renderItems('pdjLunchItems', data.lunch.items);
+                luBloc.style.display = '';
+                if (hasContent) sep1.style.display = '';
+                hasContent = true;
+            }
+
+            // Dessert
+            if (data.dessert && data.dessert.on !== false && data.dessert.items && data.dessert.items.trim()) {
+                document.getElementById('pdjDessertHeader').textContent = data.dessert.header || 'DESSERT';
+                renderItems('pdjDessertItems', data.dessert.items);
+                deBloc.style.display = '';
+                hasContent = true;
+            }
+
+            if (hasContent) {
+                pdjSection.classList.add('pdj-visible');
+                emptyEl.style.display = 'none';
             } else {
-                tEl.style.display = 'none';
-                dEl.style.display = 'none';
-                pEl.style.display = 'none';
-                eEl.style.display = '';
+                pdjSection.classList.add('pdj-visible');
+                emptyEl.style.display = '';
             }
         }
 
-        /* Sauvegarder */
+        function renderItems(containerId, text) {
+            var c = document.getElementById(containerId);
+            c.innerHTML = '';
+            var lines = text.split('\n');
+            for (var i = 0; i < lines.length; i++) {
+                var l = lines[i].trim();
+                if (!l) continue;
+                var div = document.createElement('div');
+                div.className = 'pdj-bloc-item';
+                div.textContent = l;
+                c.appendChild(div);
+            }
+        }
+
+        /* ── Save ── */
         function savePdj(data) {
             if (USE_FIREBASE && db) {
-                db.ref('platDuJour').set(data);
+                db.ref('menuDuJour').set(data);
             } else {
-                localStorage.setItem('bdn_plat_du_jour', JSON.stringify(data));
+                localStorage.setItem(STORAGE_KEY, JSON.stringify(data));
                 renderPdj(data);
             }
         }
 
-        /* Fermer modals */
+        /* ── Close everything ── */
         window.closePdjModals = function() {
             document.getElementById('pdjLoginModal').classList.remove('active');
-            document.getElementById('pdjEditModal').classList.remove('active');
-            document.getElementById('pdjLoginMsg').style.display = 'none';
-            var st = document.getElementById('pdjStatus');
-            st.className = 'pdj-status'; st.style.display = 'none';
+            panel.classList.remove('open');
+            panelOvl.classList.remove('active');
+            if (pdjSection) pdjSection.classList.remove('pdj-editing');
         };
 
-        /* Click admin */
-        if (adminBtn) {
-            adminBtn.addEventListener('click', function() {
-                if (isLoggedIn) { openEditModal(); }
-                else {
-                    document.getElementById('pdjLoginModal').classList.add('active');
-                    document.getElementById('pdjPassword').value = '';
-                    setTimeout(function(){ document.getElementById('pdjPassword').focus(); }, 100);
-                }
-            });
-        }
-
-        /* Login */
+        /* ── Login ── */
         window.pdjLogin = function() {
-            var pw = document.getElementById('pdjPassword').value;
-            if (pw === ADMIN_PASSWORD) {
+            var pwd = document.getElementById('pdjPassword').value;
+            if (pwd === ADMIN_PASSWORD) {
                 isLoggedIn = true;
-                closePdjModals();
-                openEditModal();
+                document.getElementById('pdjLoginModal').classList.remove('active');
+                openPanel();
             } else {
                 document.getElementById('pdjLoginMsg').style.display = 'block';
             }
         };
-        var pwF = document.getElementById('pdjPassword');
-        if (pwF) pwF.addEventListener('keydown', function(e) { if (e.key === 'Enter') pdjLogin(); });
 
-        /* Ouvrir l'éditeur */
-        function openEditModal() {
+        /* ── Open Panel ── */
+        function openPanel() {
             if (USE_FIREBASE && db) {
-                db.ref('platDuJour').once('value').then(function(snap) { fillForm(snap.val()); });
+                db.ref('menuDuJour').once('value').then(function(snap){ fillForm(snap.val()); });
             } else {
-                var r = localStorage.getItem('bdn_plat_du_jour');
+                var r = localStorage.getItem(STORAGE_KEY);
                 fillForm(r ? JSON.parse(r) : null);
             }
-        }
-        function fillForm(data) {
-            document.getElementById('pdjEditTitle').value = (data && data.title) || '';
-            document.getElementById('pdjEditDesc').value  = (data && data.description) || '';
-            document.getElementById('pdjEditPrice').value = (data && data.price) || '';
-            document.getElementById('pdjEditModal').classList.add('active');
-            setTimeout(function(){ document.getElementById('pdjEditTitle').focus(); }, 100);
+            panel.classList.add('open');
+            panelOvl.classList.add('active');
+            if (pdjSection) pdjSection.classList.add('pdj-editing');
         }
 
-        /* Enregistrer */
-        window.pdjSave = function() {
+        function fillForm(data) {
+            var mt = document.getElementById('pdjMasterToggle');
+            if (data && data.visible === false) mt.classList.remove('on');
+            else mt.classList.add('on');
+
+            var sections = ['breakfast','lunch','dessert'];
+            for (var i = 0; i < sections.length; i++) {
+                var s = sections[i];
+                var cap = s.charAt(0).toUpperCase() + s.slice(1);
+                var headerInput = document.getElementById('pdjIn' + cap + 'Header');
+                var itemsInput  = document.getElementById('pdjIn' + cap + 'Items');
+                var toggle = document.querySelector('[data-bloc="'+s+'"] [data-section="'+s+'"]');
+                if (data && data[s]) {
+                    if (headerInput) headerInput.value = data[s].header || '';
+                    if (itemsInput)  itemsInput.value  = data[s].items  || '';
+                    if (toggle) {
+                        if (data[s].on === false) toggle.classList.remove('on');
+                        else toggle.classList.add('on');
+                    }
+                } else {
+                    if (headerInput) headerInput.value = '';
+                    if (itemsInput)  itemsInput.value  = '';
+                    if (toggle) toggle.classList.add('on');
+                }
+            }
+        }
+
+        /* ── Admin button ── */
+        if (adminBtn) {
+            adminBtn.addEventListener('click', function(){
+                if (isLoggedIn) {
+                    openPanel();
+                } else {
+                    document.getElementById('pdjPassword').value = '';
+                    document.getElementById('pdjLoginMsg').style.display = 'none';
+                    document.getElementById('pdjLoginModal').classList.add('active');
+                }
+            });
+        }
+
+        /* ── Panel events ── */
+        document.getElementById('pdjPanelClose').addEventListener('click', closePdjModals);
+        document.getElementById('pdjPanelCancel').addEventListener('click', closePdjModals);
+        panelOvl.addEventListener('click', closePdjModals);
+
+        /* ── Master toggle ── */
+        document.getElementById('pdjMasterToggle').addEventListener('click', function(){
+            this.classList.toggle('on');
+            var blocs = document.querySelectorAll('.pdj-edit-bloc');
+            var disabled = !this.classList.contains('on');
+            for (var i = 0; i < blocs.length; i++) {
+                if (disabled) blocs[i].classList.add('disabled');
+                else blocs[i].classList.remove('disabled');
+            }
+        });
+
+        /* ── Section toggles ── */
+        var secToggles = document.querySelectorAll('.pdj-edit-bloc-head .pdj-toggle');
+        for (var t = 0; t < secToggles.length; t++) {
+            secToggles[t].addEventListener('click', function(){
+                this.classList.toggle('on');
+                var bloc = this.closest('.pdj-edit-bloc');
+                if (this.classList.contains('on')) bloc.classList.add('active');
+                else bloc.classList.remove('active');
+            });
+        }
+
+        /* ── Enter key on password ── */
+        document.getElementById('pdjPassword').addEventListener('keydown', function(e){
+            if (e.key === 'Enter') pdjLogin();
+        });
+
+        /* ── Save ── */
+        document.getElementById('pdjPanelSave').addEventListener('click', function(){
             var data = {
-                title: document.getElementById('pdjEditTitle').value.trim(),
-                description: document.getElementById('pdjEditDesc').value.trim(),
-                price: document.getElementById('pdjEditPrice').value.trim(),
+                visible: document.getElementById('pdjMasterToggle').classList.contains('on'),
+                breakfast: {
+                    on: document.querySelector('[data-section="breakfast"]').classList.contains('on'),
+                    header: document.getElementById('pdjInBreakfastHeader').value.trim(),
+                    items:  document.getElementById('pdjInBreakfastItems').value.trim()
+                },
+                lunch: {
+                    on: document.querySelector('[data-section="lunch"]').classList.contains('on'),
+                    header: document.getElementById('pdjInLunchHeader').value.trim(),
+                    items:  document.getElementById('pdjInLunchItems').value.trim()
+                },
+                dessert: {
+                    on: document.querySelector('[data-section="dessert"]').classList.contains('on'),
+                    header: document.getElementById('pdjInDessertHeader').value.trim(),
+                    items:  document.getElementById('pdjInDessertItems').value.trim()
+                },
                 updatedAt: new Date().toISOString()
             };
             savePdj(data);
-            var st = document.getElementById('pdjStatus');
-            st.textContent = '\u2713 Plat du jour mis \u00e0 jour !';
-            st.className = 'pdj-status success';
-            setTimeout(closePdjModals, 1500);
-        };
+            var st = document.getElementById('pdjPanelStatus');
+            st.textContent = '\u2713 Menu du jour mis à jour !';
+            st.className = 'pdj-panel-status success';
+            setTimeout(function(){ st.style.display = 'none'; st.className = 'pdj-panel-status'; closePdjModals(); }, 1500);
+        });
 
-        /* Effacer */
-        window.pdjClear = function() {
-            if (confirm('Effacer le plat du jour ?')) {
-                savePdj({title:'',description:'',price:'',updatedAt:new Date().toISOString()});
+        /* ── Clear ── */
+        document.getElementById('pdjPanelClear').addEventListener('click', function(){
+            if (confirm('Effacer tout le menu du jour ?')) {
+                savePdj(null);
+                localStorage.removeItem(STORAGE_KEY);
                 closePdjModals();
             }
-        };
+        });
 
-        /* Lancement */
+        /* ── Init ── */
         initFirebase(loadPdj);
     })();
     </script>
