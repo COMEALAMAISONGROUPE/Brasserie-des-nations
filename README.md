@@ -1,6 +1,6 @@
 # Brasserie des Nations
 
-Site vitrine officiel de la **Brasserie des Nations**, restaurant traditionnel luxembourgeois situe en plein coeur de Luxembourg-Ville.
+Site vitrine officiel de la **Brasserie des Nations**, restaurant traditionnel luxembourgeois depuis 1956, situe au coeur de Luxembourg-Ville.
 
 ## Apercu
 
@@ -12,47 +12,49 @@ Site vitrine officiel de la **Brasserie des Nations**, restaurant traditionnel l
 
 - HTML5 / CSS3
 - JavaScript vanilla
-- PWA (Progressive Web App) avec manifest.json et Service Worker
+- PWA (Progressive Web App) avec manifest.json
 - Heberge sur GitHub Pages
 
 ## Structure du projet
 
 ```
 /
-|-- index.html              # Page d'accueil principale
-|-- historique.html          # Page historique du restaurant
-|-- vin.html                 # Dictionnaire des vins
-|-- 404.html                 # Page d'erreur 404
-|-- sitemap.xml              # Plan du site SEO
-|-- robots.txt               # Directives pour les moteurs de recherche
-|-- manifest.json            # Manifest PWA
-|-- video-bg.mp4             # Video de fond hero
-|-- pages/                   # Sous-pages SEO thematiques
-|-- assets/images/           # Images organisees par categorie
-|-- css/                     # Feuilles de style
+|-- index.html                    # Page d'accueil principale
+|-- 404.html                      # Page d'erreur 404
+|-- manifest.json                 # Manifest PWA
+|-- sitemap.xml                   # Plan du site SEO
+|-- robots.txt                    # Directives moteurs de recherche
+|-- css/
+|   |-- style.css                 # Feuille de style principale
+|-- js/
+|   |-- script.js                 # Scripts et animations
+|-- assets/
+|   |-- video-bg.mp4              # Video de fond hero
+|   |-- images/
+|       |-- plats/                # Photos des plats
+|       |-- gallery/              # Photos galerie Instagram
+|       |-- ambiance/             # Photos ambiance restaurant
+|-- pages/
+|   |-- historique.html           # Page historique du restaurant
+|   |-- vin.html                  # Dictionnaire des vins
+|-- avis-brasserie-luxembourg/    # Page SEO - Avis clients
+|-- brasserie-des-nations-luxembourg/  # Page SEO - Judd mat Gaardebounen
+|-- brasserie-luxembourg/         # Page SEO - Bouchee a la Reine
+|-- brasserie-ville-haute-luxembourg/  # Page SEO - Cuisine Luxembourgeoise
+|-- cordon-bleu-luxembourg/       # Page SEO - Cordon Bleu
+|-- dejeuner-rapide-luxembourg/   # Page SEO - Dejeuner Rapide
+|-- menu-du-jour-luxembourg/      # Page SEO - Menu du Jour
+|-- restaurant-centre-ville-luxembourg/  # Page SEO - Restaurant Centre-Ville
+|-- restaurant-rue-philippe-ii-luxembourg/  # Page SEO - Restaurant Rue Philippe II
+|-- restaurant-typique-luxembourg/ # Page SEO - Restaurant Typique
+|-- specialites-luxembourgeoises-restaurant/  # Page SEO - Specialites
 ```
-
-## Pages SEO
-
-Chaque sous-dossier contient une page thematique optimisee pour le referencement :
-
-- `avis-brasserie-luxembourg` - Avis clients
-- `brasserie-des-nations-luxembourg` - Judd mat Gaardebounen
-- `brasserie-luxembourg` - Bouchee a la Reine
-- `brasserie-ville-haute-luxembourg` - Cuisine Luxembourgeoise
-- `cordon-bleu-luxembourg` - Cordon Bleu
-- `dejeuner-rapide-luxembourg` - Dejeuner Rapide
-- `menu-du-jour-luxembourg` - Menu du Jour
-- `restaurant-centre-ville-luxembourg` - Restaurant Centre-Ville
-- `restaurant-rue-philippe-ii-luxembourg` - Restaurant Rue Philippe II
-- `restaurant-typique-luxembourg` - Restaurant Typique
-- `specialites-luxembourgeoises-restaurant` - Specialites Luxembourgeoises
 
 ## Deploiement
 
 Le site est deploye automatiquement via **GitHub Pages** sur la branche `main`.
 
-URL : [https://comealamaisongroupe.github.io/Brasserie-des-nations/](https://comealamaisongroupe.github.io/Brasserie-des-nations/)
+URL : https://comealamaisongroupe.github.io/Brasserie-des-nations/
 
 ## Licence
 
