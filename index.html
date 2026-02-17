@@ -1328,16 +1328,10 @@
 
     <!-- Hero Section -->
     <section class="hero-video">
-                                <img id="heroPoster" src="616236754_178451091546706666_6126207275337013230_n.webp" alt="Brasserie des Nations - Terrasse historique" width="1920" height="1080" fetchpriority="high" decoding="async" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;z-index:0">
-            <!-- 2 vidéos côte à côte -->
-            <div class="hero-videos-wrap" aria-hidden="true">
-                <video class="hero-vid-half" muted loop playsinline preload="none">
-                    <source src="video-bg.mp4" type="video/mp4">
-                </video>
-                <video class="hero-vid-half" muted loop playsinline preload="none">
-                    <source src="video-bg.mp4" type="video/mp4">
-                </video>
-            </div>
+                    <img src="616236754_17845109154670666_6126207275337013230_n.webp" alt="Brasserie des Nations - Terrasse historique" width="1920" height="1080" fetchpriority="high" decoding="async" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;z-index:0;">
+        <video id="heroVid" muted loop playsinline poster="616236754_17845109154670666_6126207275337013230_n.webp" preload="none" fetchpriority="high" aria-hidden="true">
+            <source src="video-bg.mp4" type="video/mp4">
+        </video>
         <div class="hero-overlay go">
             
 
@@ -2071,9 +2065,6 @@
 /* ====== BURGER (hidden on desktop) ====== */
 .burger{display:none}.mob-drawer{display:none}.mob-overlay{display:none}
 
-                /* 2 VIDEOS HERO */
-.hero-videos-wrap{position:absolute;inset:0;display:flex;z-index:0}
-.hero-vid-half{flex:1;width:50%;height:100%;object-fit:cover;filter:brightness(0.7)}
 @media(max-width:768px){
   /* LOADER OFF */
   .loader{display:none!important}
@@ -2103,7 +2094,7 @@
   .mob-overlay.open{display:block}
 
   /* HERO: image only */
-  .hero-videos-wrap .hero-vid-half{display:block!important}
+  .hero-video video{display:none!important}
   .hero-facade{display:none!important}
   .scroll-indicator{display:none!important}
   .hero-video{height:75vh!important}
@@ -2501,28 +2492,6 @@
     attachLivePreview();initFirebase(loadPdj);
     })();
     </script>
-
-    <script>
-(function(){
-  function initHeroVideos(){
-    var vids=document.querySelectorAll('.hero-vid-half');
-    if(!vids.length)return;
-    var loaded=0;
-    vids.forEach(function(v){
-      v.addEventListener('canplay',function(){
-        loaded++;
-        if(loaded>=vids.length){
-          var poster=document.getElementById('heroPoster');
-          if(poster)poster.style.display='none';
-        }
-      },{once:true});
-      v.preload='auto';v.load();v.play().catch(function(){});
-    });
-  }
-  if(document.readyState==='complete')setTimeout(initHeroVideos,100);
-  else window.addEventListener('load',function(){setTimeout(initHeroVideos,100);});
-})();
-</script>
 
 </body>
 </html>
