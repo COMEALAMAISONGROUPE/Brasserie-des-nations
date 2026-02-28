@@ -39,6 +39,36 @@
     <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@300;400;500;600;700&family=Montserrat:wght@200;300;400;500&display=swap" rel="preload" as="style" onload="this.onload=null;this.rel='stylesheet'">
     <link rel="stylesheet" href="css/style.css">
     
+
+<style>
+/* Dual Hero Videos */
+.hero-video {
+  position: relative;
+  width: 100%;
+  height: 100vh;
+  overflow: hidden;
+}
+.hero-videos-container {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  z-index: 0;
+}
+.hero-videos-container video {
+  width: 50%;
+  height: 100%;
+  object-fit: cover;
+}
+@media (max-width: 768px) {
+  .hero-videos-container {
+    flex-direction: column;
+  }
+  .hero-videos-container video {
+    width: 100%;
+    height: 50%;
+  }
+}
+</style>
 </head>
 <body>
 <div class="site-wrap">
@@ -112,7 +142,37 @@
       },
     }
     </script>
-    </head>
+    
+<style>
+/* Dual Hero Videos */
+.hero-video {
+  position: relative;
+  width: 100%;
+  height: 100vh;
+  overflow: hidden;
+}
+.hero-videos-container {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  z-index: 0;
+}
+.hero-videos-container video {
+  width: 50%;
+  height: 100%;
+  object-fit: cover;
+}
+@media (max-width: 768px) {
+  .hero-videos-container {
+    flex-direction: column;
+  }
+  .hero-videos-container video {
+    width: 100%;
+    height: 50%;
+  }
+}
+</style>
+</head>
     <div class="site-wrap">
     <div class="golden-thread" style="display:none" id="goldenThread"></div>
     |
@@ -197,9 +257,10 @@
     <!-- Hero Section -->
     <section class="hero-video">
                     <img src="assets/images/gallery/616236754_17845109154670666_6126207275337013230_n.webp" alt="Brasserie des Nations - Terrasse historique" width="1920" height="1080" fetchpriority="high" decoding="async" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;z-index:0;">
-        <video id="heroVid" muted loop playsinline poster="assets/images/gallery/616236754_17845109154670666_6126207275337013230_n.webp" preload="none" fetchpriority="high" aria-hidden="true">
-            <source src="assets/video-bg.mp4" type="video/mp4">
-        </video>
+        <div class="hero-videos-container">
+<video muted loop playsinline autoplay preload="auto"><source src="rgregr.mp4" type="video/mp4"></video>
+<video muted loop playsinline autoplay preload="auto"><source src="etgergr.mp4" type="video/mp4"></video>
+</div>
         <div class="hero-overlay go">
             
 
