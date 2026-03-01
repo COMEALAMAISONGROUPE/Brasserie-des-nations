@@ -1,1 +1,620 @@
-PCFET0NUWVBFIGh0bWw+CjxodG1sIGxhbmc9ImZyIiBkaXI9Imx0ciIgcHJlZml4PSJvZzogaHR0cHM6Ly9vZ3AubWUvbnMjIj4KPGhlYWQ+CiAgICA8bWV0YSBjaGFyc2V0PSJVVEYtOCI+CiAgICA8bWV0YSBuYW1lPSJ2aWV3cG9ydCIgY29udGVudD0id2lkdGg9ZGV2aWNlLXdpZHRoLCBpbml0aWFsLXNjYWxlPTEuMCI+CiAgICAgICAgCiAgICA8bWV0YSBuYW1lPSJkZXNjcmlwdGlvbiIgY29udGVudD0iQnJhc3NlcmllIGRlcyBOYXRpb25zIC0gUmVzdGF1cmFudCBsdXhlbWJvdXJnZW9pcyB0cmFkaXRpb25uZWwgZGVwdWlzIDE5NTYgYXUgY8WTdXIgZGUgTHV4ZW1ib3VyZy1WaWxsZS4gQ29yZG9uIGJsZXUgbWFpc29uLCBKdWRkIG1hdCBHYWFyZGVib3VuZW4sIEJvdWNow6llIMOgIGxhIFJlaW5lLiBNZW51IGR1IGpvdXIsIHRlcnJhc3NlLiBSw6lzZXJ2ZXogYXUgKzM1MiA0NyAzNiA0NS4iPgogICAgPHRpdGxlPkJyYXNzZXJpZSBkZXMgTmF0aW9ucyB8IFJlc3RhdXJhbnQgTHV4ZW1ib3VyZ2VvaXMgZGVwdWlzIDE5NTYgw6AgTHV4ZW1ib3VyZy1WaWxsZTwvdGl0bGU+CiAgICAgICAgPG1ldGEgbmFtZT0icm9ib3RzIiBjb250ZW50PSJpbmRleCwgZm9sbG93LCBtYXgtaW1hZ2UtcHJldmlldzpsYXJnZSwgbWF4LXNuaXBwZXQ6LTEsIG1heC12aWRlby1wcmV2aWV3Oi0xIj4KICAgIDxtZXRhIG5hbWU9ImF1dGhvciIgY29udGVudD0iQnJhc3NlcmllIGRlcyBOYXRpb25zIj4KICAgIDxtZXRhIG5hbWU9InRoZW1lLWNvbG9yIiBjb250ZW50PSIjMWEzZDBmIj4KICAgIDxtZXRhIG5hbWU9Im1vYmlsZS13ZWItYXBwLWNhcGFibGUiIGNvbnRlbnQ9InllcyI+CiAgICA8bWV0YSBuYW1lPSJhcHBsZS1tb2JpbGUtd2ViLWFwcC1jYXBhYmxlIiBjb250ZW50PSJ5ZXMiPgogICAgPG1ldGEgbmFtZT0iYXBwbGUtbW9iaWxlLXdlYi1hcHAtc3RhdHVzLWJhci1zdHlsZSIgY29udGVudD0iYmxhY2stdHJhbnNsdWNlbnQiPgogICAgPGxpbmsgcmVsPSJjYW5vbmljYWwiIGhyZWY9Imh0dHBzOi8vY29tZWFsYW1haXNvbmdyb3VwZS5naXRodWIuaW8vQnJhc3NlcmllLWRlcy1uYXRpb25zLyI+CiAgICA8bGluayByZWw9InNpdGVtYXAiIHR5cGU9ImFwcGxpY2F0aW9uL3htbCIgaHJlZj0iL0JyYXNzZXJpZS1kZXMtbmF0aW9ucy9zaXRlbWFwLnhtbCI+CiAgICA8bGluayByZWw9Im1hbmlmZXN0IiBocmVmPSJtYW5pZmVzdC5qc29uIj4gICAgIDxsaW5rIHJlbD0icHJlbG9hZCIgYXM9ImltYWdlIiBocmVmPSJhc3NldHMvaW1hZ2VzL2dhbGxlcnkvNjE2MjM2NzU0XzE3ODQ1MTA5MTU0NjcwNjY2XzYxMjYyMDcyNzUzMzcwMTMyMzBfbi53ZWJwIiBmZXRjaHByaW9yaXR5PSJoaWdoIj4KICAgIDxtZXRhIG5hbWU9ImtleXdvcmRzIiBjb250ZW50PSJyZXN0YXVyYW50IGx1eGVtYm91cmcsIGJyYXNzZXJpZSBsdXhlbWJvdXJnLCBjb3Jkb24gYmxldSBsdXhlbWJvdXJnLCBqdWRkIG1hdCBnYWFyZGVib3VuZW4sIHJlc3RhdXJhbnQgbHV4ZW1ib3VyZ2VvaXMsIGN1aXNpbmUgbHV4ZW1ib3VyZ2VvaXNlLCB0ZXJyYXNzZSBsdXhlbWJvdXJnLXZpbGxlLCBtZW51IGR1IGpvdXIgbHV4ZW1ib3VyZywgQm91Y2jDqWUgw6AgbGEgUmVpbmUsIHJlc3RhdXJhbnQgdHJhZGl0aW9ubmVsIGx1eGVtYm91cmcsIGJyYXNzZXJpZSBkZXMgbmF0aW9ucyI+CiAgICA8bWV0YSBuYW1lPSJnZW8ucmVnaW9uIiBjb250ZW50PSJMVSI+CiAgICA8bWV0YSBuYW1lPSJnZW8ucGxhY2VuYW1lIiBjb250ZW50PSJMdXhlbWJvdXJnLVZpbGxlIj4KICAgIDxtZXRhIG5hbWU9Imdlby5wb3NpdGlvbiIgY29udGVudD0iNDkuNjExNjs2LjEzMTkiPgogICAgPG1ldGEgbmFtZT0iSUNCTSIgY29udGVudD0iNDkuNjExNiwgNi4xMzE5Ij4KICAgICAgICA8IS0tIE9wZW4gR3JhcGggLS0+CiAgICA8bWV0YSBwcm9wZXJ0eT0ib2c6dHlwZSIgY29udGVudD0id2Vic2l0ZSI+CiAgICA8bWV0YSBwcm9wZXJ0eT0ib2c6dXJsIiBjb250ZW50PSJodHRwczovL2NvbWVhbGFtYWlzb25ncm91cGUuZ2l0aHViLmlvL0JyYXNzZXJpZS1kZXMtbmF0aW9ucy8iPgogICAgPG1ldGEgcHJvcGVydHk9Im9nOnRpdGxlIiBjb250ZW50PSJCcmFzc2VyaWUgZGVzIE5hdGlvbnMgfCBSZXN0YXVyYW50IEx1eGVtYm91cmdlb2lzIGRlcHVpcyAxOTU2Ij4KICAgIDxtZXRhIHByb3BlcnR5PSJvZzpkZXNjcmlwdGlvbiIgY29udGVudD0iUmVzdGF1cmFudCBsdXhlbWJvdXJnZW9pcyB0cmFkaXRpb25uZWwgZGVwdWlzIDE5NTYuIENvcmRvbiBibGV1IG1haXNvbiwgSnVkZCBtYXQgR2FhcmRlYm91bmVuLCBCb3VjaMOpZSDDoCBsYSBSZWluZS4gVGVycmFzc2UgYXUgY29ldXIgZGUgTHV4ZW1ib3VyZy1WaWxsZS4iPgogICAgPG1ldGEgcHJvcGVydHk9Im9nOmltYWdlIiBjb250ZW50PSJodHRwczovL2NvbWVhbGFtYWlzb25ncm91cGUuZ2l0aHViLmlvL0JyYXNzZXJpZS1kZXMtbmF0aW9ucy9hc3NldHMvaW1hZ2VzL2dhbGxlcnkvNjE1ODQ0MjY1XzE3ODQ0NDY5MTcwNjcwNjY2XzU0NjE1MzY0NTk0NTE3OTIwMDRfbi53ZWJwIj4KICAgIDxtZXRhIHByb3BlcnR5PSJvZzpsb2NhbGUiIGNvbnRlbnQ9ImZyX0xVIj4KICAgIDxtZXRhIHByb3BlcnR5PSJvZzpzaXRlX25hbWUiIGNvbnRlbnQ9IkJyYXNzZXJpZSBkZXMgTmF0aW9ucyI+CiAgICA8IS0tIFR3aXR0ZXIgQ2FyZCAtLT4KICAgIDxtZXRhIG5hbWU9InR3aXR0ZXI6Y2FyZCIgY29udGVudD0ic3VtbWFyeV9sYXJnZV9pbWFnZSI+CiAgICA8bWV0YSBuYW1lPSJ0d2l0dGVyOnRpdGxlIiBjb250ZW50PSJCcmFzc2VyaWUgZGVzIE5hdGlvbnMgfCBSZXN0YXVyYW50IEx1eGVtYm91cmdlb2lzIGRlcHVpcyAxOTU2Ij4KICAgIDxtZXRhIG5hbWU9InR3aXR0ZXI6ZGVzY3JpcHRpb24iIGNvbnRlbnQ9IlJlc3RhdXJhbnQgbHV4ZW1ib3VyZ2VvaXMgdHJhZGl0aW9ubmVsIGRlcHVpcyAxOTU2LiBDb3Jkb24gYmxldSBtYWlzb24gZXQgc3DDqWNpYWxpdMOpcyBsdXhlbWJvdXJnZW9pc2VzLiI+CiAgICA8bWV0YSBuYW1lPSJ0d2l0dGVyOmltYWdlIiBjb250ZW50PSJodHRwczovL2NvbWVhbGFtYWlzb25ncm91cGUuZ2l0aHViLmlvL0JyYXNzZXJpZS1kZXMtbmF0aW9ucy9hc3NldHMvaW1hZ2VzL2dhbGxlcnkvNjE1ODQ0MjY1XzE3ODQ0NDY5MTcwNjcwNjY2XzU0NjE1MzY0NTk0NTE3OTIwMDRfbi53ZWJwIj4KICAgIAogICAgPGxpbmsgcmVsPSJwcmVjb25uZWN0IiBocmVmPSJodHRwczovL2ZvbnRzLmdvb2dsZWFwaXMuY29tIj4KICAgIDxsaW5rIHJlbD0icHJlY29ubmVjdCIgaHJlZj0iaHR0cHM6Ly9mb250cy5nc3RhdGljLmNvbSIgY3Jvc3NvcmlnaW4+CiAgICA8bGluayBocmVmPSJodHRwczovL2ZvbnRzLmdvb2dsZWFwaXMuY29tL2NzczI/ZmFtaWx5PUNvcm1vcmFudCtHYXJhbW9uZDp3Z2h0QDMwMDs0MDA7NTAwOzYwMDs3MDAmZmFtaWx5PU1vbnRzZXJyYXQ6d2dodEAyMDA7MzAwOzQwMDs1MDAmZGlzcGxheT1zd2FwIiByZWw9InByZWxvYWQiIGFzPSJzdHlsZSIgb25sb2FkPSJ0aGlzLm9ubG9hZD1udWxsO3RoaXMucmVsPSdzdHlsZXNoZWV0JyI+CiAgICA8bGluayByZWw9InN0eWxlc2hlZXQiIGhyZWY9ImNzcy9zdHlsZS5jc3MiPgogICAgCjwvaGVhZD4KPGJvZHk+CjxkaXYgY2xhc3M9InNpdGUtd3JhcCI+CiAgIDxkaXYgY2xhc3M9ImdvbGRlbi10aHJlYWQiIGlkPSJnb2xkZW5UaHJlYWQiPjwvZGl2PgogICAgICAgIDxzY3JpcHQgdHlwZT0iYXBwbGljYXRpb24vbGQranNvbiI+CiAgICB7CiAgICAgICJAY29udGV4dCI6ICJodHRwczovL3NjaGVtYS5vcmciLAogICAgICAiQHR5cGUiOiAiUmVzdGF1cmFudCIsCiAgICAgICJuYW1lIjogIkJyYXNzZXJpZSBkZXMgTmF0aW9ucyIsCiAgICAgICJpbWFnZSI6ICJodHRwczovL2NvbWVhbGFtYWlzb25ncm91cGUuZ2l0aHViLmlvL0JyYXNzZXJpZS1kZXMtbmF0aW9ucy9hc3NldHMvaW1hZ2VzL2dhbGxlcnkvNjE1ODQ0MjY1XzE3ODQ0NDY5MTcwNjcwNjY2XzU0NjE1MzY0NTk0NTE3OTIwMDRfbi53ZWJwIiwKICAgICAgInVybCI6ICJodHRwczovL2NvbWVhbGFtYWlzb25ncm91cGUuZ2l0aHViLmlvL0JyYXNzZXJpZS1kZXMtbmF0aW9ucy8iLAogICAgICAidGVsZXBob25lIjogIiszNTI0NzM2NDUiLAogICAgICAicHJpY2VSYW5nZSI6ICLigqzigqwiLAogICAgICAic2VydmVzQ3Vpc2luZSI6IFsiTHV4ZW1ib3VyZ2VvaXNlIiwgIkZyYW7Dp2Fpc2UiLCAiRXVyb3DDqWVubmUiXSwKICAgICAgImFjY2VwdHNSZXNlcnZhdGlvbnMiOiAidHJ1ZSIsCiAgICAgICJhZGRyZXNzIjogewogICAgICAgICJAdHlwZSI6ICJQb3N0YWxBZGRyZXNzIiwKICAgICAgICAic3RyZWV0QWRkcmVzcyI6ICI0MiBydWUgUGhpbGlwcGUgSUkiLAogICAgICAgICJhZGRyZXNzTG9jYWxpdHkiOiAiTHV4ZW1ib3VyZyIsCiAgICAgICAgInBvc3RhbENvZGUiOiAiTC0yMzQwIiwKICAgICAgICAiYWRkcmVzc0NvdW50cnkiOiAiTFUiCiAgICAgIH0sCiAgICAgICJnZW8iOiB7CiAgICAgICAgIkB0eXBlIjogIkdlb0Nvb3JkaW5hdGVzIiwKICAgICAgICAibGF0aXR1ZGUiOiA0OS42MTE2LAogICAgICAgICJsb25naXR1ZGUiOiA2LjEzMTkKICAgICAgfSwKICAgICAgIm9wZW5pbmdIb3Vyc1NwZWNpZmljYXRpb24iOiBbCiAgICAgICAgewogICAgICAgICAgICAgICAgIkB0eXBlIjogIk9wZW5pbmdIb3Vyc1NwZWNpZmljYXRpb24iLAogICAgICAgICAgICAgICAgImRheU9mV2VlayI6IFsiTW9uZGF5IiwiVHVlc2RheSIsIldlZG5lc2RheSJdLAogICAgICAgICAgICAgICAgIm9wZW5zIjogIjA3OjAwIiwKICAgICAgICAgICAgICAgICJjbG9zZXMiOiAiMTc6MDAiCiAgICAgICAgICAgIH0sCiAgICAgICAgICAgIHsKICAgICAgICAgICAgICAgICJAdHlwZSI6ICJPcGVuaW5nSG91cnNTcGVjaWZpY2F0aW9uIiwKICAgICAgICAgICAgICAgICJkYXlPZldlZWsiOiBbIlRodXJzZGF5IiwiRnJpZGF5Il0sCiAgICAgICAgICAgICAgICAib3BlbnMiOiAiMDc6MDAiLAogICAgICAgICAgICAgICAgImNsb3NlcyI6ICIyMjowMCIKICAgICAgICAgICAgfSwKICAgICAgICAgICAgewogICAgICAgICAgICAgICAgIkB0eXBlIjogIk9wZW5pbmdIb3Vyc1NwZWNpZmljYXRpb24iLAogICAgICAgICAgICAgICAgImRheU9mV2VlayI6ICJTYXR1cmRheSIsCiAgICAgICAgICAgICAgICAib3BlbnMiOiAiMTE6MDAiLAogICAgICAgICAgICAgICAgImNsb3NlcyI6ICIxNDozMCIKICAgICAgICAgICAgfSwKICAgICAgICAgICAgewogICAgICAgICAgICAgICAgIkB0eXBlIjogIk9wZW5pbmdIb3Vyc1NwZWNpZmljYXRpb24iLAogICAgICAgICAgICAgICAgImRheU9mV2VlayI6ICJTYXR1cmRheSIsCiAgICAgICAgICAgICAgICAib3BlbnMiOiAiMTg6MDAiLAogICAgICAgICAgICAgICAgImNsb3NlcyI6ICIyMjowMCIKICAgICAgICAgICAgfQogICAgICBdLAogICAgICAgICAgICAgICAgICAgICJzYW1lQXMiOiBbImh0dHBzOi8vd3d3LmZhY2Vib29rLmNvbS9CcmFzc2VyaWVEZXNOYXRpb25zIiwgImh0dHBzOi8vd3d3Lmluc3RhZ3JhbS5jb20vYnJhc3NlcmllX2Rlc19uYXRpb25zIl0sCiAgICAgICJtZW51IjogImh0dHBzOi8vY29tZWFsYW1haXNvbmdyb3VwZS5naXRodWIuaW8vQnJhc3NlcmllLWRlcy1uYXRpb25zLyNtZW51IiwKICAgICAgImZvdW5kaW5nRGF0ZSI6ICIxOTU2IiwKICAgICAgImRlc2NyaXB0aW9uIjogIlJlc3RhdXJhbnQgbHV4ZW1ib3VyZ2VvaXMgdHJhZGl0aW9ubmVsIGRlcHVpcyAxOTU2IGF1IGNvZXVyIGRlIEx1eGVtYm91cmctVmlsbGUuIFNww6ljaWFsaXTDqXMgOiBDb3Jkb24gYmxldSBtYWlzb24sIEp1ZGQgbWF0IEdhYXJkZWJvdW5lbiwgQm91Y2jDqWUgw6AgbGEgUmVpbmUuIiwKICAgICAgImhhc01lbnUiOiB7CiAgICAgICAgIkB0eXBlIjogIk1lbnUiLAogICAgICAgICJoYXNNZW51U2VjdGlvbiI6IFsKICAgICAgICAgIHsKICAgICAgICAgICAgIkB0eXBlIjogIk1lbnVTZWN0aW9uIiwKICAgICAgICAgICAgIm5hbWUiOiAiU3DDqWNpYWxpdMOpcyBkZSBsYSBNYWlzb24iLAogICAgICAgICAgICAiaGFzTWVudUl0ZW0iOiBbCiAgICAgICAgICAgICAgeyJAdHlwZSI6ICJNZW51SXRlbSIsICJuYW1lIjogIkNvcmRvbiBCbGV1IE1haXNvbiIsICJvZmZlcnMiOiB7IkB0eXBlIjogIk9mZmVyIiwgInByaWNlIjogIjI0LjUwIiwgInByaWNlQ3VycmVuY3kiOiAiRVVSIn19LAogICAgICAgICAgICAgIHsiQHR5cGUiOiAiTWVudUl0ZW0iLCAibmFtZSI6ICJKdWRkIG1hdCBHYWFyZGVib3VuZW4iLCAib2ZmZXJzIjogeyJAdHlwZSI6ICJPZmZlciIsICJwcmljZSI6ICIyMi45MCIsICJwcmljZUN1cnJlbmN5IjogIkVVUiJ9fSwKICAgICAgICAgICAgICB7IkB0eXBlIjogIk1lbnVJdGVtIiwgIm5hbWUiOiAiQm91Y2jDqWUgw6AgbGEgUmVpbmUiLCAib2ZmZXJzIjogeyJAdHlwZSI6ICJPZmZlciIsICJwcmljZSI6ICIyMS45MCIsICJwcmljZUN1cnJlbmN5IjogIkVVUiJ9fQogICAgICAgICAgICBdCiAgICAgICAgICB9CiAgICAgICAgXQogICAgICB9LAogICAgfQogICAgPC9zY3JpcHQ+CiAgICA8L2hlYWQ+CiAgICA8ZGl2IGNsYXNzPSJzaXRlLXdyYXAiPgogICAgPGRpdiBjbGFzcz0iZ29sZGVuLXRocmVhZCIgc3R5bGU9ImRpc3BsYXk6bm9uZSIgaWQ9ImdvbGRlblRocmVhZCI+PC9kaXY+CiAgICB8CgogICAgICAgIDxzY3JpcHQgdHlwZT0iYXBwbGljYXRpb24vbGQranNvbiI+CnsKICAiQGNvbnRleHQiOiAiaHR0cHM6Ly9zY2hlbWEub3JnIiwKICAiQHR5cGUiOiAiRkFRUGFnZSIsCiAgIm1haW5FbnRpdHkiOiBbCiAgICB7CiAgICAgICJAdHlwZSI6ICJRdWVzdGlvbiIsCiAgICAgICJuYW1lIjogIlF1ZWxzIHNvbnQgbGVzIGhvcmFpcmVzIGQnb3V2ZXJ0dXJlIGRlIGxhIEJyYXNzZXJpZSBkZXMgTmF0aW9ucyA/IiwKICAgICAgImFjY2VwdGVkQW5zd2VyIjogewogICAgICAgICJAdHlwZSI6ICJBbnN3ZXIiLAogICAgICAgICJ0ZXh0IjogIkx1bmRpLU1lcmNyZWRpIDogN2gwMC0xN2gwMCwgSmV1ZGktVmVuZHJlZGkgOiA3aDAwLTIyaDAwLCBTYW1lZGkgOiAxMWgwMC0xNGgzMCBldCAxOGgwMC0yMmgwMC4gUGV0aXQtZMOpamV1bmVyIHRvdXMgbGVzIG1hdGlucyBkw6hzIDdoMDAuIgogICAgICB9CiAgICB9LAogICAgewogICAgICAiQHR5cGUiOiAiUXVlc3Rpb24iLAogICAgICAibmFtZSI6ICJRdWVsbGUgZXN0IGxhIHNww6ljaWFsaXTDqSBkZSBsYSBCcmFzc2VyaWUgZGVzIE5hdGlvbnMgPyIsCiAgICAgICJhY2NlcHRlZEFuc3dlciI6IHsKICAgICAgICAiQHR5cGUiOiAiQW5zd2VyIiwKICAgICAgICAidGV4dCI6ICJOb3RyZSBjb3Jkb24gYmxldSBtYWlzb24gZXN0IG5vdHJlIHNpZ25hdHVyZSBkZXB1aXMgMTk1Ni4gTm91cyBwcm9wb3NvbnMgw6lnYWxlbWVudCBsZSBKdWRkIG1hdCBHYWFyZGVib3VuZW4gKHBsYXQgbmF0aW9uYWwgbHV4ZW1ib3VyZ2VvaXMpIGV0IGxhIEJvdWNow6llIMOgIGxhIFJlaW5lLiIKICAgICAgfQogICAgfSwKICAgIHsKICAgICAgIkB0eXBlIjogIlF1ZXN0aW9uIiwKICAgICAgIm5hbWUiOiAiUGV1dC1vbiByw6lzZXJ2ZXIgdW5lIHRhYmxlIMOgIGxhIEJyYXNzZXJpZSBkZXMgTmF0aW9ucyA/IiwKICAgICAgImFjY2VwdGVkQW5zd2VyIjogewogICAgICAgICJAdHlwZSI6ICJBbnN3ZXIiLAogICAgICAgICJ0ZXh0IjogIk91aSwgdm91cyBwb3V2ZXogcsOpc2VydmVyIHBhciB0w6lsw6lwaG9uZSBhdSArMzUyIDQ3IDM2IDQ1IG91IHBhciBlbWFpbCDDoCBpbmZvQG5hdGlvbnMubHUuIgogICAgICB9CiAgICB9LAogICAgewogICAgICAiQHR5cGUiOiAiUXVlc3Rpb24iLAogICAgICAibmFtZSI6ICJPw7kgc2Ugc2l0dWUgbGEgQnJhc3NlcmllIGRlcyBOYXRpb25zID8iLAogICAgICAiYWNjZXB0ZWRBbnN3ZXIiOiB7CiAgICAgICAgIkB0eXBlIjogIkFuc3dlciIsCiAgICAgICAgInRleHQiOiAiNDIgcnVlIFBoaWxpcHBlIElJLCBMLTIzNDAgTHV4ZW1ib3VyZy1WaWxsZSwgYXUgY29ldXIgZHUgY2VudHJlLXZpbGxlIGhpc3RvcmlxdWUuIgogICAgICB9CiAgICB9CiAgXQp9Cjwvc2NyaXB0PgogICAgPGRpdiBjbGFzcz0iZ3JhaW4iIHN0eWxlPSJkaXNwbGF5Om5vbmUiPjwvZGl2PgogICAgPGRpdiBjbGFzcz0iY3Vyc29yLWdsb3ciIHN0eWxlPSJkaXNwbGF5Om5vbmUiIGlkPSJjdXJzb3JHbG93Ij48L2Rpdj4KICAgIDwhLS0gTmF2aWdhdGlvbiAtLT4KICAgIDxuYXYgcm9sZT0ibmF2aWdhdGlvbiIgYXJpYS1sYWJlbD0iTWVudSBwcmluY2lwYWwiIGNsYXNzPSJzaG93Ij4KCiAgICAgICAgPCEtLSBCdXJnZXIgbW9iaWxlIC0tPgogICAgICAgIDxidXR0b24gY2xhc3M9ImJ1cmdlciIgaWQ9ImJ1cmdlciIgYXJpYS1sYWJlbD0iTWVudSIgYXJpYS1leHBhbmRlZD0iZmFsc2UiPgogICAgICAgICAgICA8c3Bhbj48L3NwYW4+PHNwYW4+PC9zcGFuPjxzcGFuPjwvc3Bhbj4KICAgICAgICA8L2J1dHRvbj4KICAgICAgICA8IS0tIERyYXdlciBtb2JpbGUgLS0+CiAgICAgICAgPGRpdiBjbGFzcz0ibW9iLWRyYXdlciIgaWQ9Im1vYkRyYXdlciI+CiAgICAgICAgICAgIDxhIGhyZWY9IiNtZW51LWR1LWpvdXIiIGNsYXNzPSJtb2ItbGluayBwZGotbmF2LWxpbmsiPk1lbnUgZHUgSm91cjwvYT4KICAgICAgICAgICAgPGEgaHJlZj0icGFnZXMvaGlzdG9yaXF1ZS5odG1sIiBjbGFzcz0ibW9iLWxpbmsiPkhpc3RvcmlxdWU8L2E+CiAgICAgICAgICAgIDxhIGhyZWY9InBhZ2VzL21lbnUuaHRtbCIgY2xhc3M9Im1vYi1saW5rIj5NZW51PC9hPgogICAgICAgICAgICA8YSBocmVmPSIjZ2FsZXJpZSIgY2xhc3M9Im1vYi1saW5rIj5HYWxlcmllPC9hPgogICAgICAgICAgICA8YSBocmVmPSIjY29udGFjdCIgY2xhc3M9Im1vYi1saW5rIj5Db250YWN0PC9hPgogICAgICAgICAgICA8YSBocmVmPSJwYWdlcy92aW4uaHRtbCIgY2xhc3M9Im1vYi1saW5rIj5WaW5zPC9hPgogICAgICAgICAgICA8YSBocmVmPSJ0ZWw6KzM1MjQ3MzY0NSIgY2xhc3M9Im1vYi1jdGEiPlLDqXNlcnZlcjwvYT4KICAgICAgICA8L2Rpdj4KICAgICAgICA8ZGl2IGNsYXNzPSJtb2Itb3ZlcmxheSIgaWQ9Im1vYk92ZXJsYXkiPjwvZGl2PgogICAgICAgIDxkaXYgY2xhc3M9Im5hdi1pbm5lciI+CiAgICAgICAgICAgIDxhIGhyZWY9IiNtZW51LWR1LWpvdXIiIGNsYXNzPSJuYXYtbGluayBwZGotbmF2LWxpbmsiPk1lbnUgZHUgSm91cjwvYT4KICAgICAgICAgICAgPHNwYW4gY2xhc3M9Im5hdi1kb3QiPsK3PC9zcGFuPgogICAgICAgICAgICA8YSBocmVmPSJwYWdlcy9oaXN0b3JpcXVlLmh0bWwiIGNsYXNzPSJuYXYtbGluayI+SGlzdG9yaXF1ZTwvYT4KICAgICAgICAgICAgPHNwYW4gY2xhc3M9Im5hdi1kb3QiPsK3PC9zcGFuPgogICAgICAgICAgICA8YSBocmVmPSJwYWdlcy9tZW51Lmh0bWwiIGNsYXNzPSJuYXYtbGluayI+TWVudTwvYT4KICAgICAgICAgICAgPHNwYW4gY2xhc3M9Im5hdi1kb3QiPsK3PC9zcGFuPgogICAgICAgICAgICA8YSBocmVmPSIjZ2FsZXJpZSIgY2xhc3M9Im5hdi1saW5rIj5HYWxlcmllPC9hPgogICAgICAgICAgICA8c3BhbiBjbGFzcz0ibmF2LWRvdCI+wrc8L3NwYW4+CiAgICAgICAgICAgIDxhIGhyZWY9IiNjb250YWN0IiBjbGFzcz0ibmF2LWxpbmsiPkNvbnRhY3Q8L2E+CiAgICAgICAgICAgIDxzcGFuIGNsYXNzPSJuYXYtZG90Ij7Ctzwvc3Bhbj4KICAgICAgICAgICAgPGEgaHJlZj0idGVsOiszNTI0NzM2NDUiIGNsYXNzPSJuYXYtbGluayI+UsOpc2VydmVyPC9hPgogICAgICAgICAgICA8c3BhbiBjbGFzcz0ibmF2LWRvdCI+wrc8L3NwYW4+CiAgICAgICAgICAgIDxhIGhyZWY9InBhZ2VzL3Zpbi5odG1sIiBjbGFzcz0ibmF2LWxpbmsiPlZpbnM8L2E+CiAgICAgICAgPC9kaXY+CiAgICA8L25hdj4gICAgIDxtYWluPgogICAgPCEtLSBIZXJvIFNlY3Rpb24gLS0+CiAgICA8c2VjdGlvbiBjbGFzcz0iaGVyby12aWRlbyI+CiAgICAgICAgPHN0eWxlPgogICAgICAgICAgICAuaGVyby1kdWFsLXZpZGVvIHsgcG9zaXRpb246YWJzb2x1dGU7aW5zZXQ6MDt3aWR0aDoxMDAlO2hlaWdodDoxMDAlO2Rpc3BsYXk6ZmxleDt6LWluZGV4OjA7b3ZlcmZsb3c6aGlkZGVuOyB9CiAgICAgICAgICAgIC5oZXJvLWR1YWwtdmlkZW8gdmlkZW8geyBwb3NpdGlvbjpzdGF0aWMhaW1wb3J0YW50O3dpZHRoOjUwJSFpbXBvcnRhbnQ7aGVpZ2h0OjEwMCUhaW1wb3J0YW50O29iamVjdC1maXQ6Y292ZXIhaW1wb3J0YW50O21pbi13aWR0aDowIWltcG9ydGFudDttaW4taGVpZ2h0OjAhaW1wb3J0YW50O3RyYW5zZm9ybTpub25lIWltcG9ydGFudDt0b3A6YXV0byFpbXBvcnRhbnQ7bGVmdDphdXRvIWltcG9ydGFudDtmaWx0ZXI6YnJpZ2h0bmVzcygwLjcpIWltcG9ydGFudDsgfQogICAgICAgICAgICAuaGVyby1kdWFsLXZpZGVvIC5oZXJvLXZpZC1kaXZpZGVyIHsgd2lkdGg6MnB4O2JhY2tncm91bmQ6cmdiYSgyMDEsMTY5LDk3LDAuMyk7ZmxleC1zaHJpbms6MDt6LWluZGV4OjE7IH0KICAgICAgICAgICAgQG1lZGlhKG1heC13aWR0aDo2MDBweCl7IC5oZXJvLWR1YWwtdmlkZW97ZmxleC1kaXJlY3Rpb246Y29sdW1uIWltcG9ydGFudH0gLmhlcm8tZHVhbC12aWRlbyB2aWRlb3t3aWR0aDoxMDAlIWltcG9ydGFudDtoZWlnaHQ6NTAlIWltcG9ydGFudH0gLmhlcm8tZHVhbC12aWRlbyAuaGVyby12aWQtZGl2aWRlcnt3aWR0aDoxMDAlIWltcG9ydGFudDtoZWlnaHQ6MXB4IWltcG9ydGFudH0gfQogICAgICAgIDwvc3R5bGU+CiAgICAgICAgPGRpdiBjbGFzcz0iaGVyby1kdWFsLXZpZGVvIj4KICAgICAgICAgICAgPHZpZGVvIGF1dG9wbGF5IG11dGVkIGxvb3AgcGxheXNpbmxpbmUgYXJpYS1oaWRkZW49InRydWUiPgogICAgICAgICAgICAgICAgPHNvdXJjZSBzcmM9InJncmVnci0yLm1wNCIgdHlwZT0idmlkZW8vbXA0Ij4KICAgICAgICAgICAgPC92aWRlbz4KICAgICAgICAgICAgPGRpdiBjbGFzcz0iaGVyby12aWQtZGl2aWRlciI+PC9kaXY+CiAgICAgICAgICAgIDx2aWRlbyBhdXRvcGxheSBtdXRlZCBsb29wIHBsYXlzaW5saW5lIGFyaWEtaGlkZGVuPSJ0cnVlIj4KICAgICAgICAgICAgICAgIDxzb3VyY2Ugc3JjPSJldGdlcmdyLTMubXA0IiB0eXBlPSJ2aWRlby9tcDQiPgogICAgICAgICAgICA8L3ZpZGVvPgogICAgICAgIDwvZGl2PgogICAgICAgIDxkaXYgY2xhc3M9Imhlcm8tb3ZlcmxheSBnbyI+CiAgICAgICAgICAgIAoKICAgICAgICAgICAgPGgxIGNsYXNzPSJoZXJvLXRpdGxlIj5CUkFTU0VSSUU8YnI+REVTIE5BVElPTlM8L2gxPgogICAgICAgICAgICA8cCBjbGFzcz0iaGVyby1zdWJ0aXRsZSI+RGVwdWlzIDE5NTY8L3A+CgogICAgICAgICAgICA8c3ZnIGNsYXNzPSJoZXJvLWRpdmlkZXIiIHZpZXdCb3g9IjAgMCAyMDAgMjAiIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyIgYXJpYS1oaWRkZW49InRydWUiPjxnIGZpbGw9Im5vbmUiIHN0cm9rZT0icmdiYSgyMDEsMTY5LDk3LDAuNikiIHN0cm9rZS13aWR0aD0iMSIgc3Ryb2tlLWxpbmVjYXA9InJvdW5kIj48cGF0aCBkPSJNMjAgMTAgUTU1IDMgOTAgMTAiIC8+PHBhdGggZD0iTTExMCAxMCBRMTQ1IDMgMTgwIDEwIiAvPjxwYXRoIGQ9Ik05NCA3IEwxMDAgMiBMMTA2IDcgTDEwMCAxMiBaIiAvPjwvZz48L3N2Zz4KCiAgICAgICAgICAgIDwhLS0gSWxsdXN0cmF0aW9uIGZhw6dhZGUgYnJhc3NlcmllIHNvdXMgbGUgdGl0cmUgLS0+CiAgICAgICAgICAgIDxzdmcgY2xhc3M9Imhlcm8tZmFjYWRlIGRyYXctYW5pbSIgdmlld0JveD0iMCAwIDYwMCAyMjAiIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyIgYXJpYS1oaWRkZW49InRydWUiPgogICAgICAgICAgICAgICAgPGcgZmlsbD0ibm9uZSIgc3Ryb2tlPSJyZ2JhKDI1NSwyNTUsMjU1LDAuNikiIHN0cm9rZS13aWR0aD0iMS41IiBzdHJva2UtbGluZWNhcD0icm91bmQiIHN0cm9rZS1saW5lam9pbj0icm91bmQiPgogICAgICAgICAgICAgICAgICAgIDxwYXRoIGQ9Ik01MCAyMDAgSDU1MCIgLz4KICAgICAgICAgICAgICAgICAgICA8cmVjdCB4PSI4MCIgeT0iNTAiIHdpZHRoPSI0NDAiIGhlaWdodD0iMTUwIiByeD0iMyIgLz4KICAgICAgICAgICAgICAgICAgICA8cmVjdCB4PSIxNDAiIHk9IjYwIiB3aWR0aD0iMzIwIiBoZWlnaHQ9IjI4IiByeD0iMiIgLz4KICAgICAgICAgICAgICAgICAgICA8bGluZSB4MT0iMTU1IiB5MT0iNzQiIHgyPSI0NDUiIHkyPSI3NCIgLz4KICAgICAgICAgICAgICAgICAgICA8cGF0aCBkPSJNMTAwIDk1IEg1MDAiIC8+CiAgICAgICAgICAgICAgICAgICAgPHBhdGggZD0iTTEwMCA5NSBRMTE3IDExOCAxMzQgOTUgUTE1MSAxMTggMTY4IDk1IFExODUgMTE4IDIwMiA5NSBRMjE5IDExOCAyMzYgOTUgUTI1MyAxMTggMjcwIDk1IFEyODcgMTE4IDMwNCA5NSBRMzIxIDExOCAzMzggOTUgUTM1NSAxMTggMzcyIDk1IFEzODkgMTE4IDQwNiA5NSBRNDIzIDExOCA0NDAgOTUgUTQ1NyAxMTggNDc0IDk1IFE0OTEgMTE4IDUwMCA5NSIgLz4KICAgICAgICAgICAgICAgICAgICA8cmVjdCB4PSIyNzAiIHk9IjEyMCIgd2lkdGg9IjYwIiBoZWlnaHQ9IjgwIiByeD0iMiIgLz4KICAgICAgICAgICAgICAgICAgICA8bGluZSB4MT0iMzAwIiB5MT0iMTIwIiB4Mj0iMzAwIiB5Mj0iMjAwIiAvPgogICAgICAgICAgICAgICAgICAgIDxjaXJjbGUgY3g9IjI5NSIgY3k9IjE2MCIgcj0iMiIgLz48Y2lyY2xlIGN4PSIzMDYiIGN5PSIxNjAiIHI9IjIiIC8+CiAgICAgICAgICAgICAgICAgICAgPHJlY3QgeD0iMTIwIiB5PSIxMjAiIHdpZHRoPSI1MCIgaGVpZ2h0PSI1MCIgLz4KICAgICAgICAgICAgICAgICAgICA8bGluZSB4MT0iMTIwIiB5MT0iMTQ1IiB4Mj0iMTcwIiB5Mj0iMTQ1IiAvPgogICAgICAgICAgICAgICAgICAgIDxsaW5lIHgxPSIxNDUiIHkxPSIxMjAiIHgyPSIxNDUiIHkyPSIxNzAiIC8+CiAgICAgICAgICAgICAgICAgICAgPHJlY3QgeD0iMjAwIiB5PSIxMjAiIHdpZHRoPSI1MCIgaGVpZ2h0PSI1MCIgLz4KICAgICAgICAgICAgICAgICAgICA8bGluZSB4MT0iMjAwIiB5MT0iMTQ1IiB4Mj0iMjUwIiB5Mj0iMTQ1IiAvPgogICAgICAgICAgICAgICAgICAgIDxsaW5lIHgxPSIyMjUiIHkxPSIxMjAiIHgyPSIyMjUiIHkyPSIxNzAiIC8+CiAgICAgICAgICAgICAgICAgICAgPHJlY3QgeD0iMzUwIiB5PSIxMjAiIHdpZHRoPSI1MCIgaGVpZ2h0PSI1MCIgLz4KICAgICAgICAgICAgICAgICAgICA8bGluZSB4MT0iMzUwIiB5MT0iMTQ1IiB4Mj0iNDAwIiB5Mj0iMTQ1IiAvPgogICAgICAgICAgICAgICAgICAgIDxsaW5lIHgxPSIzNzUiIHkxPSIxMjAiIHgyPSIzNzUiIHkyPSIxNzAiIC8+CiAgICAgICAgICAgICAgICAgICAgPHJlY3QgeD0iNDMwIiB5PSIxMjAiIHdpZHRoPSI1MCIgaGVpZ2h0PSI1MCIgLz4KICAgICAgICAgICAgICAgICAgICA8bGluZSB4MT0iNDMwIiB5MT0iMTQ1IiB4Mj0iNDgwIiB5Mj0iMTQ1IiAvPgogICAgICAgICAgICAgICAgICAgIDxsaW5lIHgxPSI0NTUiIHkxPSIxMjAiIHgyPSI0NTUiIHkyPSIxNzAiIC8+CiAgICAgICAgICAgICAgICAgICAgPGVsbGlwc2UgY3g9IjE1MCIgY3k9IjE5NiIgcng9IjE4IiByeT0iNiIgLz4KICAgICAgICAgICAgICAgICAgICA8ZWxsaXBzZSBjeD0iNDUwIiBjeT0iMTk2IiByeD0iMTgiIHJ5PSI2IiAvPgogICAgICAgICAgICAgICAgICAgIDxsaW5lIHgxPSIxNTAiIHkxPSIxOTAiIHgyPSIxNTAiIHkyPSIyMDAiIC8+CiAgICAgICAgICAgICAgICAgICAgPGxpbmUgeDE9IjQ1MCIgeTE9IjE5MCIgeDI9IjQ1MCIgeTI9IjIwMCIgLz4KICAgICAgICAgICAgICAgIDwvZz4KICAgICAgICAgICAgPC9zdmc+CiAgICAgICAgPC9kaXY+CiAgICAgICAgPGRpdiBjbGFzcz0ic2Nyb2xsLWluZGljYXRvciI+RMOpY291dnJpciDihpM8L2Rpdj4KICAgIDwvc2VjdGlvbj4KCiAgICAgICAgPCEtLSA9PT09PSBQTEFUIERVIEpPVVIgPT09PT0gLS0+CiAgICA8c2VjdGlvbiBpZD0ibWVudS1kdS1qb3VyIiBjbGFzcz0icGxhdC1kdS1qb3VyIj4KICAgICAgICA8ZGl2IGNsYXNzPSJwZGotbGFiZWwiPuKcpiBNZW51IGR1IEpvdXIg4pymPC9kaXY+CiAgICAgICAgPGRpdiBjbGFzcz0icGRqLWRhdGUiIGlkPSJwZGpEYXRlIj48L2Rpdj4KICAgICAgICA8ZGl2IGNsYXNzPSJwZGotZGl2aWRlciI+PC9kaXY+CiAgICAgICAgPGRpdiBpZD0icGRqQnJlYWtmYXN0IiBjbGFzcz0icGRqLWJsb2MiIHN0eWxlPSJkaXNwbGF5Om5vbmUiPgogICAgICAgICAgICA8ZGl2IGNsYXNzPSJwZGotYmxvYy1oZWFkZXIiIGlkPSJwZGpCcmVha2Zhc3RIZWFkZXIiPjwvZGl2PgogICAgICAgICAgICA8ZGl2IGNsYXNzPSJwZGotYmxvYy1pdGVtcyIgaWQ9InBkakJyZWFrZmFzdEl0ZW1zIj48L2Rpdj4KICAgICAgICA8L2Rpdj4KICAgICAgICA8ZGl2IGNsYXNzPSJwZGotc2VwLWxpbmUiIGlkPSJwZGpTZXAxIiBzdHlsZT0iZGlzcGxheTpub25lIj4tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLTwvZGl2PgogICAgICAgIDxkaXYgaWQ9InBkakx1bmNoIiBjbGFzcz0icGRqLWJsb2MiIHN0eWxlPSJkaXNwbGF5Om5vbmUiPgogICAgICAgICAgICA8ZGl2IGNsYXNzPSJwZGotYmxvYy1oZWFkZXIiIGlkPSJwZGpMdW5jaEhlYWRlciI+PC9kaXY+CiAgICAgICAgICAgIDxkaXYgY2xhc3M9InBkai1ibG9jLWl0ZW1zIiBpZD0icGRqTHVuY2hJdGVtcyI+PC9kaXY+CiAgICAgICAgPC9kaXY+CiAgICAgICAgPGRpdiBpZD0icGRqRGVzc2VydCIgY2xhc3M9InBkai1ibG9jIiBzdHlsZT0iZGlzcGxheTpub25lIj4KICAgICAgICAgICAgPGRpdiBjbGFzcz0icGRqLWJsb2MtaGVhZGVyIiBpZD0icGRqRGVzc2VydEhlYWRlciI+PC9kaXY+CiAgICAgICAgICAgIDxkaXYgY2xhc3M9InBkai1ibG9jLWl0ZW1zIiBpZD0icGRqRGVzc2VydEl0ZW1zIj48L2Rpdj4KICAgICAgICA8L2Rpdj4KICAgICAgICA8cCBjbGFzcz0icGRqLWVtcHR5IiBpZD0icGRqRW1wdHkiPkxlIG1lbnUgZHUgam91ciBzZXJhIGFubm9uY8OpIHByb2NoYWluZW1lbnQuPC9wPgogICAgPC9zZWN0aW9uPgoKICAgIDwhLS0gQm91dG9uIEFkbWluICh2aXNpYmxlIHVuaXF1ZW1lbnQgYXZlYyA/YWRtaW4gZGFucyBsJ1VSTCkgLS0+CiAgICA8YnV0dG9uIGNsYXNzPSJwZGotYWRtaW4tdHJpZ2dlciIgaWQ9InBkakFkbWluQnRuIiB0aXRsZT0iTW9kaWZpZXIgbGUgcGxhdCBkdSBqb3VyIj4KICAgICAgICA8c3ZnIHZpZXdCb3g9IjAgMCAyNCAyNCI+PHBhdGggZD0iTTMgMTcuMjVWMjFoMy43NUwxNy44MSA5Ljk0bC0zLjc1LTMuNzVMMyAxNy4yNXpNMjAuNzEgNy4wNGExIDEgMCAwMDAtMS40MWwtMi4zNC0yLjM0YTEgMSAwIDAwLTEuNDEgMGwtMS44MyAxLjgzIDMuNzUgMy43NSAxLjgzLTEuODN6Ii8+PC9zdmc+CiAgICA8L2J1dHRvbj4KCiAgICA8IS0tIE1vZGFsIENvbm5leGlvbiBBZG1pbiAtLT4KICAgIDxkaXYgY2xhc3M9InBkai1tb2RhbC1vdmVybGF5IiBpZD0icGRqTG9naW5Nb2RhbCI+CiAgICAgICAgPGRpdiBjbGFzcz0icGRqLW1vZGFsIj4KICAgICAgICAgICAgPGJ1dHRvbiBjbGFzcz0icGRqLWNsb3NlIiBvbmNsaWNrPSJjbG9zZVBkak1vZGFscygpIj4mdGltZXM7PC9idXR0b24+CiAgICAgICAgICAgIDxkaXYgY2xhc3M9InBkai1tb2RhbC10aXRsZSIgc3R5bGU9ImZvbnQtZmFtaWx5OidDb3Jtb3JhbnQgR2FyYW1vbmQnLHNlcmlmO2ZvbnQtc2l6ZToxLjhyZW07Y29sb3I6dmFyKC0tZ3JlZW4pO21hcmdpbi1ib3R0b206MjVweDt0ZXh0LWFsaWduOmNlbnRlciI+QWNjw6hzIEVtcGxvecOpPC9kaXY+CiAgICAgICAgICAgIDxsYWJlbCBmb3I9InBkalBhc3N3b3JkIj5Nb3QgZGUgcGFzc2U8L2xhYmVsPgogICAgICAgICAgICA8aW5wdXQgdHlwZT0icGFzc3dvcmQiIGlkPSJwZGpQYXNzd29yZCIgcGxhY2Vob2xkZXI9IkVudHJleiBsZSBtb3QgZGUgcGFzc2UiPgogICAgICAgICAgICA8cCBjbGFzcz0icGRqLWxvZ2luLW1zZyIgaWQ9InBkakxvZ2luTXNnIj5Nb3QgZGUgcGFzc2UgaW5jb3JyZWN0LjwvcD4KICAgICAgICAgICAgPGRpdiBjbGFzcz0icGRqLW1vZGFsLWJ0bnMiPgogICAgICAgICAgICAgICAgPGJ1dHRvbiBjbGFzcz0icGRqLWJ0bi1jYW5jZWwiIG9uY2xpY2s9ImNsb3NlUGRqTW9kYWxzKCkiPkFubnVsZXI8L2J1dHRvbj4KICAgICAgICAgICAgICAgIDxidXR0b24gY2xhc3M9InBkai1idG4tc2F2ZSIgb25jbGljaz0icGRqTG9naW4oKSI+Q29ubmV4aW9uPC9idXR0b24+CiAgICAgICAgICAgIDwvZGl2PgogICAgICAgIDwvZGl2PgogICAgPC9kaXY+CiAgICA8ZGl2IGNsYXNzPSJwZGotcGFuZWwtb3ZlcmxheSIgaWQ9InBkalBhbmVsT3ZlcmxheSI+PC9kaXY+CiAgICA8ZGl2IGNsYXNzPSJwZGotcGFuZWwiIGlkPSJwZGpQYW5lbCI+CiAgICAgIDxkaXYgY2xhc3M9InBkai1wYW5lbC1oZWFkIj4KICAgICAgICA8ZGl2IHN0eWxlPSJmb250LWZhbWlseTonQ29ybW9yYW50IEdhcmFtb25kJyxzZXJpZjtmb250LXNpemU6MS40cmVtO2NvbG9yOnZhcigtLWdyZWVuKTttYXJnaW46MDtkaXNwbGF5OmZsZXg7YWxpZ24taXRlbXM6Y2VudGVyO2dhcDoxMHB4Ij48c3BhbiBjbGFzcz0icGRqLWxpdmUtZG90Ij48L3NwYW4+IE1lbnUgZHUgSm91cjwvZGl2PgogICAgICAgIDxzcGFuIGNsYXNzPSJwZGotbGl2ZS10YWciPiYjOTY3OTsgTElWRTwvc3Bhbj4KICAgICAgICA8YnV0dG9uIGNsYXNzPSJwZGotcGFuZWwtY2xvc2UiIGlkPSJwZGpQYW5lbENsb3NlIj4mdGltZXM7PC9idXR0b24+CiAgICAgIDwvZGl2PgogICAgICA8ZGl2IGNsYXNzPSJwZGotcGFuZWwtYm9keSI+CiAgICAgICAgPGRpdiBjbGFzcz0icGRqLW1hc3Rlci10b2dnbGUiPgogICAgICAgICAgPHNwYW4+JiMxMjc4Njk7IE1lbnUgZHUgSm91cjwvc3Bhbj4KICAgICAgICAgIDxkaXYgY2xhc3M9InBkai10b2dnbGUgb24iIGlkPSJwZGpNYXN0ZXJUb2dnbGUiIGRhdGEtc2VjdGlvbj0ibWFzdGVyIj48L2Rpdj4KICAgICAgICA8L2Rpdj4KICAgICAgICA8ZGl2IGNsYXNzPSJwZGotZWRpdC1ibG9jIGFjdGl2ZSIgZGF0YS1ibG9jPSJicmVha2Zhc3QiPgogICAgICAgICAgPGRpdiBjbGFzcz0icGRqLWVkaXQtYmxvYy1oZWFkIj48c3Bhbj4mIzk3NDk7IFBldGl0LWTDqWpldW5lcjwvc3Bhbj48ZGl2IGNsYXNzPSJwZGotdG9nZ2xlIG9uIiBkYXRhLXNlY3Rpb249ImJyZWFrZmFzdCI+PC9kaXY+PC9kaXY+CiAgICAgICAgICA8ZGl2IGNsYXNzPSJwZGotZWRpdC1ibG9jLWNvbnRlbnQiPgogICAgICAgICAgICA8bGFiZWw+VGl0cmUgZGUgc2VjdGlvbjwvbGFiZWw+CiAgICAgICAgICAgIDxpbnB1dCB0eXBlPSJ0ZXh0IiBpZD0icGRqSW5CcmVha2Zhc3RIZWFkZXIiIHBsYWNlaG9sZGVyPSJQRVRJVCBEw4lKRVVORVIgw4AgUEFSVElSIERFIDdoMDAgOiI+CiAgICAgICAgICAgIDxsYWJlbD5BcnRpY2xlcyAodW4gcGFyIGxpZ25lIDogbm9tICsgcHJpeCk8L2xhYmVsPgogICAgICAgICAgICA8dGV4dGFyZWEgaWQ9InBkakluQnJlYWtmYXN0SXRlbXMiIHBsYWNlaG9sZGVyPSJjcm9pc3NhbnQgOiAy4oKsJiMxMDtwYWluLCBiZXVycmUgZXQgY29uZml0dXJlIDogMy41MOKCrCI+PC90ZXh0YXJlYT4KICAgICAgICAgICAgPGRpdiBjbGFzcz0icGRqLWhpbnQiPlVuIGFydGljbGUgcGFyIGxpZ25lLCBwcml4IGVuIGZpbiBkZSBsaWduZTwvZGl2PgogICAgICAgICAgPC9kaXY+CiAgICAgICAgPC9kaXY+CiAgICAgICAgPGRpdiBjbGFzcz0icGRqLWVkaXQtYmxvYyBhY3RpdmUiIGRhdGEtYmxvYz0ibHVuY2giPgogICAgICAgICAgPGRpdiBjbGFzcz0icGRqLWVkaXQtYmxvYy1oZWFkIj48c3Bhbj4mIzEyNzg2MDsgUGxhdHMgZHUgam91cjwvc3Bhbj48ZGl2IGNsYXNzPSJwZGotdG9nZ2xlIG9uIiBkYXRhLXNlY3Rpb249Imx1bmNoIj48L2Rpdj48L2Rpdj4KICAgICAgICAgIDxkaXYgY2xhc3M9InBkai1lZGl0LWJsb2MtY29udGVudCI+CiAgICAgICAgICAgIDxsYWJlbD5UaXRyZSBkZSBzZWN0aW9uPC9sYWJlbD4KICAgICAgICAgICAgPGlucHV0IHR5cGU9InRleHQiIGlkPSJwZGpJbkx1bmNoSGVhZGVyIiBwbGFjZWhvbGRlcj0iUExBVFMgRFUgSk9VUiAtIETDiUpFVU5FUiDDgCBQQVJUSVIgREUgMTFoMzAiPgogICAgICAgICAgICA8bGFiZWw+QXJ0aWNsZXMgKHVuIHBhciBsaWduZSk8L2xhYmVsPgogICAgICAgICAgICA8dGV4dGFyZWEgaWQ9InBkakluTHVuY2hJdGVtcyIgcGxhY2Vob2xkZXI9IlNBTFRJTUJPQ0NBIERFIFBPUkMgMjEuMDAg4oKsJiMxMDtCTEFOUVVFVFRFIERFIFZFQVUgJmFtcDsgUklaIDIzLjAwIOKCrCI+PC90ZXh0YXJlYT4KICAgICAgICAgICAgPGRpdiBjbGFzcz0icGRqLWhpbnQiPlVuIGFydGljbGUgcGFyIGxpZ25lLCBwcml4IGVuIGZpbiBkZSBsaWduZTwvZGl2PgogICAgICAgICAgPC9kaXY+CiAgICAgICAgPC9kaXY+CiAgICAgICAgPGRpdiBjbGFzcz0icGRqLWVkaXQtYmxvYyBhY3RpdmUiIGRhdGEtYmxvYz0iZGVzc2VydCI+CiAgICAgICAgICA8ZGl2IGNsYXNzPSJwZGotZWRpdC1ibG9jLWhlYWQiPjxzcGFuPiYjMTI3ODU2OyBEZXNzZXJ0PC9zcGFuPjxkaXYgY2xhc3M9InBkai10b2dnbGUgb24iIGRhdGEtc2VjdGlvbj0iZGVzc2VydCI+PC9kaXY+PC9kaXY+CiAgICAgICAgICA8ZGl2IGNsYXNzPSJwZGotZWRpdC1ibG9jLWNvbnRlbnQiPgogICAgICAgICAgICA8bGFiZWw+VGl0cmUgZGUgc2VjdGlvbjwvbGFiZWw+CiAgICAgICAgICAgIDxpbnB1dCB0eXBlPSJ0ZXh0IiBpZD0icGRqSW5EZXNzZXJ0SGVhZGVyIiBwbGFjZWhvbGRlcj0iREVTU0VSVCA6Ij4KICAgICAgICAgICAgPGxhYmVsPkFydGljbGVzICh1biBwYXIgbGlnbmUpPC9sYWJlbD4KICAgICAgICAgICAgPHRleHRhcmVhIGlkPSJwZGpJbkRlc3NlcnRJdGVtcyIgcGxhY2Vob2xkZXI9IlRJUkFNSVNVIDogOC4wMCDigqwiPjwvdGV4dGFyZWE+CiAgICAgICAgICA8L2Rpdj4KICAgICAgICA8L2Rpdj4KICAgICAgPC9kaXY+CiAgICAgIDxkaXYgY2xhc3M9InBkai1wYW5lbC1zdGF0dXMiIGlkPSJwZGpQYW5lbFN0YXR1cyI+PC9kaXY+CiAgICAgIDxkaXYgY2xhc3M9InBkai1wYW5lbC1mb290ZXIiPgogICAgICAgIDxidXR0b24gY2xhc3M9InBkai1wYnRuLWNsZWFyIiBpZD0icGRqUGFuZWxDbGVhciI+JiMxMjg0NjU7IEVmZmFjZXI8L2J1dHRvbj4KICAgICAgICA8YnV0dG9uIGNsYXNzPSJwZGotcGJ0bi1jYW5jZWwiIGlkPSJwZGpQYW5lbENhbmNlbCI+QW5udWxlcjwvYnV0dG9uPgogICAgICAgIDxidXR0b24gY2xhc3M9InBkai1wYnRuLXNhdmUiIGlkPSJwZGpQYW5lbFNhdmUiPiYjMTAwMDM7IFNhdXZlZ2FyZGVyPC9idXR0b24+CiAgICAgIDwvZGl2PgogICAgPC9kaXY+CgogICAgPCEtLSBNYW5pZmVzdG8gLS0+CiAgICA8c2VjdGlvbiBjbGFzcz0ibWFuaWZlc3RvIiBpZD0iaGlzdG9pcmUiPgo8c3ZnIGNsYXNzPSJtYW5pZmVzdG8tYmctYXJ0IiB2aWV3Qm94PSIwIDAgNDAwIDUwMCIgYXJpYS1oaWRkZW49InRydWUiIHN0eWxlPSJwb3NpdGlvbjphYnNvbHV0ZTtyaWdodDotMjBweDt0b3A6NTAlO3RyYW5zZm9ybTp0cmFuc2xhdGVZKC01MCUpO3dpZHRoOjI4MHB4O29wYWNpdHk6MC4wNDtwb2ludGVyLWV2ZW50czpub25lIj48ZyBmaWxsPSJub25lIiBzdHJva2U9InZhcigtLWdyZWVuKSIgc3Ryb2tlLXdpZHRoPSIxLjUiIHN0cm9rZS1saW5lY2FwPSJyb3VuZCIgc3Ryb2tlLWxpbmVqb2luPSJyb3VuZCI+PHBhdGggZD0iTTIwMCAyMCBDMTIwIDIwIDYwIDgwIDYwIDE2MCBDNjAgMjgwIDIwMCAzNjAgMjAwIDM2MCBDMjAwIDM2MCAzNDAgMjgwIDM0MCAxNjAgQzM0MCA4MCAyODAgMjAgMjAwIDIwWiIvPjxwYXRoIGQ9Ik0yMDAgODAgQzE2MCA4MCAxMzAgMTEwIDEzMCAxNTAgQzEzMCAyMDAgMjAwIDI0MCAyMDAgMjQwIEMyMDAgMjQwIDI3MCAyMDAgMjcwIDE1MCBDMjcwIDExMCAyNDAgODAgMjAwIDgwWiIvPjxsaW5lIHgxPSIyMDAiIHkxPSIzNjAiIHgyPSIyMDAiIHkyPSI0NjAiLz48cGF0aCBkPSJNMTcwIDQwMCBRMjAwIDQzMCAyMzAgNDAwIi8+PHBhdGggZD0iTTE1NSA0MzAgUTIwMCA0NjUgMjQ1IDQzMCIvPjwvZz48L3N2Zz4KICAgICAgICA8IS0tIEdyYW5kZSBpbGx1c3RyYXRpb24gZW4gZmlsaWdyYW5lIC0tPgogICAgICAgIDxzdmcgY2xhc3M9Im1hbmlmZXN0by1pbGx1IiB2aWV3Qm94PSIwIDAgMjAwIDMwMCIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIiBhcmlhLWhpZGRlbj0idHJ1ZSI+CiAgICAgICAgICAgIDxnIGZpbGw9Im5vbmUiIHN0cm9rZT0idmFyKC0tZ3JlZW4pIiBzdHJva2Utd2lkdGg9IjIiIHN0cm9rZS1saW5lY2FwPSJyb3VuZCIgc3Ryb2tlLWxpbmVqb2luPSJyb3VuZCI+CiAgICAgICAgICAgICAgICA8cGF0aCBkPSJNMTAwIDEwIEM2MCAxMCAzMCA0MCAzMCA4MCBDMzAgMTQwIDEwMCAxODAgMTAwIDE4MCBDMTAwIDE4MCAxNzAgMTQwIDE3MCA4MCBDMTcwIDQwIDE0MCAxMCAxMDAgMTAgWiIgLz4KICAgICAgICAgICAgICAgIDxwYXRoIGQ9Ik0xMDAgNTAgQzg1IDUwIDc1IDYwIDc1IDc1IEM3NSA5NSAxMDAgMTEwIDEwMCAxMTAgQzEwMCAxMTAgMTI1IDk1IDEyNSA3NSBDMTI1IDYwIDExNSA1MCAxMDAgNTAgWiIgLz4KICAgICAgICAgICAgICAgIDxsaW5lIHgxPSIxMDAiIHkxPSIxODAiIHgyPSIxMDAiIHkyPSIyNjAiIC8+CiAgICAgICAgICAgICAgICA8cGF0aCBkPSJNODAgMjIwIFExMDAgMjQwIDEyMCAyMjAiIC8+CiAgICAgICAgICAgICAgICA8cGF0aCBkPSJNNzAgMjQwIFExMDAgMjY1IDEzMCAyNDAiIC8+CiAgICAgICAgICAgIDwvZz4KICAgICAgICA8L3N2Zz4KICAgICAgICA8ZGl2IGNsYXNzPSJtYW5pZmVzdG8tY29udGVudCI+CiAgICAgICAgICAgIDxkaXYgY2xhc3M9Im1hbmlmZXN0by10ZXh0Ij4KICAgICAgICAgICAgICAgIDxkaXYgY2xhc3M9InNlY3Rpb24tc3RhciI+PHN2ZyB2aWV3Qm94PSIwIDAgNTAgNTAiIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyIgYXJpYS1oaWRkZW49InRydWUiPjxsaW5lIHgxPSIyNSIgeTE9IjUiIHgyPSIyNSIgeTI9IjQ1IiBzdHJva2U9InZhcigtLWdvbGQpIiBzdHJva2Utd2lkdGg9IjAuNiIgc3Ryb2tlLWxpbmVjYXA9InJvdW5kIi8+PGxpbmUgeDE9IjUiIHkxPSIyNSIgeDI9IjQ1IiB5Mj0iMjUiIHN0cm9rZT0idmFyKC0tZ29sZCkiIHN0cm9rZS13aWR0aD0iMC42IiBzdHJva2UtbGluZWNhcD0icm91bmQiLz48bGluZSB4MT0iMTEiIHkxPSIxMSIgeDI9IjM5IiB5Mj0iMzkiIHN0cm9rZT0idmFyKC0tZ29sZCkiIHN0cm9rZS13aWR0aD0iMC4zNSIgc3Ryb2tlLWxpbmVjYXA9InJvdW5kIiBvcGFjaXR5PSIwLjQ1Ii8+PGxpbmUgeDE9IjM5IiB5MT0iMTEiIHgyPSIxMSIgeTI9IjM5IiBzdHJva2U9InZhcigtLWdvbGQpIiBzdHJva2Utd2lkdGg9IjAuMzUiIHN0cm9rZS1saW5lY2FwPSJyb3VuZCIgb3BhY2l0eT0iMC40NSIvPjxjaXJjbGUgY3g9IjI1IiBjeT0iMjUiIHI9IjIiIGZpbGw9InZhcigtLWdvbGQpIiBvcGFjaXR5PSIwLjciLz48Y2lyY2xlIGN4PSIyNSIgY3k9IjI1IiByPSI1LjUiIGZpbGw9Im5vbmUiIHN0cm9rZT0idmFyKC0tZ29sZCkiIHN0cm9rZS13aWR0aD0iMC4zIiBvcGFjaXR5PSIwLjIiLz48L3N2Zz48L2Rpdj4KICAgICAgICAgICAgICAgIDxoMj5VbmUgdHJhZGl0aW9uPGJyPnF1aSB0cmF2ZXJzZTxicj5sZSB0ZW1wczwvaDI+CiAgICAgICAgICAgICAgICA8IS0tIFPDqXBhcmF0ZXVyIG9ybmVtZW50YWwgY291dmVydHMgLS0+CiAgICAgICAgICAgICAgICA8c3ZnIGNsYXNzPSJvcm5hbWVudC1zZXAiIHZpZXdCb3g9IjAgMCAyNjAgMzAiIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyIgYXJpYS1oaWRkZW49InRydWUiPgogICAgICAgICAgICAgICAgICAgIDxnIGZpbGw9Im5vbmUiIHN0cm9rZT0idmFyKC0tZ29sZCkiIHN0cm9rZS13aWR0aD0iMS4yIiBzdHJva2UtbGluZWNhcD0icm91bmQiPgogICAgICAgICAgICAgICAgICAgICAgICA8bGluZSB4MT0iMCIgeTE9IjE1IiB4Mj0iOTUiIHkyPSIxNSIgLz4KICAgICAgICAgICAgICAgICAgICAgICAgPGxpbmUgeDE9IjE2NSIgeTE9IjE1IiB4Mj0iMjYwIiB5Mj0iMTUiIC8+CiAgICAgICAgICAgICAgICAgICAgICAgIDxwYXRoIGQ9Ik0xMTAgNCBWMTIgTTEwNiA0IFYxMCBNMTE0IDQgVjEwIE0xMDYgMTAgSDExNCBNMTEwIDEyIFYyNiIgLz4KICAgICAgICAgICAgICAgICAgICAgICAgPHBhdGggZD0iTTEzMCA0IEwxMzAgMjYiIC8+CiAgICAgICAgICAgICAgICAgICAgICAgIDxwYXRoIGQ9Ik0xNTAgNCBRMTU0IDE0IDE1MiAyMCBMMTUxIDI2IiAvPgogICAgICAgICAgICAgICAgICAgICAgICA8Y2lyY2xlIGN4PSIxMzAiIGN5PSIxNSIgcj0iNiIgLz4KICAgICAgICAgICAgICAgICAgICA8L2c+CiAgICAgICAgICAgICAgICA8L3N2Zz4KICAgICAgICAgICAgICAgIDxwPkNvbnN0cnVpdGUgZGFucyBsZSBzdHlsZSB0eXBpcXVlIGRlcyBhbm7DqWVzIDUwIMOgIGwnYW5nbGUgZGUgbGEgcnVlIFBoaWxpcHBlIElJIGV0IGRlIGxhIHJ1ZSBOb3RyZSBEYW1lLCBsYSBCcmFzc2VyaWUgZGVz
+<!DOCTYPE html>
+<html lang="fr" dir="ltr" prefix="og: https://ogp.me/ns#">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        
+    <meta name="description" content="Brasserie des Nations - Restaurant luxembourgeois traditionnel depuis 1956 au cœur de Luxembourg-Ville. Cordon bleu maison, Judd mat Gaardebounen, Bouchée à la Reine. Menu du jour, terrasse. Réservez au +352 47 36 45.">
+    <title>Brasserie des Nations | Restaurant Luxembourgeois depuis 1956 à Luxembourg-Ville</title>
+        <meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1">
+    <meta name="author" content="Brasserie des Nations">
+    <meta name="theme-color" content="#1a3d0f">
+    <meta name="mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+    <link rel="canonical" href="https://comealamaisongroupe.github.io/Brasserie-des-nations/">
+    <link rel="sitemap" type="application/xml" href="/Brasserie-des-nations/sitemap.xml">
+    <link rel="manifest" href="manifest.json">     <link rel="preload" as="image" href="assets/images/gallery/616236754_17845109154670666_6126207275337013230_n.webp" fetchpriority="high">
+    <meta name="keywords" content="restaurant luxembourg, brasserie luxembourg, cordon bleu luxembourg, judd mat gaardebounen, restaurant luxembourgeois, cuisine luxembourgeoise, terrasse luxembourg-ville, menu du jour luxembourg, Bouchée à la Reine, restaurant traditionnel luxembourg, brasserie des nations">
+    <meta name="geo.region" content="LU">
+    <meta name="geo.placename" content="Luxembourg-Ville">
+    <meta name="geo.position" content="49.6116;6.1319">
+    <meta name="ICBM" content="49.6116, 6.1319">
+        <!-- Open Graph -->
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://comealamaisongroupe.github.io/Brasserie-des-nations/">
+    <meta property="og:title" content="Brasserie des Nations | Restaurant Luxembourgeois depuis 1956">
+    <meta property="og:description" content="Restaurant luxembourgeois traditionnel depuis 1956. Cordon bleu maison, Judd mat Gaardebounen, Bouchée à la Reine. Terrasse au coeur de Luxembourg-Ville.">
+    <meta property="og:image" content="https://comealamaisongroupe.github.io/Brasserie-des-nations/assets/images/gallery/615844265_17844469170670666_5461536459451792004_n.webp">
+    <meta property="og:locale" content="fr_LU">
+    <meta property="og:site_name" content="Brasserie des Nations">
+    <!-- Twitter Card -->
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="Brasserie des Nations | Restaurant Luxembourgeois depuis 1956">
+    <meta name="twitter:description" content="Restaurant luxembourgeois traditionnel depuis 1956. Cordon bleu maison et spécialités luxembourgeoises.">
+    <meta name="twitter:image" content="https://comealamaisongroupe.github.io/Brasserie-des-nations/assets/images/gallery/615844265_17844469170670666_5461536459451792004_n.webp">
+    
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@300;400;500;600;700&family=Montserrat:wght@200;300;400;500&display=swap" rel="preload" as="style" onload="this.onload=null;this.rel='stylesheet'">
+    <link rel="stylesheet" href="css/style.css">
+    
+</head>
+<body>
+<div class="site-wrap">
+   <div class="golden-thread" id="goldenThread"></div>
+        <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "Restaurant",
+      "name": "Brasserie des Nations",
+      "image": "https://comealamaisongroupe.github.io/Brasserie-des-nations/assets/images/gallery/615844265_17844469170670666_5461536459451792004_n.webp",
+      "url": "https://comealamaisongroupe.github.io/Brasserie-des-nations/",
+      "telephone": "+352473645",
+      "priceRange": "€€",
+      "servesCuisine": ["Luxembourgeoise", "Française", "Européenne"],
+      "acceptsReservations": "true",
+      "address": {
+        "@type": "PostalAddress",
+        "streetAddress": "42 rue Philippe II",
+        "addressLocality": "Luxembourg",
+        "postalCode": "L-2340",
+        "addressCountry": "LU"
+      },
+      "geo": {
+        "@type": "GeoCoordinates",
+        "latitude": 49.6116,
+        "longitude": 6.1319
+      },
+      "openingHoursSpecification": [
+        {
+                "@type": "OpeningHoursSpecification",
+                "dayOfWeek": ["Monday","Tuesday","Wednesday"],
+                "opens": "07:00",
+                "closes": "17:00"
+            },
+            {
+                "@type": "OpeningHoursSpecification",
+                "dayOfWeek": ["Thursday","Friday"],
+                "opens": "07:00",
+                "closes": "22:00"
+            },
+            {
+                "@type": "OpeningHoursSpecification",
+                "dayOfWeek": "Saturday",
+                "opens": "11:00",
+                "closes": "14:30"
+            },
+            {
+                "@type": "OpeningHoursSpecification",
+                "dayOfWeek": "Saturday",
+                "opens": "18:00",
+                "closes": "22:00"
+            }
+      ],
+                    "sameAs": ["https://www.facebook.com/BrasserieDesNations", "https://www.instagram.com/brasserie_des_nations"],
+      "menu": "https://comealamaisongroupe.github.io/Brasserie-des-nations/#menu",
+      "foundingDate": "1956",
+      "description": "Restaurant luxembourgeois traditionnel depuis 1956 au coeur de Luxembourg-Ville. Spécialités : Cordon bleu maison, Judd mat Gaardebounen, Bouchée à la Reine.",
+      "hasMenu": {
+        "@type": "Menu",
+        "hasMenuSection": [
+          {
+            "@type": "MenuSection",
+            "name": "Spécialités de la Maison",
+            "hasMenuItem": [
+              {"@type": "MenuItem", "name": "Cordon Bleu Maison", "offers": {"@type": "Offer", "price": "24.50", "priceCurrency": "EUR"}},
+              {"@type": "MenuItem", "name": "Judd mat Gaardebounen", "offers": {"@type": "Offer", "price": "22.90", "priceCurrency": "EUR"}},
+              {"@type": "MenuItem", "name": "Bouchée à la Reine", "offers": {"@type": "Offer", "price": "21.90", "priceCurrency": "EUR"}}
+            ]
+          }
+        ]
+      },
+    }
+    </script>
+    </head>
+    <div class="site-wrap">
+    <div class="golden-thread" style="display:none" id="goldenThread"></div>
+    |
+
+        <script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "mainEntity": [
+    {
+      "@type": "Question",
+      "name": "Quels sont les horaires d'ouverture de la Brasserie des Nations ?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Lundi-Mercredi : 7h00-17h00, Jeudi-Vendredi : 7h00-22h00, Samedi : 11h00-14h30 et 18h00-22h00. Petit-déjeuner tous les matins dès 7h00."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Quelle est la spécialité de la Brasserie des Nations ?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Notre cordon bleu maison est notre signature depuis 1956. Nous proposons également le Judd mat Gaardebounen (plat national luxembourgeois) et la Bouchée à la Reine."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Peut-on réserver une table à la Brasserie des Nations ?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Oui, vous pouvez réserver par téléphone au +352 47 36 45 ou par email à info@nations.lu."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Où se situe la Brasserie des Nations ?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "42 rue Philippe II, L-2340 Luxembourg-Ville, au coeur du centre-ville historique."
+      }
+    }
+  ]
+}
+</script>
+    <div class="grain" style="display:none"></div>
+    <div class="cursor-glow" style="display:none" id="cursorGlow"></div>
+    <!-- Navigation -->
+    <nav role="navigation" aria-label="Menu principal" class="show">
+
+        <!-- Burger mobile -->
+        <button class="burger" id="burger" aria-label="Menu" aria-expanded="false">
+            <span></span><span></span><span></span>
+        </button>
+        <!-- Drawer mobile -->
+        <div class="mob-drawer" id="mobDrawer">
+            <a href="#menu-du-jour" class="mob-link pdj-nav-link">Menu du Jour</a>
+            <a href="pages/historique.html" class="mob-link">Historique</a>
+            <a href="pages/menu.html" class="mob-link">Menu</a>
+            <a href="#galerie" class="mob-link">Galerie</a>
+            <a href="#contact" class="mob-link">Contact</a>
+            <a href="pages/vin.html" class="mob-link">Vins</a>
+            <a href="tel:+352473645" class="mob-cta">Réserver</a>
+        </div>
+        <div class="mob-overlay" id="mobOverlay"></div>
+        <div class="nav-inner">
+            <a href="#menu-du-jour" class="nav-link pdj-nav-link">Menu du Jour</a>
+            <span class="nav-dot">·</span>
+            <a href="pages/historique.html" class="nav-link">Historique</a>
+            <span class="nav-dot">·</span>
+            <a href="pages/menu.html" class="nav-link">Menu</a>
+            <span class="nav-dot">·</span>
+            <a href="#galerie" class="nav-link">Galerie</a>
+            <span class="nav-dot">·</span>
+            <a href="#contact" class="nav-link">Contact</a>
+            <span class="nav-dot">·</span>
+            <a href="tel:+352473645" class="nav-link">Réserver</a>
+            <span class="nav-dot">·</span>
+            <a href="pages/vin.html" class="nav-link">Vins</a>
+        </div>
+    </nav>     <main>
+    <!-- Hero Section -->
+    <section class="hero-video">
+        <style>
+            .hero-dual-video { position:absolute;inset:0;width:100%;height:100%;display:flex;z-index:0;overflow:hidden; }
+            .hero-dual-video video { position:static!important;width:50%!important;height:100%!important;object-fit:cover!important;min-width:0!important;min-height:0!important;transform:none!important;top:auto!important;left:auto!important;filter:brightness(0.7)!important; }
+            .hero-dual-video .hero-vid-divider { width:2px;background:rgba(201,169,97,0.3);flex-shrink:0;z-index:1; }
+            @media(max-width:600px){ .hero-dual-video{flex-direction:column!important} .hero-dual-video video{width:100%!important;height:50%!important} .hero-dual-video .hero-vid-divider{width:100%!important;height:1px!important} }
+        </style>
+        <div class="hero-dual-video">
+            <video autoplay muted loop playsinline aria-hidden="true">
+                <source src="rgregr-2.mp4" type="video/mp4">
+            </video>
+            <div class="hero-vid-divider"></div>
+            <video autoplay muted loop playsinline aria-hidden="true">
+                <source src="etgergr-3.mp4" type="video/mp4">
+            </video>
+        </div>
+        <div class="hero-overlay go">
+            
+
+            <h1 class="hero-title">BRASSERIE<br>DES NATIONS</h1>
+            <p class="hero-subtitle">Depuis 1956</p>
+
+            <svg class="hero-divider" viewBox="0 0 200 20" xmlns="http://www.w3.org/2000/svg" aria-hidden="true"><g fill="none" stroke="rgba(201,169,97,0.6)" stroke-width="1" stroke-linecap="round"><path d="M20 10 Q55 3 90 10" /><path d="M110 10 Q145 3 180 10" /><path d="M94 7 L100 2 L106 7 L100 12 Z" /></g></svg>
+
+            <!-- Illustration façade brasserie sous le titre -->
+            <svg class="hero-facade draw-anim" viewBox="0 0 600 220" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+                <g fill="none" stroke="rgba(255,255,255,0.6)" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+                    <path d="M50 200 H550" />
+                    <rect x="80" y="50" width="440" height="150" rx="3" />
+                    <rect x="140" y="60" width="320" height="28" rx="2" />
+                    <line x1="155" y1="74" x2="445" y2="74" />
+                    <path d="M100 95 H500" />
+                    <path d="M100 95 Q117 118 134 95 Q151 118 168 95 Q185 118 202 95 Q219 118 236 95 Q253 118 270 95 Q287 118 304 95 Q321 118 338 95 Q355 118 372 95 Q389 118 406 95 Q423 118 440 95 Q457 118 474 95 Q491 118 500 95" />
+                    <rect x="270" y="120" width="60" height="80" rx="2" />
+                    <line x1="300" y1="120" x2="300" y2="200" />
+                    <circle cx="295" cy="160" r="2" /><circle cx="306" cy="160" r="2" />
+                    <rect x="120" y="120" width="50" height="50" />
+                    <line x1="120" y1="145" x2="170" y2="145" />
+                    <line x1="145" y1="120" x2="145" y2="170" />
+                    <rect x="200" y="120" width="50" height="50" />
+                    <line x1="200" y1="145" x2="250" y2="145" />
+                    <line x1="225" y1="120" x2="225" y2="170" />
+                    <rect x="350" y="120" width="50" height="50" />
+                    <line x1="350" y1="145" x2="400" y2="145" />
+                    <line x1="375" y1="120" x2="375" y2="170" />
+                    <rect x="430" y="120" width="50" height="50" />
+                    <line x1="430" y1="145" x2="480" y2="145" />
+                    <line x1="455" y1="120" x2="455" y2="170" />
+                    <ellipse cx="150" cy="196" rx="18" ry="6" />
+                    <ellipse cx="450" cy="196" rx="18" ry="6" />
+                    <line x1="150" y1="190" x2="150" y2="200" />
+                    <line x1="450" y1="190" x2="450" y2="200" />
+                </g>
+            </svg>
+        </div>
+        <div class="scroll-indicator">Découvrir ↓</div>
+    </section>
+
+        <!-- ===== PLAT DU JOUR ===== -->
+    <section id="menu-du-jour" class="plat-du-jour">
+        <div class="pdj-label">✦ Menu du Jour ✦</div>
+        <div class="pdj-date" id="pdjDate"></div>
+        <div class="pdj-divider"></div>
+        <div id="pdjBreakfast" class="pdj-bloc" style="display:none">
+            <div class="pdj-bloc-header" id="pdjBreakfastHeader"></div>
+            <div class="pdj-bloc-items" id="pdjBreakfastItems"></div>
+        </div>
+        <div class="pdj-sep-line" id="pdjSep1" style="display:none">--------------------------------</div>
+        <div id="pdjLunch" class="pdj-bloc" style="display:none">
+            <div class="pdj-bloc-header" id="pdjLunchHeader"></div>
+            <div class="pdj-bloc-items" id="pdjLunchItems"></div>
+        </div>
+        <div id="pdjDessert" class="pdj-bloc" style="display:none">
+            <div class="pdj-bloc-header" id="pdjDessertHeader"></div>
+            <div class="pdj-bloc-items" id="pdjDessertItems"></div>
+        </div>
+        <p class="pdj-empty" id="pdjEmpty">Le menu du jour sera annoncé prochainement.</p>
+    </section>
+
+    <!-- Bouton Admin (visible uniquement avec ?admin dans l'URL) -->
+    <button class="pdj-admin-trigger" id="pdjAdminBtn" title="Modifier le plat du jour">
+        <svg viewBox="0 0 24 24"><path d="M3 17.25V21h3.75L17.81 9.94l-3.75-3.75L3 17.25zM20.71 7.04a1 1 0 000-1.41l-2.34-2.34a1 1 0 00-1.41 0l-1.83 1.83 3.75 3.75 1.83-1.83z"/></svg>
+    </button>
+
+    <!-- Modal Connexion Admin -->
+    <div class="pdj-modal-overlay" id="pdjLoginModal">
+        <div class="pdj-modal">
+            <button class="pdj-close" onclick="closePdjModals()">&times;</button>
+            <div class="pdj-modal-title" style="font-family:'Cormorant Garamond',serif;font-size:1.8rem;color:var(--green);margin-bottom:25px;text-align:center">Accès Employé</div>
+            <label for="pdjPassword">Mot de passe</label>
+            <input type="password" id="pdjPassword" placeholder="Entrez le mot de passe">
+            <p class="pdj-login-msg" id="pdjLoginMsg">Mot de passe incorrect.</p>
+            <div class="pdj-modal-btns">
+                <button class="pdj-btn-cancel" onclick="closePdjModals()">Annuler</button>
+                <button class="pdj-btn-save" onclick="pdjLogin()">Connexion</button>
+            </div>
+        </div>
+    </div>
+    <div class="pdj-panel-overlay" id="pdjPanelOverlay"></div>
+    <div class="pdj-panel" id="pdjPanel">
+      <div class="pdj-panel-head">
+        <div style="font-family:'Cormorant Garamond',serif;font-size:1.4rem;color:var(--green);margin:0;display:flex;align-items:center;gap:10px"><span class="pdj-live-dot"></span> Menu du Jour</div>
+        <span class="pdj-live-tag">&#9679; LIVE</span>
+        <button class="pdj-panel-close" id="pdjPanelClose">&times;</button>
+      </div>
+      <div class="pdj-panel-body">
+        <div class="pdj-master-toggle">
+          <span>&#127869; Menu du Jour</span>
+          <div class="pdj-toggle on" id="pdjMasterToggle" data-section="master"></div>
+        </div>
+        <div class="pdj-edit-bloc active" data-bloc="breakfast">
+          <div class="pdj-edit-bloc-head"><span>&#9749; Petit-déjeuner</span><div class="pdj-toggle on" data-section="breakfast"></div></div>
+          <div class="pdj-edit-bloc-content">
+            <label>Titre de section</label>
+            <input type="text" id="pdjInBreakfastHeader" placeholder="PETIT DÉJEUNER À PARTIR DE 7h00 :">
+            <label>Articles (un par ligne : nom + prix)</label>
+            <textarea id="pdjInBreakfastItems" placeholder="croissant : 2€&#10;pain, beurre et confiture : 3.50€"></textarea>
+            <div class="pdj-hint">Un article par ligne, prix en fin de ligne</div>
+          </div>
+        </div>
+        <div class="pdj-edit-bloc active" data-bloc="lunch">
+          <div class="pdj-edit-bloc-head"><span>&#127860; Plats du jour</span><div class="pdj-toggle on" data-section="lunch"></div></div>
+          <div class="pdj-edit-bloc-content">
+            <label>Titre de section</label>
+            <input type="text" id="pdjInLunchHeader" placeholder="PLATS DU JOUR - DÉJEUNER À PARTIR DE 11h30">
+            <label>Articles (un par ligne)</label>
+            <textarea id="pdjInLunchItems" placeholder="SALTIMBOCCA DE PORC 21.00 €&#10;BLANQUETTE DE VEAU &amp; RIZ 23.00 €"></textarea>
+            <div class="pdj-hint">Un article par ligne, prix en fin de ligne</div>
+          </div>
+        </div>
+        <div class="pdj-edit-bloc active" data-bloc="dessert">
+          <div class="pdj-edit-bloc-head"><span>&#127856; Dessert</span><div class="pdj-toggle on" data-section="dessert"></div></div>
+          <div class="pdj-edit-bloc-content">
+            <label>Titre de section</label>
+            <input type="text" id="pdjInDessertHeader" placeholder="DESSERT :">
+            <label>Articles (un par ligne)</label>
+            <textarea id="pdjInDessertItems" placeholder="TIRAMISU : 8.00 €"></textarea>
+          </div>
+        </div>
+      </div>
+      <div class="pdj-panel-status" id="pdjPanelStatus"></div>
+      <div class="pdj-panel-footer">
+        <button class="pdj-pbtn-clear" id="pdjPanelClear">&#128465; Effacer</button>
+        <button class="pdj-pbtn-cancel" id="pdjPanelCancel">Annuler</button>
+        <button class="pdj-pbtn-save" id="pdjPanelSave">&#10003; Sauvegarder</button>
+      </div>
+    </div>
+
+    <!-- Manifesto -->
+    <section class="manifesto" id="histoire">
+<svg class="manifesto-bg-art" viewBox="0 0 400 500" aria-hidden="true" style="position:absolute;right:-20px;top:50%;transform:translateY(-50%);width:280px;opacity:0.04;pointer-events:none"><g fill="none" stroke="var(--green)" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M200 20 C120 20 60 80 60 160 C60 280 200 360 200 360 C200 360 340 280 340 160 C340 80 280 20 200 20Z"/><path d="M200 80 C160 80 130 110 130 150 C130 200 200 240 200 240 C200 240 270 200 270 150 C270 110 240 80 200 80Z"/><line x1="200" y1="360" x2="200" y2="460"/><path d="M170 400 Q200 430 230 400"/><path d="M155 430 Q200 465 245 430"/></g></svg>
+        <!-- Grande illustration en filigrane -->
+        <svg class="manifesto-illu" viewBox="0 0 200 300" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+            <g fill="none" stroke="var(--green)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M100 10 C60 10 30 40 30 80 C30 140 100 180 100 180 C100 180 170 140 170 80 C170 40 140 10 100 10 Z" />
+                <path d="M100 50 C85 50 75 60 75 75 C75 95 100 110 100 110 C100 110 125 95 125 75 C125 60 115 50 100 50 Z" />
+                <line x1="100" y1="180" x2="100" y2="260" />
+                <path d="M80 220 Q100 240 120 220" />
+                <path d="M70 240 Q100 265 130 240" />
+            </g>
+        </svg>
+        <div class="manifesto-content">
+            <div class="manifesto-text">
+                <div class="section-star"><svg viewBox="0 0 50 50" xmlns="http://www.w3.org/2000/svg" aria-hidden="true"><line x1="25" y1="5" x2="25" y2="45" stroke="var(--gold)" stroke-width="0.6" stroke-linecap="round"/><line x1="5" y1="25" x2="45" y2="25" stroke="var(--gold)" stroke-width="0.6" stroke-linecap="round"/><line x1="11" y1="11" x2="39" y2="39" stroke="var(--gold)" stroke-width="0.35" stroke-linecap="round" opacity="0.45"/><line x1="39" y1="11" x2="11" y2="39" stroke="var(--gold)" stroke-width="0.35" stroke-linecap="round" opacity="0.45"/><circle cx="25" cy="25" r="2" fill="var(--gold)" opacity="0.7"/><circle cx="25" cy="25" r="5.5" fill="none" stroke="var(--gold)" stroke-width="0.3" opacity="0.2"/></svg></div>
+                <h2>Une tradition<br>qui traverse<br>le temps</h2>
+                <!-- Séparateur ornemental couverts -->
+                <svg class="ornament-sep" viewBox="0 0 260 30" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+                    <g fill="none" stroke="var(--gold)" stroke-width="1.2" stroke-linecap="round">
+                        <line x1="0" y1="15" x2="95" y2="15" />
+                        <line x1="165" y1="15" x2="260" y2="15" />
+                        <path d="M110 4 V12 M106 4 V10 M114 4 V10 M106 10 H114 M110 12 V26" />
+                        <path d="M130 4 L130 26" />
+                        <path d="M150 4 Q154 14 152 20 L151 26" />
+                        <circle cx="130" cy="15" r="6" />
+                    </g>
+                </svg>
+                <p>Construite dans le style typique des années 50 à l'angle de la rue Philippe II et de la rue Notre Dame, la Brasserie des Nations s'est installée à la place de l'ancienne synagogue et du café Chambord, dans un nouvel immeuble bâti pour la CECA (Communauté Européenne du Charbon et de l'Acier). Depuis 1991, elle est gérée par la famille Risch, qui se fait livrer chaque jour des produits frais par des fournisseurs spécialisés.</p>
+                <p>Notre cordon bleu maison, véritable signature de l'établissement, est devenu une légende locale. Croustillant à l'extérieur, fondant à l'intérieur, il incarne à lui seul notre passion pour l'excellence et l'authenticité.</p>
+            </div>
+            <div class="manifesto-image">
+                <img loading="lazy" width="450" height="600" src="assets/images/gallery/615844265_17844469170670666_5461536459451792004_n.webp" alt="Brasserie des Nations" style="width: 100%; height: 600px; object-fit: cover; box-shadow: 0 30px 80px rgba(0,0,0,0.15);" alt="Brasserie des Nations">
+            </div>
+        </div>
+    </section>
+
+
+    <!-- Gallery Full Screen -->
+        <!-- ═══════════════════════════════════════════
+       GALERIE PLEINE PAGE
+       ═══════════════════════════════════════════ -->
+    <section class="gallery-full" id="galerie">
+<svg class="gallery-bg-art" viewBox="0 0 300 400" aria-hidden="true" style="position:absolute;left:3%;top:15%;width:120px;opacity:0.06;pointer-events:none;z-index:0"><g fill="none" stroke="rgba(201,169,97,0.4)" stroke-width="1" stroke-linecap="round"><path d="M150 380 Q145 300 130 240 Q110 180 130 120 Q150 60 150 20"/><path d="M150 200 Q120 180 110 195" opacity="0.6"/><path d="M150 150 Q180 130 185 145" opacity="0.6"/><path d="M150 260 Q125 240 115 255" opacity="0.6"/><circle cx="105" cy="290" r="15" opacity="0.3"/><circle cx="95" cy="305" r="12" opacity="0.25"/><circle cx="115" cy="310" r="10" opacity="0.2"/></g></svg>
+<svg class="gallery-bg-art2" viewBox="0 0 200 300" aria-hidden="true" style="position:absolute;right:3%;bottom:10%;width:100px;opacity:0.05;pointer-events:none;z-index:0"><g fill="none" stroke="rgba(201,169,97,0.4)" stroke-width="1" stroke-linecap="round"><path d="M100 10 L100 250"/><path d="M80 20 L100 10 L120 20"/><path d="M70 35 Q100 15 130 35"/><path d="M85 250 Q100 280 115 250"/><line x1="70" y1="250" x2="130" y2="250"/></g></svg>
+        <div class="gallery-ambiance"></div>
+
+        <div class="gallery-header">
+            <div class="section-star section-star--light"><svg viewBox="0 0 50 50" xmlns="http://www.w3.org/2000/svg" aria-hidden="true"><line x1="25" y1="5" x2="25" y2="45" stroke="var(--gold)" stroke-width="0.6" stroke-linecap="round"/><line x1="5" y1="25" x2="45" y2="25" stroke="var(--gold)" stroke-width="0.6" stroke-linecap="round"/><line x1="11" y1="11" x2="39" y2="39" stroke="var(--gold)" stroke-width="0.35" stroke-linecap="round" opacity="0.45"/><line x1="39" y1="11" x2="11" y2="39" stroke="var(--gold)" stroke-width="0.35" stroke-linecap="round" opacity="0.45"/><circle cx="25" cy="25" r="2" fill="var(--gold)" opacity="0.7"/><circle cx="25" cy="25" r="5.5" fill="none" stroke="var(--gold)" stroke-width="0.3" opacity="0.2"/></svg></div>
+            <h2 class="gallery-title" data-r="u">Galerie Gourmande</h2>
+            <div class="gallery-line"></div>
+            <p class="gallery-sub">Plats & Ambiance</p>
+        </div>
+
+        <div class="gal-divider"></div>
+
+        <div class="gallery-grid">
+
+            <div class="gallery-item" data-gi>
+                <div class="gi-inner">
+                    <img src="assets/images/plats/bouchée à la reine.jpg" alt="Bouchée à la Reine vol-au-vent crémeux aux champignons - Spécialité Brasserie des Nations Luxembourg" loading="lazy" decoding="async" fetchpriority="low" width="600" height="900">
+                    <div class="gi-sweep"></div>
+                    <div class="gi-glow"></div>
+                    <div class="gi-overlay">
+                        <span class="gi-tag">Spécialité</span>
+                        <span class="gi-label">Bouchée à la Reine crémeuse</span>
+                    </div>
+                    <div class="gi-number">01</div>
+                </div>
+            </div>
+
+            <div class="gallery-item" data-gi>
+                <div class="gi-inner">
+                    <img src="assets/images/gallery/587783468_17844470559670666_4807125560706233796_n.webp" alt="Plats du jour servis avec vins - Brasserie des Nations Luxembourg" loading="lazy" decoding="async" fetchpriority="low" width="1440" height="1920">
+                    <div class="gi-sweep"></div>
+                    <div class="gi-glow"></div>
+                    <div class="gi-overlay">
+                        <span class="gi-tag">À table</span>
+                        <span class="gi-label">Nos plats servis avec le sourire</span>
+                    </div>
+                    <div class="gi-number">02</div>
+                </div>
+            </div>
+
+            <div class="gallery-item" data-gi>
+                <div class="gi-inner">
+                    <img src="assets/images/plats/tartare-boeuf-frais-brasserie-nations-luxembourg.jpg" alt="Tartare de bœuf frais préparé minute avec oignons rouges et cornichons - Brasserie des Nations Luxembourg" loading="lazy" decoding="async" fetchpriority="low" width="600" height="900">
+                    <div class="gi-sweep"></div>
+                    <div class="gi-glow"></div>
+                    <div class="gi-overlay">
+                        <span class="gi-tag">Entrée</span>
+                        <span class="gi-label">Tartare de bœuf frais préparé minute</span>
+                    </div>
+                    <div class="gi-number">03</div>
+                </div>
+            </div>
+
+            <div class="gallery-item" data-gi>
+                <div class="gi-inner">
+                    <img src="assets/images/plats/gromperekichelcher-saumon-fume-luxembourg-brasserie-nations.jpg" alt="Gromperekichelcher luxembourgeois avec saumon fumé et crème fraîche - Brasserie des Nations" loading="lazy" decoding="async" fetchpriority="low" width="800" height="500">
+                    <div class="gi-sweep"></div>
+                    <div class="gi-glow"></div>
+                    <div class="gi-overlay">
+                        <span class="gi-tag">Tradition</span>
+                        <span class="gi-label">Gromperekichelcher au saumon fumé</span>
+                    </div>
+                    <div class="gi-number">04</div>
+                </div>
+            </div>
+
+            <div class="gallery-item" data-gi>
+                <div class="gi-inner">
+                    <img src="assets/images/plats/quiche-maison-carte-vins-brasserie-nations-luxembourg.jpg" alt="Quiche maison servie avec sélection de vins - Brasserie des Nations Luxembourg" loading="lazy" decoding="async" fetchpriority="low" width="600" height="400">
+                    <div class="gi-sweep"></div>
+                    <div class="gi-glow"></div>
+                    <div class="gi-overlay">
+                        <span class="gi-tag">Spécialité</span>
+                        <span class="gi-label">Quiche maison et carte des vins</span>
+                    </div>
+                    <div class="gi-number">05</div>
+                </div>
+            </div>
+
+            <div class="gallery-item" data-gi>
+                <div class="gi-inner">
+                    <img src="assets/images/plats/salade-fraiche-brasserie-nations-luxembourg.jpg" alt="Salade fraîche garnie servie à la Brasserie des Nations Luxembourg" loading="lazy" decoding="async" fetchpriority="low" width="600" height="400">
+                    <div class="gi-sweep"></div>
+                    <div class="gi-glow"></div>
+                    <div class="gi-overlay">
+                        <span class="gi-tag">Fraîcheur</span>
+                        <span class="gi-label">Salade fraîche de saison</span>
+                    </div>
+                    <div class="gi-number">06</div>
+                </div>
+            </div>
+
+        </div>
+    </section>
+
+    <!-- Heritage -->
+    <section class="heritage">
+<svg class="heritage-bg-art" viewBox="0 0 500 400" aria-hidden="true" style="position:absolute;left:5%;top:10%;width:200px;opacity:0.06;pointer-events:none"><g fill="none" stroke="rgba(201,169,97,0.5)" stroke-width="1.2" stroke-linecap="round"><rect x="50" y="80" width="400" height="250" rx="5"/><rect x="100" y="90" width="300" height="25" rx="3"/><path d="M70 140 H430"/><path d="M70 140 Q90 170 110 140 Q130 170 150 140 Q170 170 190 140 Q210 170 230 140 Q250 170 270 140 Q290 170 310 140 Q330 170 350 140 Q370 170 390 140 Q410 170 430 140"/><rect x="220" y="180" width="60" height="80" rx="3"/><line x1="250" y1="180" x2="250" y2="260"/><rect x="100" y="180" width="50" height="50"/><line x1="125" y1="180" x2="125" y2="230"/><rect x="350" y="180" width="50" height="50"/><line x1="375" y1="180" x2="375" y2="230"/></g></svg>
+<svg class="heritage-bg-art2" viewBox="0 0 200 300" aria-hidden="true" style="position:absolute;right:5%;bottom:10%;width:150px;opacity:0.05;pointer-events:none"><g fill="none" stroke="rgba(201,169,97,0.5)" stroke-width="1" stroke-linecap="round"><circle cx="100" cy="100" r="60"/><circle cx="100" cy="100" r="50"/><line x1="100" y1="55" x2="100" y2="95"/><line x1="100" y1="100" x2="125" y2="115"/><line x1="65" y1="100" x2="70" y2="100"/><line x1="130" y1="100" x2="135" y2="100"/><line x1="100" y1="155" x2="100" y2="160"/><path d="M60 200 Q80 180 100 200 Q120 180 140 200"/><path d="M50 230 Q80 205 100 230 Q120 205 150 230"/><path d="M70 260 Q100 240 130 260"/></g></svg>
+        
+        <div class="food-illust food-illust--heritage" aria-hidden="true">
+            <svg class="food-svg fh-tl" viewBox="0 0 80 60"><g fill="none" stroke="currentColor" stroke-width="1" stroke-linecap="round" stroke-linejoin="round"><path d="M5 50 L5 22 L70 8 L70 50 Z"/><path d="M5 22 L70 8"/><line x1="5" y1="50" x2="70" y2="50"/><circle cx="25" cy="35" r="3"/><circle cx="45" cy="28" r="2.5"/><circle cx="55" cy="40" r="2"/><circle cx="30" cy="45" r="1.8"/></g></svg>
+            <svg class="food-svg fh-tr" viewBox="0 0 90 70"><g fill="none" stroke="currentColor" stroke-width="1" stroke-linecap="round" stroke-linejoin="round"><path d="M10 30 Q10 58 45 60 Q80 58 80 30"/><ellipse cx="45" cy="30" rx="35" ry="10"/><path d="M30 22 Q32 14 28 10" opacity="0.5"/><path d="M45 20 Q47 10 43 5" opacity="0.5"/><path d="M60 22 Q62 14 58 10" opacity="0.5"/></g></svg>
+            <svg class="food-svg fh-bl" viewBox="0 0 50 90"><g fill="none" stroke="currentColor" stroke-width="0.9" stroke-linecap="round" stroke-linejoin="round"><path d="M25 82 Q22 55 15 35 Q6 15 25 4 Q44 15 35 35 Q28 55 25 82 Z"/><path d="M25 75 L25 12"/><path d="M25 30 Q18 25 15 28" opacity="0.5"/><path d="M25 45 Q32 40 35 43" opacity="0.5"/><path d="M25 58 Q18 53 15 56" opacity="0.5"/></g></svg>
+            <svg class="food-svg fh-br" viewBox="0 0 40 120"><g fill="none" stroke="currentColor" stroke-width="1" stroke-linecap="round" stroke-linejoin="round"><rect x="12" y="40" width="16" height="70" rx="3"/><path d="M16 40 L16 28 Q16 20 20 16 Q24 20 24 28 L24 40"/><rect x="17" y="8" width="6" height="8" rx="1"/><line x1="12" y1="65" x2="28" y2="65" opacity="0.3"/><rect x="14" y="52" width="12" height="18" rx="1" opacity="0.2"/></g></svg>
+        </div>
+        <div class="heritage-content">
+            <!-- Dessin décoratif horloge/tradition -->
+            <svg class="heritage-deco" viewBox="0 0 320 80" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+                <g fill="none" stroke="rgba(201,169,97,0.6)" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round">
+                    <line x1="0" y1="40" x2="120" y2="40" />
+                    <line x1="200" y1="40" x2="320" y2="40" />
+                    <circle cx="160" cy="40" r="25" />
+                    <circle cx="160" cy="40" r="20" />
+                    <line x1="160" y1="24" x2="160" y2="38" />
+                    <line x1="160" y1="40" x2="172" y2="46" />
+                    <line x1="148" y1="40" x2="150" y2="40" />
+                    <line x1="170" y1="40" x2="172" y2="40" />
+                    <line x1="160" y1="58" x2="160" y2="56" />
+                    <path d="M120 36 Q135 30 140 40 Q135 50 120 44" />
+                    <path d="M200 36 Q185 30 180 40 Q185 50 200 44" />
+                </g>
+            </svg>
+            <div class="year">1956</div>
+            <div class="heritage-sep"></div>
+            <h2>Sept décennies<br>d'excellence</h2>
+            <p>Depuis 1956, la Brasserie des Nations est bien plus qu'un restaurant : c'est un lieu de mémoire, de partage et de convivialité au cœur de la capitale.</p>
+            <p>Des générations de Luxembourgeois et de visiteurs sont venus savourer nos spécialités dans une ambiance chaleureuse et authentique.</p>
+            <p>Notre terrasse mythique, notre cordon bleu légendaire et notre engagement pour la qualité ont fait de nous une référence incontournable de la gastronomie luxembourgeoise.</p>
+        </div>
+    </section>
+
+    <!-- Location -->
+    <section class="location" id="contact">
+<svg class="loc-bg-art" viewBox="0 0 200 300" aria-hidden="true" style="position:absolute;left:3%;top:20%;width:100px;opacity:0.06;pointer-events:none;z-index:1"><g fill="none" stroke="rgba(201,169,97,0.5)" stroke-width="1" stroke-linecap="round"><path d="M100 20 C70 20 50 45 50 75 C50 120 85 150 100 170 C115 150 150 120 150 75 C150 45 130 20 100 20Z"/><circle cx="100" cy="75" r="15"/><path d="M70 200 Q100 220 130 200"/><line x1="100" y1="170" x2="100" y2="200"/></g></svg>
+        <div class="location-overlay"></div>
+        <div class="location-content">
+            <div class="section-star section-star--light"><svg viewBox="0 0 50 50" xmlns="http://www.w3.org/2000/svg" aria-hidden="true"><line x1="25" y1="5" x2="25" y2="45" stroke="var(--gold)" stroke-width="0.6" stroke-linecap="round"/><line x1="5" y1="25" x2="45" y2="25" stroke="var(--gold)" stroke-width="0.6" stroke-linecap="round"/><line x1="11" y1="11" x2="39" y2="39" stroke="var(--gold)" stroke-width="0.35" stroke-linecap="round" opacity="0.45"/><line x1="39" y1="11" x2="11" y2="39" stroke="var(--gold)" stroke-width="0.35" stroke-linecap="round" opacity="0.45"/><circle cx="25" cy="25" r="2" fill="var(--gold)" opacity="0.7"/><circle cx="25" cy="25" r="5.5" fill="none" stroke="var(--gold)" stroke-width="0.3" opacity="0.2"/></svg></div>
+            <h2>Nous trouver</h2>
+            <div class="loc-sep"></div>
+            <div class="contact-info">
+                <div class="contact-block">
+                    <!-- Icône localisation -->
+                    <svg class="contact-block-icon" viewBox="0 0 40 40" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+                        <g stroke="var(--gold)" stroke-width="1.6" fill="none" stroke-linecap="round" stroke-linejoin="round">
+                            <path d="M20 4 C13 4 8 9 8 16 C8 24 16 32 20 36 C24 32 32 24 32 16 C32 9 27 4 20 4 Z" />
+                            <circle cx="20" cy="16" r="4" />
+                        </g>
+                    </svg>
+                    <h3>Adresse</h3>
+                    <p>42 rue Philippe II<br>L-2340 Luxembourg</p>
+                </div>
+                <div class="contact-block">
+                    <!-- Icône téléphone -->
+                    <svg class="contact-block-icon" viewBox="0 0 40 40" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+                        <g stroke="var(--gold)" stroke-width="1.6" fill="none" stroke-linecap="round" stroke-linejoin="round">
+                            <path d="M10 8 L16 8 L19 16 L15 18 C16.5 22 19.5 25 23 26 L25 22 L32 25 L32 31 C28 32.5 21 32 15.5 27.5 C11 23.5 8.5 18.5 8 14 Z" />
+                        </g>
+                    </svg>
+                    <h3>Contact</h3>
+                    <p><a href="tel:+352473645">+352 47 36 45</a><br><a href="mailto:info@nations.lu">info@nations.lu</a></p>
+                </div>
+                <div class="contact-block">
+                    <!-- Icône horloge -->
+                    <svg class="contact-block-icon" viewBox="0 0 40 40" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+                        <g stroke="var(--gold)" stroke-width="1.6" fill="none" stroke-linecap="round" stroke-linejoin="round">
+                            <circle cx="20" cy="20" r="12" />
+                            <path d="M20 12 V20 L26 23" />
+                            <line x1="20" y1="6" x2="20" y2="8" />
+                            <line x1="20" y1="32" x2="20" y2="34" />
+                            <line x1="6" y1="20" x2="8" y2="20" />
+                            <line x1="32" y1="20" x2="34" y2="20" />
+                        </g>
+                    </svg>
+                    <h3>Horaires</h3>
+                    <p>Lun-Mer : 7h00-17h00<br>
+                    Jeu-Ven : 7h00-22h00<br>
+                    Sam : 11h00-14h30 · 18h00-22h00<br>Petit-déjeuner tous les matins dès 7h00</p>
+                </div>
+            </div>
+            <svg class="loc-ornament" viewBox="0 0 200 30" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+                <g fill="none" stroke="rgba(201,169,97,0.5)" stroke-width="1" stroke-linecap="round">
+                    <line x1="0" y1="15" x2="75" y2="15"/>
+                    <line x1="125" y1="15" x2="200" y2="15"/>
+                    <path d="M85 10 L100 4 L115 10 L100 16 Z"/>
+                    <circle cx="100" cy="10" r="2"/>
+                </g>
+            </svg>
+
+            <div class="map-section"><p class="map-label">Notre emplacement</p><div class="map-frame" id="mapLazy"><div class="map-ph" style="display:none" style="display:flex;align-items:center;justify-content:center;min-height:200px;color:var(--gold);font-family:Cormorant Garamond,serif;font-size:1.1rem;letter-spacing:2px;text-align:center;padding:20px">&#x1f4cd; Afficher la carte interactive</div><iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2585.4!2d6.1319!3d49.6116!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x0!2zNDnCsDM2JzQxLjgiTiA2wrAwNyczMS4yIkU!5e0!3m2!1sfr!2slu!4v1707800000000" width="100%" height="200" style="border:0" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade" title="Localisation Brasserie des Nations Luxembourg"></iframe></div><a href="https://maps.google.com/maps?q=Brasserie+des+Nations+Luxembourg" target="_blank" rel="noopener" style="display:block;text-align:center;margin-top:12px;color:var(--gold);font-size:.75rem;letter-spacing:2px;text-decoration:none;text-transform:uppercase;font-family:Montserrat,sans-serif">Ouvrir dans Google Maps &#x2192;</a></div><div class="social-links"><a href="https://www.facebook.com/BrasserieDesNations" target="_blank" rel="noopener" aria-label="Facebook"><svg width="22" height="22" viewBox="0 0 24 24" fill="currentColor"><path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z"/></svg></a><a href="https://www.instagram.com/brasserie_des_nations" target="_blank" rel="noopener" aria-label="Instagram"><svg width="22" height="22" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zM12 0C8.741 0 8.333.014 7.053.072 2.695.272.273 2.69.073 7.052.014 8.333 0 8.741 0 12c0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98C8.333 23.986 8.741 24 12 24c3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98C15.668.014 15.259 0 12 0zm0 5.838a6.162 6.162 0 100 12.324 6.162 6.162 0 000-12.324zM12 16a4 4 0 110-8 4 4 0 010 8zm6.406-11.845a1.44 1.44 0 100 2.881 1.44 1.44 0 000-2.881z"/></svg></a></div>
+    <footer role="contentinfo" aria-label="Pied de page">
+        
+        <div class="footer-content">
+            <!-- Ornement footer -->
+            
+            <div class="footer-logo">BRASSERIE DES NATIONS</div>
+            <div class="footer-links">
+                <a href="pages/historique.html">Historique</a>
+                <a href="pages/menu.html">Menu</a>
+                <a href="#galerie">Galerie</a>
+                <a href="#contact">Contact</a>
+            </div>
+            <div class="footer-bottom">
+                © 2026 Brasserie des Nations — Tradition luxembourgeoise depuis 1956
+            </div>
+        </div>
+                    <div class="footer-links" style="margin-top:12px;font-size:0.65rem;opacity:0.7">
+                <a href="/Brasserie-des-nations/cordon-bleu-luxembourg/">Cordon Bleu</a>
+                <a href="/Brasserie-des-nations/brasserie-des-nations-luxembourg/">Judd mat Gaardebounen</a>
+                <a href="/Brasserie-des-nations/brasserie-luxembourg/">Bouchée à la Reine</a>
+                <a href="/Brasserie-des-nations/menu-du-jour-luxembourg/">Notre Menu</a>
+                <a href="/Brasserie-des-nations/restaurant-typique-luxembourg/">Terrasse</a>
+                <a href="/Brasserie-des-nations/restaurant-centre-ville-luxembourg/">Restaurant Luxembourg</a>
+                <a href="/Brasserie-des-nations/brasserie-ville-haute-luxembourg/">Cuisine Luxembourgeoise</a>
+                <a href="/Brasserie-des-nations/dejeuner-rapide-luxembourg/">Notre Histoire</a>
+                <a href="/Brasserie-des-nations/restaurant-rue-philippe-ii-luxembourg/">Réservation</a>
+                <a href="/Brasserie-des-nations/avis-brasserie-luxembourg/">Avis Clients</a>
+            </div>
+    </footer>
+</div>
+    <div class="scroll-bar"></div>
+    <div class="loader" id="loader">
+        <div class="loader-rings"><div class="loader-ring"></div><div class="loader-ring"></div><div class="loader-ring"></div></div>
+        <div class="loader-center"><span class="loader-year" id="lYear">1956</span><div class="loader-name">Brasserie des Nations</div><div class="loader-line"></div></div>
+    </div>
+    <script src="js/script.js"></script>
+
+
+    
+
+</body>
+</html>
