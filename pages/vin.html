@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Dictionnaire des Vins — Brasserie des Nations Luxembourg</title>
     <meta name="description" content="Découvrez notre guide complet des vins de Bordeaux. Histoire, géographie, appellations et cépages - Brasserie des Nations Luxembourg.">
-    <link rel="canonical" href="https://comealamaisongroupe.github.io/Brasserie-des-nations/vin.html">
+    <link rel="canonical" href="https://comealamaisongroupe.github.io/Brasserie-des-nations/pages/vin.html">
     <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@300;400;600;700&family=Montserrat:wght@300;400;500;600&display=swap" rel="stylesheet">
     <style>
         :root { --green: #1a3d0f; --cream: #f5f3ef; --gold: #c9a961; --text: #2c2c2c; --wine: #722F37; }
@@ -18,6 +18,30 @@
         .nav-link { font-family: 'Cormorant Garamond', serif; font-size: 1.1rem; font-weight: 400; letter-spacing: 2px; text-transform: uppercase; color: var(--green); text-decoration: none; padding: 8px 18px; transition: opacity 0.3s; }
         .nav-link:hover { opacity: 0.6; }
         .nav-dot { color: var(--green); opacity: 0.2; font-size: 0.8rem; }
+
+        /* Burger mobile */
+        .burger { display: none; }
+        .mob-drawer { display: none; }
+        .mob-overlay { display: none; }
+
+        @media (max-width: 768px) {
+            nav { padding: 12px 20px !important; justify-content: flex-end !important; background: rgba(245,243,239,0.97) !important; }
+            .nav-inner { display: none !important; }
+            .burger { display: flex; align-items: center; justify-content: center; width: 44px; height: 44px; border-radius: 50%; background: transparent; border: 2px solid var(--gold); cursor: pointer; z-index: 10002; position: relative; flex-direction: column; gap: 5px; padding: 0; transition: all .3s ease; }
+            .burger span { display: block; width: 20px; height: 1.5px; background: var(--gold); border-radius: 2px; transition: all .3s ease; transform-origin: center; }
+            .burger.open { background: var(--gold); }
+            .burger.open span { background: var(--green); }
+            .burger.open span:nth-child(1) { transform: rotate(45deg) translate(4.5px,4.5px); }
+            .burger.open span:nth-child(2) { opacity: 0; }
+            .burger.open span:nth-child(3) { transform: rotate(-45deg) translate(4.5px,-4.5px); }
+            .mob-drawer { display: flex; position: fixed; top: 0; right: -100%; width: 80%; max-width: 320px; height: 100vh; background: var(--cream); z-index: 10001; flex-direction: column; padding: 100px 40px 40px; gap: 0; transition: right .4s cubic-bezier(.16,1,.3,1); box-shadow: -8px 0 40px rgba(0,0,0,.15); overflow-y: auto; }
+            .mob-drawer.open { right: 0; }
+            .mob-link { font-family: 'Cormorant Garamond', serif; font-size: 1.4rem; font-weight: 400; color: var(--green); text-decoration: none; padding: 16px 0; letter-spacing: 2px; text-transform: uppercase; border-bottom: 1px solid rgba(0,0,0,.06); transition: color .3s ease; }
+            .mob-link:last-of-type { border-bottom: none; }
+            .mob-cta { display: block; margin-top: auto; padding: 18px; background: var(--green); color: #fff; text-align: center; text-decoration: none; font-family: 'Montserrat', sans-serif; font-size: .85rem; font-weight: 500; letter-spacing: 3px; text-transform: uppercase; border-radius: 8px; transition: background .3s ease; }
+            .mob-overlay { position: fixed; inset: 0; background: rgba(0,0,0,.4); z-index: 10000; backdrop-filter: blur(3px); display: none; }
+            .mob-overlay.open { display: block; }
+        }
         
         .hero { background: var(--wine); min-height: 50vh; display: flex; flex-direction: column; justify-content: center; align-items: center; text-align: center; padding: 120px 40px 80px; }
         .hero h1 { font-family: 'Cormorant Garamond', serif; font-size: 4rem; font-weight: 300; color: white; letter-spacing: 4px; margin-bottom: 20px; }
@@ -56,16 +80,31 @@
 <body>
 
     <nav>
+        <!-- Burger mobile -->
+        <button class="burger" id="burger" aria-label="Menu" aria-expanded="false">
+            <span></span><span></span><span></span>
+        </button>
+        <!-- Drawer mobile -->
+        <div class="mob-drawer" id="mobDrawer">
+            <a href="../index.html" class="mob-link">Accueil</a>
+            <a href="../index.html#histoire" class="mob-link">Histoire</a>
+            <a href="menu.html" class="mob-link">Menu</a>
+            <a href="../index.html#galerie" class="mob-link">Galerie</a>
+            <a href="../index.html#contact" class="mob-link">Contact</a>
+            <a href="vin.html" class="mob-link">Vins</a>
+            <a href="tel:+352473645" class="mob-cta">Réserver</a>
+        </div>
+        <div class="mob-overlay" id="mobOverlay"></div>
         <div class="nav-inner">
-            <a href="/Brasserie-des-nations/" class="nav-link">Brasserie des Nations</a>
+            <a href="../index.html" class="nav-link">Brasserie des Nations</a>
             <span class="nav-dot">·</span>
-            <a href="/Brasserie-des-nations/#histoire" class="nav-link">Histoire</a>
+            <a href="../index.html#histoire" class="nav-link">Histoire</a>
             <span class="nav-dot">·</span>
-            <a href="/Brasserie-des-nations/#menu" class="nav-link">Menu</a>
+            <a href="menu.html" class="nav-link">Menu</a>
             <span class="nav-dot">·</span>
-            <a href="/Brasserie-des-nations/#galerie" class="nav-link">Galerie</a>
+            <a href="../index.html#galerie" class="nav-link">Galerie</a>
             <span class="nav-dot">·</span>
-            <a href="/Brasserie-des-nations/#contact" class="nav-link">Contact</a>
+            <a href="../index.html#contact" class="nav-link">Contact</a>
             <span class="nav-dot">·</span>
             <a href="tel:+352473645" class="nav-link">Réserver</a>
         </div>
@@ -164,7 +203,7 @@
                 </div>
                 
                 <div class="appellation-card">
-                    <h4>Pomerol & Fronsac</h4>
+                    <h4>Pomerol &amp; Fronsac</h4>
                     <ul>
                         <li>Pomerol (AOC)</li>
                         <li>Lalande-de-Pomerol (AOC)</li>
@@ -194,14 +233,46 @@
     <footer>
         <div class="footer-logo">BRASSERIE DES NATIONS</div>
         <div class="footer-links">
-            <a href="/Brasserie-des-nations/#histoire">Histoire</a>
-            <a href="/Brasserie-des-nations/#menu">Menu</a>
-            <a href="/Brasserie-des-nations/#galerie">Galerie</a>
-            <a href="/Brasserie-des-nations/#contact">Contact</a>
-            <a href="/Brasserie-des-nations/vin.html">Vins</a>
+            <a href="../index.html">Accueil</a>
+            <a href="../index.html#histoire">Histoire</a>
+            <a href="menu.html">Menu</a>
+            <a href="../index.html#galerie">Galerie</a>
+            <a href="../index.html#contact">Contact</a>
+            <a href="vin.html">Vins</a>
         </div>
         <p style="margin-top:20px;font-size:0.7rem;opacity:0.5;">© 2026 Brasserie des Nations — Tradition luxembourgeoise depuis 1956</p>
     </footer>
+
+    <script>
+    // Burger mobile
+    (function(){
+        var burger = document.getElementById('burger');
+        var drawer = document.getElementById('mobDrawer');
+        var overlay = document.getElementById('mobOverlay');
+        if(!burger) return;
+        function openMenu(){
+            burger.classList.add('open');
+            drawer.classList.add('open');
+            overlay.classList.add('open');
+            burger.setAttribute('aria-expanded','true');
+            document.body.style.overflow='hidden';
+        }
+        function closeMenu(){
+            burger.classList.remove('open');
+            drawer.classList.remove('open');
+            overlay.classList.remove('open');
+            burger.setAttribute('aria-expanded','false');
+            document.body.style.overflow='';
+        }
+        burger.addEventListener('click',function(){
+            if(burger.classList.contains('open')) closeMenu(); else openMenu();
+        });
+        overlay.addEventListener('click', closeMenu);
+        drawer.querySelectorAll('.mob-link,.mob-cta').forEach(function(a){
+            a.addEventListener('click', closeMenu);
+        });
+    })();
+    </script>
 
 </body>
 </html>
