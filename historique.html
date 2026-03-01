@@ -1,0 +1,649 @@
+<!DOCTYPE html>
+<html lang="fr" dir="ltr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Historique — Brasserie des Nations | Restaurant Luxembourgeois depuis 1956</title>
+    <meta name="description" content="Découvrez l'histoire de la Brasserie des Nations depuis 1956. Située à l'angle de la rue Philippe II et Notre Dame, Luxembourg-Ville, une institution luxembourgeoise. Convertisseur de devises historiques.">
+    <meta name="robots" content="index, follow">
+    <link rel="canonical" href="https://comealamaisongroupe.github.io/Brasserie-des-nations/pages/historique.html">
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@300;400;500;600;700&family=Montserrat:wght@200;300;400;500&display=swap" rel="preload" as="style" onload="this.onload=null;this.rel='stylesheet'">
+    <link rel="stylesheet" href="../css/style.css">
+    <style>
+        /* Page hero */
+        .page-hero {
+            background: var(--green);
+            padding: 160px 60px 80px;
+            text-align: center;
+        }
+        .page-hero h1 {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 5.5rem;
+            font-weight: 300;
+            color: white;
+            letter-spacing: 6px;
+            margin-bottom: 20px;
+        }
+        .page-hero p {
+            font-size: 1rem;
+            color: rgba(255,255,255,0.65);
+            letter-spacing: 4px;
+            text-transform: uppercase;
+            font-weight: 300;
+        }
+
+        /* Historique section */
+        .historique-section {
+            max-width: 1100px;
+            margin: 0 auto;
+            padding: 120px 40px 80px;
+        }
+        .historique-header {
+            text-align: center;
+            margin-bottom: 80px;
+        }
+        .historique-header h2 {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 4rem;
+            font-weight: 300;
+            color: var(--green);
+            margin-bottom: 20px;
+            letter-spacing: 4px;
+        }
+
+        /* Timeline blocks */
+        .timeline {
+            display: flex;
+            flex-direction: column;
+            gap: 80px;
+            position: relative;
+        }
+        .timeline::before {
+            content: '';
+            position: absolute;
+            left: 50%;
+            top: 0;
+            bottom: 0;
+            width: 1px;
+            background: linear-gradient(180deg, transparent, rgba(201,169,97,0.3) 10%, rgba(201,169,97,0.3) 90%, transparent);
+            transform: translateX(-50%);
+        }
+        .timeline-block {
+            display: grid;
+            grid-template-columns: 1fr 80px 1fr;
+            align-items: center;
+            gap: 0;
+        }
+        .timeline-block:nth-child(even) .timeline-text {
+            grid-column: 3;
+            grid-row: 1;
+            text-align: left;
+        }
+        .timeline-block:nth-child(even) .timeline-year-col {
+            grid-column: 2;
+            grid-row: 1;
+        }
+        .timeline-block:nth-child(even) .timeline-content-col {
+            grid-column: 1;
+            grid-row: 1;
+            text-align: right;
+        }
+        .timeline-year-col {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            gap: 8px;
+        }
+        .timeline-dot {
+            width: 14px;
+            height: 14px;
+            border-radius: 50%;
+            background: var(--gold);
+            box-shadow: 0 0 0 4px rgba(201,169,97,0.2);
+        }
+        .timeline-year-label {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 1.6rem;
+            font-weight: 700;
+            color: var(--gold);
+            letter-spacing: 2px;
+        }
+
+        .timeline-content-col {
+            padding: 40px;
+            background: white;
+            border: 1px solid rgba(0,0,0,0.06);
+            position: relative;
+            transition: box-shadow 0.3s ease;
+        }
+        .timeline-content-col:hover {
+            box-shadow: 0 15px 45px rgba(0,0,0,0.08);
+        }
+        .timeline-content-col::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 2px;
+            background: linear-gradient(90deg, transparent, var(--gold), transparent);
+        }
+        .timeline-content-col h3 {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 2.2rem;
+            font-weight: 600;
+            color: var(--green);
+            margin-bottom: 20px;
+            letter-spacing: 1px;
+        }
+        .timeline-content-col p {
+            font-size: 1rem;
+            line-height: 2;
+            color: #555;
+            font-weight: 300;
+        }
+
+        @media (max-width: 768px) {
+            .page-hero { padding: 120px 20px 60px; }
+            .page-hero h1 { font-size: 2.8rem; letter-spacing: 3px; }
+            .historique-section { padding: 80px 20px 60px; }
+            .historique-header h2 { font-size: 2.5rem; }
+            .timeline::before { left: 20px; }
+            .timeline-block {
+                grid-template-columns: 40px 1fr;
+                grid-template-rows: auto;
+            }
+            .timeline-block:nth-child(even) .timeline-text,
+            .timeline-block:nth-child(even) .timeline-year-col,
+            .timeline-block:nth-child(even) .timeline-content-col {
+                grid-column: unset;
+                grid-row: unset;
+                text-align: left;
+            }
+            .timeline-block {
+                display: flex;
+                flex-direction: row;
+                gap: 20px;
+            }
+            .timeline-year-col {
+                flex-shrink: 0;
+                width: 40px;
+                flex-direction: column;
+                align-items: center;
+            }
+            .timeline-year-label { font-size: 0; }
+            .timeline-content-col {
+                flex: 1;
+                padding: 25px 20px;
+                text-align: left !important;
+            }
+            .timeline-content-col h3 { font-size: 1.6rem; }
+        }
+
+        /* Convertisseur section */
+        .convertisseur-section {
+            background: var(--green);
+            color: white;
+            padding: 120px 40px;
+        }
+        .convertisseur-inner {
+            max-width: 1000px;
+            margin: 0 auto;
+            text-align: center;
+        }
+        .convertisseur-inner .section-star--light { margin-bottom: 20px; }
+        .convertisseur-inner h2 {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 4rem;
+            font-weight: 300;
+            color: white;
+            letter-spacing: 4px;
+            margin-bottom: 20px;
+        }
+        .convertisseur-intro {
+            font-size: 1rem;
+            line-height: 2;
+            color: rgba(255,255,255,0.75);
+            font-weight: 300;
+            max-width: 680px;
+            margin: 0 auto 60px;
+        }
+        .convertisseur-intro strong {
+            color: var(--gold);
+            font-weight: 400;
+        }
+
+        /* Table */
+        .convertisseur-table-wrap {
+            overflow-x: auto;
+            margin-bottom: 30px;
+        }
+        .convertisseur-table {
+            width: 100%;
+            border-collapse: collapse;
+            background: rgba(255,255,255,0.04);
+            border: 1px solid rgba(201,169,97,0.2);
+        }
+        .convertisseur-table th {
+            background: rgba(201,169,97,0.15);
+            color: var(--gold);
+            padding: 16px 20px;
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 1.1rem;
+            font-weight: 400;
+            letter-spacing: 3px;
+            text-transform: uppercase;
+            border: 1px solid rgba(201,169,97,0.15);
+        }
+        .convertisseur-table td {
+            padding: 12px 16px;
+            border: 1px solid rgba(255,255,255,0.06);
+        }
+        .convertisseur-table td:first-child {
+            background: rgba(201,169,97,0.1);
+            color: var(--gold);
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 1.1rem;
+            font-weight: 600;
+            letter-spacing: 2px;
+            text-align: center;
+        }
+        .convertisseur-table input {
+            width: 100%;
+            padding: 10px 12px;
+            background: rgba(255,255,255,0.06);
+            border: 1px solid rgba(201,169,97,0.2);
+            border-radius: 4px;
+            color: white;
+            font-family: 'Montserrat', sans-serif;
+            font-size: 0.95rem;
+            text-align: center;
+            transition: border-color 0.3s, background 0.3s;
+        }
+        .convertisseur-table input:not([readonly]):focus {
+            outline: none;
+            border-color: var(--gold);
+            background: rgba(201,169,97,0.08);
+        }
+        .convertisseur-table input[readonly] {
+            opacity: 0.65;
+            cursor: default;
+        }
+        .convert-btn {
+            margin-top: 25px;
+            padding: 16px 50px;
+            background: transparent;
+            color: var(--gold);
+            border: 1px solid var(--gold);
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 1.2rem;
+            letter-spacing: 3px;
+            text-transform: uppercase;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+        .convert-btn:hover {
+            background: var(--gold);
+            color: var(--green);
+        }
+        .convert-note {
+            font-size: 0.75rem;
+            color: rgba(255,255,255,0.35);
+            letter-spacing: 1px;
+            margin-top: 20px;
+            font-weight: 300;
+        }
+
+        @media (max-width: 768px) {
+            .convertisseur-section { padding: 80px 20px; }
+            .convertisseur-inner h2 { font-size: 2.5rem; }
+        }
+    </style>
+</head>
+<body>
+<div class="site-wrap show">
+
+    <!-- Navigation -->
+    <nav role="navigation" aria-label="Menu principal" class="show">
+        <!-- Burger mobile -->
+        <button class="burger" id="burger" aria-label="Menu" aria-expanded="false">
+            <span></span><span></span><span></span>
+        </button>
+        <!-- Drawer mobile -->
+        <div class="mob-drawer" id="mobDrawer">
+            <a href="../index.html#menu-du-jour" class="mob-link">Menu du Jour</a>
+            <a href="historique.html" class="mob-link">Historique</a>
+            <a href="menu.html" class="mob-link">Menu</a>
+            <a href="../index.html#galerie" class="mob-link">Galerie</a>
+            <a href="../index.html#contact" class="mob-link">Contact</a>
+            <a href="vin.html" class="mob-link">Vins</a>
+            <a href="tel:+352473645" class="mob-cta">Réserver</a>
+        </div>
+        <div class="mob-overlay" id="mobOverlay"></div>
+        <div class="nav-inner">
+            <a href="../index.html#menu-du-jour" class="nav-link">Menu du Jour</a>
+            <span class="nav-dot">·</span>
+            <a href="historique.html" class="nav-link">Historique</a>
+            <span class="nav-dot">·</span>
+            <a href="menu.html" class="nav-link">Menu</a>
+            <span class="nav-dot">·</span>
+            <a href="../index.html#galerie" class="nav-link">Galerie</a>
+            <span class="nav-dot">·</span>
+            <a href="../index.html#contact" class="nav-link">Contact</a>
+            <span class="nav-dot">·</span>
+            <a href="tel:+352473645" class="nav-link">Réserver</a>
+            <span class="nav-dot">·</span>
+            <a href="vin.html" class="nav-link">Vins</a>
+        </div>
+    </nav>
+
+    <main>
+        <!-- Page Hero -->
+        <section class="page-hero">
+            <div class="section-star section-star--light">
+                <svg viewBox="0 0 50 50" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+                    <line x1="25" y1="5" x2="25" y2="45" stroke="var(--gold)" stroke-width="0.6" stroke-linecap="round"/>
+                    <line x1="5" y1="25" x2="45" y2="25" stroke="var(--gold)" stroke-width="0.6" stroke-linecap="round"/>
+                    <line x1="11" y1="11" x2="39" y2="39" stroke="var(--gold)" stroke-width="0.35" stroke-linecap="round" opacity="0.45"/>
+                    <line x1="39" y1="11" x2="11" y2="39" stroke="var(--gold)" stroke-width="0.35" stroke-linecap="round" opacity="0.45"/>
+                    <circle cx="25" cy="25" r="2" fill="var(--gold)" opacity="0.7"/>
+                    <circle cx="25" cy="25" r="5.5" fill="none" stroke="var(--gold)" stroke-width="0.3" opacity="0.2"/>
+                </svg>
+            </div>
+            <h1>Notre Histoire</h1>
+            <p>Sept décennies de tradition luxembourgeoise</p>
+        </section>
+
+        <!-- Historique Section -->
+        <section class="historique-section" id="historique">
+            <div class="historique-header">
+                <div class="section-star">
+                    <svg viewBox="0 0 50 50" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+                        <line x1="25" y1="5" x2="25" y2="45" stroke="var(--gold)" stroke-width="0.6" stroke-linecap="round"/>
+                        <line x1="5" y1="25" x2="45" y2="25" stroke="var(--gold)" stroke-width="0.6" stroke-linecap="round"/>
+                        <line x1="11" y1="11" x2="39" y2="39" stroke="var(--gold)" stroke-width="0.35" stroke-linecap="round" opacity="0.45"/>
+                        <line x1="39" y1="11" x2="11" y2="39" stroke="var(--gold)" stroke-width="0.35" stroke-linecap="round" opacity="0.45"/>
+                        <circle cx="25" cy="25" r="2" fill="var(--gold)" opacity="0.7"/>
+                    </svg>
+                </div>
+                <h2>Une tradition<br>qui traverse le temps</h2>
+                <svg class="ornament-sep" viewBox="0 0 260 30" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+                    <g fill="none" stroke="var(--gold)" stroke-width="1.2" stroke-linecap="round">
+                        <line x1="0" y1="15" x2="95" y2="15"/>
+                        <line x1="165" y1="15" x2="260" y2="15"/>
+                        <path d="M110 4 V12 M106 4 V10 M114 4 V10 M106 10 H114 M110 12 V26"/>
+                        <path d="M130 4 L130 26"/>
+                        <path d="M150 4 Q154 14 152 20 L151 26"/>
+                        <circle cx="130" cy="15" r="6"/>
+                    </g>
+                </svg>
+            </div>
+
+            <div class="timeline">
+
+                <!-- Bloc 1 -->
+                <div class="timeline-block">
+                    <div class="timeline-content-col">
+                        <h3>L'Histoire du Lieu</h3>
+                        <p>À la place de l'ancienne synagogue et du café Chambord a été construit au début des années cinquante un nouvel immeuble pour la CECA (Communauté Européenne du Charbon et de l'Acier). Ce bâtiment marque la naissance d'un lieu destiné à devenir une institution luxembourgeoise.</p>
+                    </div>
+                    <div class="timeline-year-col">
+                        <div class="timeline-dot"></div>
+                        <div class="timeline-year-label">1950</div>
+                    </div>
+                    <div></div>
+                </div>
+
+                <!-- Bloc 2 -->
+                <div class="timeline-block">
+                    <div></div>
+                    <div class="timeline-year-col">
+                        <div class="timeline-dot"></div>
+                        <div class="timeline-year-label">1956</div>
+                    </div>
+                    <div class="timeline-content-col">
+                        <h3>La Naissance de la Brasserie</h3>
+                        <p>Avec ce nouvel immeuble et la disparition du café Chambord, la Brasserie des Nations vient s'installer à l'angle de la rue Philippe II et de la rue Notre Dame. L'établissement ouvre ses portes dans le style typique des années 50 et se fait rapidement un nom pour la qualité de sa cuisine.</p>
+                    </div>
+                </div>
+
+                <!-- Bloc 3 -->
+                <div class="timeline-block">
+                    <div class="timeline-content-col">
+                        <h3>Un Style des Années 50</h3>
+                        <p>Construite dans le style typique de l'époque, la Brasserie des Nations se forge au fil des années une solide réputation pour la bonne qualité de sa viande et de ses spécialités luxembourgeoises. Le cordon bleu maison devient rapidement la signature de l'établissement.</p>
+                    </div>
+                    <div class="timeline-year-col">
+                        <div class="timeline-dot"></div>
+                        <div class="timeline-year-label">1960</div>
+                    </div>
+                    <div></div>
+                </div>
+
+                <!-- Bloc 4 -->
+                <div class="timeline-block">
+                    <div></div>
+                    <div class="timeline-year-col">
+                        <div class="timeline-dot"></div>
+                        <div class="timeline-year-label">1991</div>
+                    </div>
+                    <div class="timeline-content-col">
+                        <h3>La Famille Risch reprend le flambeau</h3>
+                        <p>Depuis 1991, la Brasserie des Nations est gérée avec passion par la famille Risch. Fidèle à la tradition, la famille se fait livrer chaque jour des produits frais par des fournisseurs spécialisés, garantissant une cuisine de qualité constante, ancrée dans le terroir luxembourgeois.</p>
+                    </div>
+                </div>
+
+                <!-- Bloc 5 -->
+                <div class="timeline-block">
+                    <div class="timeline-content-col">
+                        <h3>L'Ancienne Synagogue</h3>
+                        <p>L'ancienne synagogue de Luxembourg se trouvait à l'emplacement actuel de la Brasserie des Nations. Ce lieu chargé d'histoire témoigne de la richesse du patrimoine luxembourgeois et de la mémoire collective de la capitale. La Brasserie honore chaque jour ce passé en perpétuant une tradition d'accueil et de convivialité.</p>
+                    </div>
+                    <div class="timeline-year-col">
+                        <div class="timeline-dot"></div>
+                        <div class="timeline-year-label">Héritage</div>
+                    </div>
+                    <div></div>
+                </div>
+
+            </div>
+        </section>
+
+        <!-- Section manifesto style -->
+        <section class="heritage">
+            <div class="food-illust food-illust--heritage" aria-hidden="true">
+                <svg class="food-svg fh-tl" viewBox="0 0 80 60"><g fill="none" stroke="currentColor" stroke-width="1" stroke-linecap="round" stroke-linejoin="round"><path d="M5 50 L5 22 L70 8 L70 50 Z"/><path d="M5 22 L70 8"/><line x1="5" y1="50" x2="70" y2="50"/><circle cx="25" cy="35" r="3"/><circle cx="45" cy="28" r="2.5"/></g></svg>
+                <svg class="food-svg fh-tr" viewBox="0 0 90 70"><g fill="none" stroke="currentColor" stroke-width="1" stroke-linecap="round" stroke-linejoin="round"><path d="M10 30 Q10 58 45 60 Q80 58 80 30"/><ellipse cx="45" cy="30" rx="35" ry="10"/></g></svg>
+                <svg class="food-svg fh-bl" viewBox="0 0 50 90"><g fill="none" stroke="currentColor" stroke-width="0.9" stroke-linecap="round" stroke-linejoin="round"><path d="M25 82 Q22 55 15 35 Q6 15 25 4 Q44 15 35 35 Q28 55 25 82 Z"/><path d="M25 75 L25 12"/></g></svg>
+                <svg class="food-svg fh-br" viewBox="0 0 40 120"><g fill="none" stroke="currentColor" stroke-width="1" stroke-linecap="round" stroke-linejoin="round"><rect x="12" y="40" width="16" height="70" rx="3"/><path d="M16 40 L16 28 Q16 20 20 16 Q24 20 24 28 L24 40"/><rect x="17" y="8" width="6" height="8" rx="1"/></g></svg>
+            </div>
+            <div class="heritage-content">
+                <svg class="heritage-deco" viewBox="0 0 320 80" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+                    <g fill="none" stroke="rgba(201,169,97,0.6)" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round">
+                        <line x1="0" y1="40" x2="120" y2="40"/>
+                        <line x1="200" y1="40" x2="320" y2="40"/>
+                        <circle cx="160" cy="40" r="25"/>
+                        <circle cx="160" cy="40" r="20"/>
+                        <line x1="160" y1="24" x2="160" y2="38"/>
+                        <line x1="160" y1="40" x2="172" y2="46"/>
+                        <path d="M120 36 Q135 30 140 40 Q135 50 120 44"/>
+                        <path d="M200 36 Q185 30 180 40 Q185 50 200 44"/>
+                    </g>
+                </svg>
+                <div class="year">1956</div>
+                <div class="heritage-sep"></div>
+                <h2>Sept décennies<br>d'excellence</h2>
+                <p>Depuis 1956, la Brasserie des Nations est bien plus qu'un restaurant : c'est un lieu de mémoire, de partage et de convivialité au cœur de la capitale luxembourgeoise.</p>
+                <p>Des générations de Luxembourgeois et de visiteurs sont venus savourer nos spécialités dans une ambiance chaleureuse et authentique. Notre cordon bleu maison, véritable signature de l'établissement, est devenu une légende locale.</p>
+                <p>Notre engagement pour la qualité et notre passion pour la cuisine traditionnelle font de nous une référence incontournable de la gastronomie luxembourgeoise.</p>
+            </div>
+        </section>
+
+        <!-- Section Convertisseur -->
+        <section class="convertisseur-section" id="convertisseur">
+            <div class="convertisseur-inner">
+                <div class="section-star section-star--light">
+                    <svg viewBox="0 0 50 50" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+                        <line x1="25" y1="5" x2="25" y2="45" stroke="var(--gold)" stroke-width="0.6" stroke-linecap="round"/>
+                        <line x1="5" y1="25" x2="45" y2="25" stroke="var(--gold)" stroke-width="0.6" stroke-linecap="round"/>
+                        <line x1="11" y1="11" x2="39" y2="39" stroke="var(--gold)" stroke-width="0.35" stroke-linecap="round" opacity="0.45"/>
+                        <line x1="39" y1="11" x2="11" y2="39" stroke="var(--gold)" stroke-width="0.35" stroke-linecap="round" opacity="0.45"/>
+                        <circle cx="25" cy="25" r="2" fill="var(--gold)" opacity="0.7"/>
+                        <circle cx="25" cy="25" r="5.5" fill="none" stroke="var(--gold)" stroke-width="0.3" opacity="0.2"/>
+                    </svg>
+                </div>
+                <h2>Convertisseur de Devises Historiques</h2>
+                <svg style="display:block;margin:15px auto 30px;width:0;height:1px;background:linear-gradient(90deg,transparent,rgba(201,169,97,0.5),transparent);animation:none;" aria-hidden="true"></svg>
+                <div class="convertisseur-intro">
+                    <p>Au 20ième siècle, il y avait le Franc Luxembourgeois et Belge, le Franc Français et le Deutsch Mark.</p>
+                    <p><strong>Amusez-vous à convertir les différentes devises.</strong></p>
+                    <p>Pour convertir vos devises, inscrivez le montant dans la cellule de gauche, puis appuyez sur le bouton.</p>
+                </div>
+                <div class="convertisseur-table-wrap">
+                    <table class="convertisseur-table">
+                        <thead>
+                            <tr>
+                                <th>Devises</th>
+                                <th>LUF</th>
+                                <th>€URO</th>
+                                <th>FF</th>
+                                <th>DM</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>LUF</td>
+                                <td><input type="number" id="luf-luf" step="0.01" placeholder="0.00"></td>
+                                <td><input type="number" id="luf-eur" readonly placeholder="—"></td>
+                                <td><input type="number" id="luf-ff" readonly placeholder="—"></td>
+                                <td><input type="number" id="luf-dm" readonly placeholder="—"></td>
+                            </tr>
+                            <tr>
+                                <td>€URO</td>
+                                <td><input type="number" id="eur-luf" readonly placeholder="—"></td>
+                                <td><input type="number" id="eur-eur" step="0.01" placeholder="0.00"></td>
+                                <td><input type="number" id="eur-ff" readonly placeholder="—"></td>
+                                <td><input type="number" id="eur-dm" readonly placeholder="—"></td>
+                            </tr>
+                            <tr>
+                                <td>FF</td>
+                                <td><input type="number" id="ff-luf" readonly placeholder="—"></td>
+                                <td><input type="number" id="ff-eur" readonly placeholder="—"></td>
+                                <td><input type="number" id="ff-ff" step="0.01" placeholder="0.00"></td>
+                                <td><input type="number" id="ff-dm" readonly placeholder="—"></td>
+                            </tr>
+                            <tr>
+                                <td>DM</td>
+                                <td><input type="number" id="dm-luf" readonly placeholder="—"></td>
+                                <td><input type="number" id="dm-eur" readonly placeholder="—"></td>
+                                <td><input type="number" id="dm-ff" readonly placeholder="—"></td>
+                                <td><input type="number" id="dm-dm" step="0.01" placeholder="0.00"></td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+                <button class="convert-btn" onclick="convertir()">Convertir</button>
+                <p class="convert-note">Taux de conversion officiels fixés lors du passage à l'Euro en 2002<br>1 EUR = 40,3399 LUF = 6,55957 FF = 1,95583 DM</p>
+            </div>
+        </section>
+    </main>
+
+    <!-- Footer -->
+    <footer role="contentinfo" aria-label="Pied de page">
+        <div class="footer-content">
+            <div class="footer-logo">BRASSERIE DES NATIONS</div>
+            <div class="footer-links">
+                <a href="../index.html">Accueil</a>
+                <a href="historique.html">Histoire</a>
+                <a href="menu.html">Menu</a>
+                <a href="../index.html#galerie">Galerie</a>
+                <a href="../index.html#contact">Contact</a>
+                <a href="vin.html">Vins</a>
+            </div>
+            <div class="footer-bottom">
+                © 2026 Brasserie des Nations — Tradition luxembourgeoise depuis 1956
+            </div>
+        </div>
+    </footer>
+
+</div>
+
+<script>
+// Burger mobile
+(function(){
+    var burger = document.getElementById('burger');
+    var drawer = document.getElementById('mobDrawer');
+    var overlay = document.getElementById('mobOverlay');
+    if(!burger) return;
+    function openMenu(){
+        burger.classList.add('open');
+        drawer.classList.add('open');
+        overlay.classList.add('open');
+        burger.setAttribute('aria-expanded','true');
+        document.body.style.overflow='hidden';
+    }
+    function closeMenu(){
+        burger.classList.remove('open');
+        drawer.classList.remove('open');
+        overlay.classList.remove('open');
+        burger.setAttribute('aria-expanded','false');
+        document.body.style.overflow='';
+    }
+    burger.addEventListener('click',function(){
+        if(burger.classList.contains('open')) closeMenu(); else openMenu();
+    });
+    overlay.addEventListener('click', closeMenu);
+    drawer.querySelectorAll('.mob-link,.mob-cta').forEach(function(a){
+        a.addEventListener('click', closeMenu);
+    });
+})();
+
+// Taux de conversion historiques
+var TAUX = {
+    LUF_EUR: 0.0247894,  // 1 LUF = 0.0247894 EUR (40.3399 LUF = 1 EUR)
+    FF_EUR: 0.152449,    // 1 FF = 0.152449 EUR (6.55957 FF = 1 EUR)
+    DM_EUR: 0.511292     // 1 DM = 0.511292 EUR (1.95583 DM = 1 EUR)
+};
+
+function convertir() {
+    var lufVal = parseFloat(document.getElementById('luf-luf').value) || 0;
+    var eurVal = parseFloat(document.getElementById('eur-eur').value) || 0;
+    var ffVal  = parseFloat(document.getElementById('ff-ff').value)  || 0;
+    var dmVal  = parseFloat(document.getElementById('dm-dm').value)  || 0;
+
+    // Reset readonly
+    ['luf-eur','luf-ff','luf-dm','eur-luf','eur-ff','eur-dm','ff-luf','ff-eur','ff-dm','dm-luf','dm-eur','dm-ff'].forEach(function(id){
+        document.getElementById(id).value = '';
+    });
+
+    if (lufVal > 0) {
+        var eurFromLuf = lufVal * TAUX.LUF_EUR;
+        document.getElementById('luf-eur').value = eurFromLuf.toFixed(2);
+        document.getElementById('luf-ff').value  = (eurFromLuf / TAUX.FF_EUR).toFixed(2);
+        document.getElementById('luf-dm').value  = (eurFromLuf / TAUX.DM_EUR).toFixed(2);
+    }
+    if (eurVal > 0) {
+        document.getElementById('eur-luf').value = (eurVal / TAUX.LUF_EUR).toFixed(2);
+        document.getElementById('eur-ff').value  = (eurVal / TAUX.FF_EUR).toFixed(2);
+        document.getElementById('eur-dm').value  = (eurVal / TAUX.DM_EUR).toFixed(2);
+    }
+    if (ffVal > 0) {
+        var eurFromFf = ffVal * TAUX.FF_EUR;
+        document.getElementById('ff-eur').value = eurFromFf.toFixed(2);
+        document.getElementById('ff-luf').value = (eurFromFf / TAUX.LUF_EUR).toFixed(2);
+        document.getElementById('ff-dm').value  = (eurFromFf / TAUX.DM_EUR).toFixed(2);
+    }
+    if (dmVal > 0) {
+        var eurFromDm = dmVal * TAUX.DM_EUR;
+        document.getElementById('dm-eur').value = eurFromDm.toFixed(2);
+        document.getElementById('dm-luf').value = (eurFromDm / TAUX.LUF_EUR).toFixed(2);
+        document.getElementById('dm-ff').value  = (eurFromDm / TAUX.FF_EUR).toFixed(2);
+    }
+}
+</script>
+</body>
+</html>

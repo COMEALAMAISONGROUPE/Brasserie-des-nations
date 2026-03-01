@@ -1153,7 +1153,7 @@
   .mob-overlay{position:fixed;inset:0;background:rgba(0,0,0,.4);z-index:10000;backdrop-filter:blur(3px);display:none}
   .mob-overlay.open{display:block}
 
-  /* HERO: video visible on mobile */
+  /* HERO: image only */
   .hero-dual-video{flex-direction:column!important}
   .hero-dual-video video{display:block!important;width:100%!important;height:50%!important;position:static!important;min-width:0!important;min-height:0!important;transform:none!important}
   .hero-facade{display:none!important}
