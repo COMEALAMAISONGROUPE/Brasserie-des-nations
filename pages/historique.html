@@ -3,8 +3,8 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Historique — Brasserie des Nations | Restaurant Luxembourgeois depuis 1956</title>
-    <meta name="description" content="Découvrez l'histoire de la Brasserie des Nations depuis 1956. Située à l'angle de la rue Philippe II et Notre Dame, Luxembourg-Ville, une institution luxembourgeoise. Convertisseur de devises historiques.">
+    <title>Héritage — Brasserie des Nations | Restaurant Luxembourgeois depuis 1956</title>
+    <meta name="description" content="Découvrez l'héritage de la Brasserie des Nations depuis 1956. Située à l'angle de la rue Philippe II et Notre Dame, Luxembourg-Ville, une institution luxembourgeoise. Convertisseur de devises historiques.">
     <meta name="robots" content="index, follow">
     <link rel="canonical" href="https://comealamaisongroupe.github.io/Brasserie-des-nations/pages/historique.html">
 
@@ -13,11 +13,77 @@
     <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@300;400;500;600;700&family=Montserrat:wght@200;300;400;500&display=swap" rel="preload" as="style" onload="this.onload=null;this.rel='stylesheet'">
     <link rel="stylesheet" href="../css/style.css">
     <style>
-        /* Page hero */
+        /* =============================================
+           KEYFRAME ANIMATIONS
+        ============================================= */
+        @keyframes drawIn {
+            to { stroke-dashoffset: 0; }
+        }
+        @keyframes fadeUp {
+            from { opacity: 0; transform: translateY(24px); }
+            to   { opacity: 1; transform: translateY(0); }
+        }
+        @keyframes floatGently {
+            0%, 100% { transform: translateY(0px) rotate(0deg); }
+            33%       { transform: translateY(-9px) rotate(1.5deg); }
+            66%       { transform: translateY(-5px) rotate(-1deg); }
+        }
+        @keyframes floatSlow {
+            0%, 100% { transform: translateY(0px); }
+            50%       { transform: translateY(-14px); }
+        }
+        @keyframes pulseGold {
+            0%, 100% { opacity: 0.18; }
+            50%       { opacity: 0.35; }
+        }
+        @keyframes rotateSlow {
+            from { transform: rotate(0deg); }
+            to   { transform: rotate(360deg); }
+        }
+        @keyframes dividerDraw {
+            from { stroke-dashoffset: 400; opacity: 0; }
+            to   { stroke-dashoffset: 0;   opacity: 1; }
+        }
+        @keyframes shimmer {
+            0%   { opacity: 0.05; }
+            50%  { opacity: 0.12; }
+            100% { opacity: 0.05; }
+        }
+        @keyframes heroArchDraw {
+            from { stroke-dashoffset: 1800; }
+            to   { stroke-dashoffset: 0; }
+        }
+        @keyframes heroFade {
+            from { opacity: 0; }
+            to   { opacity: 1; }
+        }
+
+        /* =============================================
+           BACKGROUND ARCHITECTURAL PATTERN
+        ============================================= */
+        .bg-pattern {
+            position: fixed;
+            top: 0; left: 0;
+            width: 100%; height: 100%;
+            pointer-events: none;
+            z-index: 0;
+            overflow: hidden;
+        }
+        .bg-pattern svg {
+            width: 100%;
+            height: 100%;
+            animation: shimmer 8s ease-in-out infinite;
+        }
+
+        /* =============================================
+           PAGE HERO
+        ============================================= */
         .page-hero {
             background: var(--green);
             padding: 160px 60px 80px;
             text-align: center;
+            position: relative;
+            overflow: hidden;
         }
         .page-hero h1 {
             font-family: 'Cormorant Garamond', serif;
@@ -26,6 +92,8 @@
             color: white;
             letter-spacing: 6px;
             margin-bottom: 20px;
+            position: relative;
+            z-index: 2;
         }
         .page-hero p {
             font-size: 1rem;
@@ -33,13 +101,63 @@
             letter-spacing: 4px;
             text-transform: uppercase;
             font-weight: 300;
+            position: relative;
+            z-index: 2;
         }
+        /* Hero archway illustration */
+        .hero-arch-wrap {
+            position: absolute;
+            bottom: 0;
+            left: 50%;
+            transform: translateX(-50%);
+            width: min(700px, 90vw);
+            opacity: 0.18;
+            pointer-events: none;
+            z-index: 1;
+        }
+        .hero-arch-wrap svg {
+            width: 100%;
+            height: auto;
+        }
+        .hero-arch-path {
+            stroke-dasharray: 1800;
+            stroke-dashoffset: 1800;
+            animation: heroArchDraw 3.2s cubic-bezier(0.4,0,0.2,1) 0.4s forwards;
+        }
+        /* Hero corner ornaments */
+        .hero-corner {
+            position: absolute;
+            width: 90px;
+            height: 90px;
+            opacity: 0;
+            animation: heroFade 1.2s ease 1.8s forwards;
+        }
+        .hero-corner--tl { top: 90px; left: 40px; }
+        .hero-corner--tr { top: 90px; right: 40px; transform: scaleX(-1); }
 
-        /* Historique section */
+        /* Hero floating elements */
+        .hero-float-wrap {
+            position: absolute;
+            pointer-events: none;
+            z-index: 1;
+            opacity: 0;
+            animation: heroFade 1s ease 2.2s forwards;
+        }
+        .hero-float-wrap svg {
+            animation: floatGently 6s ease-in-out infinite;
+        }
+        .hero-float--left  { left: 8%;  top: 55%; }
+        .hero-float--right { right: 8%; top: 45%; }
+
+        /* =============================================
+           HISTORIQUE SECTION
+        ============================================= */
         .historique-section {
             max-width: 1100px;
             margin: 0 auto;
             padding: 120px 40px 80px;
+            position: relative;
+            z-index: 1;
         }
         .historique-header {
             text-align: center;
@@ -54,7 +172,9 @@
             letter-spacing: 4px;
         }
 
-        /* Timeline blocks */
+        /* =============================================
+           TIMELINE
+        ============================================= */
         .timeline {
             display: flex;
             flex-direction: column;
@@ -147,48 +267,116 @@
             font-weight: 300;
         }
 
-        @media (max-width: 768px) {
-            .page-hero { padding: 120px 20px 60px; }
-            .page-hero h1 { font-size: 2.8rem; letter-spacing: 3px; }
-            .historique-section { padding: 80px 20px 60px; }
-            .historique-header h2 { font-size: 2.5rem; }
-            .timeline::before { left: 20px; }
-            .timeline-block {
-                grid-template-columns: 40px 1fr;
-                grid-template-rows: auto;
-            }
-            .timeline-block:nth-child(even) .timeline-text,
-            .timeline-block:nth-child(even) .timeline-year-col,
-            .timeline-block:nth-child(even) .timeline-content-col {
-                grid-column: unset;
-                grid-row: unset;
-                text-align: left;
-            }
-            .timeline-block {
-                display: flex;
-                flex-direction: row;
-                gap: 20px;
-            }
-            .timeline-year-col {
-                flex-shrink: 0;
-                width: 40px;
-                flex-direction: column;
-                align-items: center;
-            }
-            .timeline-year-label { font-size: 0; }
-            .timeline-content-col {
-                flex: 1;
-                padding: 25px 20px;
-                text-align: left !important;
-            }
-            .timeline-content-col h3 { font-size: 1.6rem; }
+        /* Timeline block SVG icons */
+        .timeline-icon {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-bottom: 16px;
+        }
+        .timeline-icon svg {
+            width: 42px;
+            height: 42px;
+            color: var(--gold);
+        }
+        .timeline-block:nth-child(even) .timeline-icon {
+            justify-content: flex-end;
         }
 
-        /* Convertisseur section */
+        /* Icon draw animation — triggered by .is-visible class */
+        .icon-draw path,
+        .icon-draw line,
+        .icon-draw circle,
+        .icon-draw rect,
+        .icon-draw polyline {
+            stroke-dasharray: 200;
+            stroke-dashoffset: 200;
+            transition: stroke-dashoffset 1.2s cubic-bezier(0.4,0,0.2,1);
+        }
+        .is-visible .icon-draw path,
+        .is-visible .icon-draw line,
+        .is-visible .icon-draw circle,
+        .is-visible .icon-draw rect,
+        .is-visible .icon-draw polyline {
+            stroke-dashoffset: 0;
+        }
+
+        /* Animated block fade-in on scroll */
+        .timeline-block {
+            opacity: 0;
+            transform: translateY(30px);
+            transition: opacity 0.7s ease, transform 0.7s ease;
+        }
+        .timeline-block.is-visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        /* =============================================
+           DECORATIVE DIVIDERS
+        ============================================= */
+        .ornament-divider {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 40px 0;
+            overflow: hidden;
+        }
+        .ornament-divider svg {
+            width: min(480px, 90vw);
+            height: auto;
+        }
+        .ornament-divider .div-line {
+            stroke-dasharray: 400;
+            stroke-dashoffset: 400;
+            animation: dividerDraw 2s ease forwards;
+        }
+        .ornament-divider .div-center {
+            opacity: 0;
+            animation: heroFade 0.8s ease 1.4s forwards;
+        }
+
+        /* =============================================
+           HERITAGE SECTION
+        ============================================= */
+        .heritage {
+            position: relative;
+            overflow: hidden;
+        }
+        .heritage-content {
+            position: relative;
+            z-index: 2;
+        }
+
+        /* Floating SVG elements in heritage section */
+        .heritage-floats {
+            position: absolute;
+            inset: 0;
+            pointer-events: none;
+            z-index: 1;
+            overflow: hidden;
+        }
+        .hf-item {
+            position: absolute;
+            color: rgba(201,169,97,0.22);
+        }
+        .hf-item svg {
+            display: block;
+        }
+        .hf-clock   { top: 8%;  left: 5%;  width: 70px; animation: floatGently 7s ease-in-out 0s infinite; }
+        .hf-bottle  { top: 15%; right: 6%; width: 45px; animation: floatGently 9s ease-in-out 1.5s infinite; }
+        .hf-plate   { bottom: 12%; left: 8%;  width: 65px; animation: floatSlow  8s ease-in-out 0.8s infinite; }
+        .hf-glass2  { bottom: 18%; right: 7%; width: 40px; animation: floatGently 6s ease-in-out 2s infinite; }
+
+        /* =============================================
+           CONVERTISSEUR SECTION
+        ============================================= */
         .convertisseur-section {
             background: var(--green);
             color: white;
             padding: 120px 40px;
+            position: relative;
+            z-index: 1;
         }
         .convertisseur-inner {
             max-width: 1000px;
@@ -298,13 +486,83 @@
             font-weight: 300;
         }
 
+        /* =============================================
+           RESPONSIVE
+        ============================================= */
         @media (max-width: 768px) {
+            .page-hero { padding: 120px 20px 60px; }
+            .page-hero h1 { font-size: 2.8rem; letter-spacing: 3px; }
+            .hero-corner { display: none; }
+            .hero-float--left, .hero-float--right { display: none; }
+            .hero-arch-wrap { opacity: 0.1; }
+
+            .historique-section { padding: 80px 20px 60px; }
+            .historique-header h2 { font-size: 2.5rem; }
+
+            .timeline::before { left: 20px; }
+            .timeline-block {
+                display: flex;
+                flex-direction: row;
+                gap: 20px;
+                grid-template-columns: unset;
+            }
+            .timeline-block:nth-child(even) .timeline-text,
+            .timeline-block:nth-child(even) .timeline-year-col,
+            .timeline-block:nth-child(even) .timeline-content-col {
+                grid-column: unset;
+                grid-row: unset;
+                text-align: left;
+            }
+            .timeline-year-col {
+                flex-shrink: 0;
+                width: 40px;
+                flex-direction: column;
+                align-items: center;
+            }
+            .timeline-year-label { font-size: 0; }
+            .timeline-content-col {
+                flex: 1;
+                padding: 25px 20px;
+                text-align: left !important;
+            }
+            .timeline-content-col h3 { font-size: 1.6rem; }
+            .timeline-icon { justify-content: flex-start !important; }
+
+            .ornament-divider { padding: 20px 0; }
+            .hf-clock, .hf-bottle, .hf-glass2 { display: none; }
+            .hf-plate { width: 45px; }
+
             .convertisseur-section { padding: 80px 20px; }
             .convertisseur-inner h2 { font-size: 2.5rem; }
         }
     </style>
 </head>
 <body>
+
+<!-- Subtle background architectural pattern -->
+<div class="bg-pattern" aria-hidden="true">
+    <svg viewBox="0 0 1200 900" preserveAspectRatio="xMidYMid slice" xmlns="http://www.w3.org/2000/svg">
+        <defs>
+            <pattern id="archPattern" x="0" y="0" width="200" height="180" patternUnits="userSpaceOnUse">
+                <!-- Arch unit -->
+                <path d="M20 180 L20 90 Q20 40 60 40 Q100 40 100 90 L100 180"
+                      fill="none" stroke="rgba(26,61,15,0.06)" stroke-width="0.8"/>
+                <path d="M120 180 L120 90 Q120 40 160 40 Q200 40 200 90 L200 180"
+                      fill="none" stroke="rgba(26,61,15,0.06)" stroke-width="0.8"/>
+                <!-- Capital lines -->
+                <line x1="10" y1="90" x2="110" y2="90" stroke="rgba(201,169,97,0.05)" stroke-width="0.5"/>
+                <line x1="110" y1="90" x2="210" y2="90" stroke="rgba(201,169,97,0.05)" stroke-width="0.5"/>
+                <!-- Column bases -->
+                <rect x="14" y="172" width="12" height="8" fill="none" stroke="rgba(26,61,15,0.05)" stroke-width="0.5"/>
+                <rect x="94" y="172" width="12" height="8" fill="none" stroke="rgba(26,61,15,0.05)" stroke-width="0.5"/>
+                <rect x="114" y="172" width="12" height="8" fill="none" stroke="rgba(26,61,15,0.05)" stroke-width="0.5"/>
+                <rect x="194" y="172" width="12" height="8" fill="none" stroke="rgba(26,61,15,0.05)" stroke-width="0.5"/>
+            </pattern>
+        </defs>
+        <rect width="1200" height="900" fill="url(#archPattern)"/>
+    </svg>
+</div>
+
 <div class="site-wrap show">
 
     <!-- Navigation -->
@@ -316,7 +574,7 @@
         <!-- Drawer mobile -->
         <div class="mob-drawer" id="mobDrawer">
             <a href="../index.html#menu-du-jour" class="mob-link">Menu du Jour</a>
-            <a href="historique.html" class="mob-link">Historique</a>
+            <a href="historique.html" class="mob-link">Héritage</a>
             <a href="menu.html" class="mob-link">Menu</a>
             <a href="../index.html#galerie" class="mob-link">Galerie</a>
             <a href="../index.html#contact" class="mob-link">Contact</a>
@@ -327,7 +585,7 @@
         <div class="nav-inner">
             <a href="../index.html#menu-du-jour" class="nav-link">Menu du Jour</a>
             <span class="nav-dot">·</span>
-            <a href="historique.html" class="nav-link">Historique</a>
+            <a href="historique.html" class="nav-link">Héritage</a>
             <span class="nav-dot">·</span>
             <a href="menu.html" class="nav-link">Menu</a>
             <span class="nav-dot">·</span>
@@ -344,7 +602,93 @@
     <main>
         <!-- Page Hero -->
         <section class="page-hero">
-            <div class="section-star section-star--light">
+
+            <!-- Architectural archway illustration (draw-in animation) -->
+            <div class="hero-arch-wrap" aria-hidden="true">
+                <svg viewBox="0 0 700 320" xmlns="http://www.w3.org/2000/svg" fill="none">
+                    <!-- Main facade base -->
+                    <path class="hero-arch-path" d="M0 320 L0 200 L700 200 L700 320"
+                          stroke="#c9a961" stroke-width="1.5" stroke-linecap="round"/>
+                    <!-- Ground floor columns -->
+                    <path class="hero-arch-path" d="M80 200 L80 320 M160 200 L160 320 M240 200 L240 320
+                         M460 200 L460 320 M540 200 L540 320 M620 200 L620 320"
+                          stroke="#c9a961" stroke-width="1" stroke-linecap="round"/>
+                    <!-- Central double arch -->
+                    <path class="hero-arch-path" d="M260 200 L260 100 Q260 20 350 20 Q440 20 440 100 L440 200"
+                          stroke="#c9a961" stroke-width="1.8" stroke-linecap="round"/>
+                    <!-- Inner arch detail -->
+                    <path class="hero-arch-path" d="M280 200 L280 108 Q280 42 350 42 Q420 42 420 108 L420 200"
+                          stroke="#c9a961" stroke-width="1" stroke-linecap="round"/>
+                    <!-- Keystone -->
+                    <path class="hero-arch-path" d="M340 20 L340 0 M360 20 L360 0 M340 0 L360 0"
+                          stroke="#c9a961" stroke-width="1" stroke-linecap="round"/>
+                    <!-- Arch window detail (diamond) -->
+                    <path class="hero-arch-path" d="M350 60 L370 82 L350 104 L330 82 Z"
+                          stroke="#c9a961" stroke-width="0.8" stroke-linecap="round"/>
+                    <!-- Entablature frieze -->
+                    <path class="hero-arch-path" d="M0 200 L700 200 M0 190 L700 190"
+                          stroke="#c9a961" stroke-width="0.8" stroke-linecap="round"/>
+                    <!-- Triglyph details -->
+                    <path class="hero-arch-path"
+                          d="M50 190 L50 200 M70 190 L70 200 M140 190 L140 200 M150 190 L150 200
+                             M220 190 L220 200 M230 190 L230 200 M470 190 L470 200 M480 190 L480 200
+                             M550 190 L550 200 M560 190 L560 200 M630 190 L630 200 M640 190 L640 200"
+                          stroke="#c9a961" stroke-width="1" stroke-linecap="round"/>
+                    <!-- Roof cornice -->
+                    <path class="hero-arch-path" d="M100 0 L600 0 L620 10 L80 10 Z"
+                          stroke="#c9a961" stroke-width="0.8" stroke-linecap="round"/>
+                    <!-- Side arches small -->
+                    <path class="hero-arch-path" d="M80 200 L80 155 Q80 125 120 125 Q160 125 160 155 L160 200"
+                          stroke="#c9a961" stroke-width="1" stroke-linecap="round"/>
+                    <path class="hero-arch-path" d="M540 200 L540 155 Q540 125 580 125 Q620 125 620 155 L620 200"
+                          stroke="#c9a961" stroke-width="1" stroke-linecap="round"/>
+                </svg>
+            </div>
+
+            <!-- Corner ornaments -->
+            <div class="hero-corner hero-corner--tl" aria-hidden="true">
+                <svg viewBox="0 0 90 90" xmlns="http://www.w3.org/2000/svg" fill="none">
+                    <path d="M5 85 L5 5 L85 5" stroke="rgba(201,169,97,0.45)" stroke-width="1.2" stroke-linecap="round"/>
+                    <path d="M5 30 L30 5" stroke="rgba(201,169,97,0.25)" stroke-width="0.8" stroke-linecap="round"/>
+                    <path d="M5 55 L55 5" stroke="rgba(201,169,97,0.18)" stroke-width="0.6" stroke-linecap="round"/>
+                    <circle cx="5" cy="5" r="3" fill="rgba(201,169,97,0.5)"/>
+                    <path d="M20 5 L20 20 M5 20 L20 20" stroke="rgba(201,169,97,0.3)" stroke-width="0.8" stroke-linecap="round"/>
+                </svg>
+            </div>
+            <div class="hero-corner hero-corner--tr" aria-hidden="true">
+                <svg viewBox="0 0 90 90" xmlns="http://www.w3.org/2000/svg" fill="none">
+                    <path d="M5 85 L5 5 L85 5" stroke="rgba(201,169,97,0.45)" stroke-width="1.2" stroke-linecap="round"/>
+                    <path d="M5 30 L30 5" stroke="rgba(201,169,97,0.25)" stroke-width="0.8" stroke-linecap="round"/>
+                    <path d="M5 55 L55 5" stroke="rgba(201,169,97,0.18)" stroke-width="0.6" stroke-linecap="round"/>
+                    <circle cx="5" cy="5" r="3" fill="rgba(201,169,97,0.5)"/>
+                    <path d="M20 5 L20 20 M5 20 L20 20" stroke="rgba(201,169,97,0.3)" stroke-width="0.8" stroke-linecap="round"/>
+                </svg>
+            </div>
+
+            <!-- Floating decorative elements in hero -->
+            <div class="hero-float-wrap hero-float--left" aria-hidden="true">
+                <!-- Small wheat sprig -->
+                <svg viewBox="0 0 40 80" width="40" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M20 76 L20 10" stroke="rgba(201,169,97,0.5)" stroke-width="1.2" stroke-linecap="round"/>
+                    <path d="M20 55 Q8 48 6 38 Q14 40 20 48" stroke="rgba(201,169,97,0.5)" stroke-width="1" stroke-linecap="round" fill="rgba(201,169,97,0.08)"/>
+                    <path d="M20 55 Q32 48 34 38 Q26 40 20 48" stroke="rgba(201,169,97,0.5)" stroke-width="1" stroke-linecap="round" fill="rgba(201,169,97,0.08)"/>
+                    <path d="M20 40 Q8 33 6 23 Q14 25 20 33" stroke="rgba(201,169,97,0.5)" stroke-width="1" stroke-linecap="round" fill="rgba(201,169,97,0.08)"/>
+                    <path d="M20 40 Q32 33 34 23 Q26 25 20 33" stroke="rgba(201,169,97,0.5)" stroke-width="1" stroke-linecap="round" fill="rgba(201,169,97,0.08)"/>
+                    <path d="M20 25 Q12 18 12 10 Q18 13 20 20" stroke="rgba(201,169,97,0.5)" stroke-width="1" stroke-linecap="round" fill="rgba(201,169,97,0.08)"/>
+                    <path d="M20 25 Q28 18 28 10 Q22 13 20 20" stroke="rgba(201,169,97,0.5)" stroke-width="1" stroke-linecap="round" fill="rgba(201,169,97,0.08)"/>
+                </svg>
+            </div>
+            <div class="hero-float-wrap hero-float--right" aria-hidden="true">
+                <!-- Small wine glass silhouette -->
+                <svg viewBox="0 0 40 80" width="36" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M12 8 Q8 30 20 40 Q32 30 28 8 Z" stroke="rgba(201,169,97,0.5)" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round" fill="rgba(201,169,97,0.05)"/>
+                    <path d="M20 40 L20 66" stroke="rgba(201,169,97,0.5)" stroke-width="1.2" stroke-linecap="round"/>
+                    <path d="M10 66 L30 66" stroke="rgba(201,169,97,0.5)" stroke-width="1.5" stroke-linecap="round"/>
+                    <path d="M13 18 Q20 22 27 18" stroke="rgba(201,169,97,0.3)" stroke-width="0.8" stroke-linecap="round"/>
+                </svg>
+            </div>
+
+            <div class="section-star section-star--light" style="position:relative;z-index:2;">
                 <svg viewBox="0 0 50 50" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
                     <line x1="25" y1="5" x2="25" y2="45" stroke="var(--gold)" stroke-width="0.6" stroke-linecap="round"/>
                     <line x1="5" y1="25" x2="45" y2="25" stroke="var(--gold)" stroke-width="0.6" stroke-linecap="round"/>
@@ -354,9 +698,30 @@
                     <circle cx="25" cy="25" r="5.5" fill="none" stroke="var(--gold)" stroke-width="0.3" opacity="0.2"/>
                 </svg>
             </div>
-            <h1>Notre Histoire</h1>
+            <h1>Notre Héritage</h1>
             <p>Sept décennies de tradition luxembourgeoise</p>
         </section>
+
+        <!-- Decorative divider 1 — after hero -->
+        <div class="ornament-divider" aria-hidden="true" style="background:var(--cream,#f5f3ef);">
+            <svg viewBox="0 0 480 50" xmlns="http://www.w3.org/2000/svg" fill="none">
+                <line class="div-line" x1="0" y1="25" x2="185" y2="25" stroke="rgba(201,169,97,0.4)" stroke-width="1"/>
+                <line class="div-line" x1="295" y1="25" x2="480" y2="25" stroke="rgba(201,169,97,0.4)" stroke-width="1"/>
+                <!-- Knife & fork centre motif -->
+                <g class="div-center" transform="translate(210, 5)">
+                    <!-- Fork -->
+                    <line x1="12" y1="2" x2="12" y2="40" stroke="rgba(201,169,97,0.7)" stroke-width="1.2" stroke-linecap="round"/>
+                    <path d="M8 2 L8 14 Q12 17 12 14" stroke="rgba(201,169,97,0.7)" stroke-width="1" stroke-linecap="round"/>
+                    <path d="M12 2 L12 14" stroke="rgba(201,169,97,0.7)" stroke-width="1" stroke-linecap="round"/>
+                    <path d="M16 2 L16 14 Q12 17 12 14" stroke="rgba(201,169,97,0.7)" stroke-width="1" stroke-linecap="round"/>
+                    <!-- Separator dot -->
+                    <circle cx="30" cy="21" r="2.5" fill="rgba(201,169,97,0.6)"/>
+                    <!-- Knife -->
+                    <path d="M48 2 L48 40" stroke="rgba(201,169,97,0.7)" stroke-width="1.2" stroke-linecap="round"/>
+                    <path d="M48 2 Q58 8 58 18 Q58 24 48 26" stroke="rgba(201,169,97,0.7)" stroke-width="1" stroke-linecap="round" fill="rgba(201,169,97,0.06)"/>
+                </g>
+            </svg>
+        </div>
 
         <!-- Historique Section -->
         <section class="historique-section" id="historique">
@@ -385,9 +750,22 @@
 
             <div class="timeline">
 
-                <!-- Bloc 1 -->
+                <!-- Bloc 1 — 1950: Building/institution icon -->
                 <div class="timeline-block">
                     <div class="timeline-content-col">
+                        <!-- Building/institution icon -->
+                        <div class="timeline-icon" aria-hidden="true">
+                            <svg class="icon-draw" viewBox="0 0 42 42" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                <rect x="4" y="20" width="34" height="18" rx="1" stroke="#c9a961" stroke-width="1.3"/>
+                                <path d="M4 20 L21 6 L38 20" stroke="#c9a961" stroke-width="1.3" stroke-linecap="round" stroke-linejoin="round"/>
+                                <rect x="10" y="26" width="6" height="12" rx="1" stroke="#c9a961" stroke-width="1"/>
+                                <rect x="26" y="26" width="6" height="12" rx="1" stroke="#c9a961" stroke-width="1"/>
+                                <rect x="18" y="26" width="6" height="6" rx="1" stroke="#c9a961" stroke-width="1"/>
+                                <line x1="4" y1="20" x2="38" y2="20" stroke="#c9a961" stroke-width="1"/>
+                                <line x1="7" y1="20" x2="7" y2="22" stroke="#c9a961" stroke-width="1"/>
+                                <line x1="35" y1="20" x2="35" y2="22" stroke="#c9a961" stroke-width="1"/>
+                            </svg>
+                        </div>
                         <h3>L'Histoire du Lieu</h3>
                         <p>À la place de l'ancienne synagogue et du café Chambord a été construit au début des années cinquante un nouvel immeuble pour la CECA (Communauté Européenne du Charbon et de l'Acier). Ce bâtiment marque la naissance d'un lieu destiné à devenir une institution luxembourgeoise.</p>
                     </div>
@@ -398,7 +776,7 @@
                     <div></div>
                 </div>
 
-                <!-- Bloc 2 -->
+                <!-- Bloc 2 — 1956: Door/establishment icon -->
                 <div class="timeline-block">
                     <div></div>
                     <div class="timeline-year-col">
@@ -406,14 +784,43 @@
                         <div class="timeline-year-label">1956</div>
                     </div>
                     <div class="timeline-content-col">
+                        <!-- Door opening icon -->
+                        <div class="timeline-icon" aria-hidden="true">
+                            <svg class="icon-draw" viewBox="0 0 42 42" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                <rect x="8" y="4" width="22" height="34" rx="1" stroke="#c9a961" stroke-width="1.3"/>
+                                <!-- Door ajar effect -->
+                                <path d="M30 4 L38 8 L38 38 L30 38" stroke="#c9a961" stroke-width="1" stroke-linecap="round" stroke-linejoin="round" fill="rgba(201,169,97,0.06)"/>
+                                <!-- Knob -->
+                                <circle cx="27" cy="22" r="2" stroke="#c9a961" stroke-width="1"/>
+                                <!-- Top arch detail -->
+                                <path d="M8 10 Q19 4 30 10" stroke="#c9a961" stroke-width="0.8" stroke-linecap="round"/>
+                                <!-- Step -->
+                                <line x1="4" y1="38" x2="38" y2="38" stroke="#c9a961" stroke-width="1.5" stroke-linecap="round"/>
+                            </svg>
+                        </div>
                         <h3>La Naissance de la Brasserie</h3>
                         <p>Avec ce nouvel immeuble et la disparition du café Chambord, la Brasserie des Nations vient s'installer à l'angle de la rue Philippe II et de la rue Notre Dame. L'établissement ouvre ses portes dans le style typique des années 50 et se fait rapidement un nom pour la qualité de sa cuisine.</p>
                     </div>
                 </div>
 
-                <!-- Bloc 3 -->
+                <!-- Bloc 3 — 1960: Cutlery/plate icon -->
                 <div class="timeline-block">
                     <div class="timeline-content-col">
+                        <!-- Plate with cutlery icon -->
+                        <div class="timeline-icon" aria-hidden="true">
+                            <svg class="icon-draw" viewBox="0 0 42 42" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                <!-- Plate -->
+                                <circle cx="21" cy="22" r="14" stroke="#c9a961" stroke-width="1.3"/>
+                                <circle cx="21" cy="22" r="9"  stroke="#c9a961" stroke-width="0.7" stroke-dasharray="2 2"/>
+                                <!-- Fork left -->
+                                <line x1="9" y1="5" x2="9" y2="18" stroke="#c9a961" stroke-width="1" stroke-linecap="round"/>
+                                <path d="M6 5 L6 12 Q9 14 9 12" stroke="#c9a961" stroke-width="1" stroke-linecap="round"/>
+                                <path d="M12 5 L12 12 Q9 14 9 12" stroke="#c9a961" stroke-width="1" stroke-linecap="round"/>
+                                <!-- Knife right -->
+                                <line x1="33" y1="5" x2="33" y2="18" stroke="#c9a961" stroke-width="1" stroke-linecap="round"/>
+                                <path d="M33 5 Q38 9 38 14 Q38 17 33 18" stroke="#c9a961" stroke-width="1" stroke-linecap="round" fill="rgba(201,169,97,0.06)"/>
+                            </svg>
+                        </div>
                         <h3>Un Style des Années 50</h3>
                         <p>Construite dans le style typique de l'époque, la Brasserie des Nations se forge au fil des années une solide réputation pour la bonne qualité de sa viande et de ses spécialités luxembourgeoises. Le cordon bleu maison devient rapidement la signature de l'établissement.</p>
                     </div>
@@ -424,7 +831,7 @@
                     <div></div>
                 </div>
 
-                <!-- Bloc 4 -->
+                <!-- Bloc 4 — 1991: Family/hands icon -->
                 <div class="timeline-block">
                     <div></div>
                     <div class="timeline-year-col">
@@ -432,14 +839,42 @@
                         <div class="timeline-year-label">1991</div>
                     </div>
                     <div class="timeline-content-col">
+                        <!-- Family / hands icon -->
+                        <div class="timeline-icon" aria-hidden="true">
+                            <svg class="icon-draw" viewBox="0 0 42 42" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                <!-- Two adult figures -->
+                                <circle cx="13" cy="8" r="4" stroke="#c9a961" stroke-width="1.2"/>
+                                <path d="M7 28 Q7 18 13 18 Q19 18 19 28" stroke="#c9a961" stroke-width="1.2" stroke-linecap="round"/>
+                                <circle cx="29" cy="8" r="4" stroke="#c9a961" stroke-width="1.2"/>
+                                <path d="M23 28 Q23 18 29 18 Q35 18 35 28" stroke="#c9a961" stroke-width="1.2" stroke-linecap="round"/>
+                                <!-- Child figure small -->
+                                <circle cx="21" cy="14" r="2.5" stroke="#c9a961" stroke-width="1"/>
+                                <path d="M17 28 Q17 22 21 22 Q25 22 25 28" stroke="#c9a961" stroke-width="1" stroke-linecap="round"/>
+                                <!-- Joining hands line -->
+                                <line x1="7" y1="36" x2="35" y2="36" stroke="#c9a961" stroke-width="1.5" stroke-linecap="round"/>
+                                <path d="M7 32 Q21 38 35 32" stroke="#c9a961" stroke-width="0.8" stroke-linecap="round"/>
+                            </svg>
+                        </div>
                         <h3>La Famille Risch reprend le flambeau</h3>
                         <p>Depuis 1991, la Brasserie des Nations est gérée avec passion par la famille Risch. Fidèle à la tradition, la famille se fait livrer chaque jour des produits frais par des fournisseurs spécialisés, garantissant une cuisine de qualité constante, ancrée dans le terroir luxembourgeois.</p>
                     </div>
                 </div>
 
-                <!-- Bloc 5 -->
+                <!-- Bloc 5 — Héritage: Memorial/star icon -->
                 <div class="timeline-block">
                     <div class="timeline-content-col">
+                        <!-- Memorial Star of David / heritage icon -->
+                        <div class="timeline-icon" aria-hidden="true">
+                            <svg class="icon-draw" viewBox="0 0 42 42" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                <!-- Star of David (two interlocking triangles) -->
+                                <path d="M21 4 L30 19 L12 19 Z" stroke="#c9a961" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round" fill="rgba(201,169,97,0.07)"/>
+                                <path d="M21 38 L12 23 L30 23 Z" stroke="#c9a961" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round" fill="rgba(201,169,97,0.07)"/>
+                                <!-- Outer circle for memorial feel -->
+                                <circle cx="21" cy="21" r="17" stroke="#c9a961" stroke-width="0.7" stroke-dasharray="3 3"/>
+                                <!-- Center dot -->
+                                <circle cx="21" cy="21" r="2.5" fill="rgba(201,169,97,0.5)" stroke="#c9a961" stroke-width="0.6"/>
+                            </svg>
+                        </div>
                         <h3>L'Ancienne Synagogue</h3>
                         <p>L'ancienne synagogue de Luxembourg se trouvait à l'emplacement actuel de la Brasserie des Nations. Ce lieu chargé d'histoire témoigne de la richesse du patrimoine luxembourgeois et de la mémoire collective de la capitale. La Brasserie honore chaque jour ce passé en perpétuant une tradition d'accueil et de convivialité.</p>
                     </div>
@@ -453,8 +888,92 @@
             </div>
         </section>
 
+        <!-- Decorative divider 2 — between timeline and heritage, wine glass motif -->
+        <div class="ornament-divider" aria-hidden="true" style="background:var(--cream,#f5f3ef);">
+            <svg viewBox="0 0 480 60" xmlns="http://www.w3.org/2000/svg" fill="none">
+                <line class="div-line" x1="0" y1="30" x2="175" y2="30" stroke="rgba(201,169,97,0.4)" stroke-width="1"/>
+                <line class="div-line" x1="305" y1="30" x2="480" y2="30" stroke="rgba(201,169,97,0.4)" stroke-width="1"/>
+                <!-- Wine glass centre -->
+                <g class="div-center" transform="translate(215, 4)">
+                    <!-- Left wheat -->
+                    <path d="M12 52 L12 20 M12 35 Q4 28 2 20 Q9 22 12 30 M12 35 Q20 28 22 20 Q15 22 12 30" stroke="rgba(201,169,97,0.6)" stroke-width="1" stroke-linecap="round" fill="rgba(201,169,97,0.05)"/>
+                    <!-- Wine glass -->
+                    <path d="M34 8 Q28 26 38 36 Q48 26 42 8 Z" stroke="rgba(201,169,97,0.8)" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round" fill="rgba(201,169,97,0.07)"/>
+                    <line x1="38" y1="36" x2="38" y2="50" stroke="rgba(201,169,97,0.8)" stroke-width="1.2" stroke-linecap="round"/>
+                    <line x1="30" y1="50" x2="46" y2="50" stroke="rgba(201,169,97,0.8)" stroke-width="1.5" stroke-linecap="round"/>
+                    <path d="M31 18 Q38 22 45 18" stroke="rgba(201,169,97,0.4)" stroke-width="0.8" stroke-linecap="round"/>
+                    <!-- Right wheat mirror -->
+                    <path d="M64 52 L64 20 M64 35 Q56 28 54 20 Q61 22 64 30 M64 35 Q72 28 74 20 Q67 22 64 30" stroke="rgba(201,169,97,0.6)" stroke-width="1" stroke-linecap="round" fill="rgba(201,169,97,0.05)"/>
+                </g>
+            </svg>
+        </div>
+
         <!-- Section manifesto style -->
         <section class="heritage">
+            <!-- Floating SVG elements in heritage (old clock, wine bottle, plate with steam, wine glass) -->
+            <div class="heritage-floats" aria-hidden="true">
+                <!-- Old clock -->
+                <div class="hf-item hf-clock">
+                    <svg viewBox="0 0 70 70" fill="none" xmlns="http://www.w3.org/2000/svg" width="70">
+                        <circle cx="35" cy="35" r="30" stroke="currentColor" stroke-width="1.5"/>
+                        <circle cx="35" cy="35" r="26" stroke="currentColor" stroke-width="0.6" stroke-dasharray="2 4"/>
+                        <!-- Clock hands -->
+                        <line x1="35" y1="35" x2="35" y2="15" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/>
+                        <line x1="35" y1="35" x2="52" y2="46" stroke="currentColor" stroke-width="1.3" stroke-linecap="round"/>
+                        <circle cx="35" cy="35" r="2.5" fill="currentColor"/>
+                        <!-- Roman numeral marks -->
+                        <line x1="35" y1="8" x2="35" y2="12" stroke="currentColor" stroke-width="1.2" stroke-linecap="round"/>
+                        <line x1="35" y1="58" x2="35" y2="62" stroke="currentColor" stroke-width="1.2" stroke-linecap="round"/>
+                        <line x1="8" y1="35" x2="12" y2="35" stroke="currentColor" stroke-width="1.2" stroke-linecap="round"/>
+                        <line x1="58" y1="35" x2="62" y2="35" stroke="currentColor" stroke-width="1.2" stroke-linecap="round"/>
+                        <!-- Top ornament -->
+                        <path d="M28 5 Q35 0 42 5" stroke="currentColor" stroke-width="1" stroke-linecap="round"/>
+                        <line x1="35" y1="0" x2="35" y2="6" stroke="currentColor" stroke-width="1" stroke-linecap="round"/>
+                    </svg>
+                </div>
+
+                <!-- Wine bottle -->
+                <div class="hf-item hf-bottle">
+                    <svg viewBox="0 0 45 120" fill="none" xmlns="http://www.w3.org/2000/svg" width="45">
+                        <rect x="16" y="38" width="13" height="70" rx="6" stroke="currentColor" stroke-width="1.4"/>
+                        <path d="M16 62 Q9 70 9 82 Q9 108 22.5 108 Q36 108 36 82 Q36 70 29 62 L29 38 L16 38 Z" stroke="currentColor" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round" fill="rgba(201,169,97,0.05)"/>
+                        <path d="M18 38 L18 24 Q18 12 22.5 8 Q27 12 27 24 L27 38" stroke="currentColor" stroke-width="1.2" stroke-linecap="round"/>
+                        <rect x="18" y="6" width="9" height="6" rx="2" stroke="currentColor" stroke-width="1"/>
+                        <!-- Label -->
+                        <rect x="13" y="70" width="19" height="22" rx="2" stroke="currentColor" stroke-width="0.8" fill="rgba(201,169,97,0.06)"/>
+                        <line x1="16" y1="77" x2="29" y2="77" stroke="currentColor" stroke-width="0.6"/>
+                        <line x1="16" y1="81" x2="29" y2="81" stroke="currentColor" stroke-width="0.6"/>
+                        <line x1="16" y1="85" x2="24" y2="85" stroke="currentColor" stroke-width="0.6"/>
+                    </svg>
+                </div>
+
+                <!-- Plate with steam (bottom left) -->
+                <div class="hf-item hf-plate">
+                    <svg viewBox="0 0 65 65" fill="none" xmlns="http://www.w3.org/2000/svg" width="65">
+                        <ellipse cx="32" cy="48" rx="28" ry="8" stroke="currentColor" stroke-width="1.3"/>
+                        <ellipse cx="32" cy="48" rx="21" ry="5.5" stroke="currentColor" stroke-width="0.7" stroke-dasharray="2 3"/>
+                        <path d="M4 48 Q4 35 32 35 Q60 35 60 48" stroke="currentColor" stroke-width="1.3" stroke-linecap="round"/>
+                        <!-- Steam wisps -->
+                        <path d="M20 32 Q17 25 20 18 Q23 11 20 4" stroke="currentColor" stroke-width="1" stroke-linecap="round" fill="none"/>
+                        <path d="M32 30 Q29 23 32 16 Q35 9 32 2" stroke="currentColor" stroke-width="1" stroke-linecap="round" fill="none"/>
+                        <path d="M44 32 Q41 25 44 18 Q47 11 44 4" stroke="currentColor" stroke-width="1" stroke-linecap="round" fill="none"/>
+                    </svg>
+                </div>
+
+                <!-- Small wine glass bottom right -->
+                <div class="hf-item hf-glass2">
+                    <svg viewBox="0 0 40 80" fill="none" xmlns="http://www.w3.org/2000/svg" width="40">
+                        <path d="M8 6 Q4 28 20 40 Q36 28 32 6 Z" stroke="currentColor" stroke-width="1.3" stroke-linecap="round" stroke-linejoin="round" fill="rgba(201,169,97,0.05)"/>
+                        <line x1="20" y1="40" x2="20" y2="64" stroke="currentColor" stroke-width="1.3" stroke-linecap="round"/>
+                        <line x1="8" y1="64" x2="32" y2="64" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/>
+                        <path d="M10" y1="20" x2="10" y2="20" stroke="none"/>
+                        <path d="M10 20 Q20 26 30 20" stroke="currentColor" stroke-width="0.8" stroke-linecap="round"/>
+                        <!-- Wine level -->
+                        <path d="M11 28 Q20 32 29 28 Q28 34 20 36 Q12 34 11 28 Z" fill="rgba(201,169,97,0.12)" stroke="none"/>
+                    </svg>
+                </div>
+            </div>
+
             <div class="food-illust food-illust--heritage" aria-hidden="true">
                 <svg class="food-svg fh-tl" viewBox="0 0 80 60"><g fill="none" stroke="currentColor" stroke-width="1" stroke-linecap="round" stroke-linejoin="round"><path d="M5 50 L5 22 L70 8 L70 50 Z"/><path d="M5 22 L70 8"/><line x1="5" y1="50" x2="70" y2="50"/><circle cx="25" cy="35" r="3"/><circle cx="45" cy="28" r="2.5"/></g></svg>
                 <svg class="food-svg fh-tr" viewBox="0 0 90 70"><g fill="none" stroke="currentColor" stroke-width="1" stroke-linecap="round" stroke-linejoin="round"><path d="M10 30 Q10 58 45 60 Q80 58 80 30"/><ellipse cx="45" cy="30" rx="35" ry="10"/></g></svg>
@@ -482,6 +1001,22 @@
                 <p>Notre engagement pour la qualité et notre passion pour la cuisine traditionnelle font de nous une référence incontournable de la gastronomie luxembourgeoise.</p>
             </div>
         </section>
+
+        <!-- Decorative divider 3 — between heritage and convertisseur -->
+        <div class="ornament-divider" aria-hidden="true" style="background:var(--green);">
+            <svg viewBox="0 0 480 50" xmlns="http://www.w3.org/2000/svg" fill="none">
+                <line class="div-line" x1="0" y1="25" x2="195" y2="25" stroke="rgba(201,169,97,0.35)" stroke-width="1"/>
+                <line class="div-line" x1="285" y1="25" x2="480" y2="25" stroke="rgba(201,169,97,0.35)" stroke-width="1"/>
+                <!-- Wheat sprig centre -->
+                <g class="div-center" transform="translate(220, 4)">
+                    <line x1="20" y1="42" x2="20" y2="4" stroke="rgba(201,169,97,0.7)" stroke-width="1.2" stroke-linecap="round"/>
+                    <path d="M20 28 Q10 22 8 13 Q16 15 20 23 Z" stroke="rgba(201,169,97,0.7)" stroke-width="1" stroke-linecap="round" fill="rgba(201,169,97,0.08)"/>
+                    <path d="M20 28 Q30 22 32 13 Q24 15 20 23 Z" stroke="rgba(201,169,97,0.7)" stroke-width="1" stroke-linecap="round" fill="rgba(201,169,97,0.08)"/>
+                    <path d="M20 18 Q10 12 8 4 Q16 6 20 13 Z" stroke="rgba(201,169,97,0.7)" stroke-width="1" stroke-linecap="round" fill="rgba(201,169,97,0.08)"/>
+                    <path d="M20 18 Q30 12 32 4 Q24 6 20 13 Z" stroke="rgba(201,169,97,0.7)" stroke-width="1" stroke-linecap="round" fill="rgba(201,169,97,0.08)"/>
+                </g>
+            </svg>
+        </div>
 
         <!-- Section Convertisseur -->
         <section class="convertisseur-section" id="convertisseur">
@@ -558,7 +1093,7 @@
             <div class="footer-logo">BRASSERIE DES NATIONS</div>
             <div class="footer-links">
                 <a href="../index.html">Accueil</a>
-                <a href="historique.html">Histoire</a>
+                <a href="historique.html">Héritage</a>
                 <a href="menu.html">Menu</a>
                 <a href="../index.html#galerie">Galerie</a>
                 <a href="../index.html#contact">Contact</a>
@@ -644,6 +1179,35 @@ function convertir() {
         document.getElementById('dm-ff').value  = (eurFromDm / TAUX.FF_EUR).toFixed(2);
     }
 }
+
+// Scroll-triggered animations for timeline blocks
+(function(){
+    var blocks = document.querySelectorAll('.timeline-block');
+    if (!blocks.length) return;
+
+    function checkVisibility() {
+        var windowH = window.innerHeight;
+        blocks.forEach(function(block) {
+            var rect = block.getBoundingClientRect();
+            if (rect.top < windowH * 0.88) {
+                block.classList.add('is-visible');
+            }
+        });
+    }
+
+    // Trigger immediately for blocks already in view
+    checkVisibility();
+    window.addEventListener('scroll', checkVisibility, { passive: true });
+    window.addEventListener('resize', checkVisibility, { passive: true });
+})();
+
+// Stagger the initial animation delays for timeline blocks
+(function(){
+    var blocks = document.querySelectorAll('.timeline-block');
+    blocks.forEach(function(block, i) {
+        block.style.transitionDelay = (i * 0.1) + 's';
+    });
+})();
 </script>
 </body>
 </html>

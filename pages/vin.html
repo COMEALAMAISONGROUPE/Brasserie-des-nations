@@ -11,8 +11,9 @@
         :root { --green: #1a3d0f; --cream: #f5f3ef; --gold: #c9a961; --text: #2c2c2c; --wine: #722F37; }
         * { margin: 0; padding: 0; box-sizing: border-box; }
         html { scroll-behavior: smooth; }
-        body { font-family: 'Montserrat', sans-serif; background: var(--cream); color: var(--text); }
-        
+        body { font-family: 'Montserrat', sans-serif; background: var(--cream); color: var(--text); overflow-x: hidden; }
+
+        /* ===================== NAV ===================== */
         nav { position: fixed; top: 0; width: 100%; z-index: 1000; background: rgba(245,243,239,0.98); backdrop-filter: blur(10px); padding: 20px 40px; display: flex; justify-content: center; align-items: center; border-bottom: 1px solid rgba(0,0,0,0.05); }
         .nav-inner { display: flex; align-items: center; gap: 8px; }
         .nav-link { font-family: 'Cormorant Garamond', serif; font-size: 1.1rem; font-weight: 400; letter-spacing: 2px; text-transform: uppercase; color: var(--green); text-decoration: none; padding: 8px 18px; transition: opacity 0.3s; }
@@ -42,42 +43,336 @@
             .mob-overlay { position: fixed; inset: 0; background: rgba(0,0,0,.4); z-index: 10000; backdrop-filter: blur(3px); display: none; }
             .mob-overlay.open { display: block; }
         }
-        
-        .hero { background: var(--wine); min-height: 50vh; display: flex; flex-direction: column; justify-content: center; align-items: center; text-align: center; padding: 120px 40px 80px; }
-        .hero h1 { font-family: 'Cormorant Garamond', serif; font-size: 4rem; font-weight: 300; color: white; letter-spacing: 4px; margin-bottom: 20px; }
-        .hero p { font-size: 1.1rem; color: rgba(255,255,255,0.7); letter-spacing: 3px; text-transform: uppercase; }
-        
-        .content { max-width: 1100px; margin: 0 auto; padding: 80px 40px; }
-        .section { margin-bottom: 80px; }
+
+        /* ===================== HERO ===================== */
+        .hero {
+            background: var(--wine);
+            min-height: 60vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            padding: 120px 40px 90px;
+            position: relative;
+            overflow: hidden;
+        }
+        .hero-bg-pattern {
+            position: absolute;
+            inset: 0;
+            pointer-events: none;
+            opacity: 0.06;
+        }
+        .hero-illustration {
+            position: absolute;
+            bottom: 0;
+            left: 50%;
+            transform: translateX(-50%);
+            pointer-events: none;
+            width: 560px;
+            max-width: 90vw;
+            opacity: 0.22;
+        }
+        .hero-grapes-left {
+            position: absolute;
+            left: 0;
+            top: 50%;
+            transform: translateY(-50%);
+            pointer-events: none;
+            width: 180px;
+            opacity: 0.18;
+            animation: sway-left 6s ease-in-out infinite;
+        }
+        .hero-grapes-right {
+            position: absolute;
+            right: 0;
+            top: 50%;
+            transform: translateY(-50%);
+            pointer-events: none;
+            width: 180px;
+            opacity: 0.18;
+            animation: sway-right 7s ease-in-out infinite;
+        }
+        .hero h1 {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 4.2rem;
+            font-weight: 300;
+            color: white;
+            letter-spacing: 6px;
+            margin-bottom: 20px;
+            position: relative;
+            z-index: 2;
+            text-shadow: 0 2px 20px rgba(0,0,0,0.3);
+        }
+        .hero p {
+            font-size: 1rem;
+            color: rgba(255,255,255,0.7);
+            letter-spacing: 4px;
+            text-transform: uppercase;
+            position: relative;
+            z-index: 2;
+        }
+        .hero-gold-line {
+            width: 60px;
+            height: 1px;
+            background: var(--gold);
+            margin: 18px auto;
+            position: relative;
+            z-index: 2;
+        }
+
+        /* ===================== BODY BG VINE PATTERN ===================== */
+        .body-vine-bg {
+            position: fixed;
+            top: 0; left: 0;
+            width: 100%; height: 100%;
+            pointer-events: none;
+            z-index: 0;
+            opacity: 0.025;
+        }
+
+        /* ===================== CONTENT ===================== */
+        .content { max-width: 1100px; margin: 0 auto; padding: 80px 40px; position: relative; z-index: 1; }
+        .section { margin-bottom: 100px; position: relative; }
         .section h2 { font-family: 'Cormorant Garamond', serif; font-size: 3rem; font-weight: 400; color: var(--green); margin-bottom: 40px; text-align: center; letter-spacing: 2px; }
         .section h2::after { content: ''; display: block; width: 80px; height: 2px; background: var(--gold); margin: 20px auto 0; }
         .section h3 { font-family: 'Cormorant Garamond', serif; font-size: 2rem; font-weight: 500; color: var(--wine); margin: 40px 0 20px; }
         .section p { font-size: 1.05rem; line-height: 2; color: #555; margin-bottom: 20px; }
-        
+
+        /* ===================== HISTORIQUE SECTION ===================== */
+        .historique-inner {
+            display: flex;
+            gap: 60px;
+            align-items: flex-start;
+        }
+        .historique-text { flex: 1; }
+        .historique-barrel-wrap {
+            width: 160px;
+            flex-shrink: 0;
+            position: relative;
+        }
+        .historique-barrel-wrap svg {
+            width: 100%;
+            animation: barrel-breathe 5s ease-in-out infinite;
+        }
+
+        /* ===================== GÉOGRAPHIE SECTION ===================== */
+        .geographie-map {
+            width: 100%;
+            max-width: 700px;
+            margin: 0 auto 40px;
+            display: block;
+            opacity: 0.85;
+        }
+
+        /* ===================== APPELLATIONS ===================== */
         .appellations { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 30px; margin-top: 40px; }
-        .appellation-card { background: white; padding: 30px; border: 1px solid rgba(0,0,0,0.08); transition: all 0.3s; }
+        .appellation-card { background: white; padding: 30px; border: 1px solid rgba(0,0,0,0.08); transition: all 0.3s; position: relative; overflow: hidden; }
+        .appellation-card::before { content: ''; position: absolute; top: 0; left: 0; width: 3px; height: 0; background: var(--gold); transition: height 0.4s ease; }
         .appellation-card:hover { transform: translateY(-5px); box-shadow: 0 15px 40px rgba(0,0,0,0.1); border-color: var(--gold); }
-        .appellation-card h4 { font-family: 'Cormorant Garamond', serif; font-size: 1.5rem; color: var(--green); margin-bottom: 15px; }
+        .appellation-card:hover::before { height: 100%; }
+        .appellation-card-header { display: flex; align-items: center; gap: 12px; margin-bottom: 15px; }
+        .appellation-card h4 { font-family: 'Cormorant Garamond', serif; font-size: 1.5rem; color: var(--green); }
         .appellation-card ul { list-style: none; }
         .appellation-card li { font-size: 0.95rem; color: #666; padding: 6px 0; border-bottom: 1px solid rgba(0,0,0,0.05); }
         .appellation-card li:last-child { border-bottom: none; }
-        
-        footer { background: var(--green); color: white; padding: 40px; text-align: center; }
-        .footer-logo { font-family: 'Cormorant Garamond', serif; font-size: 1.3rem; letter-spacing: 3px; margin-bottom: 15px; }
-        .footer-links { display: flex; justify-content: center; gap: 25px; flex-wrap: wrap; }
+        .card-icon { width: 28px; height: 28px; flex-shrink: 0; opacity: 0.75; }
+
+        /* ===================== DIVIDERS ===================== */
+        .svg-divider {
+            width: 100%;
+            max-width: 800px;
+            margin: 0 auto 80px;
+            display: block;
+            pointer-events: none;
+        }
+
+        /* ===================== FLOATING DECORATIONS ===================== */
+        .float-deco {
+            position: absolute;
+            pointer-events: none;
+            z-index: 0;
+            aria-hidden: true;
+        }
+        .float-glass {
+            right: -30px;
+            top: 60px;
+            width: 90px;
+            opacity: 0.12;
+            animation: float-glass 8s ease-in-out infinite;
+        }
+        .float-bottle {
+            left: -40px;
+            top: 120px;
+            width: 70px;
+            opacity: 0.10;
+            animation: float-bottle 10s ease-in-out infinite;
+        }
+        .float-grapes-sm {
+            right: -20px;
+            bottom: 40px;
+            width: 80px;
+            opacity: 0.13;
+            animation: sway-right 9s ease-in-out infinite;
+        }
+        .float-corkscrew {
+            left: -25px;
+            bottom: 80px;
+            width: 50px;
+            opacity: 0.10;
+            animation: spin-slow 20s linear infinite;
+        }
+
+        /* ===================== ANIMATIONS ===================== */
+        @keyframes draw-in {
+            to { stroke-dashoffset: 0; }
+        }
+        @keyframes sway-left {
+            0%, 100% { transform: translateY(-50%) rotate(-3deg); }
+            50% { transform: translateY(-50%) rotate(3deg); }
+        }
+        @keyframes sway-right {
+            0%, 100% { transform: rotate(3deg); }
+            50% { transform: rotate(-3deg); }
+        }
+        @keyframes float-glass {
+            0%, 100% { transform: translateY(0) rotate(-5deg); }
+            50% { transform: translateY(-18px) rotate(2deg); }
+        }
+        @keyframes float-bottle {
+            0%, 100% { transform: translateY(0) rotate(8deg); }
+            50% { transform: translateY(-22px) rotate(3deg); }
+        }
+        @keyframes barrel-breathe {
+            0%, 100% { transform: scale(1); }
+            50% { transform: scale(1.03); }
+        }
+        @keyframes spin-slow {
+            from { transform: rotate(0deg); }
+            to { transform: rotate(360deg); }
+        }
+        @keyframes splash-drop {
+            0% { transform: translateY(-40px); opacity: 0; }
+            60% { opacity: 1; }
+            100% { transform: translateY(0); opacity: 0.85; }
+        }
+        @keyframes liquid-sway {
+            0%, 100% { d: path("M 20 90 Q 40 85 60 90 Q 80 95 100 90 L 100 120 L 20 120 Z"); }
+            50% { d: path("M 20 90 Q 40 95 60 90 Q 80 85 100 90 L 100 120 L 20 120 Z"); }
+        }
+        @keyframes vine-grow {
+            0% { stroke-dashoffset: 600; opacity: 0; }
+            30% { opacity: 1; }
+            100% { stroke-dashoffset: 0; opacity: 1; }
+        }
+        @keyframes grape-pop {
+            0% { transform: scale(0); opacity: 0; }
+            80% { transform: scale(1.1); opacity: 1; }
+            100% { transform: scale(1); opacity: 1; }
+        }
+        @keyframes pour-drop {
+            0% { opacity: 0; transform: translateY(-20px) scaleY(0.5); }
+            40% { opacity: 1; transform: translateY(0) scaleY(1); }
+            70% { opacity: 1; }
+            100% { opacity: 0; transform: translateY(30px); }
+        }
+        @keyframes ripple {
+            0% { transform: scaleX(0.5); opacity: 0; }
+            50% { opacity: 0.8; }
+            100% { transform: scaleX(1); opacity: 0; }
+        }
+
+        /* Hero SVG draw-in paths */
+        .hero-draw {
+            stroke-dasharray: 1200;
+            stroke-dashoffset: 1200;
+            animation: draw-in 2.8s cubic-bezier(0.4,0,0.2,1) forwards;
+        }
+        .hero-draw-2 {
+            stroke-dasharray: 900;
+            stroke-dashoffset: 900;
+            animation: draw-in 2.2s 0.6s cubic-bezier(0.4,0,0.2,1) forwards;
+        }
+        .hero-draw-3 {
+            stroke-dasharray: 700;
+            stroke-dashoffset: 700;
+            animation: draw-in 2s 1.2s cubic-bezier(0.4,0,0.2,1) forwards;
+        }
+
+        /* Vine divider draw */
+        .vine-path {
+            stroke-dasharray: 600;
+            stroke-dashoffset: 600;
+            animation: vine-grow 2.5s 0.3s ease forwards;
+        }
+        .grape-circle {
+            transform: scale(0);
+            transform-box: fill-box;
+            transform-origin: center;
+            animation: grape-pop 0.4s ease forwards;
+        }
+        .grape-circle:nth-child(2) { animation-delay: 1.8s; }
+        .grape-circle:nth-child(3) { animation-delay: 2.0s; }
+        .grape-circle:nth-child(4) { animation-delay: 2.2s; }
+        .grape-circle:nth-child(5) { animation-delay: 2.4s; }
+        .grape-circle:nth-child(6) { animation-delay: 1.9s; }
+        .grape-circle:nth-child(7) { animation-delay: 2.1s; }
+        .grape-circle:nth-child(8) { animation-delay: 2.3s; }
+        .grape-circle:nth-child(9) { animation-delay: 2.5s; }
+
+        /* Pour drop animation on hero bottle */
+        .pour-drop { animation: pour-drop 2.4s 1.8s ease-in-out infinite; }
+        .splash-ripple { animation: ripple 2.4s 2.4s ease-out infinite; }
+
+        /* ===================== FOOTER ===================== */
+        footer { background: var(--green); color: white; padding: 40px; text-align: center; position: relative; overflow: hidden; }
+        .footer-vine { position: absolute; bottom: 0; left: 0; right: 0; pointer-events: none; opacity: 0.12; }
+        .footer-logo { font-family: 'Cormorant Garamond', serif; font-size: 1.3rem; letter-spacing: 3px; margin-bottom: 15px; position: relative; z-index: 1; }
+        .footer-links { display: flex; justify-content: center; gap: 25px; flex-wrap: wrap; position: relative; z-index: 1; }
         .footer-links a { color: white; text-decoration: none; font-size: 0.75rem; letter-spacing: 2px; text-transform: uppercase; opacity: 0.7; transition: opacity 0.3s; }
         .footer-links a:hover { opacity: 1; color: var(--gold); }
-        
+
+        /* ===================== RESPONSIVE ===================== */
         @media (max-width: 768px) {
             .hero h1 { font-size: 2.5rem; }
             .section h2 { font-size: 2rem; }
             .nav-inner { flex-wrap: wrap; justify-content: center; }
             .nav-link { font-size: 0.9rem; padding: 6px 12px; }
             .nav-dot { display: none; }
+            .hero-grapes-left, .hero-grapes-right { width: 100px; }
+            .hero-illustration { width: 320px; }
+            .historique-inner { flex-direction: column; }
+            .historique-barrel-wrap { width: 120px; margin: 0 auto; }
+            .float-deco { display: none; }
+        }
+        @media (max-width: 480px) {
+            .hero-grapes-left, .hero-grapes-right { display: none; }
         }
     </style>
 </head>
 <body>
+
+<!-- Subtle vine background overlay -->
+<svg class="body-vine-bg" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 400" preserveAspectRatio="xMidYMid slice">
+    <defs>
+        <pattern id="vinePattern" x="0" y="0" width="200" height="200" patternUnits="userSpaceOnUse">
+            <!-- Vine stem -->
+            <path d="M 100 200 Q 80 160 100 120 Q 120 80 100 40" fill="none" stroke="#1a3d0f" stroke-width="1.5"/>
+            <!-- Tendrils -->
+            <path d="M 100 140 Q 130 120 150 130 Q 170 140 160 160" fill="none" stroke="#1a3d0f" stroke-width="1"/>
+            <path d="M 100 100 Q 70 80 50 90 Q 30 100 40 120" fill="none" stroke="#1a3d0f" stroke-width="1"/>
+            <!-- Leaves -->
+            <path d="M 145 125 Q 155 110 165 120 Q 175 130 160 135 Q 155 125 145 125 Z" fill="#1a3d0f" opacity="0.6"/>
+            <path d="M 50 92 Q 38 78 30 90 Q 22 102 35 108 Q 42 96 50 92 Z" fill="#1a3d0f" opacity="0.6"/>
+            <!-- Grapes -->
+            <circle cx="160" cy="155" r="5" fill="#722F37" opacity="0.7"/>
+            <circle cx="170" cy="150" r="5" fill="#722F37" opacity="0.7"/>
+            <circle cx="165" cy="145" r="5" fill="#722F37" opacity="0.7"/>
+            <circle cx="155" cy="148" r="5" fill="#722F37" opacity="0.7"/>
+        </pattern>
+    </defs>
+    <rect width="100%" height="100%" fill="url(#vinePattern)"/>
+</svg>
 
     <nav>
         <!-- Burger mobile -->
@@ -110,36 +405,483 @@
         </div>
     </nav>
 
+    <!-- ==================== HERO ==================== -->
     <section class="hero">
+
+        <!-- Background repeating diamond/vine overlay -->
+        <svg class="hero-bg-pattern" aria-hidden="true" viewBox="0 0 200 200" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="xMidYMid slice">
+            <defs>
+                <pattern id="heroPat" x="0" y="0" width="60" height="60" patternUnits="userSpaceOnUse">
+                    <path d="M 30 0 L 60 30 L 30 60 L 0 30 Z" fill="none" stroke="#c9a961" stroke-width="0.6"/>
+                    <circle cx="30" cy="30" r="2" fill="#c9a961" opacity="0.4"/>
+                </pattern>
+            </defs>
+            <rect width="100%" height="100%" fill="url(#heroPat)"/>
+        </svg>
+
+        <!-- Floating grape clusters left -->
+        <svg class="hero-grapes-left" aria-hidden="true" viewBox="0 0 180 320" xmlns="http://www.w3.org/2000/svg">
+            <!-- Vine stem -->
+            <path d="M 90 320 Q 70 260 90 200 Q 110 140 80 80 Q 60 40 90 10" fill="none" stroke="#c9a961" stroke-width="2.5"/>
+            <!-- Tendrils -->
+            <path d="M 85 200 Q 120 185 140 200 Q 160 215 150 240" fill="none" stroke="#c9a961" stroke-width="1.5"/>
+            <path d="M 88 150 Q 50 130 30 145 Q 10 160 20 185" fill="none" stroke="#c9a961" stroke-width="1.5"/>
+            <path d="M 82 100 Q 110 75 130 80" fill="none" stroke="#c9a961" stroke-width="1.2"/>
+            <!-- Leaf 1 -->
+            <path d="M 140 198 Q 160 175 175 188 Q 185 205 168 212 Q 160 198 140 198 Z" fill="#c9a961" opacity="0.6"/>
+            <!-- Leaf 2 -->
+            <path d="M 22 184 Q 5 165 2 180 Q -1 198 14 202 Q 18 188 22 184 Z" fill="#c9a961" opacity="0.6"/>
+            <!-- Grape cluster 1 -->
+            <circle cx="150" cy="232" r="7" fill="#c9a961"/>
+            <circle cx="162" cy="228" r="7" fill="#c9a961"/>
+            <circle cx="156" cy="220" r="7" fill="#c9a961"/>
+            <circle cx="145" cy="224" r="7" fill="#c9a961"/>
+            <circle cx="168" cy="218" r="6" fill="#c9a961" opacity="0.8"/>
+            <circle cx="151" cy="213" r="6" fill="#c9a961" opacity="0.8"/>
+            <circle cx="162" cy="212" r="5" fill="#c9a961" opacity="0.7"/>
+            <!-- Grape cluster 2 -->
+            <circle cx="22" cy="172" r="6" fill="#c9a961"/>
+            <circle cx="12" cy="176" r="6" fill="#c9a961"/>
+            <circle cx="8" cy="165" r="6" fill="#c9a961"/>
+            <circle cx="18" cy="163" r="6" fill="#c9a961"/>
+            <circle cx="14" cy="155" r="5" fill="#c9a961" opacity="0.7"/>
+        </svg>
+
+        <!-- Floating grape clusters right -->
+        <svg class="hero-grapes-right" aria-hidden="true" viewBox="0 0 180 320" xmlns="http://www.w3.org/2000/svg">
+            <!-- Vine stem (mirrored) -->
+            <path d="M 90 320 Q 110 260 90 200 Q 70 140 100 80 Q 120 40 90 10" fill="none" stroke="#c9a961" stroke-width="2.5"/>
+            <!-- Tendrils -->
+            <path d="M 95 200 Q 60 185 40 200 Q 20 215 30 240" fill="none" stroke="#c9a961" stroke-width="1.5"/>
+            <path d="M 92 150 Q 130 130 150 145 Q 170 160 160 185" fill="none" stroke="#c9a961" stroke-width="1.5"/>
+            <!-- Leaf 1 -->
+            <path d="M 40 198 Q 20 175 5 188 Q -5 205 12 212 Q 20 198 40 198 Z" fill="#c9a961" opacity="0.6"/>
+            <!-- Leaf 2 -->
+            <path d="M 158 184 Q 175 165 178 180 Q 181 198 166 202 Q 162 188 158 184 Z" fill="#c9a961" opacity="0.6"/>
+            <!-- Grape cluster -->
+            <circle cx="30" cy="232" r="7" fill="#c9a961"/>
+            <circle cx="18" cy="228" r="7" fill="#c9a961"/>
+            <circle cx="24" cy="220" r="7" fill="#c9a961"/>
+            <circle cx="35" cy="224" r="7" fill="#c9a961"/>
+            <circle cx="12" cy="218" r="6" fill="#c9a961" opacity="0.8"/>
+            <circle cx="29" cy="213" r="6" fill="#c9a961" opacity="0.8"/>
+            <circle cx="18" cy="212" r="5" fill="#c9a961" opacity="0.7"/>
+        </svg>
+
+        <!-- Main hero illustration: bottle + two glasses with pour/splash -->
+        <svg class="hero-illustration" aria-hidden="true" viewBox="0 0 560 340" xmlns="http://www.w3.org/2000/svg">
+            <defs>
+                <linearGradient id="bottleGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+                    <stop offset="0%" style="stop-color:#722F37;stop-opacity:0.9"/>
+                    <stop offset="100%" style="stop-color:#4a1a20;stop-opacity:0.9"/>
+                </linearGradient>
+                <linearGradient id="wineGrad" x1="0%" y1="0%" x2="0%" y2="100%">
+                    <stop offset="0%" style="stop-color:#722F37;stop-opacity:0.8"/>
+                    <stop offset="100%" style="stop-color:#9a3f4a;stop-opacity:0.6"/>
+                </linearGradient>
+                <linearGradient id="glassGrad" x1="0%" y1="0%" x2="100%" y2="0%">
+                    <stop offset="0%" style="stop-color:#c9a961;stop-opacity:0.2"/>
+                    <stop offset="50%" style="stop-color:#c9a961;stop-opacity:0.05"/>
+                    <stop offset="100%" style="stop-color:#c9a961;stop-opacity:0.2"/>
+                </linearGradient>
+            </defs>
+
+            <!-- Left wine glass -->
+            <g transform="translate(80, 20)">
+                <!-- Glass bowl -->
+                <path class="hero-draw" d="M 40 20 Q 10 40 15 90 Q 18 120 55 130 Q 90 120 93 90 Q 98 40 68 20 Z"
+                      fill="url(#glassGrad)" stroke="#c9a961" stroke-width="1.5" fill-opacity="0.15"/>
+                <!-- Wine level inside left glass -->
+                <path d="M 22 80 Q 54 92 88 80 L 93 90 Q 90 120 55 130 Q 18 120 15 90 Z"
+                      fill="url(#wineGrad)" opacity="0.6"/>
+                <!-- Glass stem -->
+                <path class="hero-draw-2" d="M 55 130 L 55 200" fill="none" stroke="#c9a961" stroke-width="2"/>
+                <!-- Glass base -->
+                <path class="hero-draw-2" d="M 28 200 Q 55 195 82 200" fill="none" stroke="#c9a961" stroke-width="2.5"/>
+                <!-- Glass shine -->
+                <path d="M 28 35 Q 24 55 26 75" fill="none" stroke="white" stroke-width="1.5" opacity="0.4"/>
+            </g>
+
+            <!-- Wine bottle (center) -->
+            <g transform="translate(220, 0)">
+                <!-- Bottle body -->
+                <path class="hero-draw" d="M 50 50 Q 30 60 28 100 L 25 260 Q 25 280 55 285 Q 85 280 85 260 L 82 100 Q 80 60 60 50 Z"
+                      fill="url(#bottleGrad)" stroke="#c9a961" stroke-width="1.5"/>
+                <!-- Bottle neck -->
+                <path class="hero-draw" d="M 50 50 Q 45 30 47 10 L 63 10 Q 65 30 60 50"
+                      fill="url(#bottleGrad)" stroke="#c9a961" stroke-width="1.5"/>
+                <!-- Capsule top -->
+                <rect x="45" y="5" width="20" height="18" rx="3" fill="#c9a961" opacity="0.8"/>
+                <!-- Label -->
+                <rect x="30" y="130" width="50" height="80" rx="3" fill="rgba(201,169,97,0.25)" stroke="#c9a961" stroke-width="1"/>
+                <!-- Label text lines -->
+                <line x1="36" y1="148" x2="74" y2="148" stroke="#c9a961" stroke-width="0.8" opacity="0.7"/>
+                <line x1="38" y1="158" x2="72" y2="158" stroke="#c9a961" stroke-width="0.8" opacity="0.5"/>
+                <line x1="40" y1="168" x2="70" y2="168" stroke="#c9a961" stroke-width="0.8" opacity="0.5"/>
+                <line x1="38" y1="178" x2="72" y2="178" stroke="#c9a961" stroke-width="0.8" opacity="0.5"/>
+                <line x1="36" y1="188" x2="74" y2="188" stroke="#c9a961" stroke-width="0.8" opacity="0.7"/>
+                <!-- Bottle shine -->
+                <path d="M 36 80 Q 33 130 34 180" fill="none" stroke="rgba(255,255,255,0.25)" stroke-width="3"/>
+                <!-- Wine pour stream -->
+                <path class="pour-drop" d="M 54 10 Q 52 -10 50 -30 Q 46 -50 30 -70" fill="none" stroke="#722F37" stroke-width="4" stroke-linecap="round"/>
+                <!-- Pour splash drop -->
+                <ellipse class="splash-ripple" cx="25" cy="-68" rx="12" ry="4" fill="none" stroke="#722F37" stroke-width="2" opacity="0.7"/>
+            </g>
+
+            <!-- Right wine glass (tilted) -->
+            <g transform="translate(370, 30) rotate(-8, 54, 120)">
+                <!-- Glass bowl -->
+                <path class="hero-draw-3" d="M 40 20 Q 10 40 15 90 Q 18 120 55 130 Q 90 120 93 90 Q 98 40 68 20 Z"
+                      fill="url(#glassGrad)" stroke="#c9a961" stroke-width="1.5" fill-opacity="0.15"/>
+                <!-- Wine level inside right glass (slightly tilted) -->
+                <path d="M 18 75 Q 55 95 92 80 L 93 90 Q 90 120 55 130 Q 18 120 15 90 Z"
+                      fill="url(#wineGrad)" opacity="0.6"/>
+                <!-- Splash drops above glass -->
+                <circle cx="30" cy="10" r="4" fill="#722F37" opacity="0.7" style="animation: splash-drop 3s 2.2s ease infinite;"/>
+                <circle cx="55" cy="2" r="3" fill="#722F37" opacity="0.6" style="animation: splash-drop 3s 2.5s ease infinite;"/>
+                <circle cx="75" cy="8" r="3.5" fill="#722F37" opacity="0.65" style="animation: splash-drop 3s 2.8s ease infinite;"/>
+                <path d="M 20 15 Q 35 5 45 18" fill="none" stroke="#722F37" stroke-width="1.5" opacity="0.5"/>
+                <!-- Glass stem -->
+                <path class="hero-draw-3" d="M 55 130 L 55 200" fill="none" stroke="#c9a961" stroke-width="2"/>
+                <!-- Glass base -->
+                <path class="hero-draw-3" d="M 28 200 Q 55 195 82 200" fill="none" stroke="#c9a961" stroke-width="2.5"/>
+                <!-- Glass shine -->
+                <path d="M 28 35 Q 24 55 26 75" fill="none" stroke="white" stroke-width="1.5" opacity="0.4"/>
+            </g>
+
+            <!-- Decorative dots / bubbles -->
+            <circle cx="180" cy="280" r="3" fill="#c9a961" opacity="0.4"/>
+            <circle cx="200" cy="295" r="2" fill="#c9a961" opacity="0.3"/>
+            <circle cx="380" cy="290" r="3" fill="#c9a961" opacity="0.4"/>
+            <circle cx="360" cy="305" r="2" fill="#c9a961" opacity="0.3"/>
+        </svg>
+
         <h1>Dictionnaire des Vins</h1>
+        <div class="hero-gold-line"></div>
         <p>Guide des vins de Bordeaux</p>
     </section>
 
+    <!-- ==================== CONTENT ==================== -->
     <div class="content">
+
+        <!-- ===== VINE DIVIDER 1 ===== -->
+        <svg class="svg-divider" aria-hidden="true" viewBox="0 0 800 80" xmlns="http://www.w3.org/2000/svg">
+            <!-- Main vine line -->
+            <path class="vine-path" d="M 20 40 Q 80 20 140 40 Q 200 60 260 40 Q 320 20 380 40 Q 440 60 500 40 Q 560 20 620 40 Q 680 60 780 40"
+                  fill="none" stroke="#1a3d0f" stroke-width="1.8"/>
+            <!-- Left tendril -->
+            <path style="stroke-dasharray:200;stroke-dashoffset:200;animation:vine-grow 2s 0.5s ease forwards;"
+                  d="M 140 40 Q 130 15 150 8 Q 170 2 175 18" fill="none" stroke="#1a3d0f" stroke-width="1.2"/>
+            <!-- Right tendril -->
+            <path style="stroke-dasharray:200;stroke-dashoffset:200;animation:vine-grow 2s 0.7s ease forwards;"
+                  d="M 620 40 Q 630 15 610 8 Q 590 2 585 18" fill="none" stroke="#1a3d0f" stroke-width="1.2"/>
+            <!-- Center tendril -->
+            <path style="stroke-dasharray:200;stroke-dashoffset:200;animation:vine-grow 2s 0.9s ease forwards;"
+                  d="M 380 40 Q 380 10 395 5 Q 415 0 420 15" fill="none" stroke="#1a3d0f" stroke-width="1.2"/>
+            <!-- Grape clusters -->
+            <circle class="grape-circle" cx="176" cy="20" r="5" fill="#722F37"/>
+            <circle class="grape-circle" cx="186" cy="18" r="5" fill="#722F37"/>
+            <circle class="grape-circle" cx="170" cy="14" r="5" fill="#722F37"/>
+            <circle class="grape-circle" cx="180" cy="10" r="4" fill="#722F37" opacity="0.8"/>
+            <circle class="grape-circle" cx="586" cy="20" r="5" fill="#722F37"/>
+            <circle class="grape-circle" cx="576" cy="18" r="5" fill="#722F37"/>
+            <circle class="grape-circle" cx="582" cy="10" r="4" fill="#722F37" opacity="0.8"/>
+            <circle class="grape-circle" cx="421" cy="17" r="5" fill="#722F37"/>
+            <circle class="grape-circle" cx="430" cy="14" r="4" fill="#722F37" opacity="0.8"/>
+            <!-- Corkscrew center motif -->
+            <path style="stroke-dasharray:300;stroke-dashoffset:300;animation:vine-grow 2.5s 1.2s ease forwards;"
+                  d="M 380 40 Q 370 50 380 60 Q 390 70 380 75" fill="none" stroke="#c9a961" stroke-width="1.5"/>
+            <!-- Small leaves -->
+            <path d="M 260 40 Q 245 28 240 34 Q 235 42 245 46 Z" fill="#1a3d0f" opacity="0.5" style="animation:grape-pop 0.4s 1.5s ease forwards;transform:scale(0);transform-box:fill-box;transform-origin:center;"/>
+            <path d="M 500 40 Q 515 28 520 34 Q 525 42 515 46 Z" fill="#1a3d0f" opacity="0.5" style="animation:grape-pop 0.4s 1.7s ease forwards;transform:scale(0);transform-box:fill-box;transform-origin:center;"/>
+        </svg>
+
+        <!-- ===== HISTORIQUE SECTION ===== -->
         <section class="section" id="historique">
             <h2>Historique</h2>
-            <p>La vigne est présente dans la région de Bordeaux depuis l'Antiquité : les notables de Burdigala (Bordeaux) auraient décidé de créer leur propre vignoble en raison du prix élevé des vins en provenance de Narbonne et d'Italie, importés par les négociants romains. La création d'un vignoble au 1er siècle fut favorisée par la relative facilité de commercer avec l'archipel britannique et les régions du nord de l'Europe.</p>
-            <p>Le cépage biturica, que Pline et Columelle décrivent, aurait été adopté par les Bordelais en raison de sa bonne tenue sur les terroirs frais et humides des abords ibériques du golfe de Gascogne.</p>
-            <p>Au XIIe siècle, le commerce vinicole se développe à partir de la région des Graves. Au XIIIe siècle, la prise de La Rochelle, port exportateur des vins bordelais, par le roi de France transforme Bordeaux en port exportateur privilégié des vins à destination du marché anglais.</p>
-            <p>Au XIVe siècle, le nouveau Pape Clément V servait le vin de sa région de Graves, d'Avignon à Oxford. Ce n'est qu'à partir du XVIe siècle qu'apparaissent des exploitations viticoles proches de celles d'aujourd'hui, avec les pieds de vigne plantés en sillons.</p>
-            <p>À partir du XVIIe siècle, l'arrivée des hommes d'affaires néerlandais transforme les méthodes commerciales. Les Hollandais encouragent la production de vins plus à leur goût comme des vins blancs doux et des vins noirs non seulement dans le Bordelais, mais aussi à Cahors.</p>
-            <p>La famille Pontac choisit alors une nouvelle voie pour l'élevage de son vin : le terroir est mis en valeur, la vigne bien soignée, les vins élevés dans des barriques neuves en chêne. Les affaires fleurissent et le vignoble s'étend vers les graves du Médoc et du Sauternais, ainsi que dans les régions de Blaye et Bourg. C'est à cette époque que les grands vignobles du Médoc sont créés. Du même coup naissent les premiers grands crus bordelais.</p>
-            <p>Il faut attendre le Second Empire pour que les grands vins rouges de Saint-Émilion, Fronsac et Pomerol s'installent à leur tour au premier rang de la production viticole bordelaise.</p>
+            <div class="historique-inner">
+                <div class="historique-text">
+                    <p>La vigne est présente dans la région de Bordeaux depuis l'Antiquité : les notables de Burdigala (Bordeaux) auraient décidé de créer leur propre vignoble en raison du prix élevé des vins en provenance de Narbonne et d'Italie, importés par les négociants romains. La création d'un vignoble au 1er siècle fut favorisée par la relative facilité de commercer avec l'archipel britannique et les régions du nord de l'Europe.</p>
+                    <p>Le cépage biturica, que Pline et Columelle décrivent, aurait été adopté par les Bordelais en raison de sa bonne tenue sur les terroirs frais et humides des abords ibériques du golfe de Gascogne.</p>
+                    <p>Au XIIe siècle, le commerce vinicole se développe à partir de la région des Graves. Au XIIIe siècle, la prise de La Rochelle, port exportateur des vins bordelais, par le roi de France transforme Bordeaux en port exportateur privilégié des vins à destination du marché anglais.</p>
+                    <p>Au XIVe siècle, le nouveau Pape Clément V servait le vin de sa région de Graves, d'Avignon à Oxford. Ce n'est qu'à partir du XVIe siècle qu'apparaissent des exploitations viticoles proches de celles d'aujourd'hui, avec les pieds de vigne plantés en sillons.</p>
+                    <p>À partir du XVIIe siècle, l'arrivée des hommes d'affaires néerlandais transforme les méthodes commerciales. Les Hollandais encouragent la production de vins plus à leur goût comme des vins blancs doux et des vins noirs non seulement dans le Bordelais, mais aussi à Cahors.</p>
+                    <p>La famille Pontac choisit alors une nouvelle voie pour l'élevage de son vin : le terroir est mis en valeur, la vigne bien soignée, les vins élevés dans des barriques neuves en chêne. Les affaires fleurissent et le vignoble s'étend vers les graves du Médoc et du Sauternais, ainsi que dans les régions de Blaye et Bourg. C'est à cette époque que les grands vignobles du Médoc sont créés. Du même coup naissent les premiers grands crus bordelais.</p>
+                    <p>Il faut attendre le Second Empire pour que les grands vins rouges de Saint-Émilion, Fronsac et Pomerol s'installent à leur tour au premier rang de la production viticole bordelaise.</p>
+                </div>
+
+                <!-- Wine barrel illustration -->
+                <div class="historique-barrel-wrap">
+                    <svg aria-hidden="true" viewBox="0 0 160 280" xmlns="http://www.w3.org/2000/svg">
+                        <!-- Barrel body -->
+                        <ellipse cx="80" cy="50" rx="55" ry="18" fill="none" stroke="#c9a961" stroke-width="2"/>
+                        <ellipse cx="80" cy="230" rx="55" ry="18" fill="none" stroke="#c9a961" stroke-width="2"/>
+                        <path d="M 25 50 Q 10 140 25 230" fill="none" stroke="#c9a961" stroke-width="2.5"/>
+                        <path d="M 135 50 Q 150 140 135 230" fill="none" stroke="#c9a961" stroke-width="2.5"/>
+                        <!-- Barrel staves -->
+                        <path d="M 45 35 Q 34 140 45 245" fill="none" stroke="#c9a961" stroke-width="1" opacity="0.5"/>
+                        <path d="M 80 32 L 80 248" fill="none" stroke="#c9a961" stroke-width="1" opacity="0.5"/>
+                        <path d="M 115 35 Q 126 140 115 245" fill="none" stroke="#c9a961" stroke-width="1" opacity="0.5"/>
+                        <!-- Barrel hoops -->
+                        <ellipse cx="80" cy="82" rx="50" ry="12" fill="none" stroke="#722F37" stroke-width="2.5"/>
+                        <ellipse cx="80" cy="140" rx="55" ry="14" fill="none" stroke="#722F37" stroke-width="3"/>
+                        <ellipse cx="80" cy="198" rx="50" ry="12" fill="none" stroke="#722F37" stroke-width="2.5"/>
+                        <!-- Barrel fill tint -->
+                        <path d="M 26 82 Q 10 140 26 198 Q 80 210 134 198 Q 150 140 134 82 Q 80 94 26 82 Z" fill="#722F37" opacity="0.08"/>
+                        <!-- Bung hole -->
+                        <circle cx="80" cy="140" r="6" fill="#c9a961" opacity="0.5" stroke="#c9a961" stroke-width="1.5"/>
+                        <circle cx="80" cy="140" r="3" fill="#722F37" opacity="0.5"/>
+
+                        <!-- Vine growing around barrel -->
+                        <path style="stroke-dasharray:400;stroke-dashoffset:400;animation:vine-grow 3s 0.5s ease forwards;"
+                              d="M 25 180 Q 0 160 5 120 Q 8 90 25 80" fill="none" stroke="#1a3d0f" stroke-width="1.8"/>
+                        <path style="stroke-dasharray:200;stroke-dashoffset:200;animation:vine-grow 2s 1.5s ease forwards;"
+                              d="M 8 130 Q -20 115 -15 95 Q -10 78 5 80" fill="none" stroke="#1a3d0f" stroke-width="1.2"/>
+                        <!-- Leaf on vine -->
+                        <path style="animation:grape-pop 0.4s 2.2s ease forwards;transform:scale(0);transform-box:fill-box;transform-origin:center;"
+                              d="M -8 98 Q -28 82 -32 95 Q -35 110 -20 114 Q -12 100 -8 98 Z" fill="#1a3d0f" opacity="0.7"/>
+                        <!-- Grapes on vine -->
+                        <circle style="animation:grape-pop 0.4s 2.5s ease forwards;transform:scale(0);transform-box:fill-box;transform-origin:center;"
+                                cx="-10" cy="118" r="6" fill="#722F37" opacity="0.8"/>
+                        <circle style="animation:grape-pop 0.4s 2.7s ease forwards;transform:scale(0);transform-box:fill-box;transform-origin:center;"
+                                cx="-20" cy="115" r="6" fill="#722F37" opacity="0.8"/>
+                        <circle style="animation:grape-pop 0.4s 2.9s ease forwards;transform:scale(0);transform-box:fill-box;transform-origin:center;"
+                                cx="-14" cy="108" r="5" fill="#722F37" opacity="0.7"/>
+
+                        <!-- Right side vine -->
+                        <path style="stroke-dasharray:350;stroke-dashoffset:350;animation:vine-grow 2.8s 0.8s ease forwards;"
+                              d="M 135 200 Q 158 180 155 150 Q 152 125 135 110" fill="none" stroke="#1a3d0f" stroke-width="1.8"/>
+                        <path style="stroke-dasharray:150;stroke-dashoffset:150;animation:vine-grow 1.8s 1.8s ease forwards;"
+                              d="M 152 160 Q 172 148 170 132" fill="none" stroke="#1a3d0f" stroke-width="1.2"/>
+                        <!-- Leaf right -->
+                        <path style="animation:grape-pop 0.4s 2.4s ease forwards;transform:scale(0);transform-box:fill-box;transform-origin:center;"
+                              d="M 168 130 Q 182 116 186 126 Q 188 138 176 140 Q 172 130 168 130 Z" fill="#1a3d0f" opacity="0.7"/>
+                    </svg>
+                    <!-- Floating bottle decoration -->
+                    <svg class="float-deco float-bottle" aria-hidden="true" viewBox="0 0 70 200" xmlns="http://www.w3.org/2000/svg">
+                        <path d="M 28 50 Q 18 60 16 90 L 14 165 Q 14 178 35 180 Q 56 178 56 165 L 54 90 Q 52 60 42 50 Z" fill="#722F37" opacity="0.8"/>
+                        <path d="M 28 50 Q 26 32 27 12 L 43 12 Q 44 32 42 50" fill="#722F37" opacity="0.8"/>
+                        <rect x="25" y="8" width="20" height="14" rx="2" fill="#c9a961" opacity="0.9"/>
+                        <rect x="20" y="95" width="30" height="48" rx="2" fill="rgba(201,169,97,0.3)" stroke="#c9a961" stroke-width="0.8"/>
+                        <path d="M 22 120 Q 35 115 48 120" fill="none" stroke="#c9a961" stroke-width="0.8" opacity="0.7"/>
+                    </svg>
+                </div>
+            </div>
         </section>
 
+        <!-- ===== VINE DIVIDER 2: WINE BARREL + CORKSCREW ===== -->
+        <svg class="svg-divider" aria-hidden="true" viewBox="0 0 800 90" xmlns="http://www.w3.org/2000/svg">
+            <!-- Left horizontal vine -->
+            <path style="stroke-dasharray:280;stroke-dashoffset:280;animation:vine-grow 2s 0.3s ease forwards;"
+                  d="M 20 45 Q 80 30 140 45 Q 200 60 280 45" fill="none" stroke="#1a3d0f" stroke-width="1.8"/>
+            <!-- Right horizontal vine -->
+            <path style="stroke-dasharray:280;stroke-dashoffset:280;animation:vine-grow 2s 0.5s ease forwards;"
+                  d="M 780 45 Q 720 30 660 45 Q 600 60 520 45" fill="none" stroke="#1a3d0f" stroke-width="1.8"/>
+            <!-- Corkscrew center -->
+            <path style="stroke-dasharray:300;stroke-dashoffset:300;animation:vine-grow 2.5s 1s ease forwards;"
+                  d="M 380 10 Q 370 20 380 30 Q 390 40 380 50 Q 370 60 380 70 Q 390 80 385 88" fill="none" stroke="#c9a961" stroke-width="2.5"/>
+            <!-- Corkscrew handle -->
+            <path style="stroke-dasharray:100;stroke-dashoffset:100;animation:vine-grow 1.5s 1.8s ease forwards;"
+                  d="M 360 12 Q 380 5 400 12" fill="none" stroke="#c9a961" stroke-width="2.5"/>
+            <!-- Mini barrel left -->
+            <ellipse cx="300" cy="45" rx="20" ry="8" fill="none" stroke="#c9a961" stroke-width="1.5" style="animation:grape-pop 0.5s 1.3s ease forwards;transform:scale(0);transform-box:fill-box;transform-origin:center;"/>
+            <path d="M 280 45 Q 276 55 280 65" fill="none" stroke="#c9a961" stroke-width="1.5" style="animation:grape-pop 0.5s 1.3s ease forwards;transform:scale(0);transform-box:fill-box;transform-origin:center;"/>
+            <path d="M 320 45 Q 324 55 320 65" fill="none" stroke="#c9a961" stroke-width="1.5" style="animation:grape-pop 0.5s 1.3s ease forwards;transform:scale(0);transform-box:fill-box;transform-origin:center;"/>
+            <ellipse cx="300" cy="65" rx="20" ry="8" fill="none" stroke="#c9a961" stroke-width="1.5" style="animation:grape-pop 0.5s 1.3s ease forwards;transform:scale(0);transform-box:fill-box;transform-origin:center;"/>
+            <!-- Mini barrel right -->
+            <ellipse cx="500" cy="45" rx="20" ry="8" fill="none" stroke="#c9a961" stroke-width="1.5" style="animation:grape-pop 0.5s 1.5s ease forwards;transform:scale(0);transform-box:fill-box;transform-origin:center;"/>
+            <path d="M 480 45 Q 476 55 480 65" fill="none" stroke="#c9a961" stroke-width="1.5" style="animation:grape-pop 0.5s 1.5s ease forwards;transform:scale(0);transform-box:fill-box;transform-origin:center;"/>
+            <path d="M 520 45 Q 524 55 520 65" fill="none" stroke="#c9a961" stroke-width="1.5" style="animation:grape-pop 0.5s 1.5s ease forwards;transform:scale(0);transform-box:fill-box;transform-origin:center;"/>
+            <ellipse cx="500" cy="65" rx="20" ry="8" fill="none" stroke="#c9a961" stroke-width="1.5" style="animation:grape-pop 0.5s 1.5s ease forwards;transform:scale(0);transform-box:fill-box;transform-origin:center;"/>
+            <!-- Leaf motifs -->
+            <path style="animation:grape-pop 0.4s 1.6s ease forwards;transform:scale(0);transform-box:fill-box;transform-origin:center;"
+                  d="M 140 45 Q 128 32 122 38 Q 116 46 125 52 Q 133 45 140 45 Z" fill="#1a3d0f" opacity="0.6"/>
+            <path style="animation:grape-pop 0.4s 1.8s ease forwards;transform:scale(0);transform-box:fill-box;transform-origin:center;"
+                  d="M 660 45 Q 672 32 678 38 Q 684 46 675 52 Q 667 45 660 45 Z" fill="#1a3d0f" opacity="0.6"/>
+        </svg>
+
+        <!-- ===== GÉOGRAPHIE SECTION ===== -->
         <section class="section" id="geographie">
             <h2>Géographie</h2>
+
+            <!-- Map-like SVG of Garonne/Gironde -->
+            <svg class="geographie-map" aria-hidden="true" viewBox="0 0 700 200" xmlns="http://www.w3.org/2000/svg">
+                <defs>
+                    <linearGradient id="riverGrad" x1="0%" y1="0%" x2="100%" y2="0%">
+                        <stop offset="0%" style="stop-color:#1a3d0f;stop-opacity:0.3"/>
+                        <stop offset="40%" style="stop-color:#1a5580;stop-opacity:0.4"/>
+                        <stop offset="70%" style="stop-color:#1a5580;stop-opacity:0.5"/>
+                        <stop offset="100%" style="stop-color:#1a3d0f;stop-opacity:0.3"/>
+                    </linearGradient>
+                </defs>
+
+                <!-- Background terrain left bank (rive gauche - Médoc/Graves) -->
+                <path d="M 0 200 L 0 110 Q 60 105 120 115 Q 180 125 240 110 Q 300 95 360 108 L 360 200 Z"
+                      fill="#1a3d0f" opacity="0.08"/>
+                <!-- Background terrain right bank (rive droite - Saint-Émilion/Pomerol) -->
+                <path d="M 360 200 L 360 112 Q 420 100 480 110 Q 540 120 600 105 Q 650 95 700 100 L 700 200 Z"
+                      fill="#1a3d0f" opacity="0.06"/>
+
+                <!-- Garonne river (coming from south-west) -->
+                <path style="stroke-dasharray:500;stroke-dashoffset:500;animation:vine-grow 2.5s 0.3s ease forwards;"
+                      d="M 0 155 Q 80 145 160 150 Q 240 155 320 145" fill="none" stroke="url(#riverGrad)" stroke-width="12" stroke-linecap="round" opacity="0.5"/>
+                <!-- Garonne label area -->
+                <text x="150" y="168" font-family="Cormorant Garamond, serif" font-size="11" fill="#1a3d0f" opacity="0.6" letter-spacing="2">Garonne</text>
+
+                <!-- Gironde estuary (widening) -->
+                <path style="stroke-dasharray:400;stroke-dashoffset:400;animation:vine-grow 2.5s 0.7s ease forwards;"
+                      d="M 320 145 Q 400 138 480 145 Q 540 150 600 140 Q 650 133 700 135"
+                      fill="none" stroke="url(#riverGrad)" stroke-width="22" stroke-linecap="round" opacity="0.5"/>
+                <text x="470" y="162" font-family="Cormorant Garamond, serif" font-size="11" fill="#1a3d0f" opacity="0.6" letter-spacing="2">Gironde</text>
+
+                <!-- Left bank vines (Médoc) -->
+                <!-- Vine row left 1 -->
+                <path style="stroke-dasharray:200;stroke-dashoffset:200;animation:vine-grow 1.5s 1s ease forwards;"
+                      d="M 40 120 Q 80 115 120 120 Q 160 125 200 120" fill="none" stroke="#1a3d0f" stroke-width="1.2"/>
+                <circle cx="60" cy="118" r="3" fill="#722F37" opacity="0.7" style="animation:grape-pop 0.3s 2s ease forwards;transform:scale(0);transform-box:fill-box;transform-origin:center;"/>
+                <circle cx="100" cy="116" r="3" fill="#722F37" opacity="0.7" style="animation:grape-pop 0.3s 2.1s ease forwards;transform:scale(0);transform-box:fill-box;transform-origin:center;"/>
+                <circle cx="140" cy="118" r="3" fill="#722F37" opacity="0.7" style="animation:grape-pop 0.3s 2.2s ease forwards;transform:scale(0);transform-box:fill-box;transform-origin:center;"/>
+                <circle cx="180" cy="116" r="3" fill="#722F37" opacity="0.7" style="animation:grape-pop 0.3s 2.3s ease forwards;transform:scale(0);transform-box:fill-box;transform-origin:center;"/>
+                <!-- Vine row left 2 -->
+                <path style="stroke-dasharray:200;stroke-dashoffset:200;animation:vine-grow 1.5s 1.2s ease forwards;"
+                      d="M 40 100 Q 80 95 120 100 Q 160 105 200 100" fill="none" stroke="#1a3d0f" stroke-width="1.2" opacity="0.6"/>
+                <circle cx="70" cy="98" r="3" fill="#722F37" opacity="0.6" style="animation:grape-pop 0.3s 2.2s ease forwards;transform:scale(0);transform-box:fill-box;transform-origin:center;"/>
+                <circle cx="110" cy="96" r="3" fill="#722F37" opacity="0.6" style="animation:grape-pop 0.3s 2.3s ease forwards;transform:scale(0);transform-box:fill-box;transform-origin:center;"/>
+                <circle cx="150" cy="98" r="3" fill="#722F37" opacity="0.6" style="animation:grape-pop 0.3s 2.4s ease forwards;transform:scale(0);transform-box:fill-box;transform-origin:center;"/>
+                <!-- Vine row left 3 -->
+                <path style="stroke-dasharray:160;stroke-dashoffset:160;animation:vine-grow 1.3s 1.4s ease forwards;"
+                      d="M 240 108 Q 280 103 320 108" fill="none" stroke="#1a3d0f" stroke-width="1.2" opacity="0.5"/>
+
+                <!-- Right bank vines (Saint-Émilion) -->
+                <path style="stroke-dasharray:200;stroke-dashoffset:200;animation:vine-grow 1.5s 1.1s ease forwards;"
+                      d="M 380 110 Q 420 105 460 110 Q 500 115 540 110" fill="none" stroke="#1a3d0f" stroke-width="1.2"/>
+                <circle cx="400" cy="108" r="3" fill="#722F37" opacity="0.7" style="animation:grape-pop 0.3s 2.1s ease forwards;transform:scale(0);transform-box:fill-box;transform-origin:center;"/>
+                <circle cx="440" cy="106" r="3" fill="#722F37" opacity="0.7" style="animation:grape-pop 0.3s 2.2s ease forwards;transform:scale(0);transform-box:fill-box;transform-origin:center;"/>
+                <circle cx="480" cy="108" r="3" fill="#722F37" opacity="0.7" style="animation:grape-pop 0.3s 2.3s ease forwards;transform:scale(0);transform-box:fill-box;transform-origin:center;"/>
+                <circle cx="520" cy="106" r="3" fill="#722F37" opacity="0.7" style="animation:grape-pop 0.3s 2.4s ease forwards;transform:scale(0);transform-box:fill-box;transform-origin:center;"/>
+                <!-- Vine row right 2 -->
+                <path style="stroke-dasharray:160;stroke-dashoffset:160;animation:vine-grow 1.3s 1.3s ease forwards;"
+                      d="M 560 105 Q 600 100 640 105 Q 670 108 700 104" fill="none" stroke="#1a3d0f" stroke-width="1.2" opacity="0.5"/>
+                <circle cx="590" cy="103" r="3" fill="#722F37" opacity="0.6" style="animation:grape-pop 0.3s 2.3s ease forwards;transform:scale(0);transform-box:fill-box;transform-origin:center;"/>
+                <circle cx="630" cy="101" r="3" fill="#722F37" opacity="0.6" style="animation:grape-pop 0.3s 2.4s ease forwards;transform:scale(0);transform-box:fill-box;transform-origin:center;"/>
+
+                <!-- Labels -->
+                <text x="120" y="88" font-family="Cormorant Garamond, serif" font-size="10" fill="#1a3d0f" opacity="0.7" letter-spacing="1.5">Médoc · Graves</text>
+                <text x="420" y="90" font-family="Cormorant Garamond, serif" font-size="10" fill="#1a3d0f" opacity="0.7" letter-spacing="1.5">Saint-Émilion · Pomerol</text>
+
+                <!-- Compass rose hint -->
+                <g transform="translate(670, 30)" opacity="0.4">
+                    <line x1="0" y1="-14" x2="0" y2="14" stroke="#1a3d0f" stroke-width="1.5"/>
+                    <line x1="-14" y1="0" x2="14" y2="0" stroke="#1a3d0f" stroke-width="1.5"/>
+                    <text x="-4" y="-16" font-size="9" fill="#1a3d0f" font-family="Montserrat, sans-serif">N</text>
+                </g>
+            </svg>
+
+            <!-- Floating corkscrew decoration -->
+            <svg class="float-deco float-corkscrew" aria-hidden="true" viewBox="0 0 50 150" xmlns="http://www.w3.org/2000/svg">
+                <path d="M 20 10 Q 10 20 20 30 Q 30 40 20 50 Q 10 60 20 70 Q 30 80 20 90 Q 15 100 18 110" fill="none" stroke="#c9a961" stroke-width="2.5" stroke-linecap="round"/>
+                <path d="M 8 12 Q 20 5 32 12" fill="none" stroke="#c9a961" stroke-width="3" stroke-linecap="round"/>
+                <circle cx="8" cy="12" r="3" fill="#c9a961"/>
+                <circle cx="32" cy="12" r="3" fill="#c9a961"/>
+                <rect x="14" y="108" width="12" height="30" rx="4" fill="#722F37" opacity="0.7"/>
+            </svg>
+
             <p>Les terroirs du vignoble de Bordeaux se distinguent par leur situation géographique vis-à-vis de la Garonne et de la Gironde.</p>
             <p>Sur la rive gauche de la Garonne et le long de l'estuaire, les alluvions dominent le vignoble sur plus de 150 km. Ce sont essentiellement des graves : galets et graviers roulés en provenance des Pyrénées, où le fleuve prend sa source 600 km en amont. Ces graves sur sable constituent des terrasses bien drainées, chaudes et parfaites pour la vigne et le cabernet-sauvignon en particulier.</p>
             <p>De l'autre côté du fleuve, les terroirs ont une origine différente, avec des côtes et des collines argilo-calcaires et des sols plus profonds, parfaits pour le merlot.</p>
         </section>
 
+        <!-- ===== VINE DIVIDER 3: GRAPE CLUSTERS ===== -->
+        <svg class="svg-divider" aria-hidden="true" viewBox="0 0 800 70" xmlns="http://www.w3.org/2000/svg">
+            <path style="stroke-dasharray:700;stroke-dashoffset:700;animation:vine-grow 2.2s 0.2s ease forwards;"
+                  d="M 20 35 Q 100 20 200 35 Q 300 50 400 35 Q 500 20 600 35 Q 700 50 780 35"
+                  fill="none" stroke="#1a3d0f" stroke-width="1.5"/>
+            <!-- Grape cluster left -->
+            <circle cx="120" cy="30" r="6" fill="#722F37" opacity="0.75" style="animation:grape-pop 0.4s 1.5s ease forwards;transform:scale(0);transform-box:fill-box;transform-origin:center;"/>
+            <circle cx="132" cy="27" r="6" fill="#722F37" opacity="0.75" style="animation:grape-pop 0.4s 1.7s ease forwards;transform:scale(0);transform-box:fill-box;transform-origin:center;"/>
+            <circle cx="126" cy="20" r="6" fill="#722F37" opacity="0.7" style="animation:grape-pop 0.4s 1.9s ease forwards;transform:scale(0);transform-box:fill-box;transform-origin:center;"/>
+            <circle cx="115" cy="22" r="5" fill="#722F37" opacity="0.65" style="animation:grape-pop 0.4s 2.0s ease forwards;transform:scale(0);transform-box:fill-box;transform-origin:center;"/>
+            <circle cx="137" cy="20" r="5" fill="#722F37" opacity="0.65" style="animation:grape-pop 0.4s 2.1s ease forwards;transform:scale(0);transform-box:fill-box;transform-origin:center;"/>
+            <circle cx="126" cy="13" r="4" fill="#722F37" opacity="0.6" style="animation:grape-pop 0.4s 2.2s ease forwards;transform:scale(0);transform-box:fill-box;transform-origin:center;"/>
+            <!-- Grape cluster center -->
+            <circle cx="390" cy="30" r="6" fill="#722F37" opacity="0.75" style="animation:grape-pop 0.4s 1.6s ease forwards;transform:scale(0);transform-box:fill-box;transform-origin:center;"/>
+            <circle cx="402" cy="27" r="6" fill="#722F37" opacity="0.75" style="animation:grape-pop 0.4s 1.8s ease forwards;transform:scale(0);transform-box:fill-box;transform-origin:center;"/>
+            <circle cx="396" cy="20" r="6" fill="#722F37" opacity="0.7" style="animation:grape-pop 0.4s 2.0s ease forwards;transform:scale(0);transform-box:fill-box;transform-origin:center;"/>
+            <circle cx="385" cy="23" r="5" fill="#722F37" opacity="0.65" style="animation:grape-pop 0.4s 2.1s ease forwards;transform:scale(0);transform-box:fill-box;transform-origin:center;"/>
+            <circle cx="407" cy="22" r="5" fill="#722F37" opacity="0.65" style="animation:grape-pop 0.4s 2.2s ease forwards;transform:scale(0);transform-box:fill-box;transform-origin:center;"/>
+            <!-- Grape cluster right -->
+            <circle cx="660" cy="30" r="6" fill="#722F37" opacity="0.75" style="animation:grape-pop 0.4s 1.7s ease forwards;transform:scale(0);transform-box:fill-box;transform-origin:center;"/>
+            <circle cx="672" cy="27" r="6" fill="#722F37" opacity="0.75" style="animation:grape-pop 0.4s 1.9s ease forwards;transform:scale(0);transform-box:fill-box;transform-origin:center;"/>
+            <circle cx="666" cy="20" r="6" fill="#722F37" opacity="0.7" style="animation:grape-pop 0.4s 2.1s ease forwards;transform:scale(0);transform-box:fill-box;transform-origin:center;"/>
+            <circle cx="655" cy="23" r="5" fill="#722F37" opacity="0.65" style="animation:grape-pop 0.4s 2.2s ease forwards;transform:scale(0);transform-box:fill-box;transform-origin:center;"/>
+            <circle cx="677" cy="22" r="5" fill="#722F37" opacity="0.65" style="animation:grape-pop 0.4s 2.3s ease forwards;transform:scale(0);transform-box:fill-box;transform-origin:center;"/>
+            <!-- Leaf accents -->
+            <path style="animation:grape-pop 0.4s 2s ease forwards;transform:scale(0);transform-box:fill-box;transform-origin:center;"
+                  d="M 200 35 Q 188 22 183 28 Q 178 36 187 40 Q 194 35 200 35 Z" fill="#1a3d0f" opacity="0.55"/>
+            <path style="animation:grape-pop 0.4s 2.2s ease forwards;transform:scale(0);transform-box:fill-box;transform-origin:center;"
+                  d="M 600 35 Q 612 22 617 28 Q 622 36 613 40 Q 606 35 600 35 Z" fill="#1a3d0f" opacity="0.55"/>
+        </svg>
+
+        <!-- ===== APPELLATIONS SECTION ===== -->
         <section class="section" id="appellations">
             <h2>Les Appellations</h2>
-            
+
+            <!-- Floating wine glass decoration -->
+            <svg class="float-deco float-glass" aria-hidden="true" viewBox="0 0 90 220" xmlns="http://www.w3.org/2000/svg">
+                <defs>
+                    <linearGradient id="glassFloatGrad" x1="0%" y1="0%" x2="100%" y2="0%">
+                        <stop offset="0%" style="stop-color:#722F37;stop-opacity:0.3"/>
+                        <stop offset="50%" style="stop-color:#722F37;stop-opacity:0.1"/>
+                        <stop offset="100%" style="stop-color:#722F37;stop-opacity:0.3"/>
+                    </linearGradient>
+                </defs>
+                <!-- Bowl -->
+                <path d="M 20 10 Q 5 30 8 65 Q 11 90 45 100 Q 79 90 82 65 Q 85 30 70 10 Z" fill="url(#glassFloatGrad)" stroke="#722F37" stroke-width="1.5"/>
+                <!-- Wine level -->
+                <path d="M 14 60 Q 45 72 76 60 L 82 65 Q 79 90 45 100 Q 11 90 8 65 Z" fill="#722F37" opacity="0.35"/>
+                <!-- Stem -->
+                <line x1="45" y1="100" x2="45" y2="170" stroke="#722F37" stroke-width="2"/>
+                <!-- Base -->
+                <path d="M 18 170 Q 45 164 72 170" fill="none" stroke="#722F37" stroke-width="2.5"/>
+                <!-- Liquid splash -->
+                <path d="M 25 8 Q 18 -2 12 -10" fill="none" stroke="#722F37" stroke-width="1.5" opacity="0.6" style="animation:pour-drop 3s 1s ease-in-out infinite;"/>
+                <path d="M 55 5 Q 62 -5 66 -12" fill="none" stroke="#722F37" stroke-width="1.5" opacity="0.6" style="animation:pour-drop 3s 1.4s ease-in-out infinite;"/>
+                <!-- Shine -->
+                <path d="M 18 20 Q 15 40 16 60" fill="none" stroke="rgba(255,255,255,0.5)" stroke-width="1.5"/>
+            </svg>
+
+            <!-- Floating grape cluster decoration -->
+            <svg class="float-deco float-grapes-sm" aria-hidden="true" viewBox="0 0 80 100" xmlns="http://www.w3.org/2000/svg">
+                <path d="M 40 5 Q 35 15 40 25" fill="none" stroke="#1a3d0f" stroke-width="1.8"/>
+                <path d="M 40 18 Q 55 12 60 20" fill="none" stroke="#1a3d0f" stroke-width="1.2"/>
+                <path d="M 40 18 Q 25 12 20 20" fill="none" stroke="#1a3d0f" stroke-width="1.2"/>
+                <!-- Leaf -->
+                <path d="M 58 18 Q 70 8 74 16 Q 76 26 65 28 Q 61 20 58 18 Z" fill="#1a3d0f" opacity="0.7"/>
+                <path d="M 22 18 Q 10 8 6 16 Q 4 26 15 28 Q 19 20 22 18 Z" fill="#1a3d0f" opacity="0.7"/>
+                <!-- Grapes -->
+                <circle cx="30" cy="42" r="9" fill="#722F37" opacity="0.85"/>
+                <circle cx="49" cy="40" r="9" fill="#722F37" opacity="0.85"/>
+                <circle cx="40" cy="30" r="9" fill="#722F37" opacity="0.85"/>
+                <circle cx="22" cy="55" r="9" fill="#722F37" opacity="0.8"/>
+                <circle cx="40" cy="52" r="9" fill="#722F37" opacity="0.85"/>
+                <circle cx="58" cy="55" r="9" fill="#722F37" opacity="0.8"/>
+                <circle cx="32" cy="67" r="8" fill="#722F37" opacity="0.75"/>
+                <circle cx="48" cy="67" r="8" fill="#722F37" opacity="0.75"/>
+                <circle cx="40" cy="78" r="7" fill="#722F37" opacity="0.7"/>
+            </svg>
+
             <div class="appellations">
+                <!-- Génériques -->
                 <div class="appellation-card">
-                    <h4>Génériques</h4>
+                    <div class="appellation-card-header">
+                        <svg class="card-icon" aria-hidden="true" viewBox="0 0 28 28" xmlns="http://www.w3.org/2000/svg">
+                            <path d="M 8 3 Q 4 6 5 13 Q 6 18 14 21 Q 22 18 23 13 Q 24 6 20 3 Z" fill="none" stroke="#722F37" stroke-width="1.5"/>
+                            <path d="M 6 11 Q 14 15 22 11" fill="none" stroke="#722F37" stroke-width="1" opacity="0.6"/>
+                            <line x1="14" y1="21" x2="14" y2="25" stroke="#722F37" stroke-width="1.5"/>
+                            <path d="M 8 25 Q 14 23 20 25" fill="none" stroke="#722F37" stroke-width="1.5"/>
+                        </svg>
+                        <h4>Génériques</h4>
+                    </div>
                     <ul>
                         <li>Bordeaux AOC</li>
                         <li>Bordeaux supérieur</li>
@@ -147,9 +889,22 @@
                         <li>Bordeaux rosé</li>
                     </ul>
                 </div>
-                
+
+                <!-- Le Médoc -->
                 <div class="appellation-card">
-                    <h4>Le Médoc</h4>
+                    <div class="appellation-card-header">
+                        <svg class="card-icon" aria-hidden="true" viewBox="0 0 28 28" xmlns="http://www.w3.org/2000/svg">
+                            <circle cx="14" cy="18" r="4" fill="#722F37" opacity="0.8"/>
+                            <circle cx="9" cy="14" r="4" fill="#722F37" opacity="0.8"/>
+                            <circle cx="19" cy="14" r="4" fill="#722F37" opacity="0.8"/>
+                            <circle cx="14" cy="10" r="4" fill="#722F37" opacity="0.8"/>
+                            <circle cx="9" cy="6" r="3.5" fill="#722F37" opacity="0.7"/>
+                            <circle cx="19" cy="6" r="3.5" fill="#722F37" opacity="0.7"/>
+                            <circle cx="14" cy="3" r="3" fill="#722F37" opacity="0.6"/>
+                            <path d="M 14 2 Q 12 -2 14 -5" fill="none" stroke="#1a3d0f" stroke-width="1.2"/>
+                        </svg>
+                        <h4>Le Médoc</h4>
+                    </div>
                     <ul>
                         <li>Médoc (AOC)</li>
                         <li>Haut-Médoc (AOC)</li>
@@ -161,9 +916,19 @@
                         <li>Margaux (AOC)</li>
                     </ul>
                 </div>
-                
+
+                <!-- Les Graves -->
                 <div class="appellation-card">
-                    <h4>Les Graves</h4>
+                    <div class="appellation-card-header">
+                        <svg class="card-icon" aria-hidden="true" viewBox="0 0 28 28" xmlns="http://www.w3.org/2000/svg">
+                            <path d="M 5 4 Q 3 7 4 12 Q 5 16 14 18 Q 23 16 24 12 Q 25 7 23 4 Z" fill="none" stroke="#c9a961" stroke-width="1.5"/>
+                            <path d="M 5 10 Q 14 14 23 10" fill="none" stroke="#c9a961" stroke-width="1" opacity="0.7"/>
+                            <line x1="14" y1="18" x2="14" y2="24" stroke="#c9a961" stroke-width="1.5"/>
+                            <path d="M 8 24 Q 14 22 20 24" fill="none" stroke="#c9a961" stroke-width="1.5"/>
+                            <path d="M 4 2 Q 4 -3 6 -5" fill="none" stroke="#c9a961" stroke-width="1" opacity="0.6"/>
+                        </svg>
+                        <h4>Les Graves</h4>
+                    </div>
                     <ul>
                         <li>Pessac-Léognan (AOC)</li>
                         <li>Cérons (AOC)</li>
@@ -171,17 +936,40 @@
                         <li>Graves supérieurs (AOC)</li>
                     </ul>
                 </div>
-                
+
+                <!-- Le Sauternais -->
                 <div class="appellation-card">
-                    <h4>Le Sauternais</h4>
+                    <div class="appellation-card-header">
+                        <svg class="card-icon" aria-hidden="true" viewBox="0 0 28 28" xmlns="http://www.w3.org/2000/svg">
+                            <circle cx="11" cy="17" r="4" fill="#c9a961" opacity="0.8"/>
+                            <circle cx="17" cy="17" r="4" fill="#c9a961" opacity="0.8"/>
+                            <circle cx="14" cy="11" r="4" fill="#c9a961" opacity="0.8"/>
+                            <circle cx="9" cy="11" r="3.5" fill="#c9a961" opacity="0.7"/>
+                            <circle cx="19" cy="11" r="3.5" fill="#c9a961" opacity="0.7"/>
+                            <circle cx="14" cy="5" r="3" fill="#c9a961" opacity="0.65"/>
+                            <path d="M 14 2 Q 14 -2 16 -4" fill="none" stroke="#1a3d0f" stroke-width="1.2"/>
+                            <path d="M 16 -2 Q 22 -4 24 -1" fill="none" stroke="#1a3d0f" stroke-width="1"/>
+                        </svg>
+                        <h4>Le Sauternais</h4>
+                    </div>
                     <ul>
                         <li>Barsac (AOC)</li>
                         <li>Sauternes (AOC)</li>
                     </ul>
                 </div>
-                
+
+                <!-- Blaye et Bourg -->
                 <div class="appellation-card">
-                    <h4>Blaye et Bourg</h4>
+                    <div class="appellation-card-header">
+                        <svg class="card-icon" aria-hidden="true" viewBox="0 0 28 28" xmlns="http://www.w3.org/2000/svg">
+                            <path d="M 7 2 Q 4 5 5 11 Q 6 15 14 17 Q 22 15 23 11 Q 24 5 21 2 Z" fill="none" stroke="#1a3d0f" stroke-width="1.5"/>
+                            <path d="M 7 8 Q 14 12 21 8" fill="none" stroke="#1a3d0f" stroke-width="1" opacity="0.7"/>
+                            <line x1="14" y1="17" x2="14" y2="22" stroke="#1a3d0f" stroke-width="1.5"/>
+                            <path d="M 9 22 Q 14 20 19 22" fill="none" stroke="#1a3d0f" stroke-width="1.5"/>
+                            <circle cx="14" cy="22" r="2" fill="#722F37" opacity="0.6"/>
+                        </svg>
+                        <h4>Blaye et Bourg</h4>
+                    </div>
                     <ul>
                         <li>Blaye (AOC)</li>
                         <li>Côtes-de-Blaye (AOC)</li>
@@ -189,9 +977,24 @@
                         <li>Côtes-de-bourg (AOC)</li>
                     </ul>
                 </div>
-                
+
+                <!-- Saint-Émilion -->
                 <div class="appellation-card">
-                    <h4>Saint-Émilion</h4>
+                    <div class="appellation-card-header">
+                        <svg class="card-icon" aria-hidden="true" viewBox="0 0 28 28" xmlns="http://www.w3.org/2000/svg">
+                            <circle cx="14" cy="19" r="4" fill="#722F37" opacity="0.85"/>
+                            <circle cx="9" cy="15" r="4" fill="#722F37" opacity="0.85"/>
+                            <circle cx="19" cy="15" r="4" fill="#722F37" opacity="0.85"/>
+                            <circle cx="14" cy="11" r="4" fill="#722F37" opacity="0.85"/>
+                            <circle cx="9" cy="7" r="3.5" fill="#722F37" opacity="0.75"/>
+                            <circle cx="19" cy="7" r="3.5" fill="#722F37" opacity="0.75"/>
+                            <circle cx="14" cy="4" r="3" fill="#722F37" opacity="0.65"/>
+                            <path d="M 14 1 Q 11 -3 12 -6" fill="none" stroke="#1a3d0f" stroke-width="1.2"/>
+                            <path d="M 12 -4 Q 6 -6 4 -2" fill="none" stroke="#1a3d0f" stroke-width="1"/>
+                            <path d="M 4 -3 Q 0 -6 1 -10" fill="none" stroke="#1a3d0f" stroke-width="0.8" opacity="0.7"/>
+                        </svg>
+                        <h4>Saint-Émilion</h4>
+                    </div>
                     <ul>
                         <li>Saint-Émilion (AOC)</li>
                         <li>Saint-Émilion Grand Cru (AOC)</li>
@@ -201,9 +1004,21 @@
                         <li>Saint-Georges-Saint-Émilion (AOC)</li>
                     </ul>
                 </div>
-                
+
+                <!-- Pomerol & Fronsac -->
                 <div class="appellation-card">
-                    <h4>Pomerol &amp; Fronsac</h4>
+                    <div class="appellation-card-header">
+                        <svg class="card-icon" aria-hidden="true" viewBox="0 0 28 28" xmlns="http://www.w3.org/2000/svg">
+                            <!-- Mini barrel icon -->
+                            <ellipse cx="14" cy="6" rx="9" ry="3.5" fill="none" stroke="#c9a961" stroke-width="1.2"/>
+                            <ellipse cx="14" cy="22" rx="9" ry="3.5" fill="none" stroke="#c9a961" stroke-width="1.2"/>
+                            <path d="M 5 6 Q 3 14 5 22" fill="none" stroke="#c9a961" stroke-width="1.5"/>
+                            <path d="M 23 6 Q 25 14 23 22" fill="none" stroke="#c9a961" stroke-width="1.5"/>
+                            <ellipse cx="14" cy="14" rx="10" ry="4" fill="none" stroke="#722F37" stroke-width="1.8"/>
+                            <circle cx="14" cy="14" r="2" fill="#722F37" opacity="0.6"/>
+                        </svg>
+                        <h4>Pomerol &amp; Fronsac</h4>
+                    </div>
                     <ul>
                         <li>Pomerol (AOC)</li>
                         <li>Lalande-de-Pomerol (AOC)</li>
@@ -213,9 +1028,21 @@
                         <li>Bordeaux - Côtes-de-Franc (AOC)</li>
                     </ul>
                 </div>
-                
+
+                <!-- L'Entre-Deux-Mers -->
                 <div class="appellation-card">
-                    <h4>L'Entre-Deux-Mers</h4>
+                    <div class="appellation-card-header">
+                        <svg class="card-icon" aria-hidden="true" viewBox="0 0 28 28" xmlns="http://www.w3.org/2000/svg">
+                            <!-- Wave + vine motif -->
+                            <path d="M 2 10 Q 7 6 12 10 Q 17 14 22 10 Q 26 7 28 10" fill="none" stroke="#1a3d0f" stroke-width="1.3"/>
+                            <path d="M 2 16 Q 7 12 12 16 Q 17 20 22 16 Q 26 13 28 16" fill="none" stroke="#1a3d0f" stroke-width="1.3" opacity="0.6"/>
+                            <circle cx="8" cy="6" r="3" fill="#722F37" opacity="0.75"/>
+                            <circle cx="14" cy="4" r="3" fill="#722F37" opacity="0.75"/>
+                            <circle cx="20" cy="6" r="3" fill="#722F37" opacity="0.75"/>
+                            <path d="M 14 3 L 14 0" fill="none" stroke="#1a3d0f" stroke-width="1"/>
+                        </svg>
+                        <h4>L'Entre-Deux-Mers</h4>
+                    </div>
                     <ul>
                         <li>Entre-Deux-Mers (AOC)</li>
                         <li>Graves-de-Vayres (AOC)</li>
@@ -228,9 +1055,28 @@
                 </div>
             </div>
         </section>
-    </div>
 
+    </div><!-- /content -->
+
+    <!-- ==================== FOOTER ==================== -->
     <footer>
+        <!-- Footer vine decoration -->
+        <svg class="footer-vine" aria-hidden="true" viewBox="0 0 1200 60" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="xMidYMax meet">
+            <path d="M 0 40 Q 100 20 200 40 Q 300 60 400 40 Q 500 20 600 40 Q 700 60 800 40 Q 900 20 1000 40 Q 1100 60 1200 40"
+                  fill="none" stroke="#c9a961" stroke-width="1.5"/>
+            <circle cx="200" cy="40" r="4" fill="#c9a961"/>
+            <circle cx="400" cy="40" r="4" fill="#c9a961"/>
+            <circle cx="600" cy="40" r="4" fill="#c9a961"/>
+            <circle cx="800" cy="40" r="4" fill="#c9a961"/>
+            <circle cx="1000" cy="40" r="4" fill="#c9a961"/>
+            <path d="M 200 40 Q 195 25 205 18" fill="none" stroke="#c9a961" stroke-width="1"/>
+            <path d="M 600 40 Q 595 25 605 18" fill="none" stroke="#c9a961" stroke-width="1"/>
+            <path d="M 1000 40 Q 995 25 1005 18" fill="none" stroke="#c9a961" stroke-width="1"/>
+            <circle cx="205" cy="16" r="5" fill="#722F37" opacity="0.8"/>
+            <circle cx="212" cy="11" r="4" fill="#722F37" opacity="0.7"/>
+            <circle cx="198" cy="12" r="4" fill="#722F37" opacity="0.7"/>
+        </svg>
+
         <div class="footer-logo">BRASSERIE DES NATIONS</div>
         <div class="footer-links">
             <a href="../index.html">Accueil</a>
@@ -240,7 +1086,7 @@
             <a href="../index.html#contact">Contact</a>
             <a href="vin.html">Vins</a>
         </div>
-        <p style="margin-top:20px;font-size:0.7rem;opacity:0.5;">© 2026 Brasserie des Nations — Tradition luxembourgeoise depuis 1956</p>
+        <p style="margin-top:20px;font-size:0.7rem;opacity:0.5;position:relative;z-index:1;">© 2026 Brasserie des Nations — Tradition luxembourgeoise depuis 1956</p>
     </footer>
 
     <script>
@@ -271,6 +1117,21 @@
         drawer.querySelectorAll('.mob-link,.mob-cta').forEach(function(a){
             a.addEventListener('click', closeMenu);
         });
+    })();
+
+    // Intersection Observer — trigger vine draw animations on scroll
+    (function(){
+        var sections = document.querySelectorAll('.section, .svg-divider');
+        if(!('IntersectionObserver' in window)) return;
+        var obs = new IntersectionObserver(function(entries){
+            entries.forEach(function(e){
+                if(e.isIntersecting){
+                    e.target.classList.add('in-view');
+                    obs.unobserve(e.target);
+                }
+            });
+        }, { threshold: 0.1 });
+        sections.forEach(function(s){ obs.observe(s); });
     })();
     </script>
 
