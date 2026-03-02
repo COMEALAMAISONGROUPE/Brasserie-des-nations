@@ -82,6 +82,7 @@
             object-fit: cover;
             object-position: center center;
             filter: brightness(0.7);
+            transform: none !important;
         }
 
         .hero-overlay {
@@ -1247,4 +1248,3 @@
   .pdj-label{font-size:1.5rem!important}
         .mob-link.pdj-nav-link{color:#8b6914!important}
 }
-
