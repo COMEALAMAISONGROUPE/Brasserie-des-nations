@@ -181,3 +181,12 @@
 html,body,.site-wrap{overflow-x:hidden!important;max-width:100vw!important}
 .manifesto-bg-art,.heritage-bg-art,.heritage-bg-art2,.gallery-bg-art,.gallery-bg-art2,.loc-bg-art{overflow:hidden;max-width:100%}
 section{overflow-x:hidden}
+
+/* ====== GLOBAL FIX: PDJ panel always hidden unless .open ====== */
+.pdj-panel:not(.open){right:-500px!important;visibility:hidden!important;pointer-events:none!important}
+.pdj-panel-overlay:not(.active){display:none!important;pointer-events:none!important}
+.pdj-modal-overlay:not(.active){display:none!important;pointer-events:none!important}
+.pdj-admin-trigger{display:none!important}
+
+/* ====== GLOBAL FIX: Old nav system nuked ====== */
+.hamburger,.mobile-menu,.mobile-close,.nav-links,.logo{display:none!important;visibility:hidden!important}
