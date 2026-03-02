@@ -2,7 +2,7 @@
 <html lang="fr" dir="ltr" prefix="og: https://ogp.me/ns#">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0">
         
     <meta name="description" content="Brasserie des Nations - Restaurant luxembourgeois traditionnel depuis 1956 au cœur de Luxembourg-Ville. Cordon bleu maison, Judd mat Gaardebounen, Bouchée à la Reine. Menu du jour, terrasse. Réservez au +352 47 36 45.">
     <title>Brasserie des Nations | Restaurant Luxembourgeois depuis 1956 à Luxembourg-Ville</title>
@@ -158,6 +158,9 @@
     <!-- Navigation -->
     <nav role="navigation" aria-label="Menu principal" class="show">
 
+        <!-- Logo mobile -->
+        <a href="#" class="nav-mobile-logo">Brasserie des Nations</a>
+
         <!-- Burger mobile -->
         <button class="burger" id="burger" aria-label="Menu" aria-expanded="false">
             <span></span><span></span><span></span>
@@ -191,7 +194,7 @@
     </nav>     <main>
     <!-- Hero Section -->
     <section class="hero-video">
-        <video autoplay muted loop playsinline aria-hidden="true" style="display:block;position:absolute;top:0;left:0;width:100%;height:100%;object-fit:cover;object-position:center center;z-index:0;filter:brightness(0.7);transform:none!important">
+        <video autoplay muted loop playsinline preload="none" aria-hidden="true" style="display:block;position:absolute;top:0;left:0;width:100%;height:100%;object-fit:cover;object-position:center center;z-index:0;filter:brightness(0.7);transform:none!important">
             <source src="etgergr-3.mp4" type="video/mp4">
         </video>
         <div class="hero-overlay go">
@@ -386,7 +389,7 @@
 
             <div class="gallery-item" data-gi>
                 <div class="gi-inner">
-                    <img src="assets/images/plats/bouchée à la reine.jpg" alt="Bouchée à la Reine vol-au-vent crémeux aux champignons - Spécialité Brasserie des Nations Luxembourg" loading="lazy" decoding="async" fetchpriority="low" width="600" height="900">
+                    <img src="assets/images/plats/bouchee-a-la-reine.webp" alt="Bouchée à la Reine vol-au-vent crémeux aux champignons - Spécialité Brasserie des Nations Luxembourg" loading="lazy" decoding="async" fetchpriority="low" width="600" height="900">
                     <div class="gi-sweep"></div>
                     <div class="gi-glow"></div>
                     <div class="gi-overlay">
@@ -412,7 +415,7 @@
 
             <div class="gallery-item" data-gi>
                 <div class="gi-inner">
-                    <img src="assets/images/plats/tartare-boeuf-frais-brasserie-nations-luxembourg.jpg" alt="Tartare de bœuf frais préparé minute avec oignons rouges et cornichons - Brasserie des Nations Luxembourg" loading="lazy" decoding="async" fetchpriority="low" width="600" height="900">
+                    <img src="assets/images/plats/tartare-boeuf-frais-brasserie-nations-luxembourg.webp" alt="Tartare de bœuf frais préparé minute avec oignons rouges et cornichons - Brasserie des Nations Luxembourg" loading="lazy" decoding="async" fetchpriority="low" width="600" height="900">
                     <div class="gi-sweep"></div>
                     <div class="gi-glow"></div>
                     <div class="gi-overlay">
@@ -425,7 +428,7 @@
 
             <div class="gallery-item" data-gi>
                 <div class="gi-inner">
-                    <img src="assets/images/plats/gromperekichelcher-saumon-fume-luxembourg-brasserie-nations.jpg" alt="Gromperekichelcher luxembourgeois avec saumon fumé et crème fraîche - Brasserie des Nations" loading="lazy" decoding="async" fetchpriority="low" width="800" height="500">
+                    <img src="assets/images/plats/gromperekichelcher-saumon-fume-luxembourg-brasserie-nations.webp" alt="Gromperekichelcher luxembourgeois avec saumon fumé et crème fraîche - Brasserie des Nations" loading="lazy" decoding="async" fetchpriority="low" width="800" height="500">
                     <div class="gi-sweep"></div>
                     <div class="gi-glow"></div>
                     <div class="gi-overlay">
@@ -438,7 +441,7 @@
 
             <div class="gallery-item" data-gi>
                 <div class="gi-inner">
-                    <img src="assets/images/plats/quiche-maison-carte-vins-brasserie-nations-luxembourg.jpg" alt="Quiche maison servie avec sélection de vins - Brasserie des Nations Luxembourg" loading="lazy" decoding="async" fetchpriority="low" width="600" height="400">
+                    <img src="assets/images/plats/quiche-maison-carte-vins-brasserie-nations-luxembourg.webp" alt="Quiche maison servie avec sélection de vins - Brasserie des Nations Luxembourg" loading="lazy" decoding="async" fetchpriority="low" width="600" height="400">
                     <div class="gi-sweep"></div>
                     <div class="gi-glow"></div>
                     <div class="gi-overlay">
@@ -451,7 +454,7 @@
 
             <div class="gallery-item" data-gi>
                 <div class="gi-inner">
-                    <img src="assets/images/plats/salade-fraiche-brasserie-nations-luxembourg.jpg" alt="Salade fraîche garnie servie à la Brasserie des Nations Luxembourg" loading="lazy" decoding="async" fetchpriority="low" width="600" height="400">
+                    <img src="assets/images/plats/salade-fraiche-brasserie-nations-luxembourg.webp" alt="Salade fraîche garnie servie à la Brasserie des Nations Luxembourg" loading="lazy" decoding="async" fetchpriority="low" width="600" height="400">
                     <div class="gi-sweep"></div>
                     <div class="gi-glow"></div>
                     <div class="gi-overlay">
@@ -599,11 +602,9 @@
     </div>
     <script src="js/script.js"></script>
 
-    <!-- Patch: hide scroll-bar & golden-thread, block pinch zoom -->
+    <!-- Patch: hide scroll-bar & golden-thread -->
     <style>
         .golden-thread, .scroll-bar { display:none!important; visibility:hidden!important; }
-        html, body { touch-action: pan-x pan-y; }
-        * { -ms-touch-action: pan-x pan-y; touch-action: pan-x pan-y; }
     </style>
 
     <!-- Patch: neutralize script.js scroll bugs + force mobile autoplay -->
